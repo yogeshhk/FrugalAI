@@ -8,9 +8,9 @@
 - [ ] The code is public and free to use, the model weights can be downloaded for free, and both licences are stated.
 - [ ] It needs no paid API key and no cloud call at run time.
 - [ ] It says what hardware it was run on, and either a measured number or "not measured".
-- [ ] `python scripts/check_awesome.py` passes (add `--links` to check the URLs).
+- [ ] `python code/scripts/check_awesome.py` passes (add `--links` to check the URLs).
 
 ## If you are adding a measurement or a recipe
 
-- [ ] The CSV or recipe follows `benchmarks/METHODOLOGY.md` or `recipes/_template/`.
+- [ ] The CSV or recipe follows `code/benchmarks/METHODOLOGY.md` or `code/recipes/_template/`.
 - [ ] No numbers were copied from elsewhere.

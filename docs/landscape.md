@@ -94,12 +94,13 @@ repository itself before relying on that (to verify).
 - The framing "India frugal, China open source, America foundation models" attributed to B. Ravindran.
   Neither Rest of World article contains it, and a web search found no interview. Find the original before
   quoting.
-- Claims from a panel discussion (transcript pasted by the owner, speakers not named in it): that small
-  models of "a few GB" take care of about 80% of cases (the minister's "nearly 95 per cent" in
-  [S24](sources.md#s24) is a different figure, and neither is measured); that Apple and AWS are not in the
-  frontier race; that per-token cost is falling while enterprises' aggregate cost stays formidable; that AI
-  will substitute for teachers where people are unwilling to go; that "leveraged models are beginning to
-  unravel". These are opinions or unsourced claims.
+- The owner's recollection that a minister said small models of "a few GB" take care of about 80% of cases.
+  The only figure found in a source is the minister's "nearly 95 per cent" in [S24](sources.md#s24); the
+  80% is not in any source read, and neither figure is measured.
+- Claims from a panel discussion (transcript pasted by the owner, speakers not named in it): that Apple and
+  AWS are not in the frontier race; that per-token cost is falling while enterprises' aggregate cost stays
+  formidable; that AI will substitute for teachers where people are unwilling to go; that "leveraged models
+  are beginning to unravel". These are opinions or unsourced claims.
 - Qure.ai and SigTuple running offline on baseline lab equipment. Neither is mentioned in [S2](sources.md#s2).
 - "El Faro" as a framework for e-waste chips with 4-bit models.
 - Whether Sarvam or BharatGen models run on a Raspberry Pi through llama.cpp.

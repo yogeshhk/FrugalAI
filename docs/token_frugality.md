@@ -15,7 +15,7 @@ and in [TODO.md](../TODO.md).
 A token costs three things, and each can be measured separately:
 - Time: every generated token needs a forward pass, so decode time grows with output length. This repo
   already records it (`decode_tokens_per_s`, `ttft_s`, `total_s`; see
-  [METHODOLOGY.md](../benchmarks/METHODOLOGY.md)).
+  [METHODOLOGY.md](../code/benchmarks/METHODOLOGY.md)).
 - Memory: during generation the model keeps a key-value (KV) cache of the tokens seen so far. A serving
   paper states that the KV cache memory for each request "is huge and grows and shrinks dynamically"
   ([S16](sources.md#s16)). This repo records only the engine's peak RAM (`peak_runtime_ram_mb`), not the
@@ -38,7 +38,7 @@ the video talk are repeated here.
 
 1. Lean context window. Send only what the step needs. Do not re-send the whole history each turn; keep a
    short running summary or retrieve only the relevant past items (localised retrieval, as in the
-   [offline wiki recipe](../recipes/offline-wiki-rag/)).
+   [offline wiki recipe](../code/recipes/offline-wiki-rag/)).
 2. Structured key-value prompts. Write system instructions as compact YAML or JSON-like fields instead of
    conversational prose. Idea: fewer prompt tokens and more predictable output. To test: count
    `prompt_tokens` for prose and structured versions of the same instruction and compare answer quality on
@@ -109,4 +109,4 @@ framing, with no source, and is listed here only as a checklist idea that maps t
 - Already recorded per call: `prompt_tokens`, `completion_tokens`, `reasoning_chunks`, timings, peak engine
   RAM.
 - Missing: energy (joules or watt-hours), a tokens-per-task total across several calls, and the quality
-  score next to them. See the plan in [METHODOLOGY.md](../benchmarks/METHODOLOGY.md#planned-columns-energy-and-tokens-per-task).
+  score next to them. See the plan in [METHODOLOGY.md](../code/benchmarks/METHODOLOGY.md#planned-columns-energy-and-tokens-per-task).

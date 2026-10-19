@@ -1,7 +1,7 @@
 # TODO
 
 ## Open
-- [ ] Run the benchmark and the wiki recipe on the old Dell with Ollama (`devices/old-dell.md`); fill in
+- [ ] Run the benchmark and the wiki recipe on the old Dell with Ollama (`code/devices/old-dell.md`); fill in
       the hardware table there. Confirm it is the i3-8130U machine described in AIOOLL.
 - [ ] Awesome list: confirm the licences of the models behind the AIOOLL entry (gemma2:2b, qwen2:1.5b) and
       add them to the entry. Measure the wiki recipe on the old Dell so its entry shows a number from the
@@ -9,7 +9,7 @@
 - [ ] Awesome list: find and verify first candidates for the empty sections (runtimes such as llama.cpp and
       Ollama, small and Indic models, a Raspberry Pi effort, a TinyML effort, a browser effort). Read each one
       before listing it.
-- [ ] Awesome list: set a quarterly reminder for `python scripts/check_awesome.py --links --stale-days 365`.
+- [ ] Awesome list: set a quarterly reminder for `python code/scripts/check_awesome.py --links --stale-days 365`.
 - [ ] Find the source of the B. Ravindran "India frugal / China open source / US foundation" framing.
 - [ ] Add a larger, real evaluation set for the wiki recipe from an actual notes vault (not the sample).
 - [ ] Re-run the benchmark with thinking off for Qwen3 and compare (the first run had it on).
@@ -25,7 +25,9 @@
 - [ ] Add `energy_wh_per_task` and a tokens-per-task total to the harness once a power meter is available.
 - [ ] Decide whether to add a recipe on structured (YAML or JSON) versus prose prompts, measured on tokens
       and quality.
-- [ ] Decide whether to add a frozen-encoder-plus-probe classification example (see `recipes/README.md`).
+- [ ] Decide whether to add a frozen-encoder-plus-probe classification example (see `code/recipes/README.md`).
+- [ ] Review the internship project ideas in `code/TODO.md`: verify every "to verify" licence and access note,
+      pick the first three to float, and write each one's brief.
 - [ ] Confirm with the owner that "Jave" meant JEPA (inference only; DINOv2-style frozen features are an
       alternative match). Read V-JEPA 2's full paper beyond the first 100,000 characters if needed.
 - [ ] Read the rest of the nvidia-smi documentation page for power-reading accuracy notes.
