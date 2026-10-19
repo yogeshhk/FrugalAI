@@ -42,6 +42,13 @@ python -m pytest harness/tests -v
 
 The tests are fully offline (no model or server needed).
 
+## Token and energy accounting (planned)
+Each result already carries `prompt_tokens`, `completion_tokens` and `reasoning_chunks`. Not yet in the
+harness: energy per call or per task, and a tokens-per-task total across several calls. Both are planned
+as future measured columns, see
+[benchmarks/METHODOLOGY.md](../benchmarks/METHODOLOGY.md#planned-columns-energy-and-tokens-per-task). No code
+change has been made for this.
+
 ## Notes and limits
 - Reasoning models (for example Qwen3 with thinking on) stream their thinking separately; it counts as
   generated tokens but is not in `text`. Say whether thinking was on when you record a result.

@@ -33,6 +33,36 @@ Answering from a local document collection: split documents into chunks, embed t
 retrieve the closest chunks for a question, and give them to the model with the question. Lets a small model
 answer from a large private corpus without retraining.
 
+## Token and context window
+A token is the unit of text a language model reads and writes (a word, part of a word or a symbol). The
+context window is the amount of text, in tokens, the model can take into account at once. Token counts
+matter for cost, speed and memory; the link to energy is to be measured here, see
+[token_frugality.md](token_frugality.md). Sarvam reports Indian-language text needs more tokens for the same
+question ([S3](sources.md#s3)).
+
+## KV cache
+Keys and values stored for tokens already processed, so the model need not recompute them for each new
+token. It takes memory per request and grows with context length ([S16](sources.md#s16)).
+
+## Speculative decoding, mixture of experts, state space models
+Short definitions with the sourced figures are in [token_frugality.md](token_frugality.md)
+([S15](sources.md#s15), [S18](sources.md#s18), [S17](sources.md#s17)).
+
+## Frozen encoder plus small head (probe)
+A large model (the encoder) is trained once and then kept frozen, so its weights do not change. A small
+part is trained on top of its outputs for one task: a linear layer (a "linear probe") or a small attention
+block (an "attentive probe"). Papers use this to evaluate how good the encoder's representations are
+([S20](sources.md#s20), [S21](sources.md#s21)). Why it may suit frugal work: only the small head needs
+training data and compute. The encoder itself still has to be run at inference, so it is not free on small
+hardware (to measure).
+
+## JEPA
+Joint-Embedding Predictive Architecture: a self-supervised method that learns by predicting the
+representation of hidden parts of an input from the visible parts, instead of predicting pixels. Examples
+fetched for this repo: I-JEPA for images ([S19](sources.md#s19)), V-JEPA 2 for video ([S20](sources.md#s20))
+and LeJEPA, a training objective with a theory for it ([S21](sources.md#s21)). Whether this is the model
+family the repo owner remembered as "Jave" is an inference, see [landscape.md](landscape.md).
+
 ## Edge and offline
 Running where the data is, without needing the internet at run time. The point is privacy, latency, cost and
 resilience, not only speed.

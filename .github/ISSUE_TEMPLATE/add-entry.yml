@@ -1,0 +1,88 @@
+name: Add an entry to the awesome list
+description: Suggest a frugal AI effort for AWESOME.md
+title: "[Entry] "
+labels: ["awesome-entry"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing. Please read the entry criteria in AWESOME.md first: free to use and open to all,
+        downloadable model weights, no per-token charges, and a statement of what it was run on.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      placeholder: My offline notes assistant
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Link to the repository, demo or notebook
+      placeholder: https://github.com/you/your-project
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform (the section it belongs in)
+      options:
+        - Old laptop or desktop, CPU only
+        - Raspberry Pi and other single-board computers
+        - Phones
+        - Microcontrollers and TinyML
+        - Browser and no-install
+        - Small models
+        - Runtimes and tools
+        - Applications by sector
+        - Benchmarks and measurements
+        - Learning resources
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What it does and why it is frugal (one or two sentences)
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: Hardware it was run on (CPU, RAM, board or phone model)
+      placeholder: Intel i5-6200U, 8 GB RAM, no GPU
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model name and its licence
+      placeholder: Qwen3 1.7B (Apache-2.0)
+    validations:
+      required: true
+  - type: input
+    id: licence
+    attributes:
+      label: Licence of the code
+      placeholder: MIT
+    validations:
+      required: true
+  - type: textarea
+    id: measured
+    attributes:
+      label: Did you measure it? Give the number and how, or write "not measured"
+      placeholder: 6.5 tokens/s decode, Q4_K_M, llama.cpp, 3 runs, median
+    validations:
+      required: true
+  - type: checkboxes
+    id: criteria
+    attributes:
+      label: Criteria
+      options:
+        - label: The code is public and free to use, and the model weights can be downloaded for free.
+          required: true
+        - label: It needs no paid API key and no cloud call at run time.
+          required: true
+        - label: For laptop entries, it runs on a CPU without a discrete GPU.
+          required: true
+        - label: Someone else can run it from the link.
+          required: true

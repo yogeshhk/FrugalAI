@@ -22,6 +22,7 @@ local. See [docs/landscape.md](docs/landscape.md) for what has actually been rep
 | [devices/](devices/) | Setup notes per device | Dell notes written, not yet measured |
 | [eval/](eval/) | Shared evaluation sets and scripts | wiki questions live inside its recipe |
 | [docs/](docs/) | Concepts, landscape, safety, assessment, sources | written |
+| [AWESOME.md](AWESOME.md) | Curated list of frugal AI efforts by platform (old laptop, Raspberry Pi, phone, microcontroller, browser) | open for entries |
 
 ## What runs where
 
@@ -44,6 +45,10 @@ side of health recipes, weak small-model quality in Indian languages, and one pe
 has been tested with paying users yet. The reasoning, the risks and what would raise confidence are in
 [docs/assessment.md](docs/assessment.md).
 
+For the cost side of a token (time, memory, energy), practices to try and how to measure energy per task,
+see [docs/token_frugality.md](docs/token_frugality.md). It is a checklist and a plan; this repo has measured
+no energy figure yet.
+
 ## Related work
 
 - [AIOOLL](https://github.com/yogeshhk/AIOOLL): AI on an old Linux laptop. A learning and demo toolkit
@@ -62,7 +67,7 @@ has been tested with paying users yet. The reasoning, the risks and what would r
 ```bash
 conda env create -f environment.yml
 conda activate frugalai
-python -m pytest harness/tests recipes/offline-wiki-rag/tests -q    # offline, no model needed
+python -m pytest harness/tests recipes/offline-wiki-rag/tests scripts/tests -q    # offline, no model needed
 ```
 
 Then follow [recipes/offline-wiki-rag/](recipes/offline-wiki-rag/) to ask questions of a notes folder, or
@@ -70,8 +75,9 @@ Then follow [recipes/offline-wiki-rag/](recipes/offline-wiki-rag/) to ask questi
 
 ## Contributing
 
-Students and practitioners are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). The easiest first
-contribution is to add measurements from a device you own.
+Students and practitioners are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). Two easy first
+contributions: add your own frugal AI effort to [AWESOME.md](AWESOME.md) (free to use, downloadable model,
+no token charges), or add measurements from a device you own.
 
 ## Licence
 

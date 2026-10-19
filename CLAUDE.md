@@ -13,6 +13,10 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
 - No em dashes in files. ASCII-safe console output.
 - Python via conda (`environment.yml`, env name `frugalai`). No pip or venv for the project env.
 - Offline first. No feature may need a cloud call at runtime.
+- `AWESOME.md` entries must meet its criteria (free to use and open to all, downloadable model weights, no
+  per-token charges, hardware stated) and keep the exact two-line shape. Run `python scripts/check_awesome.py` after any edit.
+  Never list something you have not read; set `Verified` to the date you checked it. Maintainer notes are in
+  `docs/maintaining-awesome.md`.
 
 ## Layout
 `docs/` concepts, landscape, sources, safety. `harness/` backend interface. `recipes/` end-to-end jobs.

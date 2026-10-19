@@ -33,6 +33,20 @@ Goal: numbers that someone else can reproduce on the same device and compare wit
   recipe has its own evaluation set.
 - Power draw (watts) is planned for the Raspberry Pi stage with a USB power meter; it is not in the CSV yet.
 
+## Planned columns: energy and tokens per task
+Plan only; nothing here is measured yet. Background in [token_frugality.md](../docs/token_frugality.md).
+- Already available per call: `prompt_tokens`, `completion_tokens` and `reasoning_chunks` (see the table
+  above). Together they give the tokens spent on one request.
+- Missing: a task-level token total (the sum over every model call needed to finish one job, such as a
+  retrieval question with its follow-ups), an energy column, and a quality score on the same row.
+- Proposed `energy_wh_per_task`: from a wall or USB power meter, minus a rest-state baseline measured for the
+  same device and period, divided by tasks completed. On laptops that expose RAPL, CodeCarbon may be run as
+  a cross-check; its limits (estimated RAM, no disk or network, 15 s default sampling) are in
+  [token_frugality.md](../docs/token_frugality.md). nvidia-smi does not apply to CPU-only devices.
+- Report energy next to quality, never alone: a cheaper answer that fails the evaluation set is not a saving.
+- Check before relying on it: run the same model with different output lengths and see whether measured
+  energy tracks tokens on that device.
+
 ## Known limits
 - Short 128-token generations measure steady decode speed, not long-context behaviour.
 - Peak RAM sampling can miss very short spikes.
