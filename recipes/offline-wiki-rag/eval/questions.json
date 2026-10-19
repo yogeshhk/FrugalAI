@@ -1,0 +1,12 @@
+[
+  {"q": "How often is the kitchen water filter cartridge replaced?", "source": "home.md"},
+  {"q": "When is the electricity bill due?", "source": "home.md"},
+  {"q": "How often do I water the mango sapling?", "source": "garden.md"},
+  {"q": "What do I revise on Thursday evenings?", "source": "study-plan.md"},
+  {"q": "When is the library book due back?", "source": "study-plan.md"},
+  {"q": "What goes into the tadka for dal?", "source": "kitchen.md"},
+  {"q": "Which coach and seat is my train ticket for?", "source": "travel.md"},
+  {"q": "How much free memory does the local model need on the old laptop?", "source": "devices.md"},
+  {"q": "How long should the idli batter ferment?", "source": "kitchen.md"},
+  {"q": "Where is the spare water filter cartridge kept?", "source": "home.md"}
+]

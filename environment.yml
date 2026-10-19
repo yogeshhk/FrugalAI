@@ -1,0 +1,14 @@
+name: frugalai
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pytest
+  - psutil
+  - pyyaml
+  - requests
+  - pip:
+      - watchdog
+      - chromadb
+      - sentence-transformers

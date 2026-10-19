@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Environments and editors
+.venv/
+.env
+.vscode/
+.idea/
+
+# Models and indexes (large, local)
+*.gguf
+*.safetensors
+*.onnx
+*.bin
+chroma/
+.chroma/
+*.faiss
+.wikirag/
+
+# Local scratch
+scratch/
+*.log
+.claude/settings.local.json
