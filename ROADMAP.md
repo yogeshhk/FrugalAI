@@ -14,7 +14,7 @@ Scope rule: software and deployment, not chip design or hardware acceleration. U
   engineer).
 - First "what runs where" table with at least two devices.
 - Energy per task and tokens per task as measured columns (power meter first; plan in
-  `code/benchmarks/METHODOLOGY.md`), reported next to a quality score.
+  `code/common/benchmarks/METHODOLOGY.md`), reported next to a quality score.
 
 ## M3: ASHA-worker assistant (Marathi, Hindi, English)
 - Safety framing and refusal policy first, then an evaluation set, then the recipe.
@@ -27,6 +27,6 @@ Scope rule: software and deployment, not chip design or hardware acceleration. U
 ## Later
 - Modi script OCR recipe (MoScNet and a classical baseline, compared).
 - Token-frugal prompt recipe: structured versus prose prompts, measured on tokens and quality.
-- Frozen small encoder plus a small trained head as a frugal classifier (see `code/recipes/README.md`).
+- Frozen small encoder plus a small trained head as a frugal classifier (see `docs/internship-ideas.md`).
 - More languages, with community partners and data-custody rules written first.
-- Internship project list (a researched draft is in `code/TODO.md`) and a consulting/training offer built on the recipes.
+- Internship project list (a researched draft is in `docs/internship-ideas.md`) and a consulting/training offer built on the recipes.

@@ -1,0 +1,11 @@
+system,n,page_hit_at_1,page_hit_at_4,mrr,ms_per_query,set
+naive-dense,72,0.583,0.806,0.701,3.8,dev
+naive-bm25,72,0.444,0.736,0.568,0.5,dev
+struct-bm25,72,0.569,0.792,0.668,0.3,dev
+struct-dense,72,0.875,0.958,0.919,5.5,dev
+struct-hybrid,72,0.778,0.944,0.853,6.8,dev
+naive-dense,24,0.583,0.792,0.67,2.9,heldout
+naive-bm25,24,0.458,0.75,0.585,0.3,heldout
+struct-bm25,24,0.5,0.625,0.569,0.4,heldout
+struct-dense,24,0.875,0.958,0.917,6.3,heldout
+struct-hybrid,24,0.708,0.875,0.778,6.8,heldout

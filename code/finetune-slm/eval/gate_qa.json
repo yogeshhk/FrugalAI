@@ -1,0 +1,14 @@
+[
+ {"id": "g01", "chapter": 1, "q": "लेखकाच्या मते जीवन किती कठीण आहे?", "keys": ["समजतो|ठरवतो|समजतो-ठरवतो"], "note": "as hard as we think or decide it is"},
+ {"id": "g02", "chapter": 1, "q": "आनंदी राहण्यासाठी कोणत्या साध्या गरजा पुरेशा आहेत?", "keys": ["अन्न", "वस्त्र", "निवारा"], "note": "food, clothing, shelter, relationships"},
+ {"id": "g03", "chapter": 1, "q": "लेखकाला कोणत्या क्षेत्रात पारंगत व्हायचे होते आणि त्यातून त्याने काय शिकले?", "keys": ["पोह"], "note": "swimming: water also pushes you up, so float"},
+ {"id": "g04", "chapter": 1, "q": "पाणी पोहणाऱ्याला कशी मदत करते?", "keys": ["तरंग|तरं|वर ढकल"], "note": "it helps you float"},
+ {"id": "g05", "chapter": 1, "q": "तुकोबारायांचे कोणते वचन लेखकाने उद्धृत केले आहे?", "keys": ["रात्रंदिन"], "note": "ratrandin amha yuddhacha prasang"},
+ {"id": "g06", "chapter": 1, "q": "ज्ञानोबारायांच्या कोणत्या शब्दांचा उल्लेख केला आहे?", "keys": ["सहजी"], "note": "sahaji nitu jahala"},
+ {"id": "g07", "chapter": 1, "q": "सहज जीवन म्हणजे अजिबात प्रयत्न न करणे असा अर्थ आहे का?", "keys": ["नाही|नव्हे"], "note": "no: effort happens but feels light"},
+ {"id": "g08", "chapter": 1, "q": "सहज जीवनाच्या मार्गात अडथळा कोण आणते?", "keys": ["मन"], "note": "our own mind"},
+ {"id": "g09", "chapter": 2, "q": "मार्गदर्शक तत्त्वे कोणत्या स्वरूपात मांडली आहेत?", "keys": ["नकारात्मक"], "note": "in a negative form: what not to do"},
+ {"id": "g10", "chapter": 2, "q": "पहिले मार्गदर्शक तत्त्व काय आहे?", "keys": ["हानी"], "note": "do not harm others"},
+ {"id": "g11", "chapter": 2, "q": "अपेक्षा ही कशाची जननी असते?", "keys": ["निराशे"], "note": "expectation is the mother of disappointment"},
+ {"id": "g12", "chapter": 2, "q": "घाई केल्याने काय होते?", "keys": ["चुका"], "note": "hurry means mistakes"}
+]

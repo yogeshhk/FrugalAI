@@ -31,7 +31,7 @@ An ordinary PC with 8 to 16 GB of RAM and no discrete GPU. Integrated graphics a
 
 - [AIOOLL](https://github.com/yogeshhk/AIOOLL) - Full-stack AI workflows on a CPU-only Linux laptop: classical ML, deep learning, RAG, agents, computer vision and local LLM inference, with tests and Streamlit UIs.
   Hardware: Intel i3-8130U, 8 GB RAM, SSD, Xubuntu, as the repo reports. Model: Ollama models such as gemma2:2b and qwen2:1.5b (see each model card for its licence). Licence: MIT. Measured: yes, about 8 tokens/s for Gemma2 2B as the repo reports; not re-measured here. Verified: 2026-10-19.
-- [FrugalAI offline wiki Q&A](code/recipes/offline-wiki-rag/) - Ask questions of a folder of markdown notes: BM25 retrieval in pure Python, optional embeddings, and a small local model that answers only from the retrieved notes.
+- [FrugalAI offline wiki Q&A](code/wiki-rag/) - Ask questions of a folder of markdown notes: BM25 retrieval in pure Python, optional embeddings, and a small local model that answers only from the retrieved notes.
   Hardware: a 10-core, 16 GB Windows PC with an NVIDIA GeForce MX570 (2 GB) that LM Studio used for part of each model, so these are not CPU-only numbers; the old Dell and a Raspberry Pi are not measured yet. Model: Qwen3 1.7B Q4_K_M (Apache-2.0), served by LM Studio (free) or Ollama. Licence: MIT. Measured: yes, decode medians (n=15, one model loaded at a time) of 20.3 tokens/s CPU-only and 54.0 with the GPU for Qwen3 1.7B (thinking mode on), and 10.9 CPU-only and 12.2 with the GPU for Gemma 2 2B Q4_K_M. Verified: 2026-10-19.
 
 ## Raspberry Pi and other single-board computers
@@ -130,7 +130,7 @@ at the bottom of the right section, with the second line indented by two spaces:
   Hardware: what you ran it on. Model: name (licence). Licence: licence of the code. Measured: yes or no, and the number. Verified: 2026-10-19.
 ```
 
-Then run `python code/scripts/check_awesome.py` (add `--links` to check the URLs). It checks the format, the
+Then run `python _scripts/check_awesome.py` (add `--links` to check the URLs). It checks the format, the
 required fields, duplicates and ASCII-only text. It does not judge whether an entry meets the criteria; the
 maintainer does.
 

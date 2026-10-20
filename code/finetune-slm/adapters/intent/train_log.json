@@ -1,0 +1,33 @@
+{
+  "model_id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+  "parameters_total": 135436608,
+  "parameters_trainable": 921600,
+  "trainable_percent": 0.68,
+  "rank": 8,
+  "alpha": 16,
+  "epochs": 3,
+  "batch": 8,
+  "learning_rate": 0.0002,
+  "steps": 180,
+  "train_examples": 480,
+  "train_seconds": 1310.8,
+  "peak_rss_mb": 1770,
+  "loss_per_epoch": [
+    4.9016,
+    0.1388,
+    0.0167
+  ],
+  "adapter_mb": 3.72,
+  "threads": 10,
+  "host": {
+    "os": "Windows-10-10.0.26300-SP0",
+    "cpu": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "cores_physical": 10,
+    "cores_logical": 12,
+    "cpu_max_mhz": 1700,
+    "gpu": "NVIDIA GeForce MX570 A, 2048 MiB",
+    "ram_total_mb": 16849,
+    "python": "3.10.19"
+  },
+  "date": "2026-10-20"
+}

@@ -14,15 +14,17 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
 - Python via conda (`environment.yml`, env name `frugalai`). No pip or venv for the project env.
 - Offline first. No feature may need a cloud call at runtime.
 - `AWESOME.md` entries must meet its criteria (free to use and open to all, downloadable model weights, no
-  per-token charges, hardware stated) and keep the exact two-line shape. Run `python code/scripts/check_awesome.py` after any edit.
+  per-token charges, hardware stated) and keep the exact two-line shape. Run `python _scripts/check_awesome.py` after any edit.
   Never list something you have not read; set `Verified` to the date you checked it. Maintainer notes are in
   `docs/maintaining-awesome.md`.
 
 ## Layout
-`docs/` concepts, landscape, sources, safety. All code and everything measured lives under `code/`:
-`code/harness/` backend interface, `code/recipes/` end-to-end jobs, `code/benchmarks/` method and results,
-`code/devices/` per-device setup, `code/eval/` shared evaluation sets, `code/scripts/` repo tools.
-Run all tests with `python -m pytest code -q` and the link check with `python code/scripts/check_links.py`.
+`docs/` concepts, landscape, sources, safety, internship ideas. `code/` holds everything that runs: each project is a
+self-contained folder (code, data, tests, README, TODO): `code/wiki-rag/`, `code/quantum-wiki/`, `code/finetune-slm/`,
+`code/workflow-agent/`; copy `code/_template/` for a new one. Shared pieces live in `code/common/`:
+`code/common/frugalai_common/` backend interface and benchmark runner, `code/common/benchmarks/` method and results,
+`code/common/devices/` per-device setup. `_scripts/` at the repo root holds the repo tools (AWESOME.md and link
+checkers). Run all tests with `python -m pytest code -q` and the link check with `python _scripts/check_links.py`.
 
 ## Related
 `D:\Yogesh\GitHub\AIOOLL` is a separate repo. Copy pieces from it with attribution; do not move them.

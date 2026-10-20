@@ -17,18 +17,22 @@ local. See [docs/landscape.md](docs/landscape.md) for what has actually been rep
 | Area | What it holds | Status |
 |------|---------------|--------|
 | [docs/](docs/) | Concepts, landscape, safety, assessment, sources | written |
-| [code/](code/) | Everything that runs or is measured; see [code/README.md](code/README.md) and the internship project ideas in [code/TODO.md](code/TODO.md) | working, tested |
-| [code/benchmarks/](code/benchmarks/) | Method and measured results: what runs where | method written, first result in |
-| [code/harness/](code/harness/) | One small interface over Ollama and LM Studio, plus a benchmark command | working, tested |
-| [code/recipes/](code/recipes/) | End-to-end jobs: [offline wiki Q&A](code/recipes/offline-wiki-rag/), ASHA-worker assistant | wiki recipe working; ASHA planned |
-| [code/devices/](code/devices/) | Setup notes per device | Dell notes written, not yet measured |
-| [code/eval/](code/eval/) | Shared evaluation sets and scripts | wiki questions live inside its recipe |
-| [code/scripts/](code/scripts/) | Repo tools: the AWESOME.md checker and a relative-link checker | working, tested |
+| [code/quantum-wiki/](code/quantum-wiki/) | Project: questions and answers with page citations over the AICTE Minor in Quantum Technologies PDF (Docling, course cards, LangChain, Qwen3 1.7B) | built, tested and measured |
+| [code/workflow-agent/](code/workflow-agent/) | Project: a LangGraph concept-intake workflow on the QCNP FAQ notes (parallel checks, draft sub-graph, lint and repair loop), plus a small helpline demo | built and tested; first measurements in |
+| [code/finetune-slm/](code/finetune-slm/) | Project: LoRA fine-tuning of small models on a CPU; a 135M intent router, and a Marathi question-answering study on the Sahaj Jeevan book | intent router trained; Marathi study at its go or no-go gate |
+| [code/wiki-rag/](code/wiki-rag/) | Project: offline Q&A over a folder of notes (hand-built BM25), with its own retrieval and answer evaluation | working, tested; retrieval measured, answer scoring pending |
+| [code/common/](code/common/) | Shared by every project: one small interface over Ollama and LM Studio, plus a benchmark command | working, tested |
+| [code/common/benchmarks/](code/common/benchmarks/) | Method and measured results: what runs where | method written, first result in |
+| [code/common/devices/](code/common/devices/) | Setup notes per device | Dell notes written, not yet measured |
+| [code/_template/](code/_template/) | Starting point for a new project folder | ready |
+| [_scripts/](_scripts/) | Repo tools: the AWESOME.md checker and a relative-link checker | working, tested |
+| [GETTING_STARTED.md](GETTING_STARTED.md) | How to run what exists, step by step, and the checks | written |
+| [docs/internship-ideas.md](docs/internship-ideas.md) | Project ideas that could be floated to students | plan only |
 | [AWESOME.md](AWESOME.md) | Curated list of frugal AI efforts by platform (old laptop, Raspberry Pi, phone, microcontroller, browser) | open for entries |
 
 ## What runs where
 
-Numbers appear here only after they are measured and recorded under `code/benchmarks/results/`.
+Numbers appear here only after they are measured and recorded under `code/common/benchmarks/results/`.
 
 | Device | Model (quantisation) | Decode tokens/s | Peak RAM | Date | Notes |
 |--------|----------------------|-----------------|----------|------|-------|
@@ -76,29 +80,29 @@ no energy figure yet.
 conda env create -f environment.yml
 conda activate frugalai
 python -m pytest code -q                  # all tests, offline, no model needed
-python code/scripts/check_links.py        # relative links in the Markdown files
+python _scripts/check_links.py        # relative links in the Markdown files
 ```
 
-Then follow [code/recipes/offline-wiki-rag/](code/recipes/offline-wiki-rag/) to ask questions of a notes folder, or
-[code/harness/](code/harness/) to benchmark a model on your own device.
+Then follow [code/wiki-rag/](code/wiki-rag/) to ask questions of a notes folder, or
+[code/common/](code/common/) to benchmark a model on your own device.
 
-## Adding new code or a recipe
+## Adding new code or a project
 
-All code lives under [code/](code/). To add something:
+Each project is its own folder under `code/` with its own code, data, tests, README and TODO. To add something:
 
-1. **A recipe** (an end-to-end job): copy [code/recipes/_template/](code/recipes/_template/) to
-   `code/recipes/<short-name>/`, give it its own tests and README, and add a row for it to
-   [code/recipes/README.md](code/recipes/README.md) and to the "What is here" table above.
-2. **Shared code** (a new model backend, a metric): put it in [code/harness/](code/harness/) with an offline
+1. **A project** (an end-to-end job): copy [code/_template/](code/_template/) to
+   `code/<short-name>/`, give it its own tests and README, and add a row for it to the
+   "What is here" table above.
+2. **Shared code** (a new model backend, a metric): put it in [code/common/](code/common/) with an offline
    test, so every recipe can use it.
-3. **A measurement:** run the harness and add the CSV under `code/benchmarks/results/`, then the row in
+3. **A measurement:** run the harness and add the CSV under `code/common/benchmarks/results/`, then the row in
    "What runs where". A number goes in only if a script produced it on a named device.
-4. **A tool or an evaluation set:** `code/scripts/` or `code/eval/`.
-5. Run `python -m pytest code -q`, `python code/scripts/check_links.py` and, if you touched `AWESOME.md`,
-   `python code/scripts/check_awesome.py`.
+4. **A repo tool:** `_scripts/`. An evaluation set belongs inside the project that uses it.
+5. Run `python -m pytest code -q`, `python _scripts/check_links.py` and, if you touched `AWESOME.md`,
+   `python _scripts/check_awesome.py`.
 
-How to run what already exists, step by step, is in [code/README.md](code/README.md). Project ideas for
-students are in [code/TODO.md](code/TODO.md).
+How to run what already exists, step by step, is in [GETTING_STARTED.md](GETTING_STARTED.md). Project ideas for
+students are in [docs/internship-ideas.md](docs/internship-ideas.md).
 
 ## Contributing
 

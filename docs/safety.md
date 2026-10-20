@@ -27,5 +27,5 @@ not replace a clinician, and is not deployed in the field until the steps below 
 - Run a pilot with a partner organisation, with informed consent and a way to report problems.
 
 ## What this repository does today
-Only documentation and an empty evaluation format (see `code/recipes/asha-assistant/`). No health content has
-been written and no model has been evaluated for it.
+Only documentation. The earlier ASHA-assistant stub (plan and evaluation format) was set aside and is not being
+worked on. No health content has been written and no model has been evaluated for it.

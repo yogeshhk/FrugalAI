@@ -1,0 +1,6885 @@
+{
+ "courses": {
+  "QT 01": {
+   "code": "QT 01",
+   "title": "Survey of Quantum technologies and Applications",
+   "credits": "3:0",
+   "group_text": "QT 01 and QT 02 are both Mandatory",
+   "group_kind": "mandatory_all",
+   "topics": [
+    {
+     "text": "Quantum Technologies - four verticals (1 lecture)",
+     "level": 1,
+     "page": 16,
+     "children": [
+      {
+       "text": "Motivation for Quantum Technologies",
+       "level": 2,
+       "page": 16,
+       "children": []
+      }
+     ],
+     "count": {
+      "amount": "1",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+     "level": 1,
+     "page": 16,
+     "children": [
+      {
+       "text": "Quantum States, Wavefunctions, Probabilistic interpretation",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "Physical observables, Hermitian operators, expectation values",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "Heisenberg uncertainty principle",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "Schrodinger equation, Time evolution",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "distinction from classical physics",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "Heuristic description of Superposition, Tunnelling and entanglement",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "No cloning theorem",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "Simulating classical systems - Feynman's idea of a quantum simulator and the birth of the field",
+       "level": 2,
+       "page": 16,
+       "children": []
+      }
+     ],
+     "count": {
+      "amount": "4-5",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Quantum Computation (10-12 lectures)",
+     "level": 1,
+     "page": 16,
+     "children": [
+      {
+       "text": "Basics of qubits -- what is a qubit?",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "How is it different from a classical bit? - Review of classical logic gates",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "Di Vincenzo criteria for realising qubits",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "Basics of qubit gates and quantum circuits",
+       "level": 2,
+       "page": 16,
+       "children": []
+      },
+      {
+       "text": "Physical implementation of qubits (very qualitative description)",
+       "level": 2,
+       "page": 16,
+       "children": [
+        {
+         "text": "Solid State Qubits",
+         "level": 3,
+         "page": 16,
+         "children": [
+          {
+           "text": "Semiconducting Qubits - quantum dots, spins",
+           "level": 4,
+           "page": 16,
+           "children": []
+          },
+          {
+           "text": "Superconducting Qubits - charge, flux and phase",
+           "level": 4,
+           "page": 16,
+           "children": []
+          },
+          {
+           "text": "Topological Qubits - proposals and advantages",
+           "level": 4,
+           "page": 16,
+           "children": []
+          }
+         ]
+        },
+        {
+         "text": "Atoms and Ions",
+         "level": 3,
+         "page": 16,
+         "children": [
+          {
+           "text": "Trapped ions",
+           "level": 4,
+           "page": 16,
+           "children": []
+          },
+          {
+           "text": "Rydberg atoms",
+           "level": 4,
+           "page": 16,
+           "children": []
+          },
+          {
+           "text": "Neutral atoms",
+           "level": 4,
+           "page": 16,
+           "children": []
+          }
+         ]
+        },
+        {
+         "text": "Photonic Qubits",
+         "level": 3,
+         "page": 16,
+         "children": [
+          {
+           "text": "Conventional linear optical setups",
+           "level": 4,
+           "page": 16,
+           "children": []
+          },
+          {
+           "text": "Integrated Photonics",
+           "level": 4,
+           "page": 16,
+           "children": []
+          }
+         ]
+        },
+        {
+         "text": "NMR qubits",
+         "level": 3,
+         "page": 16,
+         "children": [
+          {
+           "text": "Conventional NMR qubits",
+           "level": 4,
+           "page": 16,
+           "children": []
+          },
+          {
+           "text": "NV centres",
+           "level": 4,
+           "page": 16,
+           "children": []
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "text": "Overview of applications and recent achievements",
+       "level": 2,
+       "page": 16,
+       "children": [
+        {
+         "text": "RSA and Shor's algorithm",
+         "level": 3,
+         "page": 17,
+         "children": []
+        },
+        {
+         "text": "Quantum Advantage",
+         "level": 3,
+         "page": 17,
+         "children": []
+        }
+       ]
+      },
+      {
+       "text": "Long term goals and strategies being followed",
+       "level": 2,
+       "page": 17,
+       "children": [
+        {
+         "text": "Error correction",
+         "level": 3,
+         "page": 17,
+         "children": []
+        }
+       ]
+      }
+     ],
+     "count": {
+      "amount": "10-12",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Quantum Sensing (8-10 lectures)",
+     "level": 1,
+     "page": 17,
+     "children": [
+      {
+       "text": "Basics of quantum sensing",
+       "level": 2,
+       "page": 17,
+       "children": []
+      },
+      {
+       "text": "Basics of Photon (single and entangled) generation and detection",
+       "level": 2,
+       "page": 17,
+       "children": []
+      },
+      {
+       "text": "Gravimetry",
+       "level": 2,
+       "page": 17,
+       "children": []
+      },
+      {
+       "text": "Atomic clock",
+       "level": 2,
+       "page": 17,
+       "children": []
+      },
+      {
+       "text": "Magnetometry",
+       "level": 2,
+       "page": 17,
+       "children": []
+      },
+      {
+       "text": "State of the art in Quantum Sensing",
+       "level": 2,
+       "page": 17,
+       "children": []
+      }
+     ],
+     "count": {
+      "amount": "8-10",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Quantum Communications (8-10 lectures)",
+     "level": 1,
+     "page": 17,
+     "children": [
+      {
+       "text": "Basics of digital communication",
+       "level": 2,
+       "page": 17,
+       "children": []
+      },
+      {
+       "text": "Quantifying classical information - Shannon entropy",
+       "level": 2,
+       "page": 17,
+       "children": []
+      },
+      {
+       "text": "Basic ideas of quantum communication, security, eavesdropping",
+       "level": 2,
+       "page": 17,
+       "children": []
+      },
+      {
+       "text": "Overview of quantum communication achievements",
+       "level": 2,
+       "page": 17,
+       "children": [
+        {
+         "text": "Terrestrial - fibre-based",
+         "level": 3,
+         "page": 17,
+         "children": []
+        },
+        {
+         "text": "Free space, Satellite-based",
+         "level": 3,
+         "page": 17,
+         "children": []
+        }
+       ]
+      }
+     ],
+     "count": {
+      "amount": "8-10",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Topics on Quantum Materials are to be covered in the other portions of the course wherever required and are not listed separately here.",
+     "level": 1,
+     "page": 17,
+     "children": []
+    }
+   ],
+   "outcomes": [
+    "The general physical principles of realising qubits for computation",
+    "The various hardware implementations of qubits for computation",
+    "The basic ideas of quantum sensing",
+    "The applications of quantum sensing",
+    "The implementations of quantum communications protocols in fibre-based and free-space"
+   ],
+   "references": [
+    "Quantum Information Science - Manenti R., Motta M., 1 st Edition, Oxford University Press (2023)",
+    "Quantum computation and quantum information - Nielsen M. A., and Chuang I. L., 10 th Anniversary edition, Cambridge University Press (2010)",
+    "Quantum Computing & Techniques, Dr. R. Chopra, Khanna Publishing House (2025).",
+    "Elements of Quantum Computation and Quantum Communication, A. Pathak, Boca Raton, CRC Press (2015)",
+    "An Introduction to Quantum Computing, Phillip Kaye, Raymond Laflamme, and Michele Mosca, Oxford University Press (2006)",
+    "Quantum computing explained, David McMahon, Wiley (2008)",
+    "Quantum Computing Mechanics, A. B. Bhattacharya, Khanna Publishing House (2025)"
+   ],
+   "pages": [
+    16,
+    17
+   ],
+   "description": "This course is meant to give an overview of the field of quantum technologies and make the students familiar with the state-of-the-art in all four verticals. The emphasis is not on depth in this course, but on covering the exciting aspects of the field.",
+   "status_text": "Mandatory",
+   "status_sentence": "QT 01 is mandatory for every student (together with QT 02).",
+   "topic_flat": [
+    {
+     "text": "Quantum Technologies - four verticals (1 lecture)",
+     "path": [
+      "Quantum Technologies - four verticals (1 lecture)"
+     ],
+     "level": 1,
+     "page": 16,
+     "count": {
+      "amount": "1",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Motivation for Quantum Technologies",
+     "path": [
+      "Quantum Technologies - four verticals (1 lecture)",
+      "Motivation for Quantum Technologies"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+     "path": [
+      "A qualitative overview of salient aspects of quantum physics (4-5 lectures)"
+     ],
+     "level": 1,
+     "page": 16,
+     "count": {
+      "amount": "4-5",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Quantum States, Wavefunctions, Probabilistic interpretation",
+     "path": [
+      "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+      "Quantum States, Wavefunctions, Probabilistic interpretation"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Physical observables, Hermitian operators, expectation values",
+     "path": [
+      "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+      "Physical observables, Hermitian operators, expectation values"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Heisenberg uncertainty principle",
+     "path": [
+      "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+      "Heisenberg uncertainty principle"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Schrodinger equation, Time evolution",
+     "path": [
+      "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+      "Schrodinger equation, Time evolution"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "distinction from classical physics",
+     "path": [
+      "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+      "distinction from classical physics"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Heuristic description of Superposition, Tunnelling and entanglement",
+     "path": [
+      "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+      "Heuristic description of Superposition, Tunnelling and entanglement"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "No cloning theorem",
+     "path": [
+      "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+      "No cloning theorem"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Simulating classical systems - Feynman's idea of a quantum simulator and the birth of the field",
+     "path": [
+      "A qualitative overview of salient aspects of quantum physics (4-5 lectures)",
+      "Simulating classical systems - Feynman's idea of a quantum simulator and the birth of the field"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Quantum Computation (10-12 lectures)",
+     "path": [
+      "Quantum Computation (10-12 lectures)"
+     ],
+     "level": 1,
+     "page": 16,
+     "count": {
+      "amount": "10-12",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Basics of qubits -- what is a qubit?",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Basics of qubits -- what is a qubit?"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "How is it different from a classical bit? - Review of classical logic gates",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "How is it different from a classical bit? - Review of classical logic gates"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Di Vincenzo criteria for realising qubits",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Di Vincenzo criteria for realising qubits"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Basics of qubit gates and quantum circuits",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Basics of qubit gates and quantum circuits"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Physical implementation of qubits (very qualitative description)",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Solid State Qubits",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Solid State Qubits"
+     ],
+     "level": 3,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Semiconducting Qubits - quantum dots, spins",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Solid State Qubits",
+      "Semiconducting Qubits - quantum dots, spins"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Superconducting Qubits - charge, flux and phase",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Solid State Qubits",
+      "Superconducting Qubits - charge, flux and phase"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Topological Qubits - proposals and advantages",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Solid State Qubits",
+      "Topological Qubits - proposals and advantages"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Atoms and Ions",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Atoms and Ions"
+     ],
+     "level": 3,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Trapped ions",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Atoms and Ions",
+      "Trapped ions"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Rydberg atoms",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Atoms and Ions",
+      "Rydberg atoms"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Neutral atoms",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Atoms and Ions",
+      "Neutral atoms"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Photonic Qubits",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Photonic Qubits"
+     ],
+     "level": 3,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Conventional linear optical setups",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Photonic Qubits",
+      "Conventional linear optical setups"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Integrated Photonics",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "Photonic Qubits",
+      "Integrated Photonics"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "NMR qubits",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "NMR qubits"
+     ],
+     "level": 3,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Conventional NMR qubits",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "NMR qubits",
+      "Conventional NMR qubits"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "NV centres",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Physical implementation of qubits (very qualitative description)",
+      "NMR qubits",
+      "NV centres"
+     ],
+     "level": 4,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "Overview of applications and recent achievements",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Overview of applications and recent achievements"
+     ],
+     "level": 2,
+     "page": 16,
+     "count": null
+    },
+    {
+     "text": "RSA and Shor's algorithm",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Overview of applications and recent achievements",
+      "RSA and Shor's algorithm"
+     ],
+     "level": 3,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Quantum Advantage",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Overview of applications and recent achievements",
+      "Quantum Advantage"
+     ],
+     "level": 3,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Long term goals and strategies being followed",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Long term goals and strategies being followed"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Error correction",
+     "path": [
+      "Quantum Computation (10-12 lectures)",
+      "Long term goals and strategies being followed",
+      "Error correction"
+     ],
+     "level": 3,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Quantum Sensing (8-10 lectures)",
+     "path": [
+      "Quantum Sensing (8-10 lectures)"
+     ],
+     "level": 1,
+     "page": 17,
+     "count": {
+      "amount": "8-10",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Basics of quantum sensing",
+     "path": [
+      "Quantum Sensing (8-10 lectures)",
+      "Basics of quantum sensing"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Basics of Photon (single and entangled) generation and detection",
+     "path": [
+      "Quantum Sensing (8-10 lectures)",
+      "Basics of Photon (single and entangled) generation and detection"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Gravimetry",
+     "path": [
+      "Quantum Sensing (8-10 lectures)",
+      "Gravimetry"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Atomic clock",
+     "path": [
+      "Quantum Sensing (8-10 lectures)",
+      "Atomic clock"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Magnetometry",
+     "path": [
+      "Quantum Sensing (8-10 lectures)",
+      "Magnetometry"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "State of the art in Quantum Sensing",
+     "path": [
+      "Quantum Sensing (8-10 lectures)",
+      "State of the art in Quantum Sensing"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Quantum Communications (8-10 lectures)",
+     "path": [
+      "Quantum Communications (8-10 lectures)"
+     ],
+     "level": 1,
+     "page": 17,
+     "count": {
+      "amount": "8-10",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Basics of digital communication",
+     "path": [
+      "Quantum Communications (8-10 lectures)",
+      "Basics of digital communication"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Quantifying classical information - Shannon entropy",
+     "path": [
+      "Quantum Communications (8-10 lectures)",
+      "Quantifying classical information - Shannon entropy"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Basic ideas of quantum communication, security, eavesdropping",
+     "path": [
+      "Quantum Communications (8-10 lectures)",
+      "Basic ideas of quantum communication, security, eavesdropping"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Overview of quantum communication achievements",
+     "path": [
+      "Quantum Communications (8-10 lectures)",
+      "Overview of quantum communication achievements"
+     ],
+     "level": 2,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Terrestrial - fibre-based",
+     "path": [
+      "Quantum Communications (8-10 lectures)",
+      "Overview of quantum communication achievements",
+      "Terrestrial - fibre-based"
+     ],
+     "level": 3,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Free space, Satellite-based",
+     "path": [
+      "Quantum Communications (8-10 lectures)",
+      "Overview of quantum communication achievements",
+      "Free space, Satellite-based"
+     ],
+     "level": 3,
+     "page": 17,
+     "count": null
+    },
+    {
+     "text": "Topics on Quantum Materials are to be covered in the other portions of the course wherever required and are not listed separately here.",
+     "path": [
+      "Topics on Quantum Materials are to be covered in the other portions of the course wherever required and are not listed separately here."
+     ],
+     "level": 1,
+     "page": 17,
+     "count": null
+    }
+   ]
+  },
+  "QT 02": {
+   "code": "QT 02",
+   "title": "Foundations of Quantum Technologies",
+   "credits": "3:0",
+   "group_text": "QT 01 and QT 02 are both Mandatory",
+   "group_kind": "mandatory_all",
+   "topics": [
+    {
+     "text": "Quantum Mechanics (16 - 18 lectures):",
+     "level": 1,
+     "page": 18,
+     "children": [
+      {
+       "text": "Brief overview of classical physics (This segment is meant for the student to understand what a Hamiltonian is, which will feature later in quantum mechanics)",
+       "level": 2,
+       "page": 18,
+       "children": [
+        {
+         "text": "Hamiltonian function and Hamilton's equations",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Phase-space description of a system",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Connection and Equivalence with Newton's laws for simple systems - free particle, particle moving in a conservative potential, examples of Harmonic oscillator, hydrogen atom",
+         "level": 3,
+         "page": 18,
+         "children": []
+        }
+       ]
+      },
+      {
+       "text": "Historical evolution of quantum mechanics",
+       "level": 2,
+       "page": 18,
+       "children": [
+        {
+         "text": "Planck's quantum hypothesis",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Photo electric effect",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Atomic spectra",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Bohr's quantisation principle",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "De Broglie's Wave particle duality",
+         "level": 3,
+         "page": 18,
+         "children": []
+        }
+       ]
+      },
+      {
+       "text": "Postulates of Quantum Mechanics",
+       "level": 2,
+       "page": 18,
+       "children": [
+        {
+         "text": "State vectors and Hilbert Space",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Dirac Bra-Ket notation",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Measurables and Hermitian Operators",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Unitary Transformations",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Schrodinger Equation and Time evolution of quantum states",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Measurement Postulate",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Schrodinger, Heisenberg and Interaction pictures",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Eigen values, Expectation values and Matrix elements",
+         "level": 3,
+         "page": 18,
+         "children": []
+        },
+        {
+         "text": "Heisenberg's Uncertainty principle",
+         "level": 3,
+         "page": 18,
+         "children": []
+        }
+       ]
+      },
+      {
+       "text": "Density operator formalism of quantum mechanics - pure and mixed states",
+       "level": 2,
+       "page": 18,
+       "children": []
+      },
+      {
+       "text": "Superposition and Entanglement in quantum mechanics",
+       "level": 2,
+       "page": 18,
+       "children": []
+      },
+      {
+       "text": "No cloning theorem",
+       "level": 2,
+       "page": 18,
+       "children": []
+      },
+      {
+       "text": "Applications of postulates -Particle in a box, Hydrogen atom, Harmonic Oscillator",
+       "level": 2,
+       "page": 18,
+       "children": []
+      },
+      {
+       "text": "Number states, ladder operators and Coherent states of a harmonic oscillator",
+       "level": 2,
+       "page": 18,
+       "children": []
+      },
+      {
+       "text": "Spin and Angular momentum - spin half particles",
+       "level": 2,
+       "page": 18,
+       "children": []
+      },
+      {
+       "text": "Rabi problem of a spin-half particle in a rotating magnetic field",
+       "level": 2,
+       "page": 18,
+       "children": []
+      },
+      {
+       "text": "Bosons and Fermions",
+       "level": 2,
+       "page": 19,
+       "children": []
+      }
+     ],
+     "count": {
+      "amount": "16-18",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Statistical Physics (8-10 lectures)",
+     "level": 1,
+     "page": 19,
+     "children": [
+      {
+       "text": "Quick review of first and second laws of thermodynamics",
+       "level": 2,
+       "page": 19,
+       "children": []
+      },
+      {
+       "text": "Thermal Equilibrium and Gibbs principle",
+       "level": 2,
+       "page": 19,
+       "children": []
+      },
+      {
+       "text": "Applying Gibbs principle to Classical and Quantum harmonic oscillators",
+       "level": 2,
+       "page": 19,
+       "children": []
+      },
+      {
+       "text": "Bosons and Fermions and Quantum statistics - Fermi-Dirac and BoseEinstein distributions",
+       "level": 2,
+       "page": 19,
+       "children": []
+      }
+     ],
+     "count": {
+      "amount": "8-10",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Information Science (3-4 lectures)",
+     "level": 1,
+     "page": 19,
+     "children": [
+      {
+       "text": "Digital communication and information",
+       "level": 2,
+       "page": 19,
+       "children": [
+        {
+         "text": "Quantifying information in terms of Shannon entropy",
+         "level": 3,
+         "page": 19,
+         "children": []
+        }
+       ]
+      },
+      {
+       "text": "Basic ideas of quantum information",
+       "level": 2,
+       "page": 19,
+       "children": []
+      },
+      {
+       "text": "Decoherence and noise",
+       "level": 2,
+       "page": 19,
+       "children": []
+      },
+      {
+       "text": "Introductory ideas of Kraus operators",
+       "level": 2,
+       "page": 19,
+       "children": []
+      }
+     ],
+     "count": {
+      "amount": "3-4",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Brief overview of Computational Complexity (5-6 lectures)",
+     "level": 1,
+     "page": 19,
+     "children": [
+      {
+       "text": "Qualitative ideas of a Turing machine",
+       "level": 2,
+       "page": 19,
+       "children": [
+        {
+         "text": "Types of Turing machines",
+         "level": 3,
+         "page": 19,
+         "children": []
+        }
+       ]
+      },
+      {
+       "text": "Time and Space complexity - P vs NP, PSPACE",
+       "level": 2,
+       "page": 19,
+       "children": []
+      },
+      {
+       "text": "Quantum complexity classes - Q, EQP, BQP, BPP, QMA",
+       "level": 2,
+       "page": 19,
+       "children": []
+      },
+      {
+       "text": "Post Quantum Cryptography (PQC)",
+       "level": 2,
+       "page": 19,
+       "children": []
+      }
+     ],
+     "count": {
+      "amount": "5-6",
+      "unit": "lecture"
+     }
+    }
+   ],
+   "outcomes": [
+    "The most relevant mathematical techniques",
+    "Basic postulates of quantum mechanics and applications",
+    "Basics of Statistical Physics",
+    "Basics of Information Science",
+    "Basics of computational complexity"
+   ],
+   "references": [
+    "AICTE Prescribed Textbook: Physics (Quantum Mechanics for Engineers), A. B. Bhattachraya & Atanu Nag, Khanna Publishing House (2025)",
+    "Introduction to Quantum Mechanics, Griffiths D. J., 3 rd Edition, Cambridge University Press (2024)",
+    "Introduction to Electrodynamics, Griffiths D. J., 4 th edition, Cambridge University Press (2020)",
+    "Principles of Quantum Mechanics, Shankar, R., 2 nd edition, Springer (2014)",
+    "Architectures and Cryptographic Universes, A. B. Bhattacharya, Khanna Publishing House (2025).",
+    "Quantum Information Science - Manenti R., Motta M., 1 st Edition, Oxford University Press (2023)",
+    "Quantum computation and quantum information - Nielsen M. A., and Chuang I. L., 10 th Anniversary edition, Cambridge University Press (2010)",
+    "A Pathak, Elements of Quantum Computation & Quantum Communication, Boca Raton, CRC Press (2015)",
+    "Information Theory, Robert B. Ash, Dover Publications (2003)",
+    "Introduction to the Theory of Computation, Michael Sipser, 3 rd edition, Cengage India(2014)",
+    "Statistical Mechanics, Pathria R. K., Paul D. Beale, 4th edition, Academic Press, (2021)"
+   ],
+   "pages": [
+    18,
+    19
+   ],
+   "description": "This course is meant for laying down the central theoretical aspects of quantum mechanics in a rigorous manner where students learn the techniques and develop a good intuition for quantum physics.",
+   "status_text": "Mandatory",
+   "status_sentence": "QT 02 is mandatory for every student (together with QT 01).",
+   "topic_flat": [
+    {
+     "text": "Quantum Mechanics (16 - 18 lectures):",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):"
+     ],
+     "level": 1,
+     "page": 18,
+     "count": {
+      "amount": "16-18",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Brief overview of classical physics (This segment is meant for the student to understand what a Hamiltonian is, which will feature later in quantum mechanics)",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Brief overview of classical physics (This segment is meant for the student to understand what a Hamiltonian is, which will feature later in quantum mechanics)"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Hamiltonian function and Hamilton's equations",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Brief overview of classical physics (This segment is meant for the student to understand what a Hamiltonian is, which will feature later in quantum mechanics)",
+      "Hamiltonian function and Hamilton's equations"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Phase-space description of a system",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Brief overview of classical physics (This segment is meant for the student to understand what a Hamiltonian is, which will feature later in quantum mechanics)",
+      "Phase-space description of a system"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Connection and Equivalence with Newton's laws for simple systems - free particle, particle moving in a conservative potential, examples of Harmonic oscillator, hydrogen atom",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Brief overview of classical physics (This segment is meant for the student to understand what a Hamiltonian is, which will feature later in quantum mechanics)",
+      "Connection and Equivalence with Newton's laws for simple systems - free particle, particle moving in a conservative potential, examples of Harmonic oscillator, hydrogen atom"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Historical evolution of quantum mechanics",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Historical evolution of quantum mechanics"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Planck's quantum hypothesis",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Historical evolution of quantum mechanics",
+      "Planck's quantum hypothesis"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Photo electric effect",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Historical evolution of quantum mechanics",
+      "Photo electric effect"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Atomic spectra",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Historical evolution of quantum mechanics",
+      "Atomic spectra"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Bohr's quantisation principle",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Historical evolution of quantum mechanics",
+      "Bohr's quantisation principle"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "De Broglie's Wave particle duality",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Historical evolution of quantum mechanics",
+      "De Broglie's Wave particle duality"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Postulates of Quantum Mechanics",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "State vectors and Hilbert Space",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics",
+      "State vectors and Hilbert Space"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Dirac Bra-Ket notation",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics",
+      "Dirac Bra-Ket notation"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Measurables and Hermitian Operators",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics",
+      "Measurables and Hermitian Operators"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Unitary Transformations",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics",
+      "Unitary Transformations"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Schrodinger Equation and Time evolution of quantum states",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics",
+      "Schrodinger Equation and Time evolution of quantum states"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Measurement Postulate",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics",
+      "Measurement Postulate"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Schrodinger, Heisenberg and Interaction pictures",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics",
+      "Schrodinger, Heisenberg and Interaction pictures"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Eigen values, Expectation values and Matrix elements",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics",
+      "Eigen values, Expectation values and Matrix elements"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Heisenberg's Uncertainty principle",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Postulates of Quantum Mechanics",
+      "Heisenberg's Uncertainty principle"
+     ],
+     "level": 3,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Density operator formalism of quantum mechanics - pure and mixed states",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Density operator formalism of quantum mechanics - pure and mixed states"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Superposition and Entanglement in quantum mechanics",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Superposition and Entanglement in quantum mechanics"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "No cloning theorem",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "No cloning theorem"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Applications of postulates -Particle in a box, Hydrogen atom, Harmonic Oscillator",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Applications of postulates -Particle in a box, Hydrogen atom, Harmonic Oscillator"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Number states, ladder operators and Coherent states of a harmonic oscillator",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Number states, ladder operators and Coherent states of a harmonic oscillator"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Spin and Angular momentum - spin half particles",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Spin and Angular momentum - spin half particles"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Rabi problem of a spin-half particle in a rotating magnetic field",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Rabi problem of a spin-half particle in a rotating magnetic field"
+     ],
+     "level": 2,
+     "page": 18,
+     "count": null
+    },
+    {
+     "text": "Bosons and Fermions",
+     "path": [
+      "Quantum Mechanics (16 - 18 lectures):",
+      "Bosons and Fermions"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Statistical Physics (8-10 lectures)",
+     "path": [
+      "Statistical Physics (8-10 lectures)"
+     ],
+     "level": 1,
+     "page": 19,
+     "count": {
+      "amount": "8-10",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Quick review of first and second laws of thermodynamics",
+     "path": [
+      "Statistical Physics (8-10 lectures)",
+      "Quick review of first and second laws of thermodynamics"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Thermal Equilibrium and Gibbs principle",
+     "path": [
+      "Statistical Physics (8-10 lectures)",
+      "Thermal Equilibrium and Gibbs principle"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Applying Gibbs principle to Classical and Quantum harmonic oscillators",
+     "path": [
+      "Statistical Physics (8-10 lectures)",
+      "Applying Gibbs principle to Classical and Quantum harmonic oscillators"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Bosons and Fermions and Quantum statistics - Fermi-Dirac and BoseEinstein distributions",
+     "path": [
+      "Statistical Physics (8-10 lectures)",
+      "Bosons and Fermions and Quantum statistics - Fermi-Dirac and BoseEinstein distributions"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Information Science (3-4 lectures)",
+     "path": [
+      "Information Science (3-4 lectures)"
+     ],
+     "level": 1,
+     "page": 19,
+     "count": {
+      "amount": "3-4",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Digital communication and information",
+     "path": [
+      "Information Science (3-4 lectures)",
+      "Digital communication and information"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Quantifying information in terms of Shannon entropy",
+     "path": [
+      "Information Science (3-4 lectures)",
+      "Digital communication and information",
+      "Quantifying information in terms of Shannon entropy"
+     ],
+     "level": 3,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Basic ideas of quantum information",
+     "path": [
+      "Information Science (3-4 lectures)",
+      "Basic ideas of quantum information"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Decoherence and noise",
+     "path": [
+      "Information Science (3-4 lectures)",
+      "Decoherence and noise"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Introductory ideas of Kraus operators",
+     "path": [
+      "Information Science (3-4 lectures)",
+      "Introductory ideas of Kraus operators"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Brief overview of Computational Complexity (5-6 lectures)",
+     "path": [
+      "Brief overview of Computational Complexity (5-6 lectures)"
+     ],
+     "level": 1,
+     "page": 19,
+     "count": {
+      "amount": "5-6",
+      "unit": "lecture"
+     }
+    },
+    {
+     "text": "Qualitative ideas of a Turing machine",
+     "path": [
+      "Brief overview of Computational Complexity (5-6 lectures)",
+      "Qualitative ideas of a Turing machine"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Types of Turing machines",
+     "path": [
+      "Brief overview of Computational Complexity (5-6 lectures)",
+      "Qualitative ideas of a Turing machine",
+      "Types of Turing machines"
+     ],
+     "level": 3,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Time and Space complexity - P vs NP, PSPACE",
+     "path": [
+      "Brief overview of Computational Complexity (5-6 lectures)",
+      "Time and Space complexity - P vs NP, PSPACE"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Quantum complexity classes - Q, EQP, BQP, BPP, QMA",
+     "path": [
+      "Brief overview of Computational Complexity (5-6 lectures)",
+      "Quantum complexity classes - Q, EQP, BQP, BPP, QMA"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    },
+    {
+     "text": "Post Quantum Cryptography (PQC)",
+     "path": [
+      "Brief overview of Computational Complexity (5-6 lectures)",
+      "Post Quantum Cryptography (PQC)"
+     ],
+     "level": 2,
+     "page": 19,
+     "count": null
+    }
+   ]
+  },
+  "QT 03": {
+   "code": "QT 03",
+   "title": "Basic Programming Lab",
+   "credits": "2:1",
+   "group_text": "At least one of QT 03 and QT 04 is Mandatory",
+   "group_kind": "at_least_one_of",
+   "topics": [
+    {
+     "text": "Basics of programming",
+     "level": 1,
+     "page": 20,
+     "children": [
+      {
+       "text": "Data structures, classes, Object-oriented programming",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Data storage and retrieval, Memory allocation",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Scientific plotting, documentation of codes",
+       "level": 2,
+       "page": 20,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Simple algorithms and benchmarking run time",
+     "level": 1,
+     "page": 20,
+     "children": [
+      {
+       "text": "Sorting",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Searching",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Arithmetic algorithms like GCD, Prime factorisation",
+       "level": 2,
+       "page": 20,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Numerical Integration and differential equations",
+     "level": 1,
+     "page": 20,
+     "children": [
+      {
+       "text": "Linear 2nd Order ODEs with constant coefficients",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Linear 2nd order ODEs with variable coefficients",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Boundary value problems",
+       "level": 2,
+       "page": 20,
+       "children": [
+        {
+         "text": "Poisson equation",
+         "level": 3,
+         "page": 20,
+         "children": []
+        },
+        {
+         "text": "Laplace equation",
+         "level": 3,
+         "page": 20,
+         "children": []
+        },
+        {
+         "text": "Wave equation",
+         "level": 3,
+         "page": 20,
+         "children": []
+        },
+        {
+         "text": "Diffusion Equation",
+         "level": 3,
+         "page": 20,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "text": "Numerical techniques in linear algebra",
+     "level": 1,
+     "page": 20,
+     "children": [
+      {
+       "text": "Matrix inverse",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Eigenvalue problem",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Diagonalisation of matrices",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Singular value decomposition",
+       "level": 2,
+       "page": 20,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Numerical techniques in Probability and Statistics",
+     "level": 1,
+     "page": 20,
+     "children": [
+      {
+       "text": "(Pseudo) Random number generation",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Computing statistical moments for data samples",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Least Squares fitting",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Error Analysis",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Hypothesis Testing",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Monte Carlo sampling",
+       "level": 2,
+       "page": 20,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Applications to Quantum Mechanics (can be done using openly available modules in languages like Python, Julia etc.)",
+     "level": 1,
+     "page": 20,
+     "children": [
+      {
+       "text": "Eigen energies of coupled two level systems",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Eigen energies of two-level system coupled to oscillator (Jaynes-Cummings Model)",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Driven two-level system - Rabi Problem",
+       "level": 2,
+       "page": 20,
+       "children": []
+      },
+      {
+       "text": "Driven damped oscillator - coherent states",
+       "level": 2,
+       "page": 20,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Applications to EM theory (e.g. magnetic field simulation)",
+     "level": 1,
+     "page": 21,
+     "children": [
+      {
+       "text": "Electrostatic charge distributions",
+       "level": 2,
+       "page": 21,
+       "children": []
+      },
+      {
+       "text": "Magnetostatic current distributions",
+       "level": 2,
+       "page": 21,
+       "children": []
+      },
+      {
+       "text": "Finite Element techniques for electromagnetic simulations",
+       "level": 2,
+       "page": 21,
+       "children": []
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    "Basics of programming",
+    "To write programs to solve scientific problems",
+    "Techniques for scientific computing",
+    "Applications to quantum mechanics and electromagnetism"
+   ],
+   "references": [
+    "AICTE Prescribed Textbook: Physics (Quantum Mechanics for Engineers), A. B. Bhattachraya & Atanu Nag, Khanna Publishing House (2025).",
+    "Computational Physics, Nicholas Giordano, Hisao Nakanishi, 2 nd edition, PearsonAddison Wesley (2005)",
+    "Engineering Physics, A. B. Bhattachraya, Khanna Publishing House (2025)."
+   ],
+   "pages": [
+    20,
+    21
+   ],
+   "description": "This course is meant to provide students a quick hands-on experience in scientific computing and its applications to areas within Quantum Technologies.",
+   "status_text": "2:1 Out of QT 03 and QT 04, at least ONE is mandatory",
+   "status_sentence": "QT 03 is one of QT 03, QT 04; at least one of these is mandatory, so QT 03 is not mandatory on its own.",
+   "topic_flat": [
+    {
+     "text": "Basics of programming",
+     "path": [
+      "Basics of programming"
+     ],
+     "level": 1,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Data structures, classes, Object-oriented programming",
+     "path": [
+      "Basics of programming",
+      "Data structures, classes, Object-oriented programming"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Data storage and retrieval, Memory allocation",
+     "path": [
+      "Basics of programming",
+      "Data storage and retrieval, Memory allocation"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Scientific plotting, documentation of codes",
+     "path": [
+      "Basics of programming",
+      "Scientific plotting, documentation of codes"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Simple algorithms and benchmarking run time",
+     "path": [
+      "Simple algorithms and benchmarking run time"
+     ],
+     "level": 1,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Sorting",
+     "path": [
+      "Simple algorithms and benchmarking run time",
+      "Sorting"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Searching",
+     "path": [
+      "Simple algorithms and benchmarking run time",
+      "Searching"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Arithmetic algorithms like GCD, Prime factorisation",
+     "path": [
+      "Simple algorithms and benchmarking run time",
+      "Arithmetic algorithms like GCD, Prime factorisation"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Numerical Integration and differential equations",
+     "path": [
+      "Numerical Integration and differential equations"
+     ],
+     "level": 1,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Linear 2nd Order ODEs with constant coefficients",
+     "path": [
+      "Numerical Integration and differential equations",
+      "Linear 2nd Order ODEs with constant coefficients"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Linear 2nd order ODEs with variable coefficients",
+     "path": [
+      "Numerical Integration and differential equations",
+      "Linear 2nd order ODEs with variable coefficients"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Boundary value problems",
+     "path": [
+      "Numerical Integration and differential equations",
+      "Boundary value problems"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Poisson equation",
+     "path": [
+      "Numerical Integration and differential equations",
+      "Boundary value problems",
+      "Poisson equation"
+     ],
+     "level": 3,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Laplace equation",
+     "path": [
+      "Numerical Integration and differential equations",
+      "Boundary value problems",
+      "Laplace equation"
+     ],
+     "level": 3,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Wave equation",
+     "path": [
+      "Numerical Integration and differential equations",
+      "Boundary value problems",
+      "Wave equation"
+     ],
+     "level": 3,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Diffusion Equation",
+     "path": [
+      "Numerical Integration and differential equations",
+      "Boundary value problems",
+      "Diffusion Equation"
+     ],
+     "level": 3,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Numerical techniques in linear algebra",
+     "path": [
+      "Numerical techniques in linear algebra"
+     ],
+     "level": 1,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Matrix inverse",
+     "path": [
+      "Numerical techniques in linear algebra",
+      "Matrix inverse"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Eigenvalue problem",
+     "path": [
+      "Numerical techniques in linear algebra",
+      "Eigenvalue problem"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Diagonalisation of matrices",
+     "path": [
+      "Numerical techniques in linear algebra",
+      "Diagonalisation of matrices"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Singular value decomposition",
+     "path": [
+      "Numerical techniques in linear algebra",
+      "Singular value decomposition"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Numerical techniques in Probability and Statistics",
+     "path": [
+      "Numerical techniques in Probability and Statistics"
+     ],
+     "level": 1,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "(Pseudo) Random number generation",
+     "path": [
+      "Numerical techniques in Probability and Statistics",
+      "(Pseudo) Random number generation"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Computing statistical moments for data samples",
+     "path": [
+      "Numerical techniques in Probability and Statistics",
+      "Computing statistical moments for data samples"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Least Squares fitting",
+     "path": [
+      "Numerical techniques in Probability and Statistics",
+      "Least Squares fitting"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Error Analysis",
+     "path": [
+      "Numerical techniques in Probability and Statistics",
+      "Error Analysis"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Hypothesis Testing",
+     "path": [
+      "Numerical techniques in Probability and Statistics",
+      "Hypothesis Testing"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Monte Carlo sampling",
+     "path": [
+      "Numerical techniques in Probability and Statistics",
+      "Monte Carlo sampling"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Applications to Quantum Mechanics (can be done using openly available modules in languages like Python, Julia etc.)",
+     "path": [
+      "Applications to Quantum Mechanics (can be done using openly available modules in languages like Python, Julia etc.)"
+     ],
+     "level": 1,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Eigen energies of coupled two level systems",
+     "path": [
+      "Applications to Quantum Mechanics (can be done using openly available modules in languages like Python, Julia etc.)",
+      "Eigen energies of coupled two level systems"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Eigen energies of two-level system coupled to oscillator (Jaynes-Cummings Model)",
+     "path": [
+      "Applications to Quantum Mechanics (can be done using openly available modules in languages like Python, Julia etc.)",
+      "Eigen energies of two-level system coupled to oscillator (Jaynes-Cummings Model)"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Driven two-level system - Rabi Problem",
+     "path": [
+      "Applications to Quantum Mechanics (can be done using openly available modules in languages like Python, Julia etc.)",
+      "Driven two-level system - Rabi Problem"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Driven damped oscillator - coherent states",
+     "path": [
+      "Applications to Quantum Mechanics (can be done using openly available modules in languages like Python, Julia etc.)",
+      "Driven damped oscillator - coherent states"
+     ],
+     "level": 2,
+     "page": 20,
+     "count": null
+    },
+    {
+     "text": "Applications to EM theory (e.g. magnetic field simulation)",
+     "path": [
+      "Applications to EM theory (e.g. magnetic field simulation)"
+     ],
+     "level": 1,
+     "page": 21,
+     "count": null
+    },
+    {
+     "text": "Electrostatic charge distributions",
+     "path": [
+      "Applications to EM theory (e.g. magnetic field simulation)",
+      "Electrostatic charge distributions"
+     ],
+     "level": 2,
+     "page": 21,
+     "count": null
+    },
+    {
+     "text": "Magnetostatic current distributions",
+     "path": [
+      "Applications to EM theory (e.g. magnetic field simulation)",
+      "Magnetostatic current distributions"
+     ],
+     "level": 2,
+     "page": 21,
+     "count": null
+    },
+    {
+     "text": "Finite Element techniques for electromagnetic simulations",
+     "path": [
+      "Applications to EM theory (e.g. magnetic field simulation)",
+      "Finite Element techniques for electromagnetic simulations"
+     ],
+     "level": 2,
+     "page": 21,
+     "count": null
+    }
+   ]
+  },
+  "QT 04": {
+   "code": "QT 04",
+   "title": "Basic Laboratory Course for Quantum Technologies",
+   "credits": "2:1",
+   "group_text": "At least one of QT 03 and QT 04 is Mandatory",
+   "group_kind": "at_least_one_of",
+   "topics": [
+    {
+     "text": "Optics",
+     "level": 1,
+     "page": 22,
+     "children": [
+      {
+       "text": "Interferometry - wavelength measurements, intensity measurements",
+       "level": 2,
+       "page": 22,
+       "children": []
+      },
+      {
+       "text": "Diffraction - single slit, grating",
+       "level": 2,
+       "page": 22,
+       "children": []
+      },
+      {
+       "text": "Microscopy - magnification, aberration",
+       "level": 2,
+       "page": 22,
+       "children": []
+      },
+      {
+       "text": "Polarization optics - PBS, HWP, QWP",
+       "level": 2,
+       "page": 22,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "RLC circuits",
+     "level": 1,
+     "page": 22,
+     "children": [
+      {
+       "text": "Series and parallel RLC circuits - Verifying the quality factor formulae",
+       "level": 2,
+       "page": 22,
+       "children": []
+      },
+      {
+       "text": "Extracting intrinsic losses",
+       "level": 2,
+       "page": 22,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Digital circuits",
+     "level": 1,
+     "page": 22,
+     "children": [
+      {
+       "text": "Adder, Multiplier",
+       "level": 2,
+       "page": 22,
+       "children": []
+      },
+      {
+       "text": "Encoder, Decoder",
+       "level": 2,
+       "page": 22,
+       "children": []
+      },
+      {
+       "text": "D flipflop, shift registers",
+       "level": 2,
+       "page": 22,
+       "children": []
+      },
+      {
+       "text": "How to use common Integrated Circuit chips",
+       "level": 2,
+       "page": 22,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Radio Frequency Technology:",
+     "level": 1,
+     "page": 22,
+     "children": [
+      {
+       "text": "Using Oscilloscope",
+       "level": 2,
+       "page": 22,
+       "children": [
+        {
+         "text": "Ring-up and ring-down time measurements of RLC circuits",
+         "level": 3,
+         "page": 22,
+         "children": []
+        },
+        {
+         "text": "Measurements of different pulse-shapes generated by a function generator",
+         "level": 3,
+         "page": 22,
+         "children": []
+        }
+       ]
+      },
+      {
+       "text": "Using Vector Network Analyser",
+       "level": 2,
+       "page": 22,
+       "children": [
+        {
+         "text": "Transmission and reflection measurements of coaxial cable in open, short and matched termination",
+         "level": 3,
+         "page": 22,
+         "children": []
+        },
+        {
+         "text": "Voltage standing wave ratio measurement",
+         "level": 3,
+         "page": 22,
+         "children": []
+        },
+        {
+         "text": "Amplitude and Phase quadrature, In-phase and Out-of-phase quadrature plots and Quality factor measurement of RLC circuits",
+         "level": 3,
+         "page": 22,
+         "children": []
+        },
+        {
+         "text": "Characterising S-parameters, ABCD and Z matrices of common 2 port networks - coaxial cable, attenuator, low pass high pass bandpass filters etc.",
+         "level": 3,
+         "page": 22,
+         "children": []
+        },
+        {
+         "text": "Characterising 3 port networks -directional couplers, circulators, isolators",
+         "level": 3,
+         "page": 22,
+         "children": []
+        }
+       ]
+      },
+      {
+       "text": "Using a spectrum analyser",
+       "level": 2,
+       "page": 22,
+       "children": [
+        {
+         "text": "Noise from a resistor at different temperatures",
+         "level": 3,
+         "page": 22,
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "text": "Interfacing instruments with a computer",
+     "level": 1,
+     "page": 22,
+     "children": []
+    },
+    {
+     "text": "Data acquisition",
+     "level": 1,
+     "page": 22,
+     "children": [
+      {
+       "text": "Signal demodulation - heterodyne vs Homodyne, Mixing of signals",
+       "level": 2,
+       "page": 22,
+       "children": []
+      },
+      {
+       "text": "Sampling, digitisation using ADCs - under-sampling and aliasing, oversampling and noise",
+       "level": 2,
+       "page": 22,
+       "children": []
+      },
+      {
+       "text": "Averaging and interpolation techniques",
+       "level": 2,
+       "page": 23,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Quantum Simulators",
+     "level": 1,
+     "page": 23,
+     "children": [
+      {
+       "text": "Running quantum protocols in a quantum simulator",
+       "level": 2,
+       "page": 23,
+       "children": []
+      },
+      {
+       "text": "Implementing simple quantum algorithms on cloud-based quantum computers (depending on availability of time on such machines)",
+       "level": 2,
+       "page": 23,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Running simple algorithms on cloud-based quantum processors (optional)",
+     "level": 1,
+     "page": 23,
+     "children": []
+    }
+   ],
+   "outcomes": [
+    "Basic experimental techniques in optics",
+    "Basic experimental techniques in characterising resonators and RLC circuits",
+    "Basic digital circuits",
+    "Fundamental techniques in RF engineering",
+    "Interfacing instruments with computers and carry out data acquisition"
+   ],
+   "references": [
+    "Optics, Eugene Hecht, A. R. Ganesan, 5 th edition, Pearson (2019)",
+    "Art of Electronics, Paul Horowitz and Winfield Hill, 3 rd edition, Cambridge University Press (2015)",
+    "All-in-One Electronics Simplified, Anil Maini, Khanna Book Publishing Co. (2022).",
+    "Digital Design, Morris Mano, Michael D. Cilletti, 6 th edition, Pearson Education (2018)",
+    "Microwave Engineering, David Pozar, 4 th edition, Wiley (2013)",
+    "Discrete-time signal processing, Alan V. Oppenheim and Ronald W. Shaffer, 4 th edition, Pearson (2009)",
+    "Introduction to Quantum Communication, A. B. Bhattacharya, Khanna Publishing House (2025).",
+    "Optical quantum information and quantum communication, A. Pathak and A. Banerjee, SPIE Spotlight Series, SPIE Press (2016)"
+   ],
+   "pages": [
+    22,
+    23
+   ],
+   "description": "",
+   "status_text": "2:1 Out of QT 03 and QT 04, at least ONE is mandatory",
+   "status_sentence": "QT 04 is one of QT 03, QT 04; at least one of these is mandatory, so QT 04 is not mandatory on its own.",
+   "topic_flat": [
+    {
+     "text": "Optics",
+     "path": [
+      "Optics"
+     ],
+     "level": 1,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Interferometry - wavelength measurements, intensity measurements",
+     "path": [
+      "Optics",
+      "Interferometry - wavelength measurements, intensity measurements"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Diffraction - single slit, grating",
+     "path": [
+      "Optics",
+      "Diffraction - single slit, grating"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Microscopy - magnification, aberration",
+     "path": [
+      "Optics",
+      "Microscopy - magnification, aberration"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Polarization optics - PBS, HWP, QWP",
+     "path": [
+      "Optics",
+      "Polarization optics - PBS, HWP, QWP"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "RLC circuits",
+     "path": [
+      "RLC circuits"
+     ],
+     "level": 1,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Series and parallel RLC circuits - Verifying the quality factor formulae",
+     "path": [
+      "RLC circuits",
+      "Series and parallel RLC circuits - Verifying the quality factor formulae"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Extracting intrinsic losses",
+     "path": [
+      "RLC circuits",
+      "Extracting intrinsic losses"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Digital circuits",
+     "path": [
+      "Digital circuits"
+     ],
+     "level": 1,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Adder, Multiplier",
+     "path": [
+      "Digital circuits",
+      "Adder, Multiplier"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Encoder, Decoder",
+     "path": [
+      "Digital circuits",
+      "Encoder, Decoder"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "D flipflop, shift registers",
+     "path": [
+      "Digital circuits",
+      "D flipflop, shift registers"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "How to use common Integrated Circuit chips",
+     "path": [
+      "Digital circuits",
+      "How to use common Integrated Circuit chips"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Radio Frequency Technology:",
+     "path": [
+      "Radio Frequency Technology:"
+     ],
+     "level": 1,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Using Oscilloscope",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using Oscilloscope"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Ring-up and ring-down time measurements of RLC circuits",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using Oscilloscope",
+      "Ring-up and ring-down time measurements of RLC circuits"
+     ],
+     "level": 3,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Measurements of different pulse-shapes generated by a function generator",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using Oscilloscope",
+      "Measurements of different pulse-shapes generated by a function generator"
+     ],
+     "level": 3,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Using Vector Network Analyser",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using Vector Network Analyser"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Transmission and reflection measurements of coaxial cable in open, short and matched termination",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using Vector Network Analyser",
+      "Transmission and reflection measurements of coaxial cable in open, short and matched termination"
+     ],
+     "level": 3,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Voltage standing wave ratio measurement",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using Vector Network Analyser",
+      "Voltage standing wave ratio measurement"
+     ],
+     "level": 3,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Amplitude and Phase quadrature, In-phase and Out-of-phase quadrature plots and Quality factor measurement of RLC circuits",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using Vector Network Analyser",
+      "Amplitude and Phase quadrature, In-phase and Out-of-phase quadrature plots and Quality factor measurement of RLC circuits"
+     ],
+     "level": 3,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Characterising S-parameters, ABCD and Z matrices of common 2 port networks - coaxial cable, attenuator, low pass high pass bandpass filters etc.",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using Vector Network Analyser",
+      "Characterising S-parameters, ABCD and Z matrices of common 2 port networks - coaxial cable, attenuator, low pass high pass bandpass filters etc."
+     ],
+     "level": 3,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Characterising 3 port networks -directional couplers, circulators, isolators",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using Vector Network Analyser",
+      "Characterising 3 port networks -directional couplers, circulators, isolators"
+     ],
+     "level": 3,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Using a spectrum analyser",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using a spectrum analyser"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Noise from a resistor at different temperatures",
+     "path": [
+      "Radio Frequency Technology:",
+      "Using a spectrum analyser",
+      "Noise from a resistor at different temperatures"
+     ],
+     "level": 3,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Interfacing instruments with a computer",
+     "path": [
+      "Interfacing instruments with a computer"
+     ],
+     "level": 1,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Data acquisition",
+     "path": [
+      "Data acquisition"
+     ],
+     "level": 1,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Signal demodulation - heterodyne vs Homodyne, Mixing of signals",
+     "path": [
+      "Data acquisition",
+      "Signal demodulation - heterodyne vs Homodyne, Mixing of signals"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Sampling, digitisation using ADCs - under-sampling and aliasing, oversampling and noise",
+     "path": [
+      "Data acquisition",
+      "Sampling, digitisation using ADCs - under-sampling and aliasing, oversampling and noise"
+     ],
+     "level": 2,
+     "page": 22,
+     "count": null
+    },
+    {
+     "text": "Averaging and interpolation techniques",
+     "path": [
+      "Data acquisition",
+      "Averaging and interpolation techniques"
+     ],
+     "level": 2,
+     "page": 23,
+     "count": null
+    },
+    {
+     "text": "Quantum Simulators",
+     "path": [
+      "Quantum Simulators"
+     ],
+     "level": 1,
+     "page": 23,
+     "count": null
+    },
+    {
+     "text": "Running quantum protocols in a quantum simulator",
+     "path": [
+      "Quantum Simulators",
+      "Running quantum protocols in a quantum simulator"
+     ],
+     "level": 2,
+     "page": 23,
+     "count": null
+    },
+    {
+     "text": "Implementing simple quantum algorithms on cloud-based quantum computers (depending on availability of time on such machines)",
+     "path": [
+      "Quantum Simulators",
+      "Implementing simple quantum algorithms on cloud-based quantum computers (depending on availability of time on such machines)"
+     ],
+     "level": 2,
+     "page": 23,
+     "count": null
+    },
+    {
+     "text": "Running simple algorithms on cloud-based quantum processors (optional)",
+     "path": [
+      "Running simple algorithms on cloud-based quantum processors (optional)"
+     ],
+     "level": 1,
+     "page": 23,
+     "count": null
+    }
+   ]
+  },
+  "QT 05": {
+   "code": "QT 05",
+   "title": "Introduction to Quantum Computation",
+   "credits": "3:0",
+   "group_text": "At least one of QT 05, QT 06, QT 07, QT 08 is Mandatory",
+   "group_kind": "at_least_one_of",
+   "topics": [
+    {
+     "text": "Qubits versus classical bits",
+     "level": 1,
+     "page": 24,
+     "children": [
+      {
+       "text": "Spin-half systems and photon polarizations",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Trapped atoms and ions",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Artificial atoms using circuits",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Semiconducting quantum dots",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Single and Two qubit gates - Solovay - Kitaev Theorem",
+       "level": 2,
+       "page": 24,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Quantum correlations",
+     "level": 1,
+     "page": 24,
+     "children": [
+      {
+       "text": "Entanglement and Bell's theorems",
+       "level": 2,
+       "page": 24,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Review of Turing machines and classical computational complexity",
+     "level": 1,
+     "page": 24,
+     "children": [
+      {
+       "text": "Time and space complexity (P, NP, PSPACE)",
+       "level": 2,
+       "page": 24,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Reversible computation",
+     "level": 1,
+     "page": 24,
+     "children": []
+    },
+    {
+     "text": "Universal quantum logic gates and circuits",
+     "level": 1,
+     "page": 24,
+     "children": []
+    },
+    {
+     "text": "Quantum algorithms",
+     "level": 1,
+     "page": 24,
+     "children": [
+      {
+       "text": "Deutsch algorithm",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Deutsch Josza algorithm",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Bernstein - Vazirani algorithm",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Simon's algorithm",
+       "level": 2,
+       "page": 24,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Database search",
+     "level": 1,
+     "page": 24,
+     "children": [
+      {
+       "text": "Grover's algorithm",
+       "level": 2,
+       "page": 24,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Quantum Fourier Transform and prime factorization",
+     "level": 1,
+     "page": 24,
+     "children": [
+      {
+       "text": "Shor's Algorithm.",
+       "level": 2,
+       "page": 24,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Quantum complexity classes - Q, EQP, BQP, BPP, QMA",
+     "level": 1,
+     "page": 24,
+     "children": []
+    },
+    {
+     "text": "Additional Topics in Quantum Algorithms",
+     "level": 1,
+     "page": 24,
+     "children": [
+      {
+       "text": "Variational Quantum Eigensolver (VQE)",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "HHL",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "QAOA",
+       "level": 2,
+       "page": 24,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Introduction to Error correction",
+     "level": 1,
+     "page": 24,
+     "children": [
+      {
+       "text": "Fault-tolerance",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Simple error correcting codes",
+       "level": 2,
+       "page": 24,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Survey of current status",
+     "level": 1,
+     "page": 24,
+     "children": [
+      {
+       "text": "NISQ era processors",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Quantum advantage claims",
+       "level": 2,
+       "page": 24,
+       "children": []
+      },
+      {
+       "text": "Roadmap for future",
+       "level": 2,
+       "page": 24,
+       "children": []
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    "To review the basic postulates of quantum mechanics",
+    "The theoretical basics of qubits and their physical realisations",
+    "To work with density operators and time evolution for mixed states",
+    "The basic ideas of quantum gates",
+    "The working of important quantum algorithms",
+    "The basics of quantum error correction"
+   ],
+   "references": [
+    "Quantum Information Science - Manenti R., Motta M., 1 st Edition, Oxford University Press (2023)",
+    "Quantum computation and quantum information - Nielsen M. A., and Chuang I. L., 10 th Anniversary edition, Cambridge University Press (2010)",
+    "A Pathak, Elements of Quantum Computation and Quantum Communication, Boca Raton, CRC Press (2015)",
+    "Quantum Computing & Techniques, Dr. R. Chopra, Khanna Publishing House (2025).",
+    "Quantum error correction and Fault tolerant computing, Frank Gaitan, 1 st edition, CRC Press (2008)",
+    "Quantum computing explained, David McMahon, Wiley (2008)",
+    "Architectures and Cryptographic Universes (The Mechanics of Quantum Computing), A. B. Bhattacharya, Khanna Publishing House (2025).",
+    "Introduction to Quantum Computing: From a lay person to a programmer in 30 steps, Hui Yung Wong, 1 st edition, Springer-Nature Switzerland AG (2022)"
+   ],
+   "pages": [
+    24,
+    25
+   ],
+   "description": "",
+   "status_text": "Out of QT 05, QT 06, QT 07 and QT 08, at least ONE is mandatory",
+   "status_sentence": "QT 05 is one of QT 05, QT 06, QT 07, QT 08; at least one of these is mandatory, so QT 05 is not mandatory on its own.",
+   "topic_flat": [
+    {
+     "text": "Qubits versus classical bits",
+     "path": [
+      "Qubits versus classical bits"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Spin-half systems and photon polarizations",
+     "path": [
+      "Qubits versus classical bits",
+      "Spin-half systems and photon polarizations"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Trapped atoms and ions",
+     "path": [
+      "Qubits versus classical bits",
+      "Trapped atoms and ions"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Artificial atoms using circuits",
+     "path": [
+      "Qubits versus classical bits",
+      "Artificial atoms using circuits"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Semiconducting quantum dots",
+     "path": [
+      "Qubits versus classical bits",
+      "Semiconducting quantum dots"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Single and Two qubit gates - Solovay - Kitaev Theorem",
+     "path": [
+      "Qubits versus classical bits",
+      "Single and Two qubit gates - Solovay - Kitaev Theorem"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Quantum correlations",
+     "path": [
+      "Quantum correlations"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Entanglement and Bell's theorems",
+     "path": [
+      "Quantum correlations",
+      "Entanglement and Bell's theorems"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Review of Turing machines and classical computational complexity",
+     "path": [
+      "Review of Turing machines and classical computational complexity"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Time and space complexity (P, NP, PSPACE)",
+     "path": [
+      "Review of Turing machines and classical computational complexity",
+      "Time and space complexity (P, NP, PSPACE)"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Reversible computation",
+     "path": [
+      "Reversible computation"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Universal quantum logic gates and circuits",
+     "path": [
+      "Universal quantum logic gates and circuits"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Quantum algorithms",
+     "path": [
+      "Quantum algorithms"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Deutsch algorithm",
+     "path": [
+      "Quantum algorithms",
+      "Deutsch algorithm"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Deutsch Josza algorithm",
+     "path": [
+      "Quantum algorithms",
+      "Deutsch Josza algorithm"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Bernstein - Vazirani algorithm",
+     "path": [
+      "Quantum algorithms",
+      "Bernstein - Vazirani algorithm"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Simon's algorithm",
+     "path": [
+      "Quantum algorithms",
+      "Simon's algorithm"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Database search",
+     "path": [
+      "Database search"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Grover's algorithm",
+     "path": [
+      "Database search",
+      "Grover's algorithm"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Quantum Fourier Transform and prime factorization",
+     "path": [
+      "Quantum Fourier Transform and prime factorization"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Shor's Algorithm.",
+     "path": [
+      "Quantum Fourier Transform and prime factorization",
+      "Shor's Algorithm."
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Quantum complexity classes - Q, EQP, BQP, BPP, QMA",
+     "path": [
+      "Quantum complexity classes - Q, EQP, BQP, BPP, QMA"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Additional Topics in Quantum Algorithms",
+     "path": [
+      "Additional Topics in Quantum Algorithms"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Variational Quantum Eigensolver (VQE)",
+     "path": [
+      "Additional Topics in Quantum Algorithms",
+      "Variational Quantum Eigensolver (VQE)"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "HHL",
+     "path": [
+      "Additional Topics in Quantum Algorithms",
+      "HHL"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "QAOA",
+     "path": [
+      "Additional Topics in Quantum Algorithms",
+      "QAOA"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Introduction to Error correction",
+     "path": [
+      "Introduction to Error correction"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Fault-tolerance",
+     "path": [
+      "Introduction to Error correction",
+      "Fault-tolerance"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Simple error correcting codes",
+     "path": [
+      "Introduction to Error correction",
+      "Simple error correcting codes"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Survey of current status",
+     "path": [
+      "Survey of current status"
+     ],
+     "level": 1,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "NISQ era processors",
+     "path": [
+      "Survey of current status",
+      "NISQ era processors"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Quantum advantage claims",
+     "path": [
+      "Survey of current status",
+      "Quantum advantage claims"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    },
+    {
+     "text": "Roadmap for future",
+     "path": [
+      "Survey of current status",
+      "Roadmap for future"
+     ],
+     "level": 2,
+     "page": 24,
+     "count": null
+    }
+   ]
+  },
+  "QT 06": {
+   "code": "QT 06",
+   "title": "Introduction to Quantum Communication",
+   "credits": "3:0",
+   "group_text": "At least one of QT 05, QT 06, QT 07, QT 08 is Mandatory",
+   "group_kind": "at_least_one_of",
+   "topics": [
+    {
+     "text": "Basics of Polarization optics",
+     "level": 1,
+     "page": 26,
+     "children": [
+      {
+       "text": "Quarter and half-wave plates",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "Polarizing beam splitters",
+       "level": 2,
+       "page": 26,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Basics of linear and square-law detectors",
+     "level": 1,
+     "page": 26,
+     "children": [
+      {
+       "text": "Quadrature amplitude modulation",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "Heterodyne and Homodyne demodulation and linear detectors",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "Intensity measurements and square law detectors",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "Photomultipliers, Avalanche Photo diodes",
+       "level": 2,
+       "page": 26,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Digital communication - information theory (basics)",
+     "level": 1,
+     "page": 26,
+     "children": [
+      {
+       "text": "Information entropy",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "Noiseless channel encoding",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "Noisy channel encoding",
+       "level": 2,
+       "page": 26,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "No cloning theorem",
+     "level": 1,
+     "page": 26,
+     "children": []
+    },
+    {
+     "text": "Quantum Memories",
+     "level": 1,
+     "page": 26,
+     "children": []
+    },
+    {
+     "text": "Quantum repeaters",
+     "level": 1,
+     "page": 26,
+     "children": []
+    },
+    {
+     "text": "Entanglement and Bell Theorems",
+     "level": 1,
+     "page": 26,
+     "children": []
+    },
+    {
+     "text": "Bell Measurements and Tests",
+     "level": 1,
+     "page": 26,
+     "children": []
+    },
+    {
+     "text": "Quantum Teleportation protocol",
+     "level": 1,
+     "page": 26,
+     "children": []
+    },
+    {
+     "text": "Quantum Dense coding",
+     "level": 1,
+     "page": 26,
+     "children": []
+    },
+    {
+     "text": "Quantum Key Distribution protocols",
+     "level": 1,
+     "page": 26,
+     "children": [
+      {
+       "text": "BB84",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "E91",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "BBM92.",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "B92",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "COW",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "DPS",
+       "level": 2,
+       "page": 26,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Quantum Networks and Quantum Internet",
+     "level": 1,
+     "page": 26,
+     "children": []
+    },
+    {
+     "text": "Survey of Hardware implementations",
+     "level": 1,
+     "page": 26,
+     "children": [
+      {
+       "text": "Free space communications",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "Satellite based communications",
+       "level": 2,
+       "page": 26,
+       "children": []
+      },
+      {
+       "text": "Fibre optics-based communications",
+       "level": 2,
+       "page": 26,
+       "children": []
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    "The basics of EM theory",
+    "The basics of photodetection",
+    "The basics of information theory",
+    "The central ideas in quantum communications"
+   ],
+   "references": [
+    "Quantum computation and quantum information - Nielsen and Chuang Cambridge University Press, Cambridge (2010)",
+    "A Pathak, Elements of Quantum Computation and Quantum Communication, Boca Raton, CRC Press (2015)",
+    "Introduction to Quantum Communication, A. B. Bhattacharya, Khanna Publishing House (2025)."
+   ],
+   "pages": [
+    26,
+    27
+   ],
+   "description": "",
+   "status_text": "Out of QT 05, QT 06, QT 07 and QT 08, at least ONE is mandatory",
+   "status_sentence": "QT 06 is one of QT 05, QT 06, QT 07, QT 08; at least one of these is mandatory, so QT 06 is not mandatory on its own.",
+   "topic_flat": [
+    {
+     "text": "Basics of Polarization optics",
+     "path": [
+      "Basics of Polarization optics"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Quarter and half-wave plates",
+     "path": [
+      "Basics of Polarization optics",
+      "Quarter and half-wave plates"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Polarizing beam splitters",
+     "path": [
+      "Basics of Polarization optics",
+      "Polarizing beam splitters"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Basics of linear and square-law detectors",
+     "path": [
+      "Basics of linear and square-law detectors"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Quadrature amplitude modulation",
+     "path": [
+      "Basics of linear and square-law detectors",
+      "Quadrature amplitude modulation"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Heterodyne and Homodyne demodulation and linear detectors",
+     "path": [
+      "Basics of linear and square-law detectors",
+      "Heterodyne and Homodyne demodulation and linear detectors"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Intensity measurements and square law detectors",
+     "path": [
+      "Basics of linear and square-law detectors",
+      "Intensity measurements and square law detectors"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Photomultipliers, Avalanche Photo diodes",
+     "path": [
+      "Basics of linear and square-law detectors",
+      "Photomultipliers, Avalanche Photo diodes"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Digital communication - information theory (basics)",
+     "path": [
+      "Digital communication - information theory (basics)"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Information entropy",
+     "path": [
+      "Digital communication - information theory (basics)",
+      "Information entropy"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Noiseless channel encoding",
+     "path": [
+      "Digital communication - information theory (basics)",
+      "Noiseless channel encoding"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Noisy channel encoding",
+     "path": [
+      "Digital communication - information theory (basics)",
+      "Noisy channel encoding"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "No cloning theorem",
+     "path": [
+      "No cloning theorem"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Quantum Memories",
+     "path": [
+      "Quantum Memories"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Quantum repeaters",
+     "path": [
+      "Quantum repeaters"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Entanglement and Bell Theorems",
+     "path": [
+      "Entanglement and Bell Theorems"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Bell Measurements and Tests",
+     "path": [
+      "Bell Measurements and Tests"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Quantum Teleportation protocol",
+     "path": [
+      "Quantum Teleportation protocol"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Quantum Dense coding",
+     "path": [
+      "Quantum Dense coding"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Quantum Key Distribution protocols",
+     "path": [
+      "Quantum Key Distribution protocols"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "BB84",
+     "path": [
+      "Quantum Key Distribution protocols",
+      "BB84"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "E91",
+     "path": [
+      "Quantum Key Distribution protocols",
+      "E91"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "BBM92.",
+     "path": [
+      "Quantum Key Distribution protocols",
+      "BBM92."
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "B92",
+     "path": [
+      "Quantum Key Distribution protocols",
+      "B92"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "COW",
+     "path": [
+      "Quantum Key Distribution protocols",
+      "COW"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "DPS",
+     "path": [
+      "Quantum Key Distribution protocols",
+      "DPS"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Quantum Networks and Quantum Internet",
+     "path": [
+      "Quantum Networks and Quantum Internet"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Survey of Hardware implementations",
+     "path": [
+      "Survey of Hardware implementations"
+     ],
+     "level": 1,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Free space communications",
+     "path": [
+      "Survey of Hardware implementations",
+      "Free space communications"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Satellite based communications",
+     "path": [
+      "Survey of Hardware implementations",
+      "Satellite based communications"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    },
+    {
+     "text": "Fibre optics-based communications",
+     "path": [
+      "Survey of Hardware implementations",
+      "Fibre optics-based communications"
+     ],
+     "level": 2,
+     "page": 26,
+     "count": null
+    }
+   ]
+  },
+  "QT 07": {
+   "code": "QT 07",
+   "title": "Introduction to Quantum Sensing",
+   "credits": "3:0",
+   "group_text": "At least one of QT 05, QT 06, QT 07, QT 08 is Mandatory",
+   "group_kind": "at_least_one_of",
+   "topics": [
+    {
+     "text": "Classical sensing",
+     "level": 1,
+     "page": 28,
+     "children": [
+      {
+       "text": "Photo detection",
+       "level": 2,
+       "page": 28,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Classical noise",
+     "level": 1,
+     "page": 28,
+     "children": [
+      {
+       "text": "Johnson Noise, Telegraph noise, flicker or 1/f noise",
+       "level": 2,
+       "page": 28,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Sensitivity of classical measurements",
+     "level": 1,
+     "page": 28,
+     "children": [
+      {
+       "text": "Classical Fisher information",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Cramer - Rao bounds (information theory basics may be required here).",
+       "level": 2,
+       "page": 28,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Quantum measurements",
+     "level": 1,
+     "page": 28,
+     "children": [
+      {
+       "text": "projective/orthogonal measurements",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Approximate/non-orthogonal measurements",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Weak continuous measurements",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Error-disturbance relations",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Standard quantum limits",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Quantum non-demolition measurements",
+       "level": 2,
+       "page": 28,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "States of light",
+     "level": 1,
+     "page": 28,
+     "children": [
+      {
+       "text": "Fock states",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Coherent states",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Squeezed states",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Tomography",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Wigner quasi-probability distribution",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "P-distribution",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Husimi Q function",
+       "level": 2,
+       "page": 28,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Quantum photo detection",
+     "level": 1,
+     "page": 28,
+     "children": [
+      {
+       "text": "Square-law detectors, Intensity measurements and Photo-detection",
+       "level": 2,
+       "page": 28,
+       "children": []
+      },
+      {
+       "text": "Linear Detectors and Quadrature Measurements",
+       "level": 2,
+       "page": 28,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Quantum Cramer-Rao bounds",
+     "level": 1,
+     "page": 28,
+     "children": []
+    },
+    {
+     "text": "Single photon-based sensing applications",
+     "level": 1,
+     "page": 28,
+     "children": []
+    },
+    {
+     "text": "Entanglement based sensing applications",
+     "level": 1,
+     "page": 28,
+     "children": []
+    },
+    {
+     "text": "Atomic state-based sensing, solid-state spin-based sensing applications (gravimetry, magnetometry)",
+     "level": 1,
+     "page": 28,
+     "children": []
+    }
+   ],
+   "outcomes": [
+    "The basics of classical sensing",
+    "Aspects of quantum measurement",
+    "Ways to quantify quantum sensing",
+    "About measurements of quantum states of light",
+    "About the applications of quantum sensing"
+   ],
+   "references": [
+    "AICTE Prescribed Textbook: Physics (Quantum Mechanics for Engineers), Khanna Publishing House (2025).",
+    "Quantum Measurement and Control, Howard Wiseman and David Milburn, Cambridge University Press (2014)",
+    "Quantum Measurement, Vladimir Braginsky and Farid Ya Khalili, Cambridge University Press (1995)",
+    "Quantum Information Science , Manenti R., Motta M., 1 st Edition, Oxford University Press (2023)",
+    "Quantum Computing Mechanics, A. B. Bhattacharya, Khanna Publishing House (2025)."
+   ],
+   "pages": [
+    28,
+    29
+   ],
+   "description": "",
+   "status_text": "Out of QT 05, QT 06, QT 07 and QT 08, at least ONE is mandatory",
+   "status_sentence": "QT 07 is one of QT 05, QT 06, QT 07, QT 08; at least one of these is mandatory, so QT 07 is not mandatory on its own.",
+   "topic_flat": [
+    {
+     "text": "Classical sensing",
+     "path": [
+      "Classical sensing"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Photo detection",
+     "path": [
+      "Classical sensing",
+      "Photo detection"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Classical noise",
+     "path": [
+      "Classical noise"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Johnson Noise, Telegraph noise, flicker or 1/f noise",
+     "path": [
+      "Classical noise",
+      "Johnson Noise, Telegraph noise, flicker or 1/f noise"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Sensitivity of classical measurements",
+     "path": [
+      "Sensitivity of classical measurements"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Classical Fisher information",
+     "path": [
+      "Sensitivity of classical measurements",
+      "Classical Fisher information"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Cramer - Rao bounds (information theory basics may be required here).",
+     "path": [
+      "Sensitivity of classical measurements",
+      "Cramer - Rao bounds (information theory basics may be required here)."
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Quantum measurements",
+     "path": [
+      "Quantum measurements"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "projective/orthogonal measurements",
+     "path": [
+      "Quantum measurements",
+      "projective/orthogonal measurements"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Approximate/non-orthogonal measurements",
+     "path": [
+      "Quantum measurements",
+      "Approximate/non-orthogonal measurements"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Weak continuous measurements",
+     "path": [
+      "Quantum measurements",
+      "Weak continuous measurements"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Error-disturbance relations",
+     "path": [
+      "Quantum measurements",
+      "Error-disturbance relations"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Standard quantum limits",
+     "path": [
+      "Quantum measurements",
+      "Standard quantum limits"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Quantum non-demolition measurements",
+     "path": [
+      "Quantum measurements",
+      "Quantum non-demolition measurements"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "States of light",
+     "path": [
+      "States of light"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Fock states",
+     "path": [
+      "States of light",
+      "Fock states"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Coherent states",
+     "path": [
+      "States of light",
+      "Coherent states"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Squeezed states",
+     "path": [
+      "States of light",
+      "Squeezed states"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Tomography",
+     "path": [
+      "States of light",
+      "Tomography"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Wigner quasi-probability distribution",
+     "path": [
+      "States of light",
+      "Wigner quasi-probability distribution"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "P-distribution",
+     "path": [
+      "States of light",
+      "P-distribution"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Husimi Q function",
+     "path": [
+      "States of light",
+      "Husimi Q function"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Quantum photo detection",
+     "path": [
+      "Quantum photo detection"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Square-law detectors, Intensity measurements and Photo-detection",
+     "path": [
+      "Quantum photo detection",
+      "Square-law detectors, Intensity measurements and Photo-detection"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Linear Detectors and Quadrature Measurements",
+     "path": [
+      "Quantum photo detection",
+      "Linear Detectors and Quadrature Measurements"
+     ],
+     "level": 2,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Quantum Cramer-Rao bounds",
+     "path": [
+      "Quantum Cramer-Rao bounds"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Single photon-based sensing applications",
+     "path": [
+      "Single photon-based sensing applications"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Entanglement based sensing applications",
+     "path": [
+      "Entanglement based sensing applications"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    },
+    {
+     "text": "Atomic state-based sensing, solid-state spin-based sensing applications (gravimetry, magnetometry)",
+     "path": [
+      "Atomic state-based sensing, solid-state spin-based sensing applications (gravimetry, magnetometry)"
+     ],
+     "level": 1,
+     "page": 28,
+     "count": null
+    }
+   ]
+  },
+  "QT 08": {
+   "code": "QT 08",
+   "title": "Introduction to Quantum Materials",
+   "credits": "3:0",
+   "group_text": "At least one of QT 05, QT 06, QT 07, QT 08 is Mandatory",
+   "group_kind": "at_least_one_of",
+   "topics": [
+    {
+     "text": "Band theory basics",
+     "level": 1,
+     "page": 30,
+     "children": [
+      {
+       "text": "Metals, Semiconductors and Insulators",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Band structure of solids",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Survey of semiconducting devices for quantum technologies (electronic, quantum optical devices and principle of operation)",
+       "level": 2,
+       "page": 30,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Correlated systems",
+     "level": 1,
+     "page": 30,
+     "children": []
+    },
+    {
+     "text": "Magnetism",
+     "level": 1,
+     "page": 30,
+     "children": [
+      {
+       "text": "Para, ferro magnetism basics",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Magnetic measurements, hall effect, magnetoresistance",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Faraday and Kerr effects",
+       "level": 2,
+       "page": 30,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Superconductivity",
+     "level": 1,
+     "page": 30,
+     "children": [
+      {
+       "text": "BCS theory",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Ginzburg Landau",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Josephson Effect - AC and DC Josephson effects",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Survey of superconducting devices for quantum technologies",
+       "level": 2,
+       "page": 30,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "2D materials",
+     "level": 1,
+     "page": 30,
+     "children": [
+      {
+       "text": "Graphene and its properties - single and few layers",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Transition Metal Dichalcogenides - Electronic and Optical Properties",
+       "level": 2,
+       "page": 30,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Topological Phases of matter",
+     "level": 1,
+     "page": 30,
+     "children": [
+      {
+       "text": "Basics of Topology",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Geometric phases - Berry Phase",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Aharonov Bohm effect",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Topological phases of matter",
+       "level": 2,
+       "page": 30,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Survey of material growth techniques",
+     "level": 1,
+     "page": 30,
+     "children": [
+      {
+       "text": "Molecular beam epitaxy",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Chemical vapor deposition, MOVPE",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Pulsed laser deposition, etc.",
+       "level": 2,
+       "page": 30,
+       "children": []
+      },
+      {
+       "text": "Crystal growth techniques",
+       "level": 2,
+       "page": 30,
+       "children": []
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    "The basic idea of quantum materials",
+    "The basics of band theory of solids",
+    "The basics of magnetism",
+    "The basics of superconductivity",
+    "About new 2D materials like graphene, TMDCs",
+    "About topology and topological phases of matter"
+   ],
+   "references": [
+    "Condensed Matter Physics, M P Marder, 2 nd Edition, John Wiley and Sons, 2010",
+    "Engineering Physics, A. B. Bhattachraya, Khanna Publishing House (2024).",
+    "Introduction to Superconductivity, Michael Tinkham, standard ed., Medtech (2017)"
+   ],
+   "pages": [
+    30,
+    31
+   ],
+   "description": "",
+   "status_text": "Out of QT 05, QT 06, QT 07 and QT 08, at least ONE is mandatory",
+   "status_sentence": "QT 08 is one of QT 05, QT 06, QT 07, QT 08; at least one of these is mandatory, so QT 08 is not mandatory on its own.",
+   "topic_flat": [
+    {
+     "text": "Band theory basics",
+     "path": [
+      "Band theory basics"
+     ],
+     "level": 1,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Metals, Semiconductors and Insulators",
+     "path": [
+      "Band theory basics",
+      "Metals, Semiconductors and Insulators"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Band structure of solids",
+     "path": [
+      "Band theory basics",
+      "Band structure of solids"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Survey of semiconducting devices for quantum technologies (electronic, quantum optical devices and principle of operation)",
+     "path": [
+      "Band theory basics",
+      "Survey of semiconducting devices for quantum technologies (electronic, quantum optical devices and principle of operation)"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Correlated systems",
+     "path": [
+      "Correlated systems"
+     ],
+     "level": 1,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Magnetism",
+     "path": [
+      "Magnetism"
+     ],
+     "level": 1,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Para, ferro magnetism basics",
+     "path": [
+      "Magnetism",
+      "Para, ferro magnetism basics"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Magnetic measurements, hall effect, magnetoresistance",
+     "path": [
+      "Magnetism",
+      "Magnetic measurements, hall effect, magnetoresistance"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Faraday and Kerr effects",
+     "path": [
+      "Magnetism",
+      "Faraday and Kerr effects"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Superconductivity",
+     "path": [
+      "Superconductivity"
+     ],
+     "level": 1,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "BCS theory",
+     "path": [
+      "Superconductivity",
+      "BCS theory"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Ginzburg Landau",
+     "path": [
+      "Superconductivity",
+      "Ginzburg Landau"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Josephson Effect - AC and DC Josephson effects",
+     "path": [
+      "Superconductivity",
+      "Josephson Effect - AC and DC Josephson effects"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Survey of superconducting devices for quantum technologies",
+     "path": [
+      "Superconductivity",
+      "Survey of superconducting devices for quantum technologies"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "2D materials",
+     "path": [
+      "2D materials"
+     ],
+     "level": 1,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Graphene and its properties - single and few layers",
+     "path": [
+      "2D materials",
+      "Graphene and its properties - single and few layers"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Transition Metal Dichalcogenides - Electronic and Optical Properties",
+     "path": [
+      "2D materials",
+      "Transition Metal Dichalcogenides - Electronic and Optical Properties"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Topological Phases of matter",
+     "path": [
+      "Topological Phases of matter"
+     ],
+     "level": 1,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Basics of Topology",
+     "path": [
+      "Topological Phases of matter",
+      "Basics of Topology"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Geometric phases - Berry Phase",
+     "path": [
+      "Topological Phases of matter",
+      "Geometric phases - Berry Phase"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Aharonov Bohm effect",
+     "path": [
+      "Topological Phases of matter",
+      "Aharonov Bohm effect"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Topological phases of matter",
+     "path": [
+      "Topological Phases of matter",
+      "Topological phases of matter"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Survey of material growth techniques",
+     "path": [
+      "Survey of material growth techniques"
+     ],
+     "level": 1,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Molecular beam epitaxy",
+     "path": [
+      "Survey of material growth techniques",
+      "Molecular beam epitaxy"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Chemical vapor deposition, MOVPE",
+     "path": [
+      "Survey of material growth techniques",
+      "Chemical vapor deposition, MOVPE"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Pulsed laser deposition, etc.",
+     "path": [
+      "Survey of material growth techniques",
+      "Pulsed laser deposition, etc."
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    },
+    {
+     "text": "Crystal growth techniques",
+     "path": [
+      "Survey of material growth techniques",
+      "Crystal growth techniques"
+     ],
+     "level": 2,
+     "page": 30,
+     "count": null
+    }
+   ]
+  },
+  "QT 09": {
+   "code": "QT 09",
+   "title": "Engineering Foundations of Quantum Technologies",
+   "credits": "3:0",
+   "group_text": "Optional / Additional Courses",
+   "group_kind": "optional",
+   "topics": [
+    {
+     "text": "Electrical Networks (4 hours)",
+     "level": 1,
+     "page": 32,
+     "children": [
+      {
+       "text": "Analog RLC circuits - resonances, impedances, quality factors",
+       "level": 2,
+       "page": 32,
+       "children": []
+      },
+      {
+       "text": "Transmission line basics (2 hours)",
+       "level": 2,
+       "page": 32,
+       "children": [
+        {
+         "text": "Telegrapher equations, wave impedance, impedance matching, transmission line resonators",
+         "level": 3,
+         "page": 32,
+         "children": []
+        }
+       ],
+       "count": {
+        "amount": "2",
+        "unit": "hour"
+       }
+      }
+     ],
+     "count": {
+      "amount": "4",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Computer Science (15 hours)",
+     "level": 1,
+     "page": 32,
+     "children": [
+      {
+       "text": "Basics of computer architecture (1 hour)",
+       "level": 2,
+       "page": 32,
+       "children": [
+        {
+         "text": "Arithmetic Logic Unit",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Memory",
+         "level": 3,
+         "page": 32,
+         "children": []
+        }
+       ],
+       "count": {
+        "amount": "1",
+        "unit": "hour"
+       }
+      },
+      {
+       "text": "Abstract models of computation (12 hours)",
+       "level": 2,
+       "page": 32,
+       "children": [
+        {
+         "text": "Finite State Machine",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Turing Machines",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Overview of Hierarchy of languages - Regular, Context-Free, Turing Decidable and Turing Recognisable",
+         "level": 3,
+         "page": 32,
+         "children": []
+        }
+       ],
+       "count": {
+        "amount": "12",
+        "unit": "hour"
+       }
+      },
+      {
+       "text": "Complexity Theory (2 hours)",
+       "level": 2,
+       "page": 32,
+       "children": [
+        {
+         "text": "Time and Space complexity",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "P vs NP, NP-completeness",
+         "level": 3,
+         "page": 32,
+         "children": []
+        }
+       ],
+       "count": {
+        "amount": "2",
+        "unit": "hour"
+       }
+      }
+     ],
+     "count": {
+      "amount": "15",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Electrical Communications (1 hour)",
+     "level": 1,
+     "page": 32,
+     "children": [
+      {
+       "text": "Analog Communications (1 hour)",
+       "level": 2,
+       "page": 32,
+       "children": [
+        {
+         "text": "Quadrature amplitude modulation",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Heterodyne and Homodyne demodulation",
+         "level": 3,
+         "page": 32,
+         "children": []
+        }
+       ],
+       "count": {
+        "amount": "1",
+        "unit": "hour"
+       }
+      }
+     ],
+     "count": {
+      "amount": "1",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Noise and Signals (6 hours)",
+     "level": 1,
+     "page": 32,
+     "children": [
+      {
+       "text": "Characterising Noise",
+       "level": 2,
+       "page": 32,
+       "children": []
+      },
+      {
+       "text": "Types of Noise",
+       "level": 2,
+       "page": 32,
+       "children": [
+        {
+         "text": "Shot Noise",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Johnson-Nyquist Noise",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Telegraphic noise or flicker or 1/f noise",
+         "level": 3,
+         "page": 32,
+         "children": []
+        }
+       ]
+      },
+      {
+       "text": "Signal conditioning and noise mitigation",
+       "level": 2,
+       "page": 32,
+       "children": []
+      },
+      {
+       "text": "Amplification and Added Noise",
+       "level": 2,
+       "page": 32,
+       "children": [
+        {
+         "text": "Linear Amplifier theory",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Signal-Noise Ratio, Added Noise, Noise Figure of amplification",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Dynamic Range",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Noise temperature",
+         "level": 3,
+         "page": 32,
+         "children": []
+        },
+        {
+         "text": "Quantum limits on noise in linear amplifiers",
+         "level": 3,
+         "page": 32,
+         "children": []
+        }
+       ]
+      }
+     ],
+     "count": {
+      "amount": "6",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Digital Communications (4 hours)",
+     "level": 1,
+     "page": 33,
+     "children": [
+      {
+       "text": "Information entropy",
+       "level": 2,
+       "page": 33,
+       "children": []
+      },
+      {
+       "text": "Noiseless channel encoding",
+       "level": 2,
+       "page": 33,
+       "children": []
+      },
+      {
+       "text": "Noisy channel encoding",
+       "level": 2,
+       "page": 33,
+       "children": []
+      }
+     ],
+     "count": {
+      "amount": "4",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Basics of cryptography (6 hours)",
+     "level": 1,
+     "page": 33,
+     "children": [
+      {
+       "text": "Basics of Number Theory",
+       "level": 2,
+       "page": 33,
+       "children": []
+      },
+      {
+       "text": "Random Number Generation",
+       "level": 2,
+       "page": 33,
+       "children": []
+      },
+      {
+       "text": "One time pad, Private key, public key, symmetric and asymmetric cryptography protocols",
+       "level": 2,
+       "page": 33,
+       "children": []
+      },
+      {
+       "text": "RSA and DH",
+       "level": 2,
+       "page": 33,
+       "children": []
+      },
+      {
+       "text": "Post Quantum Cryptography (PQC)",
+       "level": 2,
+       "page": 33,
+       "children": []
+      }
+     ],
+     "count": {
+      "amount": "6",
+      "unit": "hour"
+     }
+    }
+   ],
+   "outcomes": [
+    "Relevant topics from Electrical Networks to design and analyse analog circuits",
+    "Relevant topics from RF and Microwave Engineering to design systems",
+    "Relevant topics in Theory of computation to benchmark algorithms",
+    "Relevant topics in analog and digital communications",
+    "Basics of cryptography"
+   ],
+   "references": [
+    "Art of Electronics, Paul Horowitz and Winfield Hill, 3 rd edition, Cambridge University Press (2015)",
+    "All-in-One Electronics Simplified, A.K. Maini, Khanna Book Publishing Co. (2022).",
+    "Digital Design, Morris Mano, Michael D. Cilletti, 6 th edition, Pearson Education (2018)",
+    "Microwave Engineering, David Pozar, 4 th edition, Wiley (2013)",
+    "Information Theory, Robert B. Ash, Dover Publications (2003)",
+    "Architectures and Cryptographic Universes (The Mechanics of Quantum Computing), A. B. Bhattacharya, Khanna Publishing House (2025).",
+    "Introduction to the Theory of Computation, Michael Sipser, 3 rd edition, Cengage India Pvt. Ltd. (2014)",
+    "Foundations of Quantum Technologies, A. B. Bhattacharya, Khanna Publishing House (2025).",
+    "Quantum Computing & Techniques, Dr. R. Chopra, Khanna Publishing House (2025).",
+    "Protecting Information - From Classical error correction to quantum cryptography, Susan Loepp and William K. Wootters, Cambridge University Press (2006)"
+   ],
+   "pages": [
+    32,
+    33
+   ],
+   "description": "This course is meant to cover topics in electrical, electronics and communication engineering, as well as in computer science that are relevant to Quantum computation, Communications and Sensing. This is a survey course and not meant for a rigorous treatment of each topic.",
+   "status_text": "optional / additional",
+   "status_sentence": "QT 09 is optional (an additional course); it is not mandatory.",
+   "topic_flat": [
+    {
+     "text": "Electrical Networks (4 hours)",
+     "path": [
+      "Electrical Networks (4 hours)"
+     ],
+     "level": 1,
+     "page": 32,
+     "count": {
+      "amount": "4",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Analog RLC circuits - resonances, impedances, quality factors",
+     "path": [
+      "Electrical Networks (4 hours)",
+      "Analog RLC circuits - resonances, impedances, quality factors"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Transmission line basics (2 hours)",
+     "path": [
+      "Electrical Networks (4 hours)",
+      "Transmission line basics (2 hours)"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": {
+      "amount": "2",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Telegrapher equations, wave impedance, impedance matching, transmission line resonators",
+     "path": [
+      "Electrical Networks (4 hours)",
+      "Transmission line basics (2 hours)",
+      "Telegrapher equations, wave impedance, impedance matching, transmission line resonators"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Computer Science (15 hours)",
+     "path": [
+      "Computer Science (15 hours)"
+     ],
+     "level": 1,
+     "page": 32,
+     "count": {
+      "amount": "15",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Basics of computer architecture (1 hour)",
+     "path": [
+      "Computer Science (15 hours)",
+      "Basics of computer architecture (1 hour)"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": {
+      "amount": "1",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Arithmetic Logic Unit",
+     "path": [
+      "Computer Science (15 hours)",
+      "Basics of computer architecture (1 hour)",
+      "Arithmetic Logic Unit"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Memory",
+     "path": [
+      "Computer Science (15 hours)",
+      "Basics of computer architecture (1 hour)",
+      "Memory"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Abstract models of computation (12 hours)",
+     "path": [
+      "Computer Science (15 hours)",
+      "Abstract models of computation (12 hours)"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": {
+      "amount": "12",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Finite State Machine",
+     "path": [
+      "Computer Science (15 hours)",
+      "Abstract models of computation (12 hours)",
+      "Finite State Machine"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Turing Machines",
+     "path": [
+      "Computer Science (15 hours)",
+      "Abstract models of computation (12 hours)",
+      "Turing Machines"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Overview of Hierarchy of languages - Regular, Context-Free, Turing Decidable and Turing Recognisable",
+     "path": [
+      "Computer Science (15 hours)",
+      "Abstract models of computation (12 hours)",
+      "Overview of Hierarchy of languages - Regular, Context-Free, Turing Decidable and Turing Recognisable"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Complexity Theory (2 hours)",
+     "path": [
+      "Computer Science (15 hours)",
+      "Complexity Theory (2 hours)"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": {
+      "amount": "2",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Time and Space complexity",
+     "path": [
+      "Computer Science (15 hours)",
+      "Complexity Theory (2 hours)",
+      "Time and Space complexity"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "P vs NP, NP-completeness",
+     "path": [
+      "Computer Science (15 hours)",
+      "Complexity Theory (2 hours)",
+      "P vs NP, NP-completeness"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Electrical Communications (1 hour)",
+     "path": [
+      "Electrical Communications (1 hour)"
+     ],
+     "level": 1,
+     "page": 32,
+     "count": {
+      "amount": "1",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Analog Communications (1 hour)",
+     "path": [
+      "Electrical Communications (1 hour)",
+      "Analog Communications (1 hour)"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": {
+      "amount": "1",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Quadrature amplitude modulation",
+     "path": [
+      "Electrical Communications (1 hour)",
+      "Analog Communications (1 hour)",
+      "Quadrature amplitude modulation"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Heterodyne and Homodyne demodulation",
+     "path": [
+      "Electrical Communications (1 hour)",
+      "Analog Communications (1 hour)",
+      "Heterodyne and Homodyne demodulation"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Noise and Signals (6 hours)",
+     "path": [
+      "Noise and Signals (6 hours)"
+     ],
+     "level": 1,
+     "page": 32,
+     "count": {
+      "amount": "6",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Characterising Noise",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Characterising Noise"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Types of Noise",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Types of Noise"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Shot Noise",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Types of Noise",
+      "Shot Noise"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Johnson-Nyquist Noise",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Types of Noise",
+      "Johnson-Nyquist Noise"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Telegraphic noise or flicker or 1/f noise",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Types of Noise",
+      "Telegraphic noise or flicker or 1/f noise"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Signal conditioning and noise mitigation",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Signal conditioning and noise mitigation"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Amplification and Added Noise",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Amplification and Added Noise"
+     ],
+     "level": 2,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Linear Amplifier theory",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Amplification and Added Noise",
+      "Linear Amplifier theory"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Signal-Noise Ratio, Added Noise, Noise Figure of amplification",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Amplification and Added Noise",
+      "Signal-Noise Ratio, Added Noise, Noise Figure of amplification"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Dynamic Range",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Amplification and Added Noise",
+      "Dynamic Range"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Noise temperature",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Amplification and Added Noise",
+      "Noise temperature"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Quantum limits on noise in linear amplifiers",
+     "path": [
+      "Noise and Signals (6 hours)",
+      "Amplification and Added Noise",
+      "Quantum limits on noise in linear amplifiers"
+     ],
+     "level": 3,
+     "page": 32,
+     "count": null
+    },
+    {
+     "text": "Digital Communications (4 hours)",
+     "path": [
+      "Digital Communications (4 hours)"
+     ],
+     "level": 1,
+     "page": 33,
+     "count": {
+      "amount": "4",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Information entropy",
+     "path": [
+      "Digital Communications (4 hours)",
+      "Information entropy"
+     ],
+     "level": 2,
+     "page": 33,
+     "count": null
+    },
+    {
+     "text": "Noiseless channel encoding",
+     "path": [
+      "Digital Communications (4 hours)",
+      "Noiseless channel encoding"
+     ],
+     "level": 2,
+     "page": 33,
+     "count": null
+    },
+    {
+     "text": "Noisy channel encoding",
+     "path": [
+      "Digital Communications (4 hours)",
+      "Noisy channel encoding"
+     ],
+     "level": 2,
+     "page": 33,
+     "count": null
+    },
+    {
+     "text": "Basics of cryptography (6 hours)",
+     "path": [
+      "Basics of cryptography (6 hours)"
+     ],
+     "level": 1,
+     "page": 33,
+     "count": {
+      "amount": "6",
+      "unit": "hour"
+     }
+    },
+    {
+     "text": "Basics of Number Theory",
+     "path": [
+      "Basics of cryptography (6 hours)",
+      "Basics of Number Theory"
+     ],
+     "level": 2,
+     "page": 33,
+     "count": null
+    },
+    {
+     "text": "Random Number Generation",
+     "path": [
+      "Basics of cryptography (6 hours)",
+      "Random Number Generation"
+     ],
+     "level": 2,
+     "page": 33,
+     "count": null
+    },
+    {
+     "text": "One time pad, Private key, public key, symmetric and asymmetric cryptography protocols",
+     "path": [
+      "Basics of cryptography (6 hours)",
+      "One time pad, Private key, public key, symmetric and asymmetric cryptography protocols"
+     ],
+     "level": 2,
+     "page": 33,
+     "count": null
+    },
+    {
+     "text": "RSA and DH",
+     "path": [
+      "Basics of cryptography (6 hours)",
+      "RSA and DH"
+     ],
+     "level": 2,
+     "page": 33,
+     "count": null
+    },
+    {
+     "text": "Post Quantum Cryptography (PQC)",
+     "path": [
+      "Basics of cryptography (6 hours)",
+      "Post Quantum Cryptography (PQC)"
+     ],
+     "level": 2,
+     "page": 33,
+     "count": null
+    }
+   ]
+  },
+  "QT 10": {
+   "code": "QT 10",
+   "title": "Solid State Physics for Quantum Technologies",
+   "credits": "3:0",
+   "group_text": "Optional / Additional Courses",
+   "group_kind": "optional",
+   "topics": [
+    {
+     "text": "Structure of solids -",
+     "level": 1,
+     "page": 34,
+     "children": [
+      {
+       "text": "Symmetry, Bravais lattices",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Laue equations and Bragg's law,",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Brillouin Zones",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Atomic scattering and structure factors.",
+       "level": 2,
+       "page": 34,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Characterisation of crystal structures - XRD etc.",
+     "level": 1,
+     "page": 34,
+     "children": []
+    },
+    {
+     "text": "Bonding in solids -",
+     "level": 1,
+     "page": 34,
+     "children": [
+      {
+       "text": "van der Waals and Repulsive interactions,",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Lennard Jones potential,",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Madelung constant",
+       "level": 2,
+       "page": 34,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "The Drude theory of metals -",
+     "level": 1,
+     "page": 34,
+     "children": [
+      {
+       "text": "DC & AC electrical conductivity of a metal;",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Hall effect & magnetoresistance,",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Density of states, Fermi-Dirac distribution, Specific heat of degenerate electron gases",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Free electron model",
+       "level": 2,
+       "page": 34,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Beyond the Free electron model",
+     "level": 1,
+     "page": 34,
+     "children": [
+      {
+       "text": "Kronig-Penney Model",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Periodic potential - Bloch Theorem",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Band theory",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Tight binding model",
+       "level": 2,
+       "page": 34,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Phonons in Solids",
+     "level": 1,
+     "page": 34,
+     "children": [
+      {
+       "text": "One dimensional monoatomic and diatomic chains",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Normal modes and Phonons",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Phonon spectrum",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Long wavelength acoustic phonons and elastic constants",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Vibrational Properties- normal modes, acoustic and optical phonons.",
+       "level": 2,
+       "page": 34,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Magnetism",
+     "level": 1,
+     "page": 34,
+     "children": [
+      {
+       "text": "Dia-, Para-, and Ferromagnetism",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Langevin's theory of paramagnetism",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Weiss Molecular theory",
+       "level": 2,
+       "page": 34,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Superconductivity:",
+     "level": 1,
+     "page": 34,
+     "children": [
+      {
+       "text": "Phenomenological description - Zero resistance, Meissner effect",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "London Theory",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "BCS theory",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Ginzburg-Landau Theory",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Type-I and type-II superconductors",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Flux quantization",
+       "level": 2,
+       "page": 34,
+       "children": []
+      },
+      {
+       "text": "Josephson effect.",
+       "level": 2,
+       "page": 35,
+       "children": []
+      },
+      {
+       "text": "High Tc superconductivity",
+       "level": 2,
+       "page": 35,
+       "children": []
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    "Basics of solid states physics",
+    "Various approximations for electronic states in matter",
+    "The theory of phonons in solids",
+    "The theory of magnetism",
+    "The theory of superconductivity"
+   ],
+   "references": [
+    "Introduction to Solid State Physics, Charles Kittel, Wiley India Edition (2019)",
+    "Foundations of Quantum Technologies, A. B. Bhattacharya, Khanna Publishing House (2025).",
+    "Condensed Matter Physics, M P Marder, 2 nd Edition, John Wiley and Sons (2010)",
+    "Introduction to Superconductivity, Michael Tinkham, standard edition, Medtech (2017)",
+    "Engineering Physics, A. B. Bhattacharya, Khanna Publishing House (2024)."
+   ],
+   "pages": [
+    34,
+    35
+   ],
+   "description": "",
+   "status_text": "optional / additional",
+   "status_sentence": "QT 10 is optional (an additional course); it is not mandatory.",
+   "topic_flat": [
+    {
+     "text": "Structure of solids -",
+     "path": [
+      "Structure of solids -"
+     ],
+     "level": 1,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Symmetry, Bravais lattices",
+     "path": [
+      "Structure of solids -",
+      "Symmetry, Bravais lattices"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Laue equations and Bragg's law,",
+     "path": [
+      "Structure of solids -",
+      "Laue equations and Bragg's law,"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Brillouin Zones",
+     "path": [
+      "Structure of solids -",
+      "Brillouin Zones"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Atomic scattering and structure factors.",
+     "path": [
+      "Structure of solids -",
+      "Atomic scattering and structure factors."
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Characterisation of crystal structures - XRD etc.",
+     "path": [
+      "Characterisation of crystal structures - XRD etc."
+     ],
+     "level": 1,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Bonding in solids -",
+     "path": [
+      "Bonding in solids -"
+     ],
+     "level": 1,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "van der Waals and Repulsive interactions,",
+     "path": [
+      "Bonding in solids -",
+      "van der Waals and Repulsive interactions,"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Lennard Jones potential,",
+     "path": [
+      "Bonding in solids -",
+      "Lennard Jones potential,"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Madelung constant",
+     "path": [
+      "Bonding in solids -",
+      "Madelung constant"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "The Drude theory of metals -",
+     "path": [
+      "The Drude theory of metals -"
+     ],
+     "level": 1,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "DC & AC electrical conductivity of a metal;",
+     "path": [
+      "The Drude theory of metals -",
+      "DC & AC electrical conductivity of a metal;"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Hall effect & magnetoresistance,",
+     "path": [
+      "The Drude theory of metals -",
+      "Hall effect & magnetoresistance,"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Density of states, Fermi-Dirac distribution, Specific heat of degenerate electron gases",
+     "path": [
+      "The Drude theory of metals -",
+      "Density of states, Fermi-Dirac distribution, Specific heat of degenerate electron gases"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Free electron model",
+     "path": [
+      "The Drude theory of metals -",
+      "Free electron model"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Beyond the Free electron model",
+     "path": [
+      "Beyond the Free electron model"
+     ],
+     "level": 1,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Kronig-Penney Model",
+     "path": [
+      "Beyond the Free electron model",
+      "Kronig-Penney Model"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Periodic potential - Bloch Theorem",
+     "path": [
+      "Beyond the Free electron model",
+      "Periodic potential - Bloch Theorem"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Band theory",
+     "path": [
+      "Beyond the Free electron model",
+      "Band theory"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Tight binding model",
+     "path": [
+      "Beyond the Free electron model",
+      "Tight binding model"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Phonons in Solids",
+     "path": [
+      "Phonons in Solids"
+     ],
+     "level": 1,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "One dimensional monoatomic and diatomic chains",
+     "path": [
+      "Phonons in Solids",
+      "One dimensional monoatomic and diatomic chains"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Normal modes and Phonons",
+     "path": [
+      "Phonons in Solids",
+      "Normal modes and Phonons"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Phonon spectrum",
+     "path": [
+      "Phonons in Solids",
+      "Phonon spectrum"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Long wavelength acoustic phonons and elastic constants",
+     "path": [
+      "Phonons in Solids",
+      "Long wavelength acoustic phonons and elastic constants"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Vibrational Properties- normal modes, acoustic and optical phonons.",
+     "path": [
+      "Phonons in Solids",
+      "Vibrational Properties- normal modes, acoustic and optical phonons."
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Magnetism",
+     "path": [
+      "Magnetism"
+     ],
+     "level": 1,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Dia-, Para-, and Ferromagnetism",
+     "path": [
+      "Magnetism",
+      "Dia-, Para-, and Ferromagnetism"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Langevin's theory of paramagnetism",
+     "path": [
+      "Magnetism",
+      "Langevin's theory of paramagnetism"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Weiss Molecular theory",
+     "path": [
+      "Magnetism",
+      "Weiss Molecular theory"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Superconductivity:",
+     "path": [
+      "Superconductivity:"
+     ],
+     "level": 1,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Phenomenological description - Zero resistance, Meissner effect",
+     "path": [
+      "Superconductivity:",
+      "Phenomenological description - Zero resistance, Meissner effect"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "London Theory",
+     "path": [
+      "Superconductivity:",
+      "London Theory"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "BCS theory",
+     "path": [
+      "Superconductivity:",
+      "BCS theory"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Ginzburg-Landau Theory",
+     "path": [
+      "Superconductivity:",
+      "Ginzburg-Landau Theory"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Type-I and type-II superconductors",
+     "path": [
+      "Superconductivity:",
+      "Type-I and type-II superconductors"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Flux quantization",
+     "path": [
+      "Superconductivity:",
+      "Flux quantization"
+     ],
+     "level": 2,
+     "page": 34,
+     "count": null
+    },
+    {
+     "text": "Josephson effect.",
+     "path": [
+      "Superconductivity:",
+      "Josephson effect."
+     ],
+     "level": 2,
+     "page": 35,
+     "count": null
+    },
+    {
+     "text": "High Tc superconductivity",
+     "path": [
+      "Superconductivity:",
+      "High Tc superconductivity"
+     ],
+     "level": 2,
+     "page": 35,
+     "count": null
+    }
+   ]
+  },
+  "QT 11": {
+   "code": "QT 11",
+   "title": "Quantum Optics",
+   "credits": "3:0",
+   "group_text": "Optional / Additional Courses",
+   "group_kind": "optional",
+   "topics": [
+    {
+     "text": "Quantization of the electromagnetic field",
+     "level": 1,
+     "page": 36,
+     "children": [
+      {
+       "text": "Number states, coherent states, squeezed states",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Hanbury-Brown and Twiss experiments - Photon bunching, Photon anti bunching",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Hong-Ou-Mandel interference",
+       "level": 2,
+       "page": 36,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Theory of Optical coherence",
+     "level": 1,
+     "page": 36,
+     "children": [
+      {
+       "text": "Young's double slit experiment and first order coherence",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Coherence functions of arbitrary order",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Normal ordering, symmetric ordering and ani-normal ordering of operators",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Interferometry",
+       "level": 2,
+       "page": 36,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Phase-space representations of states of light",
+     "level": 1,
+     "page": 36,
+     "children": [
+      {
+       "text": "Wigner distribution",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "P-function and the notion of non-classicality with some examples of nonclassical states like squeezed states and their applications",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Husimi Q function",
+       "level": 2,
+       "page": 36,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Light-matter interaction",
+     "level": 1,
+     "page": 36,
+     "children": [
+      {
+       "text": "Classical model of light-matter interaction",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Semi-classical model of light-matter interaction-",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Quantum light-matter interaction",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Rabi Model",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Jayne's-cummings model",
+       "level": 2,
+       "page": 36,
+       "children": []
+      }
+     ]
+    },
+    {
+     "text": "Open quantum systems",
+     "level": 1,
+     "page": 36,
+     "children": [
+      {
+       "text": "Fermi golden rule",
+       "level": 2,
+       "page": 36,
+       "children": []
+      },
+      {
+       "text": "Born-Markov Lindblad Master Equation",
+       "level": 2,
+       "page": 36,
+       "children": []
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    "To quantise the electromagnetic field",
+    "The various experimental techniques in photonics",
+    "The various representations of states of light",
+    "Classical, semi-classical and fully quantum models of light-matter interaction",
+    "Modelling decoherence through Master equation"
+   ],
+   "references": [
+    "AICTE Prescribed Textbook: Physics (Oscillations, Waves and Optics), A. B. Bhattacharya & Atanu Nag, Khanna Publishing House (2025)",
+    "Introductory Quantum Optics, Christopher Gerry and Peter Knight, Cambridge University Press (2004)",
+    "Quantum Optics, D. F. Walls, Gerard J. Milburn, 2 nd Edition, Springer (2008)",
+    "Quantum Optics: An introduction, Mark Fox, Oxford University Publishers (2006)",
+    "Quantum Optics for Beginners, Z. Ficek and M. R. Wahiddin, 1 st edition, Jenny Stanford Publishing (2014)"
+   ],
+   "pages": [
+    36,
+    37
+   ],
+   "description": "",
+   "status_text": "optional / additional",
+   "status_sentence": "QT 11 is optional (an additional course); it is not mandatory.",
+   "topic_flat": [
+    {
+     "text": "Quantization of the electromagnetic field",
+     "path": [
+      "Quantization of the electromagnetic field"
+     ],
+     "level": 1,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Number states, coherent states, squeezed states",
+     "path": [
+      "Quantization of the electromagnetic field",
+      "Number states, coherent states, squeezed states"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Hanbury-Brown and Twiss experiments - Photon bunching, Photon anti bunching",
+     "path": [
+      "Quantization of the electromagnetic field",
+      "Hanbury-Brown and Twiss experiments - Photon bunching, Photon anti bunching"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Hong-Ou-Mandel interference",
+     "path": [
+      "Quantization of the electromagnetic field",
+      "Hong-Ou-Mandel interference"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Theory of Optical coherence",
+     "path": [
+      "Theory of Optical coherence"
+     ],
+     "level": 1,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Young's double slit experiment and first order coherence",
+     "path": [
+      "Theory of Optical coherence",
+      "Young's double slit experiment and first order coherence"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Coherence functions of arbitrary order",
+     "path": [
+      "Theory of Optical coherence",
+      "Coherence functions of arbitrary order"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Normal ordering, symmetric ordering and ani-normal ordering of operators",
+     "path": [
+      "Theory of Optical coherence",
+      "Normal ordering, symmetric ordering and ani-normal ordering of operators"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Interferometry",
+     "path": [
+      "Theory of Optical coherence",
+      "Interferometry"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Phase-space representations of states of light",
+     "path": [
+      "Phase-space representations of states of light"
+     ],
+     "level": 1,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Wigner distribution",
+     "path": [
+      "Phase-space representations of states of light",
+      "Wigner distribution"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "P-function and the notion of non-classicality with some examples of nonclassical states like squeezed states and their applications",
+     "path": [
+      "Phase-space representations of states of light",
+      "P-function and the notion of non-classicality with some examples of nonclassical states like squeezed states and their applications"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Husimi Q function",
+     "path": [
+      "Phase-space representations of states of light",
+      "Husimi Q function"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Light-matter interaction",
+     "path": [
+      "Light-matter interaction"
+     ],
+     "level": 1,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Classical model of light-matter interaction",
+     "path": [
+      "Light-matter interaction",
+      "Classical model of light-matter interaction"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Semi-classical model of light-matter interaction-",
+     "path": [
+      "Light-matter interaction",
+      "Semi-classical model of light-matter interaction-"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Quantum light-matter interaction",
+     "path": [
+      "Light-matter interaction",
+      "Quantum light-matter interaction"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Rabi Model",
+     "path": [
+      "Light-matter interaction",
+      "Rabi Model"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Jayne's-cummings model",
+     "path": [
+      "Light-matter interaction",
+      "Jayne's-cummings model"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Open quantum systems",
+     "path": [
+      "Open quantum systems"
+     ],
+     "level": 1,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Fermi golden rule",
+     "path": [
+      "Open quantum systems",
+      "Fermi golden rule"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    },
+    {
+     "text": "Born-Markov Lindblad Master Equation",
+     "path": [
+      "Open quantum systems",
+      "Born-Markov Lindblad Master Equation"
+     ],
+     "level": 2,
+     "page": 36,
+     "count": null
+    }
+   ]
+  }
+ },
+ "groups": [
+  {
+   "kind": "mandatory_all",
+   "text": "QT 01 and QT 02 are both Mandatory",
+   "members": [
+    "QT 01",
+    "QT 02"
+   ]
+  },
+  {
+   "kind": "at_least_one_of",
+   "text": "At least one of QT 03 and QT 04 is Mandatory",
+   "members": [
+    "QT 03",
+    "QT 04"
+   ]
+  },
+  {
+   "kind": "at_least_one_of",
+   "text": "At least one of QT 05, QT 06, QT 07, QT 08 is Mandatory",
+   "members": [
+    "QT 05",
+    "QT 06",
+    "QT 07",
+    "QT 08"
+   ]
+  },
+  {
+   "kind": "optional",
+   "text": "Optional / Additional Courses",
+   "members": [
+    "QT 09",
+    "QT 10",
+    "QT 11"
+   ]
+  }
+ ],
+ "prerequisites": "Prerequisites for all courses: Engineering Mathematics (Linear Algebra, Complex algebra, basics of 2 nd of ODEs and initial value problems, 2 nd order PDEs and boundary value problems, Probability and Statistics, Random variables). Maxwell's equations and EM theory at the level of the core physics syllabus from AICTE model curriculum."
+}

@@ -1,0 +1,434 @@
+[
+ {
+  "q": "How often is the gas cylinder booked?",
+  "source": "home.md",
+  "answer": "45",
+  "kind": "lexical"
+ },
+ {
+  "q": "How frequently must I order cooking fuel?",
+  "source": "home.md",
+  "answer": "45",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When is the society maintenance paid?",
+  "source": "home.md",
+  "answer": "10th",
+  "kind": "lexical"
+ },
+ {
+  "q": "By which day of the month must the building dues be cleared?",
+  "source": "home.md",
+  "answer": "10th",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "Where is the wifi router password stored?",
+  "source": "home.md",
+  "answer": "blue diary",
+  "kind": "lexical"
+ },
+ {
+  "q": "In what place do I look for the internet login secret?",
+  "source": "home.md",
+  "answer": "blue diary",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "Who services the geyser?",
+  "source": "home.md",
+  "answer": "Kulkarni",
+  "kind": "lexical"
+ },
+ {
+  "q": "Which person looks after the water heater each year?",
+  "source": "home.md",
+  "answer": "Kulkarni",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "How much water does the tulsi plant get?",
+  "source": "garden.md",
+  "answer": "half a mug",
+  "kind": "lexical"
+ },
+ {
+  "q": "What quantity of liquid goes to the holy basil daily?",
+  "source": "garden.md",
+  "answer": "half a mug",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When is the rose bush pruned?",
+  "source": "garden.md",
+  "answer": "February",
+  "kind": "lexical"
+ },
+ {
+  "q": "In which month do I cut back the flower shrub?",
+  "source": "garden.md",
+  "answer": "February",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When is the compost bin turned?",
+  "source": "garden.md",
+  "answer": "Sunday",
+  "kind": "lexical"
+ },
+ {
+  "q": "On which day of the week do I stir the kitchen waste heap?",
+  "source": "garden.md",
+  "answer": "Sunday",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "What is the neem oil spray ratio?",
+  "source": "garden.md",
+  "answer": "5 ml",
+  "kind": "lexical"
+ },
+ {
+  "q": "How much natural pesticide goes into each litre?",
+  "source": "garden.md",
+  "answer": "5 ml",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "How long does idli batter ferment in winter?",
+  "source": "kitchen.md",
+  "answer": "12 hours",
+  "kind": "lexical"
+ },
+ {
+  "q": "How many hours should the rice and lentil mix rest when it is cold?",
+  "source": "kitchen.md",
+  "answer": "12 hours",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "How many whistles for toor dal?",
+  "source": "kitchen.md",
+  "answer": "4 whistles",
+  "kind": "lexical"
+ },
+ {
+  "q": "For how long, counted in cooker sounds, should the pigeon pea lentils cook?",
+  "source": "kitchen.md",
+  "answer": "4 whistles",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "Which compartment holds the hing?",
+  "source": "kitchen.md",
+  "answer": "smallest",
+  "kind": "lexical"
+ },
+ {
+  "q": "Where in the masala container is the asafoetida?",
+  "source": "kitchen.md",
+  "answer": "smallest",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When is ghee made?",
+  "source": "kitchen.md",
+  "answer": "first Saturday",
+  "kind": "lexical"
+ },
+ {
+  "q": "On which day do I clarify butter?",
+  "source": "kitchen.md",
+  "answer": "first Saturday",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When is the health insurance premium due?",
+  "source": "finance.md",
+  "answer": "15 March",
+  "kind": "lexical"
+ },
+ {
+  "q": "By what date must I pay the medical cover renewal?",
+  "source": "finance.md",
+  "answer": "15 March",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When is the credit card bill paid?",
+  "source": "finance.md",
+  "answer": "22nd",
+  "kind": "lexical"
+ },
+ {
+  "q": "By which day do I clear the plastic money dues?",
+  "source": "finance.md",
+  "answer": "22nd",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When are the advance tax instalments due?",
+  "source": "finance.md",
+  "answer": "June, September, December",
+  "kind": "lexical"
+ },
+ {
+  "q": "In which months do I pay tax during the year in parts?",
+  "source": "finance.md",
+  "answer": "June, September, December",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When does the recurring deposit mature?",
+  "source": "finance.md",
+  "answer": "October 2027",
+  "kind": "lexical"
+ },
+ {
+  "q": "When will my monthly savings plan at the bank end?",
+  "source": "finance.md",
+  "answer": "October 2027",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "At what time does the Pune to Delhi train leave?",
+  "source": "travel.md",
+  "answer": "16:35",
+  "kind": "lexical"
+ },
+ {
+  "q": "When does my rail journey to the capital begin?",
+  "source": "travel.md",
+  "answer": "16:35",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When is passport renewal due?",
+  "source": "travel.md",
+  "answer": "12 August 2028",
+  "kind": "lexical"
+ },
+ {
+  "q": "By which date must my travel document be extended?",
+  "source": "travel.md",
+  "answer": "12 August 2028",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "For how many nights is the Jaipur hotel booked?",
+  "source": "travel.md",
+  "answer": "3 nights",
+  "kind": "lexical"
+ },
+ {
+  "q": "How long is my stay in the pink city?",
+  "source": "travel.md",
+  "answer": "3 nights",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "What is the check-in luggage limit?",
+  "source": "travel.md",
+  "answer": "20 kg",
+  "kind": "lexical"
+ },
+ {
+  "q": "How heavy can my suitcase be at the airline counter?",
+  "source": "travel.md",
+  "answer": "20 kg",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When does the thesis chapter draft go to the guide?",
+  "source": "study.md",
+  "answer": "30 November",
+  "kind": "lexical"
+ },
+ {
+  "q": "What is the deadline for sending my dissertation section to the supervisor?",
+  "source": "study.md",
+  "answer": "30 November",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When are library books returned?",
+  "source": "study.md",
+  "answer": "second Friday",
+  "kind": "lexical"
+ },
+ {
+  "q": "On which day of the fortnight do I give back borrowed volumes?",
+  "source": "study.md",
+  "answer": "second Friday",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "Where does the reading group meet?",
+  "source": "study.md",
+  "answer": "room 204",
+  "kind": "lexical"
+ },
+ {
+  "q": "Which place hosts the book discussion circle?",
+  "source": "study.md",
+  "answer": "room 204",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "How long are flashcards reviewed?",
+  "source": "study.md",
+  "answer": "20 minutes",
+  "kind": "lexical"
+ },
+ {
+  "q": "For how many minutes do I go through memory cards at night?",
+  "source": "study.md",
+  "answer": "20 minutes",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "How much RAM does the old laptop have?",
+  "source": "devices.md",
+  "answer": "8 GB",
+  "kind": "lexical"
+ },
+ {
+  "q": "What is the memory capacity of my ageing notebook computer?",
+  "source": "devices.md",
+  "answer": "8 GB",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When does the phone backup run?",
+  "source": "devices.md",
+  "answer": "2 am",
+  "kind": "lexical"
+ },
+ {
+  "q": "At what hour is the mobile data copied automatically?",
+  "source": "devices.md",
+  "answer": "2 am",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "What is the printer toner model?",
+  "source": "devices.md",
+  "answer": "TN-2420",
+  "kind": "lexical"
+ },
+ {
+  "q": "Which cartridge code do I buy for the office printer?",
+  "source": "devices.md",
+  "answer": "TN-2420",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "Where is the external hard disk kept?",
+  "source": "devices.md",
+  "answer": "steel cupboard",
+  "kind": "lexical"
+ },
+ {
+  "q": "In which storage place is the spare drive?",
+  "source": "devices.md",
+  "answer": "steel cupboard",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "What date is Sunita's birthday?",
+  "source": "people.md",
+  "answer": "9 September",
+  "kind": "lexical"
+ },
+ {
+  "q": "When does the annual celebration of Sunita's day of birth fall?",
+  "source": "people.md",
+  "answer": "9 September",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "What is the plumber's name?",
+  "source": "people.md",
+  "answer": "Raju",
+  "kind": "lexical"
+ },
+ {
+  "q": "Who do I call for leaking taps?",
+  "source": "people.md",
+  "answer": "Raju",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "Where is the anniversary dinner booked?",
+  "source": "people.md",
+  "answer": "Spice Garden",
+  "kind": "lexical"
+ },
+ {
+  "q": "Which restaurant will host our wedding-day meal?",
+  "source": "people.md",
+  "answer": "Spice Garden",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "When is the school parent meeting?",
+  "source": "people.md",
+  "answer": "last Saturday",
+  "kind": "lexical"
+ },
+ {
+  "q": "Which weekend day do I visit the teachers each month?",
+  "source": "people.md",
+  "answer": "last Saturday",
+  "kind": "paraphrase"
+ },
+ {
+  "q": "What is the phone number of the gas cylinder dealer?",
+  "source": null,
+  "answer": null,
+  "kind": "unanswerable"
+ },
+ {
+  "q": "What is the wifi router password?",
+  "source": null,
+  "answer": null,
+  "kind": "unanswerable"
+ },
+ {
+  "q": "Who won the cricket match yesterday?",
+  "source": null,
+  "answer": null,
+  "kind": "unanswerable"
+ },
+ {
+  "q": "What is the balance in my savings account?",
+  "source": null,
+  "answer": null,
+  "kind": "unanswerable"
+ },
+ {
+  "q": "How many whistles for chana dal?",
+  "source": null,
+  "answer": null,
+  "kind": "unanswerable"
+ },
+ {
+  "q": "What time does the Mumbai train leave?",
+  "source": null,
+  "answer": null,
+  "kind": "unanswerable"
+ },
+ {
+  "q": "In which room is the cooking class held?",
+  "source": null,
+  "answer": null,
+  "kind": "unanswerable"
+ },
+ {
+  "q": "What is the name of the electrician?",
+  "source": null,
+  "answer": null,
+  "kind": "unanswerable"
+ }
+]

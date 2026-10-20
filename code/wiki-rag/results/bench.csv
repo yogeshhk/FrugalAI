@@ -1,0 +1,10 @@
+stage,mode,kind,n,hit_at_1,hit_at_k,mrr,answer_correct,refused,retrieval_ms,generation_s,date
+retrieval,bm25,lexical,32,1.0,1.0,1.0,,,,,2026-10-20
+retrieval,bm25,paraphrase,32,0.219,0.344,0.276,,,,,2026-10-20
+retrieval,bm25,all,64,0.609,0.672,0.638,,,0.08,,2026-10-20
+retrieval,dense,lexical,32,0.969,1.0,0.984,,,,,2026-10-20
+retrieval,dense,paraphrase,32,0.812,0.938,0.88,,,,,2026-10-20
+retrieval,dense,all,64,0.891,0.969,0.932,,,2203.01,,2026-10-20
+retrieval,fused,lexical,32,1.0,1.0,1.0,,,,,2026-10-20
+retrieval,fused,paraphrase,32,0.688,0.906,0.815,,,,,2026-10-20
+retrieval,fused,all,64,0.844,0.953,0.908,,,2178.55,,2026-10-20

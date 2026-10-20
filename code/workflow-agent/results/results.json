@@ -1,0 +1,1429 @@
+{
+  "rows": [
+    {
+      "system": "workflow",
+      "n": 31,
+      "intent_accuracy": 1.0,
+      "success_rate": 1.0,
+      "invented_number_rate": 0.0,
+      "fallback_rate": 0.0,
+      "llm_calls_per_task": 2.0,
+      "tokens_per_task": 145,
+      "seconds_per_task": 0.0,
+      "date": "2026-10-20"
+    },
+    {
+      "system": "plain_prompt",
+      "n": 31,
+      "intent_accuracy": "",
+      "success_rate": 0.129,
+      "invented_number_rate": 0.0,
+      "fallback_rate": 0.0,
+      "llm_calls_per_task": 1.0,
+      "tokens_per_task": 31,
+      "seconds_per_task": 0.0,
+      "date": "2026-10-20"
+    }
+  ],
+  "details": {
+    "workflow": [
+      {
+        "id": "w1",
+        "message": "Will it rain in Pune today?",
+        "gold_intent": "weather",
+        "intent": "weather",
+        "reply": "Pune today: light rain, 24 C",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 113,
+          "completion_tokens": 7,
+          "seconds": 0.0,
+          "wall_seconds": 0.012
+        },
+        "trace": [
+          "classify: weather (model)",
+          "extract: place=pune, day=today",
+          "tool weather: Pune today: light rain, 24 C",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "w2",
+        "message": "What is the weather forecast for Nagpur tomorrow?",
+        "gold_intent": "weather",
+        "intent": "weather",
+        "reply": "Nagpur tomorrow: clear, 37 C",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 116,
+          "completion_tokens": 6,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: weather (model)",
+          "extract: place=nagpur, day=tomorrow",
+          "tool weather: Nagpur tomorrow: clear, 37 C",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "w3",
+        "message": "How hot will it be in Latur today?",
+        "gold_intent": "weather",
+        "intent": "weather",
+        "reply": "Latur today: hot and dry, 38 C",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 118,
+          "completion_tokens": 8,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: weather (model)",
+          "extract: place=latur, day=today",
+          "tool weather: Latur today: hot and dry, 38 C",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "w4",
+        "message": "Is a storm coming to Nashik tomorrow?",
+        "gold_intent": "weather",
+        "intent": "weather",
+        "reply": "Nashik tomorrow: showers, 23 C",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 114,
+          "completion_tokens": 6,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: weather (model)",
+          "extract: place=nashik, day=tomorrow",
+          "tool weather: Nashik tomorrow: showers, 23 C",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "w5",
+        "message": "Will it rain in Kolhapur today?",
+        "gold_intent": "weather",
+        "intent": "weather",
+        "reply": "NOT_FOUND: no forecast for that place",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 113,
+          "completion_tokens": 7,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: weather (model)",
+          "extract: place=kolhapur, day=today",
+          "tool weather: NOT_FOUND: no forecast for that place",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "p1",
+        "message": "What is the price of wheat in Pune market today?",
+        "gold_intent": "price",
+        "intent": "price",
+        "reply": "wheat at Pune: 2450 rupees per quintal (sample data)",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 124,
+          "completion_tokens": 10,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: price (model)",
+          "extract: crop=wheat, place=pune, day=today",
+          "tool price: wheat at Pune: 2450 rupees per quintal (sample data)",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "p2",
+        "message": "How much is onion selling for in Nashik?",
+        "gold_intent": "price",
+        "intent": "price",
+        "reply": "onion at Nashik: 1850 rupees per quintal (sample data)",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 120,
+          "completion_tokens": 10,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: price (model)",
+          "extract: crop=onion, place=nashik",
+          "tool price: onion at Nashik: 1850 rupees per quintal (sample data)",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "p3",
+        "message": "Tell me today's cotton rate at Nagpur.",
+        "gold_intent": "price",
+        "intent": "price",
+        "reply": "cotton at Nagpur: 6900 rupees per quintal (sample data)",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 118,
+          "completion_tokens": 10,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: price (model)",
+          "extract: crop=cotton, place=nagpur, day=today",
+          "tool price: cotton at Nagpur: 6900 rupees per quintal (sample data)",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "p4",
+        "message": "What rate is the mandi giving for soybean in Latur?",
+        "gold_intent": "price",
+        "intent": "price",
+        "reply": "soybean at Latur: 4600 rupees per quintal (sample data)",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 124,
+          "completion_tokens": 10,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: price (model)",
+          "extract: crop=soybean, place=latur",
+          "tool price: soybean at Latur: 4600 rupees per quintal (sample data)",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "p5",
+        "message": "What is the price of saffron in Pune?",
+        "gold_intent": "price",
+        "intent": "price",
+        "reply": "NOT_FOUND: no price for that crop and place",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 119,
+          "completion_tokens": 9,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: price (model)",
+          "extract: crop=saffron, place=pune",
+          "tool price: NOT_FOUND: no price for that crop and place",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "p6",
+        "message": "What is the tomato price?",
+        "gold_intent": "price",
+        "intent": "price",
+        "reply": "tomato: Pune 1200 rupees per quintal (sample data)",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 113,
+          "completion_tokens": 9,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: price (model)",
+          "extract: crop=tomato",
+          "tool price: tomato: Pune 1200 rupees per quintal (sample data)",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "d1",
+        "message": "My tomato leaves have yellow spots, what disease is this?",
+        "gold_intent": "pest",
+        "intent": "pest",
+        "reply": "Yellow spots or leaves can come from a virus, a fungus or lack of nutrients. Remove the worst leaves and show a leaf to the agriculture officer. This is decision support only.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 147,
+          "completion_tokens": 33,
+          "seconds": 0.0,
+          "wall_seconds": 0.005
+        },
+        "trace": [
+          "classify: pest (model)",
+          "extract: crop=tomato, symptom=yellow",
+          "tool pest: Yellow spots or leaves can come from a virus, a fungus or la",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "d2",
+        "message": "There are insects eating my cotton plants, what should I spray?",
+        "gold_intent": "pest",
+        "intent": "pest",
+        "reply": "Insects on the plants: check the underside of leaves, use a neem oil spray in the evening and ask the agriculture officer before any chemical. This is decision support only.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 147,
+          "completion_tokens": 31,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: pest (model)",
+          "extract: crop=cotton, symptom=insect",
+          "tool pest: Insects on the plants: check the underside of leaves, use a ",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "d3",
+        "message": "How do I stop worms in my maize crop?",
+        "gold_intent": "pest",
+        "intent": "pest",
+        "reply": "Worms in the crop: pick off visible worms, set pheromone traps and ask the agriculture officer which spray is safe for this crop. This is decision support only.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 141,
+          "completion_tokens": 29,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: pest (model)",
+          "extract: crop=maize, symptom=worm",
+          "tool pest: Worms in the crop: pick off visible worms, set pheromone tra",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "d4",
+        "message": "White powder on my wheat leaves, what is it?",
+        "gold_intent": "pest",
+        "intent": "pest",
+        "reply": "White powder on leaves is usually a fungus: remove infected leaves, keep the leaves dry and ask the agriculture officer for the right fungicide. This is decision support only.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 142,
+          "completion_tokens": 30,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: pest (model)",
+          "extract: crop=wheat, symptom=powder",
+          "tool pest: White powder on leaves is usually a fungus: remove infected ",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "d5",
+        "message": "My onion plants are wilting and the roots look rotten.",
+        "gold_intent": "pest",
+        "intent": "pest",
+        "reply": "Wilting with rotten roots points to a root rot: improve drainage, stop over-watering and show the plant to the agriculture officer. This is decision support only.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 141,
+          "completion_tokens": 27,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: pest (model)",
+          "extract: crop=onion, symptom=wilt",
+          "tool pest: Wilting with rotten roots points to a root rot: improve drai",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "s1",
+        "message": "What documents do I need for crop insurance?",
+        "gold_intent": "scheme",
+        "intent": "scheme",
+        "reply": "Crop insurance: documents needed are the land record, bank passbook and Aadhaar card. Last date to apply is 31 July. Apply at your bank or the block office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 139,
+          "completion_tokens": 29,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: scheme (model)",
+          "extract: scheme=crop insurance",
+          "tool scheme: Crop insurance: documents needed are the land record, bank p",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "s2",
+        "message": "When does the application for crop insurance close?",
+        "gold_intent": "scheme",
+        "intent": "scheme",
+        "reply": "Crop insurance: documents needed are the land record, bank passbook and Aadhaar card. Last date to apply is 31 July. Apply at your bank or the block office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 139,
+          "completion_tokens": 29,
+          "seconds": 0.0,
+          "wall_seconds": 0.007
+        },
+        "trace": [
+          "classify: scheme (model)",
+          "extract: scheme=crop insurance",
+          "tool scheme: Crop insurance: documents needed are the land record, bank p",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "s3",
+        "message": "Am I eligible for the farm loan scheme?",
+        "gold_intent": "scheme",
+        "intent": "scheme",
+        "reply": "Farm loan scheme: any farmer with a land record can apply at the cooperative bank. Documents needed are the land record and Aadhaar card. Interest is 4 percent for repayment on time.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 143,
+          "completion_tokens": 33,
+          "seconds": 0.0,
+          "wall_seconds": 0.008
+        },
+        "trace": [
+          "classify: scheme (model)",
+          "extract: scheme=loan",
+          "tool scheme: Farm loan scheme: any farmer with a land record can apply at",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "s4",
+        "message": "How do I apply for the drip irrigation subsidy?",
+        "gold_intent": "scheme",
+        "intent": "scheme",
+        "reply": "Drip irrigation subsidy: 55 percent of the cost for small farmers. Apply at the agriculture office with a land record and a quotation from the dealer.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 139,
+          "completion_tokens": 27,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: scheme (model)",
+          "extract: scheme=drip",
+          "tool scheme: Drip irrigation subsidy: 55 percent of the cost for small fa",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "s5",
+        "message": "Tell me about the pension scheme for farmers.",
+        "gold_intent": "scheme",
+        "intent": "scheme",
+        "reply": "Farmer pension scheme: open to farmers aged 18 to 40. The monthly payment is 100 rupees. Enrol at the nearest common service centre.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 134,
+          "completion_tokens": 24,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: scheme (model)",
+          "extract: scheme=pension",
+          "tool scheme: Farmer pension scheme: open to farmers aged 18 to 40. The mo",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "s6",
+        "message": "How do I apply for the solar pump subsidy?",
+        "gold_intent": "scheme",
+        "intent": "scheme",
+        "reply": "NOT_FOUND: no such scheme",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 117,
+          "completion_tokens": 5,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: scheme (model)",
+          "extract: ",
+          "tool scheme: NOT_FOUND: no such scheme",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "r1",
+        "message": "My tractor will not start, what should I check?",
+        "gold_intent": "repair",
+        "intent": "repair",
+        "reply": "Tractor that will not start: check fuel, battery terminals and the air filter first. If it still fails, take it to the nearest service centre.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 138,
+          "completion_tokens": 26,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: repair (model)",
+          "extract: tool=tractor",
+          "tool repair: Tractor that will not start: check fuel, battery terminals a",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "r2",
+        "message": "The water pump is not lifting water, who can help?",
+        "gold_intent": "repair",
+        "intent": "repair",
+        "reply": "Water pump problem: check the foot valve, the suction pipe for air leaks and the power supply. Prime the pump again before restarting.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 138,
+          "completion_tokens": 24,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: repair (model)",
+          "extract: tool=water pump",
+          "tool repair: Water pump problem: check the foot valve, the suction pipe f",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "r3",
+        "message": "How do I fix my sprayer nozzle?",
+        "gold_intent": "repair",
+        "intent": "repair",
+        "reply": "Sprayer problem: clean the nozzle, check the seals and the pressure valve. Rinse the tank after each use.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 127,
+          "completion_tokens": 19,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: repair (model)",
+          "extract: tool=sprayer",
+          "tool repair: Sprayer problem: clean the nozzle, check the seals and the p",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "r4",
+        "message": "My tiller stopped working yesterday, please help.",
+        "gold_intent": "repair",
+        "intent": "repair",
+        "reply": "Tiller problem: check the engine oil, the spark plug and the blade bolts before starting.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 124,
+          "completion_tokens": 16,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: repair (model)",
+          "extract: tool=tiller",
+          "tool repair: Tiller problem: check the engine oil, the spark plug and the",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "r5",
+        "message": "My harvester makes a loud noise, any advice?",
+        "gold_intent": "repair",
+        "intent": "repair",
+        "reply": "NOT_FOUND: no guide for that machine",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 117,
+          "completion_tokens": 7,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: repair (model)",
+          "extract: ",
+          "tool repair: NOT_FOUND: no guide for that machine",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "o1",
+        "message": "Good morning, how are you?",
+        "gold_intent": "other",
+        "intent": "other",
+        "reply": "Hello. I can help with weather, market prices, crop problems, schemes and farm machine repair.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 120,
+          "completion_tokens": 16,
+          "seconds": 0.0,
+          "wall_seconds": 0.004
+        },
+        "trace": [
+          "classify: other (model)",
+          "extract: ",
+          "tool other: Hello. I can help with weather, market prices, crop problems",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "o2",
+        "message": "Thank you for your help.",
+        "gold_intent": "other",
+        "intent": "other",
+        "reply": "Hello. I can help with weather, market prices, crop problems, schemes and farm machine repair.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 120,
+          "completion_tokens": 16,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: other (model)",
+          "extract: ",
+          "tool other: Hello. I can help with weather, market prices, crop problems",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "o3",
+        "message": "Can you speak Marathi?",
+        "gold_intent": "other",
+        "intent": "other",
+        "reply": "Hello. I can help with weather, market prices, crop problems, schemes and farm machine repair.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 118,
+          "completion_tokens": 16,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: other (model)",
+          "extract: ",
+          "tool other: Hello. I can help with weather, market prices, crop problems",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "o4",
+        "message": "What is the capital of India?",
+        "gold_intent": "other",
+        "intent": "other",
+        "reply": "Hello. I can help with weather, market prices, crop problems, schemes and farm machine repair.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 2,
+          "prompt_tokens": 122,
+          "completion_tokens": 16,
+          "seconds": 0.0,
+          "wall_seconds": 0.003
+        },
+        "trace": [
+          "classify: other (model)",
+          "extract: ",
+          "tool other: Hello. I can help with weather, market prices, crop problems",
+          "compose: attempt 1",
+          "check: ok"
+        ],
+        "intent_ok": true,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      }
+    ],
+    "plain_prompt": [
+      {
+        "id": "w1",
+        "message": "Will it rain in Pune today?",
+        "gold_intent": "weather",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 21,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "w2",
+        "message": "What is the weather forecast for Nagpur tomorrow?",
+        "gold_intent": "weather",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 23,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "w3",
+        "message": "How hot will it be in Latur today?",
+        "gold_intent": "weather",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 23,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "w4",
+        "message": "Is a storm coming to Nashik tomorrow?",
+        "gold_intent": "weather",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 22,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "w5",
+        "message": "Will it rain in Kolhapur today?",
+        "gold_intent": "weather",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 21,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "p1",
+        "message": "What is the price of wheat in Pune market today?",
+        "gold_intent": "price",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 25,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "p2",
+        "message": "How much is onion selling for in Nashik?",
+        "gold_intent": "price",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 23,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "p3",
+        "message": "Tell me today's cotton rate at Nagpur.",
+        "gold_intent": "price",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 22,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "p4",
+        "message": "What rate is the mandi giving for soybean in Latur?",
+        "gold_intent": "price",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 25,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "p5",
+        "message": "What is the price of saffron in Pune?",
+        "gold_intent": "price",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 23,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "p6",
+        "message": "What is the tomato price?",
+        "gold_intent": "price",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 20,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "d1",
+        "message": "My tomato leaves have yellow spots, what disease is this?",
+        "gold_intent": "pest",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 25,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "d2",
+        "message": "There are insects eating my cotton plants, what should I spray?",
+        "gold_intent": "pest",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 26,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "d3",
+        "message": "How do I stop worms in my maize crop?",
+        "gold_intent": "pest",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 24,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "d4",
+        "message": "White powder on my wheat leaves, what is it?",
+        "gold_intent": "pest",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 24,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "d5",
+        "message": "My onion plants are wilting and the roots look rotten.",
+        "gold_intent": "pest",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 25,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "s1",
+        "message": "What documents do I need for crop insurance?",
+        "gold_intent": "scheme",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 23,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "s2",
+        "message": "When does the application for crop insurance close?",
+        "gold_intent": "scheme",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 23,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "s3",
+        "message": "Am I eligible for the farm loan scheme?",
+        "gold_intent": "scheme",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 23,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "s4",
+        "message": "How do I apply for the drip irrigation subsidy?",
+        "gold_intent": "scheme",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 24,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "s5",
+        "message": "Tell me about the pension scheme for farmers.",
+        "gold_intent": "scheme",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 23,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "s6",
+        "message": "How do I apply for the solar pump subsidy?",
+        "gold_intent": "scheme",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 24,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "r1",
+        "message": "My tractor will not start, what should I check?",
+        "gold_intent": "repair",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 24,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "r2",
+        "message": "The water pump is not lifting water, who can help?",
+        "gold_intent": "repair",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 25,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "r3",
+        "message": "How do I fix my sprayer nozzle?",
+        "gold_intent": "repair",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 22,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "r4",
+        "message": "My tiller stopped working yesterday, please help.",
+        "gold_intent": "repair",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 22,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "r5",
+        "message": "My harvester makes a loud noise, any advice?",
+        "gold_intent": "repair",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 23,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": true,
+        "invented": [],
+        "success": true
+      },
+      {
+        "id": "o1",
+        "message": "Good morning, how are you?",
+        "gold_intent": "other",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 20,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "o2",
+        "message": "Thank you for your help.",
+        "gold_intent": "other",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 20,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "o3",
+        "message": "Can you speak Marathi?",
+        "gold_intent": "other",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 19,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      },
+      {
+        "id": "o4",
+        "message": "What is the capital of India?",
+        "gold_intent": "other",
+        "intent": null,
+        "reply": "I am not sure, please contact the office.",
+        "fallback": false,
+        "cost": {
+          "llm_calls": 1,
+          "prompt_tokens": 21,
+          "completion_tokens": 8,
+          "seconds": 0.0
+        },
+        "trace": [],
+        "intent_ok": null,
+        "facts_ok": false,
+        "invented": [],
+        "success": false
+      }
+    ]
+  }
+}

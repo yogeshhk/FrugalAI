@@ -1,0 +1,523 @@
+[
+ {
+  "id": "c01",
+  "label": "covered",
+  "entries": [
+   "entanglement_and_locality/entanglement_no_signaling"
+  ],
+  "text": "Can entangled particles be used to send messages instantly?",
+  "top_score": 0.7838,
+  "top_key": "entanglement_and_locality/entanglement_no_signaling",
+  "top3": [
+   "entanglement_and_locality/entanglement_no_signaling",
+   "capability_and_hype/np_complete_myth",
+   "superposition_and_measurement/bloch_sphere_multi_qubit_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c02",
+  "label": "covered",
+  "entries": [
+   "superposition_and_measurement/qubit_vs_probabilistic_bit"
+  ],
+  "text": "Is a qubit just a classical bit with probabilities attached?",
+  "top_score": 0.8708,
+  "top_key": "superposition_and_measurement/qubit_vs_probabilistic_bit",
+  "top3": [
+   "superposition_and_measurement/qubit_vs_probabilistic_bit",
+   "entanglement_and_locality/no_cloning_theorem",
+   "capability_and_hype/quantum_inspired_algorithms_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c03",
+  "label": "covered",
+  "entries": [
+   "entanglement_and_locality/no_cloning_theorem"
+  ],
+  "text": "Why can't a quantum state be duplicated like a file?",
+  "top_score": 0.7638,
+  "top_key": "entanglement_and_locality/no_cloning_theorem",
+  "top3": [
+   "entanglement_and_locality/no_cloning_theorem",
+   "superposition_and_measurement/operator_defines_the_basis",
+   "computation_basics/two_qubit_state_is_two_vectors_stacked_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c04",
+  "label": "covered",
+  "entries": [
+   "hardware/cooling_and_temperature"
+  ],
+  "text": "Do I need liquid helium temperatures for every kind of quantum computer?",
+  "top_score": 0.8297,
+  "top_key": "hardware/cooling_and_temperature",
+  "top3": [
+   "hardware/cooling_and_temperature",
+   "capability_and_hype/quantum_annealing_universality_myth",
+   "capability_and_hype/np_complete_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c05",
+  "label": "covered",
+  "entries": [
+   "capability_and_hype/qubit_count_vs_power"
+  ],
+  "text": "Is a 1000 qubit machine automatically ten times better than a 100 qubit machine?",
+  "top_score": 0.8618,
+  "top_key": "capability_and_hype/qubit_count_vs_power",
+  "top3": [
+   "capability_and_hype/qubit_count_vs_power",
+   "hardware/logical_vs_physical_qubits",
+   "computation_basics/arithmetic_and_speedup"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c06",
+  "label": "covered",
+  "entries": [
+   "hardware/logical_vs_physical_qubits"
+  ],
+  "text": "How is a logical qubit different from the physical qubits it is built from?",
+  "top_score": 0.8478,
+  "top_key": "hardware/logical_vs_physical_qubits",
+  "top3": [
+   "hardware/logical_vs_physical_qubits",
+   "entanglement_and_locality/no_cloning_theorem",
+   "computation_basics/arithmetic_and_speedup"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c07",
+  "label": "covered",
+  "entries": [
+   "capability_and_hype/quantum_will_replace_classical_myth"
+  ],
+  "text": "Will classical computers become obsolete once quantum ones arrive?",
+  "top_score": 0.8588,
+  "top_key": "capability_and_hype/quantum_will_replace_classical_myth",
+  "top3": [
+   "capability_and_hype/quantum_will_replace_classical_myth",
+   "capability_and_hype/quantum_supremacy_not_general_speedup",
+   "computation_basics/any_classical_function_runs_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c08",
+  "label": "covered",
+  "entries": [
+   "entanglement_and_locality/teleportation_misconception"
+  ],
+  "text": "Does teleportation transfer matter instantaneously?",
+  "top_score": 0.7634,
+  "top_key": "entanglement_and_locality/teleportation_misconception",
+  "top3": [
+   "entanglement_and_locality/teleportation_misconception",
+   "entanglement_and_locality/entanglement_no_signaling",
+   "capability_and_hype/np_complete_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c09",
+  "label": "covered",
+  "entries": [
+   "computation_basics/arithmetic_and_speedup"
+  ],
+  "text": "Why is quantum addition not faster than ordinary addition?",
+  "top_score": 0.8002,
+  "top_key": "computation_basics/arithmetic_and_speedup",
+  "top3": [
+   "computation_basics/arithmetic_and_speedup",
+   "capability_and_hype/np_complete_myth",
+   "capability_and_hype/quantum_inspired_algorithms_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c10",
+  "label": "covered",
+  "entries": [
+   "superposition_and_measurement/observer_effect_and_schrodingers_cat"
+  ],
+  "text": "Does the observer's mind collapse the wavefunction, and what about the cat?",
+  "top_score": 0.814,
+  "top_key": "superposition_and_measurement/observer_effect_and_schrodingers_cat",
+  "top3": [
+   "superposition_and_measurement/observer_effect_and_schrodingers_cat",
+   "superposition_and_measurement/wavefunction_as_physical_smear_myth",
+   "superposition_and_measurement/wavefunction_not_physical_space"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c11",
+  "label": "covered",
+  "entries": [
+   "capability_and_hype/quantum_annealing_universality_myth"
+  ],
+  "text": "Can D-Wave style annealers run any quantum algorithm?",
+  "top_score": 0.8093,
+  "top_key": "capability_and_hype/quantum_annealing_universality_myth",
+  "top3": [
+   "capability_and_hype/quantum_annealing_universality_myth",
+   "capability_and_hype/quantum_inspired_algorithms_myth",
+   "capability_and_hype/np_complete_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c12",
+  "label": "covered",
+  "entries": [
+   "superposition_and_measurement/quantum_parallelism_myth"
+  ],
+  "text": "Does a quantum computer try every possible answer simultaneously in other universes?",
+  "top_score": 0.8726,
+  "top_key": "superposition_and_measurement/quantum_parallelism_myth",
+  "top3": [
+   "superposition_and_measurement/quantum_parallelism_myth",
+   "capability_and_hype/np_complete_myth",
+   "computation_basics/arithmetic_and_speedup"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c13",
+  "label": "covered",
+  "entries": [
+   "hardware/bit_flip_code_protects_everything_myth"
+  ],
+  "text": "Does the three-qubit bit-flip code fix all kinds of qubit errors?",
+  "top_score": 0.8507,
+  "top_key": "hardware/bit_flip_code_protects_everything_myth",
+  "top3": [
+   "hardware/bit_flip_code_protects_everything_myth",
+   "computation_basics/swap_is_not_free_myth",
+   "computation_basics/each_wire_carries_four_dimensional_state_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c14",
+  "label": "covered",
+  "entries": [
+   "capability_and_hype/deeper_qaoa_always_better_myth"
+  ],
+  "text": "Are more QAOA layers always better?",
+  "top_score": 0.8579,
+  "top_key": "capability_and_hype/deeper_qaoa_always_better_myth",
+  "top3": [
+   "capability_and_hype/deeper_qaoa_always_better_myth",
+   "capability_and_hype/qubit_count_vs_power",
+   "superposition_and_measurement/hadamard_adds_second_wire_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c15",
+  "label": "covered",
+  "entries": [
+   "computation_basics/swap_is_not_free_myth"
+  ],
+  "text": "Is exchanging two qubits with SWAP costless?",
+  "top_score": 0.7703,
+  "top_key": "computation_basics/swap_is_not_free_myth",
+  "top3": [
+   "computation_basics/swap_is_not_free_myth",
+   "hardware/bit_flip_code_protects_everything_myth",
+   "computation_basics/two_qubit_state_is_two_vectors_stacked_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c16",
+  "label": "covered",
+  "entries": [
+   "superposition_and_measurement/wavefunction_not_physical_space",
+   "superposition_and_measurement/wavefunction_as_physical_smear_myth"
+  ],
+  "text": "Is the wavefunction a real wave in physical space?",
+  "top_score": 0.8369,
+  "top_key": "superposition_and_measurement/wavefunction_not_physical_space",
+  "top3": [
+   "superposition_and_measurement/wavefunction_not_physical_space",
+   "superposition_and_measurement/wavefunction_as_physical_smear_myth",
+   "superposition_and_measurement/complementarity_wave_particle_both_at_once_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c17",
+  "label": "covered",
+  "entries": [
+   "capability_and_hype/quantum_and_encryption_myth"
+  ],
+  "text": "Will quantum computers make all current encryption useless?",
+  "top_score": 0.8053,
+  "top_key": "capability_and_hype/quantum_and_encryption_myth",
+  "top3": [
+   "capability_and_hype/quantum_and_encryption_myth",
+   "hardware/cooling_and_temperature",
+   "computation_basics/any_classical_function_runs_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c18",
+  "label": "covered",
+  "entries": [
+   "capability_and_hype/np_complete_myth"
+  ],
+  "text": "Can NP-hard problems now be solved efficiently by quantum machines?",
+  "top_score": 0.8767,
+  "top_key": "capability_and_hype/np_complete_myth",
+  "top3": [
+   "capability_and_hype/np_complete_myth",
+   "computation_basics/arithmetic_and_speedup",
+   "capability_and_hype/quantum_inspired_algorithms_myth"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c19",
+  "label": "covered",
+  "entries": [
+   "hardware/error_correction_threshold"
+  ],
+  "text": "What does below threshold mean for error correction?",
+  "top_score": 0.8499,
+  "top_key": "hardware/error_correction_threshold",
+  "top3": [
+   "hardware/error_correction_threshold",
+   "superposition_and_measurement/hadamard_adds_second_wire_myth",
+   "capability_and_hype/qubit_count_vs_power"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "c20",
+  "label": "covered",
+  "entries": [
+   "hardware/why_atoms_dont_collapse"
+  ],
+  "text": "Why do atoms not radiate away and collapse if electrons orbit the nucleus?",
+  "top_score": 0.8442,
+  "top_key": "hardware/why_atoms_dont_collapse",
+  "top3": [
+   "hardware/why_atoms_dont_collapse",
+   "superposition_and_measurement/hydrogen_orbitals_generalize_myth",
+   "superposition_and_measurement/observer_effect_and_schrodingers_cat"
+  ],
+  "top1_ok": true,
+  "top3_ok": true
+ },
+ {
+  "id": "n01",
+  "label": "new",
+  "entries": [],
+  "text": "Why does a quantum computer need a classical computer to control it and read its results?",
+  "top_score": 0.8038,
+  "top_key": "computation_basics/arithmetic_and_speedup",
+  "top3": [
+   "computation_basics/arithmetic_and_speedup",
+   "computation_basics/any_classical_function_runs_myth",
+   "capability_and_hype/quantum_inspired_algorithms_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n02",
+  "label": "new",
+  "entries": [],
+  "text": "Is a quantum random number generator the same thing as a quantum computer?",
+  "top_score": 0.7764,
+  "top_key": "computation_basics/arithmetic_and_speedup",
+  "top3": [
+   "computation_basics/arithmetic_and_speedup",
+   "superposition_and_measurement/quantum_parallelism_myth",
+   "capability_and_hype/quantum_annealing_universality_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n03",
+  "label": "new",
+  "entries": [],
+  "text": "What does quantum volume measure, and can I compare two machines with it?",
+  "top_score": 0.7335,
+  "top_key": "superposition_and_measurement/quantum_parallelism_myth",
+  "top3": [
+   "superposition_and_measurement/quantum_parallelism_myth",
+   "capability_and_hype/quantum_annealing_universality_myth",
+   "capability_and_hype/qubit_count_vs_power"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n04",
+  "label": "new",
+  "entries": [],
+  "text": "What is a quantum compiler, and what does transpiling a circuit actually do?",
+  "top_score": 0.7137,
+  "top_key": "computation_basics/arithmetic_and_speedup",
+  "top3": [
+   "computation_basics/arithmetic_and_speedup",
+   "capability_and_hype/quantum_inspired_algorithms_myth",
+   "computation_basics/any_classical_function_runs_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n05",
+  "label": "new",
+  "entries": [],
+  "text": "What is a Clifford gate, and why are Clifford circuits said to be easy to simulate on a normal computer?",
+  "top_score": 0.7095,
+  "top_key": "capability_and_hype/np_complete_myth",
+  "top3": [
+   "capability_and_hype/np_complete_myth",
+   "computation_basics/swap_is_not_free_myth",
+   "computation_basics/arithmetic_and_speedup"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n06",
+  "label": "new",
+  "entries": [],
+  "text": "How do trapped-ion qubits and superconducting qubits differ in gate speed and connectivity?",
+  "top_score": 0.7002,
+  "top_key": "computation_basics/each_wire_carries_four_dimensional_state_myth",
+  "top3": [
+   "computation_basics/each_wire_carries_four_dimensional_state_myth",
+   "computation_basics/swap_is_not_free_myth",
+   "capability_and_hype/np_complete_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n07",
+  "label": "new",
+  "entries": [],
+  "text": "How does the quantum Fourier transform differ from the classical fast Fourier transform?",
+  "top_score": 0.6919,
+  "top_key": "superposition_and_measurement/global_vs_relative_phase",
+  "top3": [
+   "superposition_and_measurement/global_vs_relative_phase",
+   "computation_basics/arithmetic_and_speedup",
+   "capability_and_hype/quantum_inspired_algorithms_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n08",
+  "label": "new",
+  "entries": [],
+  "text": "What does the T gate do, and why is it expensive to build in a fault-tolerant machine?",
+  "top_score": 0.676,
+  "top_key": "computation_basics/swap_is_not_free_myth",
+  "top3": [
+   "computation_basics/swap_is_not_free_myth",
+   "capability_and_hype/quantum_annealing_universality_myth",
+   "capability_and_hype/np_complete_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n09",
+  "label": "new",
+  "entries": [],
+  "text": "What is the difference between a qubit's T1 and T2 times?",
+  "top_score": 0.7095,
+  "top_key": "computation_basics/two_qubit_state_is_two_vectors_stacked_myth",
+  "top3": [
+   "computation_basics/two_qubit_state_is_two_vectors_stacked_myth",
+   "hardware/logical_vs_physical_qubits",
+   "superposition_and_measurement/hadamard_adds_second_wire_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n10",
+  "label": "new",
+  "entries": [],
+  "text": "Do quantum computers use more electricity than a classical supercomputer?",
+  "top_score": 0.8098,
+  "top_key": "capability_and_hype/quantum_will_replace_classical_myth",
+  "top3": [
+   "capability_and_hype/quantum_will_replace_classical_myth",
+   "computation_basics/arithmetic_and_speedup",
+   "superposition_and_measurement/quantum_parallelism_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n11",
+  "label": "new",
+  "entries": [],
+  "text": "Can I run real quantum programs for free on a cloud machine, and how do the queues work?",
+  "top_score": 0.7261,
+  "top_key": "capability_and_hype/np_complete_myth",
+  "top3": [
+   "capability_and_hype/np_complete_myth",
+   "capability_and_hype/quantum_annealing_universality_myth",
+   "capability_and_hype/quantum_inspired_algorithms_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ },
+ {
+  "id": "n12",
+  "label": "new",
+  "entries": [],
+  "text": "What is measurement-based quantum computing with cluster states?",
+  "top_score": 0.7011,
+  "top_key": "superposition_and_measurement/operator_defines_the_basis",
+  "top3": [
+   "superposition_and_measurement/operator_defines_the_basis",
+   "capability_and_hype/np_complete_myth",
+   "capability_and_hype/quantum_annealing_universality_myth"
+  ],
+  "top1_ok": false,
+  "top3_ok": false
+ }
+]

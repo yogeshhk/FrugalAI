@@ -21,6 +21,13 @@ chroma/
 *.faiss
 .wikirag/
 
+# Generated caches and downloads (rebuilt by the project commands)
+code/quantum-wiki/models/
+code/quantum-wiki/parsed/embeddings.json
+code/quantum-wiki/parsed/curriculum.json
+code/workflow-agent/cache/
+code/finetune-slm/results/gate_*.json
+
 # Local scratch
 scratch/
 *.log

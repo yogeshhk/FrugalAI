@@ -1,0 +1,32 @@
+{
+ "draft": [
+  {
+   "system": "workflow",
+   "n": 12,
+   "lint_pass_rate": 0.5,
+   "fallacy_quote_rate": 0.0,
+   "novel_number_rate": 0.667,
+   "novel_url_rate": 0.0,
+   "term_recall": 0.158,
+   "similarity_to_real": 0.842,
+   "llm_calls": 2.17,
+   "tokens": 2321,
+   "seconds": 26.9,
+   "date": "2026-10-20"
+  },
+  {
+   "system": "single_prompt",
+   "n": 12,
+   "lint_pass_rate": 0.5,
+   "fallacy_quote_rate": 0.0,
+   "novel_number_rate": 0.0,
+   "novel_url_rate": 0.0,
+   "term_recall": 0.217,
+   "similarity_to_real": 0.893,
+   "llm_calls": 1.0,
+   "tokens": 487,
+   "seconds": 10.8,
+   "date": "2026-10-20"
+  }
+ ]
+}

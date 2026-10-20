@@ -1,0 +1,330 @@
+[
+ {
+  "page": 14,
+  "rows": 16,
+  "cols": 3,
+  "cells": [
+   {
+    "r0": 0,
+    "r1": 1,
+    "c0": 0,
+    "c1": 1,
+    "text": "Course code",
+    "header": true
+   },
+   {
+    "r0": 0,
+    "r1": 1,
+    "c0": 1,
+    "c1": 2,
+    "text": "Title",
+    "header": true
+   },
+   {
+    "r0": 0,
+    "r1": 1,
+    "c0": 2,
+    "c1": 3,
+    "text": "Credits (Theory: Lab)",
+    "header": true
+   },
+   {
+    "r0": 1,
+    "r1": 2,
+    "c0": 0,
+    "c1": 3,
+    "text": "QT 01 and QT 02 are both Mandatory",
+    "header": false
+   },
+   {
+    "r0": 2,
+    "r1": 3,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 01",
+    "header": false
+   },
+   {
+    "r0": 2,
+    "r1": 3,
+    "c0": 1,
+    "c1": 2,
+    "text": "Survey of Quantum technologies and Applications",
+    "header": false
+   },
+   {
+    "r0": 2,
+    "r1": 3,
+    "c0": 2,
+    "c1": 3,
+    "text": "3:0",
+    "header": false
+   },
+   {
+    "r0": 3,
+    "r1": 4,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 02",
+    "header": false
+   },
+   {
+    "r0": 3,
+    "r1": 4,
+    "c0": 1,
+    "c1": 2,
+    "text": "Foundations of Quantum Technologies",
+    "header": false
+   },
+   {
+    "r0": 3,
+    "r1": 4,
+    "c0": 2,
+    "c1": 3,
+    "text": "3:0",
+    "header": false
+   },
+   {
+    "r0": 4,
+    "r1": 5,
+    "c0": 0,
+    "c1": 3,
+    "text": "At least one of QT 03 and QT 04 is Mandatory",
+    "header": false
+   },
+   {
+    "r0": 5,
+    "r1": 6,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 03",
+    "header": false
+   },
+   {
+    "r0": 5,
+    "r1": 6,
+    "c0": 1,
+    "c1": 2,
+    "text": "Basic Programming Lab",
+    "header": false
+   },
+   {
+    "r0": 5,
+    "r1": 6,
+    "c0": 2,
+    "c1": 3,
+    "text": "2:1",
+    "header": false
+   },
+   {
+    "r0": 6,
+    "r1": 7,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 04",
+    "header": false
+   },
+   {
+    "r0": 6,
+    "r1": 7,
+    "c0": 1,
+    "c1": 2,
+    "text": "Basic Laboratory Course for Quantum Technologies",
+    "header": false
+   },
+   {
+    "r0": 6,
+    "r1": 7,
+    "c0": 2,
+    "c1": 3,
+    "text": "2:1",
+    "header": false
+   },
+   {
+    "r0": 7,
+    "r1": 8,
+    "c0": 0,
+    "c1": 3,
+    "text": "At least one of QT 05, QT 06, QT 07, QT 08 is Mandatory",
+    "header": false
+   },
+   {
+    "r0": 8,
+    "r1": 9,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 05",
+    "header": false
+   },
+   {
+    "r0": 8,
+    "r1": 9,
+    "c0": 1,
+    "c1": 2,
+    "text": "Introduction to Quantum Computation",
+    "header": false
+   },
+   {
+    "r0": 8,
+    "r1": 9,
+    "c0": 2,
+    "c1": 3,
+    "text": "3:0",
+    "header": false
+   },
+   {
+    "r0": 9,
+    "r1": 10,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 06",
+    "header": false
+   },
+   {
+    "r0": 9,
+    "r1": 10,
+    "c0": 1,
+    "c1": 2,
+    "text": "Introduction to Quantum Communication",
+    "header": false
+   },
+   {
+    "r0": 9,
+    "r1": 10,
+    "c0": 2,
+    "c1": 3,
+    "text": "3:0",
+    "header": false
+   },
+   {
+    "r0": 10,
+    "r1": 11,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 07",
+    "header": false
+   },
+   {
+    "r0": 10,
+    "r1": 11,
+    "c0": 1,
+    "c1": 2,
+    "text": "Introduction to Quantum Sensing",
+    "header": false
+   },
+   {
+    "r0": 10,
+    "r1": 11,
+    "c0": 2,
+    "c1": 3,
+    "text": "3:0",
+    "header": false
+   },
+   {
+    "r0": 11,
+    "r1": 12,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 08",
+    "header": false
+   },
+   {
+    "r0": 11,
+    "r1": 12,
+    "c0": 1,
+    "c1": 2,
+    "text": "Introduction to Quantum Materials",
+    "header": false
+   },
+   {
+    "r0": 11,
+    "r1": 12,
+    "c0": 2,
+    "c1": 3,
+    "text": "3:0",
+    "header": false
+   },
+   {
+    "r0": 12,
+    "r1": 13,
+    "c0": 0,
+    "c1": 3,
+    "text": "Optional / Additional Courses",
+    "header": false
+   },
+   {
+    "r0": 13,
+    "r1": 14,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 09",
+    "header": false
+   },
+   {
+    "r0": 13,
+    "r1": 14,
+    "c0": 1,
+    "c1": 2,
+    "text": "Engineering Foundations of Quantum Technologies",
+    "header": false
+   },
+   {
+    "r0": 13,
+    "r1": 14,
+    "c0": 2,
+    "c1": 3,
+    "text": "3:0",
+    "header": false
+   },
+   {
+    "r0": 14,
+    "r1": 15,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 10",
+    "header": false
+   },
+   {
+    "r0": 14,
+    "r1": 15,
+    "c0": 1,
+    "c1": 2,
+    "text": "Solid State Physics for Quantum Technologies",
+    "header": false
+   },
+   {
+    "r0": 14,
+    "r1": 15,
+    "c0": 2,
+    "c1": 3,
+    "text": "3:0",
+    "header": false
+   },
+   {
+    "r0": 15,
+    "r1": 16,
+    "c0": 0,
+    "c1": 1,
+    "text": "QT 11",
+    "header": false
+   },
+   {
+    "r0": 15,
+    "r1": 16,
+    "c0": 1,
+    "c1": 2,
+    "text": "Quantum Optics",
+    "header": false
+   },
+   {
+    "r0": 15,
+    "r1": 16,
+    "c0": 2,
+    "c1": 3,
+    "text": "3:0",
+    "header": false
+   }
+  ],
+  "markdown": "| Course code                                             | Title                                                   | Credits (Theory: Lab)                                   |\n|---------------------------------------------------------|---------------------------------------------------------|---------------------------------------------------------|\n| QT 01 and QT 02 are both Mandatory                      | QT 01 and QT 02 are both Mandatory                      | QT 01 and QT 02 are both Mandatory                      |\n| QT 01                                                   | Survey of Quantum technologies and Applications         | 3:0                                                     |\n| QT 02                                                   | Foundations of Quantum Technologies                     | 3:0                                                     |\n| At least one of QT 03 and QT 04 is Mandatory            | At least one of QT 03 and QT 04 is Mandatory            | At least one of QT 03 and QT 04 is Mandatory            |\n| QT 03                                                   | Basic Programming Lab                                   | 2:1                                                     |\n| QT 04                                                   | Basic Laboratory Course for Quantum Technologies        | 2:1                                                     |\n| At least one of QT 05, QT 06, QT 07, QT 08 is Mandatory | At least one of QT 05, QT 06, QT 07, QT 08 is Mandatory | At least one of QT 05, QT 06, QT 07, QT 08 is Mandatory |\n| QT 05                                                   | Introduction to Quantum Computation                     | 3:0                                                     |\n| QT 06                                                   | Introduction to Quantum Communication                   | 3:0                                                     |\n| QT 07                                                   | Introduction to Quantum Sensing                         | 3:0                                                     |\n| QT 08                                                   | Introduction to Quantum Materials                       | 3:0                                                     |\n| Optional / Additional Courses                           | Optional / Additional Courses                           | Optional / Additional Courses                           |\n| QT 09                                                   | Engineering Foundations of Quantum Technologies         | 3:0                                                     |\n| QT 10                                                   | Solid State Physics for Quantum Technologies            | 3:0                                                     |\n| QT 11                                                   | Quantum Optics                                          | 3:0                                                     |"
+ }
+]

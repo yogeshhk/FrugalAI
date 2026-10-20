@@ -191,6 +191,32 @@ https://www.downtoearth.org.in/amp/story/economy/economic-survey-2024-785-millio
 Read 2026-10-19. Used for: the official estimate of about 7.85 million non-farm jobs a year until 2030.
 Secondary; other commentators dispute the underlying assumptions.
 
+<a id="s28"></a>
+## S28. Unsloth documentation: requirements
+Publisher: Unsloth. URL: https://www.unsloth.ai/docs/get-started/fine-tuning-for-beginners/unsloth-requirements.
+Seen 2026-10-20 through a search summary only; the page itself was not opened. Used for: Unsloth running without a
+GPU only for chat and data recipes, and training needing an NVIDIA (or Intel) GPU. Translated pages disagree, so
+re-read the English page before relying on it.
+
+<a id="s29"></a>
+## S29. llama.cpp pull request 8669: remove the finetune examples
+Publisher: ggml-org/llama.cpp on GitHub. URL: https://github.com/ggml-org/llama.cpp/pull/8669. Seen 2026-10-20
+through a search summary of a mirror only. Used for: the old `finetune` tool being removed in July 2024. A
+later `examples/training` README (seen only on a mirror) calls `llama-finetune` work in progress, FP32 only.
+Whether current llama.cpp can train LoRA adapters is to verify.
+
+<a id="s30"></a>
+## S30. MLX: an array framework for Apple silicon
+Publisher: Apple machine learning research (ml-explore). URL: https://github.com/ml-explore/mlx and
+https://pypi.org/project/mlx/. Seen 2026-10-20 through search summaries only. Used for: MLX targeting Apple
+silicon, with a Linux CPU package; no Windows install is documented in what was seen.
+
+<a id="s31"></a>
+## S31. Hugging Face Transformers documentation: bitsandbytes
+Publisher: Hugging Face. URL: https://huggingface.co/docs/transformers/quantization/bitsandbytes. Seen 2026-10-20
+through a search summary only. Used for: a CPU backend existing for Linux x86-64, Linux aarch64 and Windows
+x86-64. Which features (for example 4-bit NF4) work on that CPU backend was not confirmed.
+
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":
   https://www.ey.com/en_in/insights/ai/agentic-ai-india/small-language-models

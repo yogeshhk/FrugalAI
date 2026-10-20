@@ -8,7 +8,7 @@ For the maintainer. Contributors read the criteria in [AWESOME.md](../AWESOME.md
    hardware. When in doubt leave it out, or ask the contributor in the issue.
 3. Check the claim. A number needs a hardware line and a method. "Not measured" is fine.
 4. Add it at the bottom of its section in the exact shape, set `Verified` to today, and run
-   `python code/scripts/check_awesome.py --links`.
+   `python _scripts/check_awesome.py --links`.
 
 ## Edge cases and the call to make
 - **Free but closed-source tools** (for example LM Studio): fine. The bar is "free to use and open to all",
@@ -22,7 +22,7 @@ For the maintainer. Contributors read the criteria in [AWESOME.md](../AWESOME.md
   is a measurement others still use.
 
 ## Routine
-- Every quarter: `python code/scripts/check_awesome.py --links --stale-days 365`. Re-verify stale entries or
+- Every quarter: `python _scripts/check_awesome.py --links --stale-days 365`. Re-verify stale entries or
   remove them.
 - When a model or runtime changes licence, update the entry the same day.
 - Keep the list short. A list of the 30 best entries beats 300 mediocre ones.

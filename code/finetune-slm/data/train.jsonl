@@ -1,0 +1,480 @@
+{"text": "how do i stop worms in my onion crop?", "label": "pest"}
+{"text": "Am I eligible for the farm loan scheme?", "label": "scheme"}
+{"text": "Ganesh calling, what time does the office open?", "label": "other"}
+{"text": "How do I apply for the pnsion scheme?", "label": "scheme"}
+{"text": "How do I stop worms in my wheat crop?", "label": "pest"}
+{"text": "sunita calling, what time does the office open?", "label": "other"}
+{"text": "my soybean plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "Good morning, this is Meena.", "label": "other"}
+{"text": "What is the weather forecast for Latur this week?", "label": "weather"}
+{"text": "This is Sunita, plase tell me a joke.", "label": "other"}
+{"text": "Ramesh calling, what time does the office open?", "label": "other"}
+{"text": "good morning, this is vijay.", "label": "other"}
+{"text": "White pwder on my rice leaves, what is it?", "label": "pest"}
+{"text": "My spayer will not start, what should I check?", "label": "repair"}
+{"text": "The tiller is making a loud noise, who can repair it?", "label": "repair"}
+{"text": "what is the price of wheat in solapur market today?", "label": "price"}
+{"text": "white powder on my wheat leaves, what is it?", "label": "pest"}
+{"text": "My soybean leaves have yelow spots, what disease is this?", "label": "pest"}
+{"text": "will it rain in nagpur today?", "label": "weather"}
+{"text": "how much is wheat selling for in satara?", "label": "price"}
+{"text": "My sugarcane plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "What rate is the mandi giving for soybean?", "label": "price"}
+{"text": "What is the price of maize in Nagpur market today?", "label": "price"}
+{"text": "Am I eligible for the penion scheme?", "label": "scheme"}
+{"text": "What documents do I need for the farm loan scheme?", "label": "scheme"}
+{"text": "There are insects eating my wheat plants, what should I spray?", "label": "pest"}
+{"text": "Hi, I am Kavita, what is the capital of India?", "label": "other"}
+{"text": "Where can I get my water pump serviced near Pune?", "label": "repair"}
+{"text": "my rice leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "Is a storm coming to Nagpur on Friday?", "label": "weather"}
+{"text": "Kavita calling, what time does the office open?", "label": "other"}
+{"text": "Where can I get my tiller serviced near Pune?", "label": "repair"}
+{"text": "my cotton plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "should i irrigate my maize field, will it rain tomorrow?", "label": "weather"}
+{"text": "What rate is the mandi giving for maize?", "label": "price"}
+{"text": "Where can I get my sprayer serviced near Solapur?", "label": "repair"}
+{"text": "Tell me today's maize rate at Solapur.", "label": "price"}
+{"text": "what rate is the mandi giving for onion?", "label": "price"}
+{"text": "Rmesh calling, what time does the office open?", "label": "other"}
+{"text": "Hi, I am Ganesh, what is the capital of India?", "label": "other"}
+{"text": "How do I fix a leaking tiller?", "label": "repair"}
+{"text": "There are insects eating my onion plants, what should I spray?", "label": "pest"}
+{"text": "Who built this service? Regards, Ramesh.", "label": "other"}
+{"text": "will it rain in satara this week?", "label": "weather"}
+{"text": "What documens do I need for crop insurance?", "label": "scheme"}
+{"text": "Thank you for your help, Rameh here.", "label": "other"}
+{"text": "Will it rain in Pune this week?", "label": "weather"}
+{"text": "Am I eligile for crop insurance?", "label": "scheme"}
+{"text": "What documets do I need for crop insurance?", "label": "scheme"}
+{"text": "Vijay calling, what time does the ofice open?", "label": "other"}
+{"text": "This is Vijay, pease tell me a joke.", "label": "other"}
+{"text": "There are insects eating my cotton plants, what should I spray?", "label": "pest"}
+{"text": "is a storm coming to solapur this week?", "label": "weather"}
+{"text": "how do i stop worms in my sugarcane crop?", "label": "pest"}
+{"text": "Shoud I irrigate my sugarcane field, will it rain today?", "label": "weather"}
+{"text": "My cotton plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "Is a storm coming to Pune tomorrow?", "label": "weather"}
+{"text": "vijay calling, what time does the office open?", "label": "other"}
+{"text": "How much is soybean selling for in Nagpur?", "label": "price"}
+{"text": "My tractor will not start, what should I check?", "label": "repair"}
+{"text": "How do I apply for the drip irigation subsidy?", "label": "scheme"}
+{"text": "what documents do i need for the pension scheme?", "label": "scheme"}
+{"text": "Sunita here, can you speak Marathi?", "label": "other"}
+{"text": "There are insecs eating my wheat plants, what should I spray?", "label": "pest"}
+{"text": "good morning, this is ramesh.", "label": "other"}
+{"text": "Should I irrigate my maize field, will it rain this week?", "label": "weather"}
+{"text": "This is Kavita, pease tell me a joke.", "label": "other"}
+{"text": "What documents do I need for the pension scheme?", "label": "scheme"}
+{"text": "meena here, can you speak marathi?", "label": "other"}
+{"text": "Hi, I am Ganesh, what is the capial of India?", "label": "other"}
+{"text": "My water pump stopped working today, please help.", "label": "repair"}
+{"text": "How do I stop worms in my toato crop?", "label": "pest"}
+{"text": "What documents do I need for the drip irriation subsidy?", "label": "scheme"}
+{"text": "Where can I get my tractor serviced near Pune?", "label": "repair"}
+{"text": "My maize leaves have yllow spots, what disease is this?", "label": "pest"}
+{"text": "What is the price of maize in Solapur market today?", "label": "price"}
+{"text": "Ramesh here, can you speak Marathi?", "label": "other"}
+{"text": "Is the maize price going up today?", "label": "price"}
+{"text": "What is the weather foecast for Pune tomorrow?", "label": "weather"}
+{"text": "Is the sugarane price going up tomorrow?", "label": "price"}
+{"text": "Where can I get my tractr serviced near Satara?", "label": "repair"}
+{"text": "The tractr is making a loud noise, who can repair it?", "label": "repair"}
+{"text": "Is a storm coming to Pune this week?", "label": "weather"}
+{"text": "My rice leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "How do I apply for the drip irriation subsidy?", "label": "scheme"}
+{"text": "How much is maize selling for in Nashik?", "label": "price"}
+{"text": "How hot will it be in Pune tomorrow?", "label": "weather"}
+{"text": "How hot will it be in Nashk on Friday?", "label": "weather"}
+{"text": "White powder on my soybean leaves, what is it?", "label": "pest"}
+{"text": "How do I stop worms in my rice crop?", "label": "pest"}
+{"text": "White pwder on my tomato leaves, what is it?", "label": "pest"}
+{"text": "how do i apply for the farm loan scheme?", "label": "scheme"}
+{"text": "What is the price of rice in Solapur market today?", "label": "price"}
+{"text": "how much is maize selling for in solapur?", "label": "price"}
+{"text": "my maize leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "What rate is the mandi giving for rice?", "label": "price"}
+{"text": "What is the weather forecast for Pune on Friday?", "label": "weather"}
+{"text": "how do i fix a leaking tiller?", "label": "repair"}
+{"text": "There are inscts eating my rice plants, what should I spray?", "label": "pest"}
+{"text": "there are insects eating my tomato plants, what should i spray?", "label": "pest"}
+{"text": "Where is the form for the pnsion scheme?", "label": "scheme"}
+{"text": "What is the weather foecast for Latur today?", "label": "weather"}
+{"text": "white powder on my rice leaves, what is it?", "label": "pest"}
+{"text": "My tractor stopped working this week, please help.", "label": "repair"}
+{"text": "How do I stop worms in my soyban crop?", "label": "pest"}
+{"text": "White powder on my cotton leaves, what is it?", "label": "pest"}
+{"text": "will it rain in latur today?", "label": "weather"}
+{"text": "What documents do I need for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "Vijay here, can you speak Marathi?", "label": "other"}
+{"text": "What documents do I need for the pensin scheme?", "label": "scheme"}
+{"text": "hi, i am ramesh, what is the capital of india?", "label": "other"}
+{"text": "am i eligible for the pension scheme?", "label": "scheme"}
+{"text": "my tractor will not start, what should i check?", "label": "repair"}
+{"text": "my tomato plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "Is the rice price going up on Friday?", "label": "price"}
+{"text": "My tomato leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "What is the price of wheat in Pune market today?", "label": "price"}
+{"text": "My wheat leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "Is the wheat price going up tomorrow?", "label": "price"}
+{"text": "White poder on my sugarcane leaves, what is it?", "label": "pest"}
+{"text": "When does the application for the drip irrigaton subsidy close?", "label": "scheme"}
+{"text": "my onion plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "Is the onion price going up on Friday?", "label": "price"}
+{"text": "Who built this service? Regards, Ganesh.", "label": "other"}
+{"text": "Where can I get my tiller serviced near Nagpur?", "label": "repair"}
+{"text": "What rate is the mandi giving for wheat?", "label": "price"}
+{"text": "How much is maize selling for in Satara?", "label": "price"}
+{"text": "Is the onion price going up today?", "label": "price"}
+{"text": "When does the appication for the farm loan scheme close?", "label": "scheme"}
+{"text": "Meena here, can you speak Marathi?", "label": "other"}
+{"text": "Is the wheat price going up on Friday?", "label": "price"}
+{"text": "How much is soybean selling for in Satara?", "label": "price"}
+{"text": "Hi, I am Ramesh, what is the capital of India?", "label": "other"}
+{"text": "How do I apply for the farm loan scheme?", "label": "scheme"}
+{"text": "Where can I get my tiller serviced near Nashik?", "label": "repair"}
+{"text": "What is the weather forecast for Satara on Friday?", "label": "weather"}
+{"text": "Am I eligible for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "Will it rain in Latur on Friday?", "label": "weather"}
+{"text": "how do i apply for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "Thank you for your help, Ganeh here.", "label": "other"}
+{"text": "Good morning, this is Kavita.", "label": "other"}
+{"text": "My water pump stopped working tomorrow, please help.", "label": "repair"}
+{"text": "Will it rain in Pune tomorrow?", "label": "weather"}
+{"text": "my onion leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "kavita calling, what time does the office open?", "label": "other"}
+{"text": "Should I irrigate my tomato field, will it rain tomorrow?", "label": "weather"}
+{"text": "good morning, this is ganesh.", "label": "other"}
+{"text": "My tomato plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "Shuld I irrigate my sugarcane field, will it rain this week?", "label": "weather"}
+{"text": "my sprayer stopped working tomorrow, please help.", "label": "repair"}
+{"text": "is the wheat price going up today?", "label": "price"}
+{"text": "will it rain in pune today?", "label": "weather"}
+{"text": "There are insects eating my sugarcane plants, what should I spray?", "label": "pest"}
+{"text": "Am I eliible for the farm loan scheme?", "label": "scheme"}
+{"text": "What is the price of onion in Solapur market today?", "label": "price"}
+{"text": "My water pump stpped working on Friday, please help.", "label": "repair"}
+{"text": "How hot will it be in Nagpur this week?", "label": "weather"}
+{"text": "White power on my cotton leaves, what is it?", "label": "pest"}
+{"text": "my sugarcane leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "Is a storm coming to Latur on Friday?", "label": "weather"}
+{"text": "what is the price of rice in nashik market today?", "label": "price"}
+{"text": "How much is wheat seling for in Latur?", "label": "price"}
+{"text": "Who built this service? Regards, Sunita.", "label": "other"}
+{"text": "how much is wheat selling for in solapur?", "label": "price"}
+{"text": "ramesh calling, what time does the office open?", "label": "other"}
+{"text": "my tractor stopped working on friday, please help.", "label": "repair"}
+{"text": "Tell me today's rice rate at Nashik.", "label": "price"}
+{"text": "Tell me today's rice rate at Latur.", "label": "price"}
+{"text": "Where can I get my tiller serviced near Solapur?", "label": "repair"}
+{"text": "this is kavita, please tell me a joke.", "label": "other"}
+{"text": "thank you for your help, ganesh here.", "label": "other"}
+{"text": "How hot will it be in Solapr this week?", "label": "weather"}
+{"text": "Is the soybean price going up this week?", "label": "price"}
+{"text": "My soybean leaves have yellow spots, what disese is this?", "label": "pest"}
+{"text": "What rate is the mandi giving for onion?", "label": "price"}
+{"text": "what documents do i need for the farm loan scheme?", "label": "scheme"}
+{"text": "What is the price of maize in Pune mrket today?", "label": "price"}
+{"text": "Am I eliible for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "will it rain in latur on friday?", "label": "weather"}
+{"text": "my water pump will not start, what should i check?", "label": "repair"}
+{"text": "My water pump stopped working tomorrow, pleae help.", "label": "repair"}
+{"text": "What rate is the mandi giving for sugarcane?", "label": "price"}
+{"text": "My tiller stopped working on Friday, please help.", "label": "repair"}
+{"text": "when does the application for the pension scheme close?", "label": "scheme"}
+{"text": "What is the weather forecast for Nagpur today?", "label": "weather"}
+{"text": "When does the application for the farm loan sceme close?", "label": "scheme"}
+{"text": "Hi, I am Sunita, what is the capital of India?", "label": "other"}
+{"text": "White powder on my maize leaves, what is it?", "label": "pest"}
+{"text": "The tiller is mking a loud noise, who can repair it?", "label": "repair"}
+{"text": "Will it rain in Slapur on Friday?", "label": "weather"}
+{"text": "How do I fix a leaking sprayer?", "label": "repair"}
+{"text": "Should I irrigate my maize field, will it rain tomorrow?", "label": "weather"}
+{"text": "Where is the form for the penion scheme?", "label": "scheme"}
+{"text": "My tractor stopped working tomorrow, please help.", "label": "repair"}
+{"text": "Where is the form for the drip irrigaion subsidy?", "label": "scheme"}
+{"text": "What is the weather forecast for Nagpur on Friday?", "label": "weather"}
+{"text": "What is the price of rice in Slapur market today?", "label": "price"}
+{"text": "should i irrigate my soybean field, will it rain tomorrow?", "label": "weather"}
+{"text": "When does the application for the farm loan scheme close?", "label": "scheme"}
+{"text": "Am I eligible for crop insurance?", "label": "scheme"}
+{"text": "The tractor is making a loud noise, who can repar it?", "label": "repair"}
+{"text": "My sprayer stopped working on Friday, please help.", "label": "repair"}
+{"text": "What is the price of onion in Nagpur market today?", "label": "price"}
+{"text": "Where can I get my tractor serviced near Latur?", "label": "repair"}
+{"text": "Should I irrigate my soybean field, will it rain this week?", "label": "weather"}
+{"text": "should i irrigate my sugarcane field, will it rain this week?", "label": "weather"}
+{"text": "Is the cotton price going up on Friday?", "label": "price"}
+{"text": "where is the form for the farm loan scheme?", "label": "scheme"}
+{"text": "where can i get my sprayer serviced near satara?", "label": "repair"}
+{"text": "What is the weather forecast for Stara today?", "label": "weather"}
+{"text": "Should I irrigate my cotton field, will it rain tomorrow?", "label": "weather"}
+{"text": "Thank you for your help, Vijay here.", "label": "other"}
+{"text": "Am I eligible for the penson scheme?", "label": "scheme"}
+{"text": "am i eligible for the farm loan scheme?", "label": "scheme"}
+{"text": "Tell me today's wheat rate at Satara.", "label": "price"}
+{"text": "How do I fix a leakng sprayer?", "label": "repair"}
+{"text": "There are insecs eating my onion plants, what should I spray?", "label": "pest"}
+{"text": "Is a storm coming to Nagpur tomorrow?", "label": "weather"}
+{"text": "who built this service? regards, meena.", "label": "other"}
+{"text": "Where is the form for the pension scheme?", "label": "scheme"}
+{"text": "Kavia here, can you speak Marathi?", "label": "other"}
+{"text": "How hot will it be in Nashik on Friday?", "label": "weather"}
+{"text": "My cotton pants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "the tiller is making a loud noise, who can repair it?", "label": "repair"}
+{"text": "Thank you for your help, Ramsh here.", "label": "other"}
+{"text": "When does the application for crop insurance close?", "label": "scheme"}
+{"text": "my tiller stopped working on friday, please help.", "label": "repair"}
+{"text": "the water pump is making a loud noise, who can repair it?", "label": "repair"}
+{"text": "How do I stop worms in my cotton crop?", "label": "pest"}
+{"text": "What is the weather forecast for Latur on Friday?", "label": "weather"}
+{"text": "Where can I get my water pump seviced near Satara?", "label": "repair"}
+{"text": "how hot will it be in pune today?", "label": "weather"}
+{"text": "Where can I get my tiller seviced near Solapur?", "label": "repair"}
+{"text": "where can i get my water pump serviced near pune?", "label": "repair"}
+{"text": "What douments do I need for the farm loan scheme?", "label": "scheme"}
+{"text": "my tractor stopped working tomorrow, please help.", "label": "repair"}
+{"text": "my soybean leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "my tractor stopped working this week, please help.", "label": "repair"}
+{"text": "How hot will it be in Nagpur today?", "label": "weather"}
+{"text": "Is the tomato price going up this week?", "label": "price"}
+{"text": "Tell me today's tomato rate at Pune.", "label": "price"}
+{"text": "how much is maize selling for in nagpur?", "label": "price"}
+{"text": "When does the appliction for the drip irrigation subsidy close?", "label": "scheme"}
+{"text": "Where can I get my tiller serviced near Latur?", "label": "repair"}
+{"text": "this is vijay, please tell me a joke.", "label": "other"}
+{"text": "What documents do I need for crop insurance?", "label": "scheme"}
+{"text": "Am I eligble for the pension scheme?", "label": "scheme"}
+{"text": "how do i apply for crop insurance?", "label": "scheme"}
+{"text": "Thank you for your help, Ramesh here.", "label": "other"}
+{"text": "when does the application for the farm loan scheme close?", "label": "scheme"}
+{"text": "my sugarcane plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "The sprayer is making a loud noise, who can repir it?", "label": "repair"}
+{"text": "White powder on my wheat leaves, what is it?", "label": "pest"}
+{"text": "What docuents do I need for the farm loan scheme?", "label": "scheme"}
+{"text": "Is the onion price going up tomorrow?", "label": "price"}
+{"text": "vijay here, can you speak marathi?", "label": "other"}
+{"text": "Tell me today's soyben rate at Pune.", "label": "price"}
+{"text": "how hot will it be in satara this week?", "label": "weather"}
+{"text": "My soybean leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "How do I fix a leking tractor?", "label": "repair"}
+{"text": "There are insects eating my tomato plants, what should I spray?", "label": "pest"}
+{"text": "When does the application for the farm loan schme close?", "label": "scheme"}
+{"text": "What documents do I need for the penson scheme?", "label": "scheme"}
+{"text": "what is the price of soybean in nagpur market today?", "label": "price"}
+{"text": "this is ramesh, please tell me a joke.", "label": "other"}
+{"text": "How much is maize selling for in Solapur?", "label": "price"}
+{"text": "What is the wether forecast for Solapur this week?", "label": "weather"}
+{"text": "What documents do I need for the pnsion scheme?", "label": "scheme"}
+{"text": "The sprayer is making a loud noise, who can rpair it?", "label": "repair"}
+{"text": "How hot will it be in Pune on Friday?", "label": "weather"}
+{"text": "where can i get my sprayer serviced near pune?", "label": "repair"}
+{"text": "What docuents do I need for the pension scheme?", "label": "scheme"}
+{"text": "Kavita here, can you speak Marathi?", "label": "other"}
+{"text": "Where can I get my sprayer serviced near Latur?", "label": "repair"}
+{"text": "My tomato leaves have yelow spots, what disease is this?", "label": "pest"}
+{"text": "What is the price of rice in Nagpur market today?", "label": "price"}
+{"text": "where is the form for crop insurance?", "label": "scheme"}
+{"text": "Where can I get my sprayer srviced near Pune?", "label": "repair"}
+{"text": "What documents do I need for the pesion scheme?", "label": "scheme"}
+{"text": "How do I stop worms in my tomato crop?", "label": "pest"}
+{"text": "Where is the form for crop insurance?", "label": "scheme"}
+{"text": "Is the rice price going up this week?", "label": "price"}
+{"text": "Where can I get my sprayer serviced near Pune?", "label": "repair"}
+{"text": "Will it rain in Satara today?", "label": "weather"}
+{"text": "Is a storm coming to Satara today?", "label": "weather"}
+{"text": "Ganeh here, can you speak Marathi?", "label": "other"}
+{"text": "My tiller stpped working tomorrow, please help.", "label": "repair"}
+{"text": "Is the sugarcane price going up on Friday?", "label": "price"}
+{"text": "How hot will it be in Nashik tomorrow?", "label": "weather"}
+{"text": "My sugarcane leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "Thank you for your help, Meena here.", "label": "other"}
+{"text": "Will it rain in Satara tomorrow?", "label": "weather"}
+{"text": "The sprayer is making a loud noise, who can repair it?", "label": "repair"}
+{"text": "good morning, this is kavita.", "label": "other"}
+{"text": "how do i fix a leaking water pump?", "label": "repair"}
+{"text": "Who built this service? Regards, Vijay.", "label": "other"}
+{"text": "What docments do I need for crop insurance?", "label": "scheme"}
+{"text": "Hi, I am Meena, what is the capital of India?", "label": "other"}
+{"text": "My tiller stoped working tomorrow, please help.", "label": "repair"}
+{"text": "how do i stop worms in my wheat crop?", "label": "pest"}
+{"text": "how do i fix a leaking sprayer?", "label": "repair"}
+{"text": "is the cotton price going up this week?", "label": "price"}
+{"text": "Hi, I am Vijay, what is the capital of India?", "label": "other"}
+{"text": "Should I irrigate my cotton field, will it rain this week?", "label": "weather"}
+{"text": "What is the price of maize in Satara market today?", "label": "price"}
+{"text": "Good morning, this is Ramesh.", "label": "other"}
+{"text": "Thank you for your help, Sunita here.", "label": "other"}
+{"text": "My sprayer stopped working today, please help.", "label": "repair"}
+{"text": "Good morning, this is Ganesh.", "label": "other"}
+{"text": "What is the price of sugarcane in Pune market today?", "label": "price"}
+{"text": "How do I stop worms in my sugacane crop?", "label": "pest"}
+{"text": "My tiller stopped working today, please help.", "label": "repair"}
+{"text": "When does the application for the drip irrigation subsdy close?", "label": "scheme"}
+{"text": "How do I apply for crop insurance?", "label": "scheme"}
+{"text": "How do I apply for the drip irrigaton subsidy?", "label": "scheme"}
+{"text": "Is the onion price going up this week?", "label": "price"}
+{"text": "is a storm coming to nagpur tomorrow?", "label": "weather"}
+{"text": "Should I irrigate my cotton field, will it rain on Friday?", "label": "weather"}
+{"text": "Am I eligible for the drip irrigtion subsidy?", "label": "scheme"}
+{"text": "White powder on my tomato leaves, what is it?", "label": "pest"}
+{"text": "What is the price of soybean in Nashik market today?", "label": "price"}
+{"text": "Should I irriate my wheat field, will it rain on Friday?", "label": "weather"}
+{"text": "Should I irrigate my sugarcane field, will it rain this week?", "label": "weather"}
+{"text": "What docuents do I need for crop insurance?", "label": "scheme"}
+{"text": "My sprayer stopped working this week, pease help.", "label": "repair"}
+{"text": "My onion plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "this is sunita, please tell me a joke.", "label": "other"}
+{"text": "How much is onion seling for in Latur?", "label": "price"}
+{"text": "What is the price of cotton in Solapur market today?", "label": "price"}
+{"text": "white powder on my onion leaves, what is it?", "label": "pest"}
+{"text": "How do I apply for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "My cotton leaves have yellow spots, what disese is this?", "label": "pest"}
+{"text": "This is Vijay, pleae tell me a joke.", "label": "other"}
+{"text": "Is the maize price going up on Friday?", "label": "price"}
+{"text": "am i eligible for crop insurance?", "label": "scheme"}
+{"text": "Thank you for your help, Gaesh here.", "label": "other"}
+{"text": "thank you for your help, ramesh here.", "label": "other"}
+{"text": "How do I fix a leakig water pump?", "label": "repair"}
+{"text": "where is the form for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "what is the price of cotton in solapur market today?", "label": "price"}
+{"text": "Should I irrigate my maize field, will it rain today?", "label": "weather"}
+{"text": "Tell me today's tomato rate at Solapur.", "label": "price"}
+{"text": "meena calling, what time does the office open?", "label": "other"}
+{"text": "this is meena, please tell me a joke.", "label": "other"}
+{"text": "thank you for your help, sunita here.", "label": "other"}
+{"text": "My sugarcane plants are wlting and the roots look rotten.", "label": "pest"}
+{"text": "should i irrigate my onion field, will it rain tomorrow?", "label": "weather"}
+{"text": "Should I irrigate my onion field, will it rain today?", "label": "weather"}
+{"text": "Will it rain in Nahik tomorrow?", "label": "weather"}
+{"text": "Shoud I irrigate my soybean field, will it rain today?", "label": "weather"}
+{"text": "How do I apply for the pension scheme?", "label": "scheme"}
+{"text": "My soybean plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "When does the applicaton for crop insurance close?", "label": "scheme"}
+{"text": "Should I irrigate my wheat field, will it rain tomorrow?", "label": "weather"}
+{"text": "When does the application for the drip irrigation subsidy close?", "label": "scheme"}
+{"text": "My maize plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "This is Kavita, please tell me a joke.", "label": "other"}
+{"text": "hi, i am ganesh, what is the capital of india?", "label": "other"}
+{"text": "Should I irrigate my wheat field, will it rain this week?", "label": "weather"}
+{"text": "White powder on my sugarcane leaves, what is it?", "label": "pest"}
+{"text": "This is Sunita, please tell me a joke.", "label": "other"}
+{"text": "what documents do i need for crop insurance?", "label": "scheme"}
+{"text": "Good morning, this is Vijay.", "label": "other"}
+{"text": "My sprayer stoped working this week, please help.", "label": "repair"}
+{"text": "ganesh here, can you speak marathi?", "label": "other"}
+{"text": "Am I eligible for the pension scheme?", "label": "scheme"}
+{"text": "My tiller will not start, what should I check?", "label": "repair"}
+{"text": "white powder on my sugarcane leaves, what is it?", "label": "pest"}
+{"text": "What is the price of tomato in Pune market today?", "label": "price"}
+{"text": "how hot will it be in solapur this week?", "label": "weather"}
+{"text": "How much is onion selling for in Latur?", "label": "price"}
+{"text": "This is Ramesh, please tell me a joke.", "label": "other"}
+{"text": "Is the rice price going up today?", "label": "price"}
+{"text": "My sprayer will not start, what should I check?", "label": "repair"}
+{"text": "What is the price of rice in Pune markt today?", "label": "price"}
+{"text": "What rate is the mandi giving for cotton?", "label": "price"}
+{"text": "who built this service? regards, kavita.", "label": "other"}
+{"text": "How do I stop worms in my soyben crop?", "label": "pest"}
+{"text": "How do I fix a laking water pump?", "label": "repair"}
+{"text": "How much is wheat selling for in Satara?", "label": "price"}
+{"text": "How much is rice selling for in Latur?", "label": "price"}
+{"text": "How do I apply for the pensin scheme?", "label": "scheme"}
+{"text": "Should I irrigate my rice field, will it rain this week?", "label": "weather"}
+{"text": "How much is sugarcae selling for in Nagpur?", "label": "price"}
+{"text": "Where is the form for the pensin scheme?", "label": "scheme"}
+{"text": "Thank you for your help, Kavita here.", "label": "other"}
+{"text": "where is the form for the pension scheme?", "label": "scheme"}
+{"text": "My rice plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "The water pump is making a loud noise, who can repair it?", "label": "repair"}
+{"text": "Where can I get my sprayer servicd near Nashik?", "label": "repair"}
+{"text": "Where is the form for the penson scheme?", "label": "scheme"}
+{"text": "Is a storm coing to Latur this week?", "label": "weather"}
+{"text": "What is the weather forecast for Pune today?", "label": "weather"}
+{"text": "Where is the form for the farm loan scheme?", "label": "scheme"}
+{"text": "How do I stop worms in my sugarcane crop?", "label": "pest"}
+{"text": "The tractor is making a loud noise, who can repair it?", "label": "repair"}
+{"text": "What is the weather forecast for Latur tomorrow?", "label": "weather"}
+{"text": "My sprayr stopped working tomorrow, please help.", "label": "repair"}
+{"text": "Should I irrigate my soybean field, will it rain on Friday?", "label": "weather"}
+{"text": "How hot will it be in Latur on Friday?", "label": "weather"}
+{"text": "How much is rice selling for in Pune?", "label": "price"}
+{"text": "tell me today's tomato rate at solapur.", "label": "price"}
+{"text": "Is the cotton price going up this week?", "label": "price"}
+{"text": "Will it rain in Nashik this week?", "label": "weather"}
+{"text": "Ganesh here, can you speak Marathi?", "label": "other"}
+{"text": "Tell me today's tomato rate at Latur.", "label": "price"}
+{"text": "My water pump stopped working this week, please help.", "label": "repair"}
+{"text": "How do I fix a leaking tractor?", "label": "repair"}
+{"text": "how do i stop worms in my rice crop?", "label": "pest"}
+{"text": "My water pump will not start, what should I check?", "label": "repair"}
+{"text": "Good morning, this is Sunita.", "label": "other"}
+{"text": "What is the price of rice in Satara market today?", "label": "price"}
+{"text": "How hot will it be in Nashik this week?", "label": "weather"}
+{"text": "What is the weater forecast for Latur this week?", "label": "weather"}
+{"text": "How much is onion selling for in Solapur?", "label": "price"}
+{"text": "how do i apply for the pension scheme?", "label": "scheme"}
+{"text": "What is the price of onion in Nagpur markt today?", "label": "price"}
+{"text": "This is Meena, please tell me a joke.", "label": "other"}
+{"text": "Where can I get my tractor serviced near Nagpur?", "label": "repair"}
+{"text": "This is Vijay, please tell me a joke.", "label": "other"}
+{"text": "White powder on my onion leaves, what is it?", "label": "pest"}
+{"text": "What rate is the mandi givng for maize?", "label": "price"}
+{"text": "Where can I get my sprayer serviced near Satara?", "label": "repair"}
+{"text": "How much is rice selling for in Solapur?", "label": "price"}
+{"text": "What documens do I need for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "Meena calling, what time does the office open?", "label": "other"}
+{"text": "How much is sugarcane selling for in Satara?", "label": "price"}
+{"text": "How hot will it be in Satara on Friday?", "label": "weather"}
+{"text": "How much is onion selling for in Pune?", "label": "price"}
+{"text": "There are insects eating my soybean plants, what should I spray?", "label": "pest"}
+{"text": "Should I irrigate my soybean field, will it rain tomorrow?", "label": "weather"}
+{"text": "how do i fix a leaking tractor?", "label": "repair"}
+{"text": "How do I stop worms in my onion crop?", "label": "pest"}
+{"text": "Will it rain in Latur tomorrow?", "label": "weather"}
+{"text": "Is a storm coming to Latur tomorrow?", "label": "weather"}
+{"text": "When does the application for the farm loan sheme close?", "label": "scheme"}
+{"text": "when does the application for the drip irrigation subsidy close?", "label": "scheme"}
+{"text": "Is the tomato price going up today?", "label": "price"}
+{"text": "Snita here, can you speak Marathi?", "label": "other"}
+{"text": "Where can I get my sprayer serviced near Nashik?", "label": "repair"}
+{"text": "Where is the form for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "My sprayer stopped woking today, please help.", "label": "repair"}
+{"text": "This is Ramesh, pleae tell me a joke.", "label": "other"}
+{"text": "White powder on my rice leaves, what is it?", "label": "pest"}
+{"text": "My tractor stopped working today, please help.", "label": "repair"}
+{"text": "how much is cotton selling for in pune?", "label": "price"}
+{"text": "When does the application for the pension scheme close?", "label": "scheme"}
+{"text": "There are insects eating my rice plants, what should I spray?", "label": "pest"}
+{"text": "what documents do i need for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "Am I elgible for the farm loan scheme?", "label": "scheme"}
+{"text": "What is the weather forecast for Nashik this week?", "label": "weather"}
+{"text": "How do I stop worms in my maize crop?", "label": "pest"}
+{"text": "how do i stop worms in my maize crop?", "label": "pest"}
+{"text": "There are insects eating my maize plants, what should I spray?", "label": "pest"}
+{"text": "My sprayer stopped working tomorrow, please help.", "label": "repair"}
+{"text": "Sunita calling, what time does the office open?", "label": "other"}
+{"text": "how hot will it be in solapur tomorrow?", "label": "weather"}
+{"text": "Where can I get my tractor serviced near Nashik?", "label": "repair"}
+{"text": "my cotton leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "Is a storm coming to Nagpur today?", "label": "weather"}
+{"text": "Who built this service? Regards, Meena.", "label": "other"}
+{"text": "How hot will it be in Pune this week?", "label": "weather"}
+{"text": "My wheat plants are wilting and the roots look rotten.", "label": "pest"}
+{"text": "My water pump stopped working on Friday, please help.", "label": "repair"}
+{"text": "am i eligible for the drip irrigation subsidy?", "label": "scheme"}
+{"text": "My sprayer stopped working this week, please help.", "label": "repair"}
+{"text": "How hot will it be in Nashik today?", "label": "weather"}
+{"text": "My rice laves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "Where can I get my sprayer serviced near Nagpur?", "label": "repair"}
+{"text": "Hi, I am Kavita, what is the capitl of India?", "label": "other"}
+{"text": "This is Sunita, plese tell me a joke.", "label": "other"}
+{"text": "Will it rain in Latur this week?", "label": "weather"}
+{"text": "When does the appliction for crop insurance close?", "label": "scheme"}
+{"text": "White poder on my tomato leaves, what is it?", "label": "pest"}
+{"text": "Thank you for your help, Ganesh here.", "label": "other"}
+{"text": "When does the aplication for the farm loan scheme close?", "label": "scheme"}
+{"text": "How do I fix a leaking water pump?", "label": "repair"}
+{"text": "My maize leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "My cotton leaves have yellow spots, what disease is this?", "label": "pest"}
+{"text": "My onion leaves have yellow spots, what disease is this?", "label": "pest"}
