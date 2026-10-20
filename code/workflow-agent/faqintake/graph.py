@@ -158,6 +158,9 @@ def build_graph(ctx: Context):
         fixed = D.sanitize(D.FaqDraft(**s["draft"]))
         md = D.render(fixed, urls=D.urls_in(s["text"]))
         problems = D.lint_draft(md)
+        drift = D.drift_problem(s["text"], fixed.model_dump())          # the draft must be about the notes
+        if drift:
+            problems = problems + [drift]
         return {"draft": fixed.model_dump(), "draft_md": md, "problems": problems,
                 "trace": ["lint: ok" if not problems else "lint: " + "; ".join(problems)]}
 

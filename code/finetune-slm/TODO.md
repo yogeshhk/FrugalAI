@@ -1,6 +1,31 @@
-# TODO (finetune-slm): proposed plan, Marathi question answering on the Sahaj Jeevan book
+# TODO (finetune-slm): Marathi question answering on the Sahaj Jeevan book (and the intent router)
 
-Status: proposed 2026-10-20, waiting for the author's go-ahead. Nothing below has been started. The first
+## RESUME POINT (updated 2026-10-20, autonomous session)
+Marathi study (`mrsj/`): the go or no-go gate PASSED for Gemma 3 1B-it (reading 10 of 12, closed-book 1 of 12; the
+270M model failed). Built: question data `data/qa_mr.json` (80 training pairs; 20 reworded, 20 raw-only and 12
+control test questions, validated against the book; chapters 19, 20 and 22 withheld from training), training data
+(`python -m mrsj data`), LoRA trainer with per-epoch checkpoints, and the three-system evaluation.
+WHAT HAPPENED: the first training run (4 epochs requested, 326 examples per epoch, about 4 s per example, so about
+22 minutes per epoch) was stopped by Claude Code at epoch 1, example 240, because the system ran critically low on
+memory (the process peaked at 6.8 GB resident while free memory was about 2 GB; other programs held the rest). Nothing was saved because
+checkpoints were only written at epoch ends. Claude Code's rule is not to restart such a job without being asked, so it
+has NOT been restarted. Loss at the kill was 3.23 (mean over the epoch so far), down from 3.74 at example 40.
+FIXED FOR THE NEXT ATTEMPT: `mrsj/train.py` now saves progress every 40 examples (adapter plus `state.json`) and
+resumes mid-epoch, and it refuses to start unless 8 GB of memory is free (override with `force=True`).
+TO RESTART: close browsers and other heavy programs, keep LM Studio stopped, check that about 8 GB is free, then run
+the steps below. Expect about 1.5 hours for 4 epochs.
+Run order, each step resumes if interrupted:
+1. `python -m mrsj train --epochs 4` (adapters in `adapters/marathi_1b/epoch_N`, latest in `adapters/marathi_1b/latest`,
+   log in `train_log.json`);
+2. `python -m mrsj eval` (base closed-book, tuned closed-book, base with BM25 retrieval; answers in
+   `results/mr_answers_*.jsonl`, summary in `results/mr_summary.csv`);
+3. then write the Marathi section of README.md with the real numbers, add `ai_frugal_proj_finetune.tex` to the
+   Frugal AI deck in TeachingDataScience, and recompile.
+Part 1 (intent router, `ftslm/`): trained on 2026-10-20 (1311 s, 0.68% trainable); its evaluation is still to run:
+`python -m ftslm eval --systems base_instruction,base_few_shot,tuned` (the Qwen row needs LM Studio).
+The questions were drafted by Claude from the text and need the author's review before any number is quoted as final.
+
+Status (older text below): proposed 2026-10-20. The first
 version of this project (intent routing on template data, `ftslm/`) trained a 135M model in 1311 s but its
 evaluation was never run; it stays as the mechanics demo and as the code base to reuse.
 
@@ -32,6 +57,17 @@ LangChain. Measure it against the honest alternatives, because "can the weights 
 - [ ] Decide who writes and reviews the Marathi question and answer pairs. Only the author can judge correctness
       and fluency; budget the time (about 200 to 300 pairs to write or review).
 - [ ] Decide the base model order to try: Gemma 3 270M first, then 1B if the first shows promise.
+
+## Gate status (updated 2026-10-20)
+Decision rule, written before the 1B result was seen: GO if the model, with the right passage in the prompt, gets
+the key phrase in at least 6 of 12 reading questions and at least 90% of its output is Devanagari; otherwise NO-GO.
+- Gemma 3 270M-it: NO-GO. Tokenisation is fine (1.88 tokens per Marathi word, the whole book is 33,812 tokens) and the
+  Marathi is fluent (100% Devanagari, almost no repetition), but reading accuracy is 1 of 12 and closed-book 0 of 12.
+  Typical failures: it repeats the question, or says the answer is not clear.
+- Gemma 3 1B-it: result in `results/gate_unsloth_gemma-3-1b-it.json` (command:
+  `python -m mrsj gate --model unsloth/gemma-3-1b-it --dtype float32`). Lesson: bfloat16 on this CPU is about 12
+  minutes per question (no native bf16 support), so a first bf16 run was stopped after 2 of 12; float32 needs about
+  4 GB of RAM for the 1B model and is much faster. Free the memory (LM Studio off) before running it.
 
 ## Phase B: go or no-go gate (cheap, before any training)
 - [ ] Tokenisation test: tokens per Marathi word on the Gemma 3 tokenizer versus Qwen3's. High fertility means

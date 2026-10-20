@@ -59,6 +59,18 @@ def test_summarise_groups_by_kind():
     assert s["all"]["accuracy"] == 0.667 and s["k1"]["accuracy"] == 0.5 and s["k1"]["item_recall"] == 0.75
 
 
+def test_ungrounded_names_catch_the_matlab_hallucination():
+    from qwiki.scoring import ungrounded_names
+
+    evidence = "QT 03: Basic Programming Lab. Applications can be done using openly available modules in Python, Julia."
+    q = "Does any course use MATLAB?"
+    assert ungrounded_names("Yes, the course **QT 03: Basic Programming Lab** uses MATLAB [p. 20].", evidence) == ["MATLAB"]
+    assert ungrounded_names("QT 03 uses Python and Julia [p. 20].", evidence, q) == []
+    assert ungrounded_names("However, the syllabus names Python.", evidence, q) == []       # sentence start is skipped
+    assert ungrounded_names("The syllabus does not say.", evidence, q) == []
+    assert ungrounded_names("Yes, one course uses MATLAB.", evidence, q) == ["MATLAB"]      # the question alone is no evidence
+
+
 def test_gold_file_is_well_formed():
     gold = json.loads((config.EVAL / "gold.json").read_text(encoding="utf-8"))
     ids = [g["id"] for g in gold]

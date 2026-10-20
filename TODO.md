@@ -1,10 +1,32 @@
 # TODO
 
+## Resume point (updated 2026-10-20, autonomous session)
+Layout: everything that runs is under `code/` (common, wiki-rag, quantum-wiki, finetune-slm, workflow-agent,
+_template); `_scripts/` and `docs/` at the root. Run all tests: `python -m pytest code -q` (108+ pass).
+Python: conda env `genai` (D:\Yogesh\anaconda3\envs\genai); the `frugalai` env from environment.yml was never built.
+LM Studio is STOPPED on purpose (server off, models unloaded); anything marked "needs LM Studio" below waits for it.
+
+Status per project (details in each project's TODO.md and README.md):
+- quantum-wiki: built and measured (agent 0.975 tuned, 0.93 held-out; naive 0.40, structure RAG 0.69 tuned).
+  Deferred: naive RAG on the held-out set, whole-document baseline, MATLAB-style hallucination fix (needs LM Studio).
+- workflow-agent (faqintake): built and measured (duplicate detection 20 of 20, drafting v1 not better than one
+  prompt because of exemplar copying). Deferred: run the neutral-example drafting evaluation (needs LM Studio).
+- finetune-slm: Part 1 intent router trained (evaluation of local systems pending, no LM Studio needed for three of
+  four systems); Part 2 Marathi: Gemma 3 270M fails the reading gate (1 of 12); Gemma 3 1B PASSES (reading 10 of 12,
+  closed-book 1 of 12). Question data validated; LoRA training on 1B was started in the background on 2026-10-20
+  (resumable: `python -m mrsj train --epochs 4`, then `python -m mrsj eval`). See `code/finetune-slm/TODO.md`.
+- Deck: TeachingDataScience `LaTeX/ai_frugal_proj_wiki.tex` and `ai_frugal_proj_intake.tex` are written, wired into
+  `seminar_ai_frugal_content.tex`, compiled (Presentation 64 pages, CheatSheet 6 pages) and checked as images.
+  Still to do: the fine-tune section (`ai_frugal_proj_finetune.tex`), a recompile, /upgrade-deck, and copying the
+  PDFs to Publications/Presentations.
+- Offline checks added since: grounding check in quantum-wiki and topic-drift check in faqintake (tests pass; their
+  effect on model answers is not yet measured because LM Studio is stopped).
+- `_removed/` holds the ASHA stub and old README copies; delete by hand when you want.
+
 ## Open
-- [ ] Three project plans are proposed and waiting for the author's go-ahead (2026-10-20): quantum wiki on the
-      AICTE Minor curriculum PDF (`code/wiki-rag/TODO.md`), Marathi question answering on the Sahaj Jeevan book
-      (`code/finetune-slm/TODO.md`), a LangGraph concept-intake workflow on the QCNP FAQ notes (`code/workflow-agent/TODO.md`).
-      Suggested order: wiki, workflow, then the fine-tune after its go or no-go test.
+- [ ] Deck work in TeachingDataScience (not yet compiled or reviewed with /upgrade-deck): add the three project
+      sections to `seminar_ai_frugal_content.tex`, compile `Main_Seminar_AI_Frugal_Presentation.tex` and the CheatSheet
+      with texify, look at the pages, run /upgrade-deck, copy the PDFs to Publications/Presentations.
 - [ ] Run the benchmark and the wiki recipe on the old Dell with Ollama (`code/common/devices/old-dell.md`); fill in
       the hardware table there. Confirm it is the i3-8130U machine described in AIOOLL.
 - [ ] Awesome list: confirm the licences of the models behind the AIOOLL entry (gemma2:2b, qwen2:1.5b) and

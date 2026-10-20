@@ -17,8 +17,11 @@ Built and measured on 2026-10-20; see README.md for results. Status per phase of
       (answers resume from `results/`). The run was stopped on purpose to free the machine.
 - [ ] Add a plain-prompt baseline with the whole document in the context (about 10,000 tokens, so LM Studio needs a
       context length of 16k or more and enough free memory); report quality, seconds and memory.
-- [ ] Fix the MATLAB-style hallucination: extend the check so a model answer that names a tool or product absent from
-      the evidence is rejected, then re-run the retrieval-fallback questions.
+- [ ] Re-run the model-dependent questions with the new grounding check (needs LM Studio): the check that rejects a
+      model answer naming a tool, product or proper name absent from the evidence is written and tested offline
+      (`ungrounded_names` in `qwiki/scoring.py`, used by `answer_agent`); the MATLAB question (h26) should now be
+      refused. Run `python -m qwiki eval --systems agent --sets dev,heldout` after moving the old agent answers away
+      (`results/answers_agent_*.jsonl`) so they are recomputed, and compare.
 - [ ] Have the author review `eval/gold.json` and `eval/heldout.json`, and have a second person write a third
       question set (the held-out set is no longer pristine, see README).
 - [ ] Make the gate smarter or drop it: try a dense-similarity floor to refuse questions with no support, measured

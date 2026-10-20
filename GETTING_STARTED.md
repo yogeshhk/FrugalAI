@@ -4,7 +4,10 @@ How to run what exists and how to add a project. Concepts and sources stay in [d
 
 | Folder | What it holds |
 |--------|---------------|
-| [code/wiki-rag/](code/wiki-rag/) | Project: offline Q&A over a folder of notes. Self-contained: code, sample data, tests, README |
+| [code/quantum-wiki/](code/quantum-wiki/) | Project: questions and answers with page citations over the AICTE Minor in Quantum Technologies PDF (Docling, course cards, LangChain) |
+| [code/workflow-agent/](code/workflow-agent/) | Project: LangGraph concept-intake workflow on the QCNP FAQ notes, and a small helpline demo |
+| [code/finetune-slm/](code/finetune-slm/) | Project: LoRA fine-tuning on a CPU: a 135M intent router, and a Marathi question-answering study |
+| [code/wiki-rag/](code/wiki-rag/) | Project: offline Q&A over a folder of notes (hand-built BM25). Self-contained: code, sample data, tests, README |
 | [code/common/](code/common/) | Shared by every project: `frugalai_common/` (backend interface for Ollama and LM Studio, metrics, benchmark command), [benchmarks/](code/common/benchmarks/) (method and CSV results), [devices/](code/common/devices/) (setup notes per device) |
 | [code/_template/](code/_template/) | Starting point for a new project folder |
 | [_scripts/](_scripts/) | Repo tools: `check_awesome.py` (format check for `AWESOME.md`) and `check_links.py` (relative Markdown links) |

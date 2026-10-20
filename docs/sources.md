@@ -217,6 +217,27 @@ Publisher: Hugging Face. URL: https://huggingface.co/docs/transformers/quantizat
 through a search summary only. Used for: a CPU backend existing for Linux x86-64, Linux aarch64 and Windows
 x86-64. Which features (for example 4-bit NF4) work on that CPU backend was not confirmed.
 
+<a id="s32"></a>
+## S32. Hugging Face model metadata: Gemma 3 270M and 1B
+Publisher: Hugging Face (public API, `https://huggingface.co/api/models/<id>`). Read 2026-10-20 for
+`google/gemma-3-270m`, `google/gemma-3-270m-it`, `google/gemma-3-1b-it` and the `unsloth/` mirrors of the same
+models. Used for: the Google repositories being gated (manual approval), the Unsloth mirrors being ungated, all
+carrying the Gemma licence tag, and the parameter counts (about 268 million and about 1.0 billion). The licence
+text itself was not read; the Gemma terms of use apply to any model derived from these weights (to verify).
+
+<a id="s33"></a>
+## S33. LM Studio documentation: structured output
+Publisher: LM Studio. URL: https://lmstudio.ai/docs/developer/openai-compat/structured-output. Seen 2026-10-20
+through a search summary only. Used for: the OpenAI-style `response_format` with a JSON schema being accepted by the
+local server, which the FAQ intake workflow relies on (with a regex fallback for the JSON if the server refuses).
+
+<a id="s34"></a>
+## S34. LangChain documentation: Docling loader
+Publisher: LangChain. URL: https://docs.langchain.com/oss/python/integrations/document_loaders/docling. Seen
+2026-10-20 through a search summary only. Used for: the existence of a `DoclingLoader` with a document-chunks
+mode and a custom chunker. The quantum-wiki project did not use it (it would upgrade Docling in a shared
+environment); it wraps Docling's output as LangChain documents itself.
+
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":
   https://www.ey.com/en_in/insights/ai/agentic-ai-india/small-language-models

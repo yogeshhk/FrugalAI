@@ -122,6 +122,36 @@ def test_neutral_example_is_unrelated_and_nearest_mode_still_works(entries):
     assert "different topic" in ctx2.llm.users[0]
 
 
+LONG_NOTES = ("A classical controller sends precisely timed microwave pulses to the qubits and reads the measurement "
+              "results back, so the processor only holds the qubits while the control electronics and the software "
+              "that schedules every pulse are entirely classical hardware, which people often forget when they "
+              "imagine the whole machine as one quantum device.")
+
+
+def test_topic_drift_is_caught_for_long_notes_and_skipped_for_short_ones():
+    on_topic = {"question": "Why do people forget the classical controller and its pulses?",
+                "answer": "The processor holds qubits, while the control electronics and software schedule pulses.",
+                "fallacy": 'The belief that "the whole machine is quantum" forgets the classical hardware.'}
+    off_topic = {"question": "How does a classical computer add two numbers with an adder circuit?",
+                 "answer": "Numbers become bit patterns, run through an adder, then the register holds the result.",
+                 "fallacy": 'The belief that "addition becomes faster" ignores arithmetic structure entirely.'}
+    assert D.drift_problem(LONG_NOTES, on_topic) is None
+    assert "topic drift" in D.drift_problem(LONG_NOTES, off_topic)
+    assert D.drift_problem("Why a classical controller?", off_topic) is None        # too short to measure
+
+
+def test_drift_triggers_a_repair_in_the_graph(entries):
+    off = dict(GOOD, question="How does a classical computer add two numbers with an adder circuit?",
+               answer="Numbers become bit patterns, run through an adder, then the register holds the result. " * 4,
+               fallacy='The belief that "addition becomes faster" ignores arithmetic structure entirely, in every case.')
+    on = dict(GOOD, answer="The processor holds the qubits while the controller sends pulses and reads results back. " * 4,
+              question="Why do people forget the classical controller and its pulses?")
+    ctx = make_ctx(entries, [off, on])
+    out = run_intake(ctx, LONG_NOTES)
+    assert ctx.llm.calls == 2 and not out["problems"]
+    assert any("topic drift" in t for t in out["trace"])
+
+
 def test_plan_lists_the_skill_order():
     plan = build_plan("new", [("hardware/x", 0.5)], {"BOOK": {"total": 3, "files": {"physics_x": 3}}, "CODE": {"total": 0, "files": {}}},
                       {"theme": "hardware"}, "Why does X work?")

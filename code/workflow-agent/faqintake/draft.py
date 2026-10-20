@@ -93,6 +93,31 @@ def render(d: FaqDraft, urls: Optional[List[str]] = None, date: Optional[str] = 
             f"*Unverified draft {date}. Target chapter: to decide. Box type: to decide. Placed: no.*\n")
 
 
+DRIFT_MIN = 0.20          # share of the draft's content words that must come from the notes (calibrated in-sample)
+DRIFT_MIN_NOTES_WORDS = 40   # shorter input (a bare question) cannot be measured this way, so the check is skipped
+
+
+def _content_words(text: str) -> set:
+    return set(re.findall(r"[a-z]{6,}", text.lower()))
+
+
+def drift_share(notes: str, fields: dict) -> float:
+    """Share of the draft's content words (6+ letters) that also occur in the notes. Low means the model wrote about
+    something else, which a small model does when it copies the subject of a style example."""
+    body = _content_words(" ".join([fields.get("question", ""), fields.get("answer", ""), fields.get("fallacy", "")]))
+    return len(body & _content_words(notes)) / len(body) if body else 0.0
+
+
+def drift_problem(notes: str, fields: dict) -> Optional[str]:
+    if len(notes.split()) < DRIFT_MIN_NOTES_WORDS:
+        return None
+    share = drift_share(notes, fields)
+    if share < DRIFT_MIN:
+        return (f"topic drift: only {share:.0%} of the draft's key words come from the notes; "
+                "write about the topic of the NOTES, using their words")
+    return None
+
+
 def urls_in(text: str) -> List[str]:
     return re.findall(r"https?://[^\s)>\]]+", text)
 

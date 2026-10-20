@@ -55,6 +55,28 @@ project script records it.
 6. **Measure, then claim.** Record training seconds, peak RAM and adapter size, and evaluate on messages the
    model never saw, with phrasings it never saw, against the un-tuned model and a larger prompted model.
 
+## A Marathi test case: check the base model before you train
+
+The second study in the project asks whether a small Gemma 3 model can learn a Marathi book (about 18,000 words)
+well enough to answer questions with no retrieval. Before any training, a cheap gate measured two things on the base
+models (2026-10-20, main PC, CPU, float32):
+
+| Model | Tokens per Marathi word | Reading test (passage in the prompt, 12 questions) | Closed-book (no passage) |
+|-------|-------------------------|-----------------------------------------------------|--------------------------|
+| Gemma 3 270M-it | 1.88 | 1 of 12 | 0 of 12 |
+| Gemma 3 1B-it | 1.88 | 10 of 12 | 1 of 12 |
+
+- The Gemma 3 tokenizer is efficient on Marathi: the whole book is about 34,000 tokens, so training data is small.
+- The 270M model writes fluent Marathi but cannot read a passage and answer from it, so training on the book could
+  not fix that. The 1B model reads well and passes. Its closed-book answers are fluent but invented, for example a
+  first principle of "truth and honesty" that the book never states. That is the baseline training has to beat.
+- On this CPU, bfloat16 inference was about 12 minutes per question (no native bf16 support), while float32 took a
+  few seconds. Use float32 on a CPU and make sure the memory is free (the 1B model needs about 4 GB).
+- The Google repositories for Gemma 3 are gated; the Unsloth mirrors are not, and carry the same Gemma licence
+  (see [S32](sources.md#s32)). The Gemma terms of use apply to anything derived from the weights (to verify).
+- The test design matters: a closed-book model cannot be tested on chapters it never saw. Test with new wordings of
+  facts it was trained on, plus a control group of withheld chapters.
+
 ## What the project shows
 
 See [code/finetune-slm/README.md](../code/finetune-slm/README.md) for the task, the data, the commands and the measured

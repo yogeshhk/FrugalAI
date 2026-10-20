@@ -77,6 +77,79 @@ When it runs, `results/results.csv` will hold, for each of four systems (base wi
 examples, tuned, Qwen3 1.7B with worked examples) and each test set: accuracy, macro F1, mean prompt tokens per
 message and seconds per message. Do not quote an accuracy from this project until that file exists.
 
+## Part 2: Marathi question answering on the Sahaj Jeevan book
+
+Question: can a small Gemma model learn the Marathi book "Sahaj Jeevan" (34 chapters, about 18,000 words, based on Leo
+Babauta's "The Effortless Life") well enough to answer questions about it with no retrieval, and is that better than
+simply retrieving passages and letting the base model read them?
+
+Honest expectation, written before measuring: closed-book answers after fine-tuning on a book this small are mostly
+memorisation, so retrieval will probably win on facts. What fine-tuning might add is the book's register and some
+facts. The study is built to say which happened.
+
+### Status (2026-10-20)
+
+| Step | State |
+|------|-------|
+| Go or no-go gate (base models, before any training) | done: Gemma 3 270M fails, Gemma 3 1B passes |
+| Question data, validated against the book | done |
+| Training data | done (`python -m mrsj data`) |
+| LoRA training on Gemma 3 1B | started once, stopped by the system for lack of memory; not finished, see below |
+| Three-system evaluation | written and tested offline; not run (needs the trained adapter) |
+
+### The gate
+
+Rule fixed before the 1B result was seen: go if, with the right passage in the prompt, the model gets the key phrase
+in at least 6 of 12 reading questions and at least 90% of its output is Devanagari.
+
+| Model | Tokens per Marathi word | Reading, passage given | Closed-book | Output in Devanagari | Verdict |
+|-------|-------------------------|------------------------|-------------|----------------------|---------|
+| Gemma 3 270M-it | 1.88 | 1 of 12 | 0 of 12 | 100% | no-go: fluent Marathi, but it echoes the question or says it is unclear |
+| Gemma 3 1B-it | 1.88 | 10 of 12 | 1 of 12 | 100% | go |
+
+The 1B model's closed-book answers are fluent and wrong: asked for the first guiding principle it says "truth and
+honesty", while the book's first principle is "do no harm". Those invented answers are the baseline training must beat.
+Raw answers are in `results/gate_unsloth_gemma-3-*-it.json` (git-ignored; rerun `python -m mrsj gate`).
+
+### The data and the test design
+
+- `data/qa_mr.json`: 80 training question and answer pairs, and 52 test questions in three groups. All were drafted by
+  Claude from the book text and **need the author's review**; no number from this study is final before that.
+- Test groups: **reworded** (20): a fact that is also in a training pair, asked in new words. **raw_only** (20): a fact
+  that appears only in the raw training text, never in a training pair. **control** (12): questions about chapters 19,
+  20 and 22, which are withheld from all training data; a tuned model should not beat the base model there.
+- Why not hold out chapters in the usual way: a closed-book model cannot answer about text it never saw, so the
+  question wording is held out, not the text. `python -m mrsj validate` checks that every answer key occurs in its
+  chapter, that no test question appears in the training data, and that the control chapters are really withheld.
+- Training data: 246 raw passages (about 90 words each, headed with the chapter title) and the 80 pairs, per epoch.
+- Systems to compare: the base model closed-book, the tuned model closed-book, and the base model with the two best
+  BM25 passages in the prompt. Scoring is mechanical (the key phrases must appear); a person should read a sample.
+
+### Training and what went wrong
+
+LoRA (rank 16, all attention and MLP projections, 13.0 million trainable parameters, 1.29% of the model) in plain
+PyTorch on the CPU, float32, 10 threads. Measured on the stopped run: about 4 seconds per example, so about 22 minutes
+per epoch of 326 examples; mean loss fell from 3.74 (first 40 examples) to 3.23 (240 examples).
+
+The run was stopped by Claude Code at example 240 of epoch 1 because the machine was critically low on memory: the
+process peaked at 6.8 GB resident while free memory was only about 2 GB (other programs were using the rest). Checkpoints were then only written at
+epoch ends, so nothing was saved, and Claude Code's rule is not to restart such a job unasked. The trainer now saves
+every 40 examples, resumes mid-epoch, and refuses to start unless 8 GB is free.
+
+### Run it
+
+From `code/finetune-slm/`, with LM Studio stopped and about 8 GB of memory free:
+
+```bash
+python -m mrsj validate
+python -m mrsj data
+python -m mrsj train --epochs 4      # about 1.5 hours; resumes if interrupted
+python -m mrsj eval                  # three systems on 52 questions; resumes
+python -m pytest code/finetune-slm/tests -q      # from the repo root; offline
+```
+
+Results will be in `results/mr_summary.csv`. Until it exists, this README states no accuracy for the tuned model.
+
 ## Limits
 
 - One seed, one machine, synthetic data, six classes. The numbers say what this setup did, not what a real

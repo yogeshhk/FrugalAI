@@ -86,6 +86,14 @@ def test_agent_check_rejects_an_invented_course_code(cards):
     assert "QT 99" not in out["answer"] and out["tries"] == 2 and llm.calls == 2
 
 
+def test_agent_refuses_when_the_model_invents_a_tool(cards):
+    ret = Retrievers(structure_chunks(cards), HashEmbeddings())
+    llm = FakeChat(reply="Yes, QT 03 uses MATLAB for its programming lab [p. 20].")
+    out = answer_agent("Does any course use MATLAB?", cards, ret, llm)
+    assert out["answer"].startswith("The syllabus does not say")
+    assert out["tries"] == 2 and llm.calls == 2
+
+
 def test_structure_chunks_carry_headers_and_pages(cards):
     docs = structure_chunks(cards)
     mods = [d for d in docs if d.metadata["kind"] == "module" and d.metadata["course"] == "QT 06"]

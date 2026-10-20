@@ -11,7 +11,7 @@ from typing import Callable, Dict, List, Optional
 
 from . import tools
 from .chunks import pages_of
-from .scoring import codes_in, is_refusal
+from .scoring import codes_in, is_refusal, ungrounded_names
 
 SYSTEM = (
     "You answer questions about the AICTE model curriculum for the Minor in Quantum Technologies, using only the "
@@ -19,7 +19,8 @@ SYSTEM = (
     "QT 06) for each course you name. Cite the page like [p. 26]. If the CONTEXT does not contain the answer, reply "
     "exactly: The syllabus does not say."
 )
-STRICT = " Do not name any course code or number that is not written in the CONTEXT."
+STRICT = (" Do not name any course code, number, tool, product or proper name that is not written in the CONTEXT. "
+          "If the CONTEXT does not mention what the question asks about, reply exactly: The syllabus does not say.")
 NOT_SAID = "The syllabus does not say."
 
 
@@ -63,9 +64,12 @@ def answer_agent(question: str, cards: dict, retrievers, llm, k: int = 4, gate: 
     allowed = codes_in(evidence_text) | codes_in(question)
     text = llm(SYSTEM, prompt(evidence_text, question))
     tries = 1
-    if codes_in(text) - allowed and not is_refusal(text):         # a course code the evidence never mentions
+    def ungrounded(t: str) -> bool:
+        return bool(codes_in(t) - allowed) or bool(ungrounded_names(t, evidence_text, question))
+
+    if ungrounded(text) and not is_refusal(text):                 # a course code or name the evidence never mentions
         text = llm(SYSTEM + STRICT, prompt(evidence_text, question))
         tries = 2
-        if codes_in(text) - allowed:
-            text = NOT_SAID + " (the model named a course that is not in the evidence)"
+        if ungrounded(text) and not is_refusal(text):
+            text = NOT_SAID + " (the model named something that is not in the evidence)"
     return {"answer": text, "pages": pages, "route": route_name, "used_llm": True, "tries": tries}

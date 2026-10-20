@@ -13,6 +13,37 @@ REFUSAL = ("not in the syllabus", "not mentioned", "does not say", "doesn't say"
            "do not have", "don't have", "not available", "not included", "not found")
 
 
+_NAME_OK = {"the", "yes", "no", "course", "courses", "syllabus", "page", "pages", "also", "however", "but", "and",
+            "see", "note", "these", "this", "that", "there", "they", "for", "from", "with"}
+
+
+def ungrounded_names(answer: str, evidence: str, question: str = "") -> List[str]:
+    """Proper names, products and acronyms in an answer that occur in neither the evidence nor the question.
+
+    A small model asked 'does any course use MATLAB?' answered 'Yes, QT 03 uses MATLAB', and neither the course code
+    check nor the number check could see it. This catches capitalised words (not at the start of a sentence) and
+    all-caps acronyms that the evidence never uses. Citation markers and bold marks are ignored. A name that only
+    the question contains is NOT grounded: the user may ask about something the syllabus never mentions. The caller
+    skips refusals ('the syllabus does not mention MATLAB'). `question` is accepted for symmetry and unused.
+    """
+    text = re.sub(r"\[p+\.?\s*[\d,\s\-]*\]|\[pages?[^\]]*\]", " ", answer or "")
+    text = re.sub(r"[*_`]", "", text)
+    known = norm(evidence)
+    bad = []
+    for m in re.finditer(r"\b([A-Z][A-Za-z0-9\-']{2,})\b", text):
+        word = m.group(1)
+        before = text[:m.start()].rstrip()
+        sentence_start = not before or before[-1] in ".!?:\n-" or before.endswith(":")
+        if word.lower() in _NAME_OK or re.fullmatch(r"QT\d*", word):
+            continue
+        if sentence_start and not word.isupper():
+            continue
+        if norm(word) in known:
+            continue
+        bad.append(word)
+    return list(dict.fromkeys(bad))
+
+
 def norm(text: str) -> str:
     """Lower-case, unify dashes and quotes, collapse spaces; keeps letters, digits and a few signs."""
     t = (text or "").lower()

@@ -16,8 +16,9 @@ The concept-intake workflow (`faqintake/`) is built and first measurements are i
       `python -m faqintake eval --parts draft --n 12 --exemplar neutral`, then compare with the first version in
       `results/drafts_leave_one_out.jsonl`.
 - [ ] Re-run the draft evaluation with 18 entries, three repeats, and report the spread.
-- [ ] Add a check that rejects a draft whose answer shares too few content words with the notes (a topic-drift check),
-      since the lint only checks form.
+- [x] Topic-drift check written and tested offline (`drift_problem` in `faqintake/draft.py`, used in the lint and
+      repair loop): the draft's key words must come from the notes (at least 20%, only when the notes have 40 or more
+      words). The threshold was set on the 24 first-version drafts, so it is in-sample; re-check on new drafts.
 - [ ] Have the author review `eval/intake_cases.json` (the reworded and new cases were written by Claude), and add
       cases that really are partial overlaps; today the gold labels are only covered or new.
 - [ ] Improve the theme guess or drop it; try a larger index text and report it against the majority baseline.
