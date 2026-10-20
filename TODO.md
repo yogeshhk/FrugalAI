@@ -15,10 +15,11 @@ Status per project (details in each project's TODO.md and README.md):
   four systems); Part 2 Marathi: Gemma 3 270M fails the reading gate (1 of 12); Gemma 3 1B PASSES (reading 10 of 12,
   closed-book 1 of 12). Question data validated; LoRA training on 1B was started in the background on 2026-10-20
   (resumable: `python -m mrsj train --epochs 4`, then `python -m mrsj eval`). See `code/finetune-slm/TODO.md`.
-- Deck: TeachingDataScience `LaTeX/ai_frugal_proj_wiki.tex` and `ai_frugal_proj_intake.tex` are written, wired into
-  `seminar_ai_frugal_content.tex`, compiled (Presentation 64 pages, CheatSheet 6 pages) and checked as images.
-  Still to do: the fine-tune section (`ai_frugal_proj_finetune.tex`), a recompile, /upgrade-deck, and copying the
-  PDFs to Publications/Presentations.
+- Deck (DONE 2026-10-20): TeachingDataScience `LaTeX/ai_frugal_proj_wiki.tex`, `ai_frugal_proj_intake.tex` and
+  `ai_frugal_proj_finetune.tex` (procedure, theory and implementation only, by the author's request: no results) are wired
+  into `seminar_ai_frugal_content.tex`, compiled (Presentation 69 pages, CheatSheet 7 pages), checked as images, and the
+  PDFs were copied to `Publications/Presentations` and `GDrive/ToPrint/Talks`. Not done: /upgrade-deck on the new
+  sections. Results slides can be added later from each project's README.
 - Offline checks added since: grounding check in quantum-wiki and topic-drift check in faqintake (tests pass; their
   effect on model answers is not yet measured because LM Studio is stopped).
 - `_removed/` holds the ASHA stub and old README copies; delete by hand when you want.
