@@ -30,12 +30,12 @@
   "revision": null,
   "target_modules": [
     "o_proj",
+    "down_proj",
     "up_proj",
     "q_proj",
-    "gate_proj",
-    "v_proj",
     "k_proj",
-    "down_proj"
+    "gate_proj",
+    "v_proj"
   ],
   "target_parameters": null,
   "task_type": "CAUSAL_LM",

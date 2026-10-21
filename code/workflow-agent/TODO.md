@@ -25,7 +25,6 @@ The concept-intake workflow (`faqintake/`) is built and first measurements are i
 - [ ] Add a second model (Gemma 2 2B) for the drafting step and compare.
 - [ ] Add the meeting-notes variant of the skeleton (map-reduce over sections with quote checks) as a second use.
 - [ ] Run on the old Dell and the Raspberry Pi; record seconds per run there.
-- [ ] Add slides from the measured results to the Frugal AI deck.
 
 ## From the first version (still valid)
 - [ ] Run the helpline demo's evaluation: `python -m wfagent eval`. `results/results.csv` holds a scripted-model run

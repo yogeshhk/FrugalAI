@@ -115,8 +115,9 @@ facts. The study is built to say which happened.
 | Go or no-go gate (base models, before any training) | done: Gemma 3 270M fails, Gemma 3 1B passes |
 | Question data, validated against the book | done |
 | Training data | done (`python -m mrsj data`) |
-| LoRA training on Gemma 3 1B | smoke run only (2026-10-21: 40 of 326 examples, mean loss 3.744, peak 6.8 GB); full training deferred, see below |
-| Three-system evaluation | written and tested offline; pipeline smoke-tested on 3 questions with the 40-example adapter; full run needs the trained adapter |
+| LoRA training on Gemma 3 1B | done (2026-10-21): 3 epochs; the epoch 3 adapter is the final one, see "Training" below |
+| Three-system evaluation | done on the epoch 3 adapter (2026-10-21), see "Results" below |
+| Merge and GGUF export | done: `python -m mrsj merge`, then llama.cpp's converter; the epoch 3 GGUF loads and answers (see TODO) |
 
 ### The gate
 
@@ -157,6 +158,57 @@ process peaked at 6.8 GB resident while free memory was only about 2 GB (other p
 epoch ends, so nothing was saved, and Claude Code's rule is not to restart such a job unasked. The trainer now saves
 every 40 examples, resumes mid-epoch, and refuses to start unless 8 GB is free.
 
+Second attempt (2026-10-21): a 40-example smoke run, then the full run resumed from it and completed 3 epochs. Mean
+loss per epoch: 3.147, 2.295, 1.786. Peak memory of the training process 7.1 GB. About 4 seconds per example when
+nothing else was running; epoch 2 shows 4395 s because the laptop went into standby for about 53 minutes (a sleeping PC
+suspends the job). Each epoch's adapter is 52 MB. The epoch 3 adapter is the final one and is what the results below
+use. One detail for reproducing it: the run was started with `--epochs 4`, so the learning rate (linear decay to 10%)
+was still at about 25% of its starting value when epoch 3 ended; `--epochs 3` decays fully and gives a slightly
+different adapter.
+
+### Results (epoch 3 adapter, 2026-10-21)
+
+52 test questions, one seed, one machine; `results/mr_summary.csv` and the raw answers in `results/mr_answers_*.jsonl`.
+A question counts as correct only if every key phrase appears in the answer (mechanical match). Questions were
+drafted by Claude from the book and **have not yet been reviewed by the author**, so treat all numbers as provisional.
+
+| System | Reworded (20) | Raw only (20) | Control (12) | All (52) |
+|--------|---------------|---------------|--------------|----------|
+| Base model, closed book | 2 | 4 | 2 | 8 (0.154) |
+| Tuned model (3 epochs), closed book | 12 | 2 | 1 | 15 (0.288) |
+| Base model with 2 retrieved passages (BM25) | 13 | 15 | 8 | 36 (0.692) |
+
+| System | Prompt tokens | New tokens | Seconds per answer | Output in Devanagari |
+|--------|---------------|------------|--------------------|----------------------|
+| Base, closed book | 22 | 68 | 13.8 | 94.9% |
+| Tuned, closed book | 22 | 24 | 5.5 | 99.9% |
+| Base with retrieval | 356 | 42 | 11.0 | 98.0% |
+
+Retrieval put every needed key phrase into the two passages for 77% of questions (40 of 52).
+
+What it shows:
+- **Fine-tuning taught the training question and answer pairs, not the book.** On reworded questions the tuned model
+  gets 12 of 20 against 2 of 20 for the base model: it can answer a training fact when it is asked in new words. On
+  facts that appeared only in the raw passages it gets 2 of 20 (base 4 of 20), so reading the book text three times
+  did not put those facts into the weights. On the control chapters, which were withheld from training, it gets 1 of
+  12 (base 2 of 12), as it should: no sign of lucky guessing. Differences of one or two questions are noise at these
+  sample sizes.
+- **Retrieval wins on facts.** The base model with two retrieved passages answers 36 of 52, more than twice the tuned
+  model, and is ahead in every group (on reworded questions the two are close, 13 against 12). This is what was
+  expected before measuring. In 12 of the 52 cases the right passage was not in the top two, so better
+  retrieval has room to do more.
+- **Fine-tuning did change style and cost.** The tuned model answers in about 24 tokens instead of 68, in 5.5 s
+  instead of 13.8 s, almost entirely in Devanagari, with a prompt of 22 tokens instead of 356. If a short, fluent
+  Marathi answer is the goal and the facts come from elsewhere, that matters; for correctness on this book it does not.
+
+Verdict for this book: use retrieval for facts. Fine-tuning on 18,000 words is mostly memorisation of the training
+pairs and a change of answer style, and it costs a two-hour training run to get there. A combination (a tuned model
+reading retrieved passages) was not tested and is the obvious next experiment.
+
+Limits of this result: 20, 20 and 12 questions per group; one seed; mechanical key matching (a person
+should read a sample, because correct answers worded differently count as wrong); questions drafted by Claude and not
+reviewed; timings come from one run on a PC that was not otherwise idle, so read them as indicative.
+
 ### Run it
 
 From `code/finetune-slm/`, with LM Studio stopped and about 8 GB of memory free:
@@ -164,13 +216,13 @@ From `code/finetune-slm/`, with LM Studio stopped and about 8 GB of memory free:
 ```bash
 python -m mrsj validate
 python -m mrsj data
-python -m mrsj train --epochs 4      # about 1.5 hours; resumes if interrupted
-python -m mrsj eval                  # three systems on 52 questions; resumes
+python -m mrsj train --epochs 3      # about 1.2 hours; resumes if interrupted (see the schedule note under Training)
+python -m mrsj eval                  # three systems on 52 questions, last epoch folder; resumes
 python -m mrsj merge                 # merge the adapter into the base model (about 4 GB in merged/, git-ignored)
 python -m pytest code/finetune-slm/tests -q      # from the repo root; offline
 ```
 
-Results will be in `results/mr_summary.csv`. Until it exists, this README states no accuracy for the tuned model.
+Results are in `results/mr_summary.csv`. To evaluate a specific epoch: `python -m mrsj eval --adapter adapters/marathi_1b/epoch_3`.
 
 ## Limits
 

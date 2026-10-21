@@ -31,7 +31,6 @@ Built and measured on 2026-10-20; see README.md for results. Status per phase of
       them as a second source and cross-check the cards.
 - [ ] Extend the card builder to the M.Tech and BATU syllabus documents (different layouts).
 - [ ] Run on the old Dell and the Raspberry Pi; record seconds per question there.
-- [ ] Add slides from the measured results to the Frugal AI deck (see the TeachingDataScience repository).
 
 ## Risks and notes
 - The router is rules, so it needs maintenance when question shapes change; every failure should become a test.

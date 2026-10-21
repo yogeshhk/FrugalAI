@@ -1,0 +1,33 @@
+{
+ "model_id": "unsloth/gemma-3-1b-it",
+ "parameters_total": 1012931712,
+ "parameters_trainable": 13045760,
+ "rank": 16,
+ "alpha": 32,
+ "learning_rate": 0.0002,
+ "max_len": 224,
+ "accumulation": 4,
+ "threads": 10,
+ "train_examples": 326,
+ "epochs": [
+  {
+   "epoch": 1,
+   "mean_loss": 3.1466,
+   "seconds_this_session": 1193.6,
+   "peak_rss_mb": 7016
+  },
+  {
+   "epoch": 2,
+   "mean_loss": 2.2947,
+   "seconds_this_session": 4394.6,
+   "peak_rss_mb": 7057
+  },
+  {
+   "epoch": 3,
+   "mean_loss": 1.7864,
+   "seconds_this_session": 1237.7,
+   "peak_rss_mb": 7057
+  }
+ ],
+ "date": "2026-10-21"
+}

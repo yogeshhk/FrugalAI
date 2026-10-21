@@ -1,8 +1,8 @@
 # TODO
 
-## Resume point (updated 2026-10-20, autonomous session)
+## Resume point (updated 2026-10-21)
 Layout: everything that runs is under `code/` (common, wiki-rag, quantum-wiki, finetune-slm, workflow-agent,
-_template); `_scripts/` and `docs/` at the root. Run all tests: `python -m pytest code -q` (108+ pass).
+_template); `_scripts/` and `docs/` at the root. Run all tests: `python -m pytest code -q` (122 pass).
 Python: conda env `genai` (D:\Yogesh\anaconda3\envs\genai); the `frugalai` env from environment.yml was never built.
 LM Studio is STOPPED on purpose (server off, models unloaded); anything marked "needs LM Studio" below waits for it.
 
@@ -13,24 +13,16 @@ Status per project (details in each project's TODO.md and README.md):
   prompt because of exemplar copying). Deferred: run the neutral-example drafting evaluation (needs LM Studio).
 - finetune-slm: Part 1 intent router trained and evaluated 2026-10-21 (tuned 0.993 iid, 0.920 ood; base with worked
   examples 0.567 and 0.420; base instruction-only 0.233 and 0.200; Qwen3 row still needs LM Studio); Part 2 Marathi: Gemma 3 270M fails the reading gate (1 of 12); Gemma 3 1B PASSES (reading 10 of 12,
-  closed-book 1 of 12). Question data validated. Full LoRA training on 1B has NOT run: the 2026-10-20 attempt was
-  killed for lack of memory; on 2026-10-21 a 40-example smoke run (loss 3.744, peak 6.8 GB, 211 s) proved the loop and
-  checkpointing, then was stopped on purpose. The full run is deferred to a day the author picks (about 2 hours,
-  needs about 8 GB free; resumes from the 40-example state: `python -m mrsj train --epochs 4`, then
-  `python -m mrsj eval`). See `code/finetune-slm/TODO.md`.
-- Deck (DONE 2026-10-20): TeachingDataScience `LaTeX/ai_frugal_proj_wiki.tex`, `ai_frugal_proj_intake.tex` and
-  `ai_frugal_proj_finetune.tex` (procedure, theory and implementation only, by the author's request: no results) are wired
-  into `seminar_ai_frugal_content.tex`, compiled (Presentation 69 pages, CheatSheet 7 pages), checked as images, and the
-  PDFs were copied to `Publications/Presentations` and `GDrive/ToPrint/Talks`. Not done: /upgrade-deck on the new
-  sections. Results slides can be added later from each project's README.
+  closed-book 1 of 12). Question data validated. LoRA training on 1B done on 2026-10-21 (3 epochs; mean loss 3.147,
+  2.295, 1.786; the epoch 3 adapter is final) and the three-system evaluation ran on it: base closed-book 8 of 52,
+  tuned closed-book 15 of 52, base with BM25 retrieval 36 of 52. Retrieval wins on facts; tuning learned the training
+  pairs (12 of 20 reworded) but not the raw book text. Results are in the project README. Merge step and GGUF export
+  built and checked. Remaining items are in `code/finetune-slm/TODO.md`.
 - Offline checks added since: grounding check in quantum-wiki and topic-drift check in faqintake (tests pass; their
   effect on model answers is not yet measured because LM Studio is stopped).
 - `_removed/` holds the ASHA stub and old README copies; delete by hand when you want.
 
 ## Open
-- [ ] Deck work in TeachingDataScience (not yet compiled or reviewed with /upgrade-deck): add the three project
-      sections to `seminar_ai_frugal_content.tex`, compile `Main_Seminar_AI_Frugal_Presentation.tex` and the CheatSheet
-      with texify, look at the pages, run /upgrade-deck, copy the PDFs to Publications/Presentations.
 - [ ] Run the benchmark and the wiki recipe on the old Dell with Ollama (`code/common/devices/old-dell.md`); fill in
       the hardware table there. Confirm it is the i3-8130U machine described in AIOOLL.
 - [ ] Awesome list: confirm the licences of the models behind the AIOOLL entry (gemma2:2b, qwen2:1.5b) and
