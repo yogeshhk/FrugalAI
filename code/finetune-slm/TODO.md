@@ -121,8 +121,15 @@ the key phrase in at least 6 of 12 reading questions and at least 90% of its out
       and cost per answer (tokens, seconds), not only accuracy.
 
 ## Phase F: serve and package
-- [ ] Merge the adapter, convert to GGUF with llama.cpp tooling (to verify the current converter and Gemma 3
-      support), load in LM Studio or Ollama, call through LangChain's chat model; measure speed and memory.
+- [x] Merge the adapter: `python -m mrsj merge` (2026-10-21, tested on the 40-example adapter: same greedy answer before
+      and after, 4039 MB written in 34 s; offline tests added). Output folder `merged/` is git-ignored.
+- [x] Convert the merged model to GGUF (2026-10-21, 40-example adapter): llama.cpp release v0.7.0 source archive
+      (38 MB, downloaded by URL, kept outside the repo) and its own `gguf-py` (the installed `gguf` 0.3.3 is too old for
+      Gemma 3). Command: `python convert_hf_to_gguf.py <merged folder> --outfile X.gguf --outtype bf16`. Result 1914 MB;
+      read back as architecture gemma3, 26 blocks, 340 tensors; the installed `llama_cpp` 0.3.34 loads it in 0.9 s and
+      answers in Devanagari. Not yet quantised (try q8_0 or a K-quant for the Dell and measure quality).
+- [ ] Load the GGUF in LM Studio or Ollama and call it through LangChain's chat model (`ChatOpenAI` pointed at
+      LM Studio, as in the other projects); measure speed and memory. Repeat after the full training.
 - [ ] README with the measured table, the failure cases in Marathi, and a plain verdict on fine-tuning versus
       retrieval for this book.
 - [ ] Slides for the Frugal AI deck from the measured results.

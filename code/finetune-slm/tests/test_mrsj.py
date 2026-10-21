@@ -101,6 +101,53 @@ def test_training_refuses_to_start_when_memory_is_short(monkeypatch):
     assert "free" in str(e.value) and "8" in str(e.value)
 
 
+def _tiny_model_with_adapter(tmp_path):
+    """A random 2-layer Llama and a LoRA adapter on it, saved to disk. Offline, a few MB."""
+    torch = pytest.importorskip("torch")
+    peft = pytest.importorskip("peft")
+    from transformers import LlamaConfig, LlamaForCausalLM
+
+    torch.manual_seed(0)
+    cfg = LlamaConfig(vocab_size=64, hidden_size=32, intermediate_size=64, num_hidden_layers=2, num_attention_heads=2,
+                      num_key_value_heads=2, max_position_embeddings=64)
+    base = LlamaForCausalLM(cfg)
+    base.save_pretrained(tmp_path / "base")
+    lora = peft.get_peft_model(LlamaForCausalLM.from_pretrained(tmp_path / "base"),
+                               peft.LoraConfig(r=4, lora_alpha=8, target_modules=["q_proj", "v_proj"], init_lora_weights=False))
+    lora.save_pretrained(tmp_path / "adapter")
+    return tmp_path / "base", tmp_path / "adapter"
+
+
+def test_merge_keeps_the_adapter_behaviour_and_needs_no_peft(tmp_path):
+    from mrsj import merge as M
+    from transformers import AutoModelForCausalLM
+    import torch
+
+    base, adapter = _tiny_model_with_adapter(tmp_path)
+    out = tmp_path / "merged"
+    res = M.merge(model_id=str(base), adapter=adapter, out_dir=out, check_prompt=None, save_tokenizer=False, log=lambda s: None)
+    merged = AutoModelForCausalLM.from_pretrained(out)
+    assert not any("lora" in n for n, _ in merged.named_parameters())
+    ids = torch.tensor([[1, 5, 9, 3]])
+    from peft import PeftModel
+
+    tuned = PeftModel.from_pretrained(AutoModelForCausalLM.from_pretrained(base), str(adapter)).eval()
+    with torch.no_grad():
+        assert torch.allclose(tuned(ids).logits, merged.eval()(ids).logits, atol=1e-4)
+    assert res["size_mb"] >= 0
+
+
+def test_merge_refuses_a_missing_adapter_and_a_non_empty_folder(tmp_path):
+    from mrsj import merge as M
+
+    with pytest.raises(SystemExit):
+        M.merge(model_id="unused", adapter=tmp_path / "nope", out_dir=tmp_path / "o", log=lambda s: None)
+    (tmp_path / "full").mkdir()
+    (tmp_path / "full" / "x.txt").write_text("x")
+    with pytest.raises(SystemExit):
+        M.merge(model_id="unused", adapter=tmp_path / "nope", out_dir=tmp_path / "full", log=lambda s: None)
+
+
 def test_validate_catches_leakage_and_missing_keys():
     from mrsj import qa as Q
 

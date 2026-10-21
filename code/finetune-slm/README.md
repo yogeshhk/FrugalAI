@@ -166,6 +166,7 @@ python -m mrsj validate
 python -m mrsj data
 python -m mrsj train --epochs 4      # about 1.5 hours; resumes if interrupted
 python -m mrsj eval                  # three systems on 52 questions; resumes
+python -m mrsj merge                 # merge the adapter into the base model (about 4 GB in merged/, git-ignored)
 python -m pytest code/finetune-slm/tests -q      # from the repo root; offline
 ```
 

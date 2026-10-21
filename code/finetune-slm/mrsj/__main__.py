@@ -1,4 +1,4 @@
-"""Command line: python -m mrsj {stats,validate,data,gate,train,eval} ...   Run from finetune-slm/."""
+"""Command line: python -m mrsj {stats,validate,data,gate,train,merge,eval} ...   Run from finetune-slm/."""
 
 import argparse
 import json
@@ -27,6 +27,11 @@ def main(argv=None):
     t.add_argument("--model", default="unsloth/gemma-3-1b-it")
     t.add_argument("--epochs", type=int, default=4)
     t.add_argument("--out", default=str(ROOT / "adapters" / "marathi_1b"))
+    m = sub.add_parser("merge", help="merge a LoRA adapter into the base model and save a plain model folder")
+    m.add_argument("--model", default="unsloth/gemma-3-1b-it")
+    m.add_argument("--adapter", default=str(ROOT / "adapters" / "marathi_1b" / "latest"))
+    m.add_argument("--out", default=str(ROOT / "merged" / "marathi_1b"))
+    m.add_argument("--check", default="सहज जीवन म्हणजे काय?", help="prompt used to compare answers before and after the merge")
     e = sub.add_parser("eval", help="base, tuned and retrieval systems on the test questions; resumes")
     e.add_argument("--model", default="unsloth/gemma-3-1b-it")
     e.add_argument("--adapter", default=None, help="adapter folder; default is the last epoch under adapters/marathi_1b")
@@ -64,6 +69,11 @@ def main(argv=None):
         from .train import train
 
         say(json.dumps(train(model_id=args.model, epochs=args.epochs, out_dir=Path(args.out), log=say)))
+    elif args.cmd == "merge":
+        from .merge import merge
+
+        say(json.dumps(merge(model_id=args.model, adapter=Path(args.adapter), out_dir=Path(args.out),
+                             check_prompt=args.check, log=say)))
     elif args.cmd == "eval":
         from . import evaluate as E
 

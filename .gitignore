@@ -27,6 +27,7 @@ code/quantum-wiki/parsed/embeddings.json
 code/quantum-wiki/parsed/curriculum.json
 code/workflow-agent/cache/
 code/finetune-slm/results/gate_*.json
+code/finetune-slm/merged/
 
 # Local scratch
 scratch/
