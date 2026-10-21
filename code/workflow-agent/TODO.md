@@ -1,7 +1,8 @@
 # TODO (workflow-agent)
 
 The concept-intake workflow (`faqintake/`) is built and first measurements are in (see README.md). The helpline demo
-(`wfagent/`) is a small pattern demo.
+(`wfagent/`) is a small pattern demo. Closed on 2026-10-21: nothing is open. Ideas that were considered and not planned
+are in the root `TODO.md` under "Future ideas".
 
 ## Done (2026-10-20)
 - [x] Design confirmed by the author: the FAQ intake workflow, drafts to a local folder only, the skill steps that
@@ -10,25 +11,14 @@ The concept-intake workflow (`faqintake/`) is built and first measurements are i
 - [x] Reuse of the author's `concept_check.py` (loaded, not copied) for the regex counter.
 - [x] Graph with parallel checks, routing, a draft sub-graph and a repair loop; 24 offline tests.
 - [x] Evaluation: theme guess, duplicate detection with a calibrated threshold, leave-one-out drafting.
-
-## Deferred to the next session
-- [ ] Run the drafting evaluation with the neutral style example (the fix for copying the nearest entry's subject):
-      `python -m faqintake eval --parts draft --n 12 --exemplar neutral`, then compare with the first version in
-      `results/drafts_leave_one_out.jsonl`.
-- [ ] Re-run the draft evaluation with 18 entries, three repeats, and report the spread.
 - [x] Topic-drift check written and tested offline (`drift_problem` in `faqintake/draft.py`, used in the lint and
       repair loop): the draft's key words must come from the notes (at least 20%, only when the notes have 40 or more
-      words). The threshold was set on the 24 first-version drafts, so it is in-sample; re-check on new drafts.
-- [ ] Have the author review `eval/intake_cases.json` (the reworded and new cases were written by Claude), and add
-      cases that really are partial overlaps; today the gold labels are only covered or new.
-- [ ] Improve the theme guess or drop it; try a larger index text and report it against the majority baseline.
-- [ ] Add a second model (Gemma 2 2B) for the drafting step and compare.
-- [ ] Add the meeting-notes variant of the skeleton (map-reduce over sections with quote checks) as a second use.
-- [ ] Run on the old Dell and the Raspberry Pi; record seconds per run there.
+      words). The threshold was set on the 24 first-version drafts, so it is in-sample.
 
-## From the first version (still valid)
-- [ ] Run the helpline demo's evaluation: `python -m wfagent eval`. `results/results.csv` holds a scripted-model run
-      that is not a model result.
+## Notes
+- `results/results.csv` for the helpline demo holds a scripted-model run that is not a model result.
+- The evaluation cases in `eval/intake_cases.json` were written by Claude and not reviewed; gold labels are only
+  covered or new.
 
 ## Risks and honest critique
 - The workflow does the mechanical half of the skill; judgment and fact checking stay with the author or a stronger

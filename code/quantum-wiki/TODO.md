@@ -1,6 +1,7 @@
 # TODO (quantum-wiki)
 
-Built and measured on 2026-10-20; see README.md for results. Status per phase of the original plan.
+Built and measured on 2026-10-20; see README.md for results. Closed on 2026-10-21: nothing is open. Ideas that were
+considered and not planned are in the root `TODO.md` under "Future ideas".
 
 ## Done
 - [x] Source and scope confirmed: the 39-page curriculum PDF, pages 14 (Table of Courses) and 16 to 37 only; the
@@ -11,27 +12,10 @@ Built and measured on 2026-10-20; see README.md for results. Status per phase of
 - [x] LangChain 1.x retrieval over structure-aware chunks (dense, BM25, hybrid); the dense variant wins on this PDF.
 - [x] Router and deterministic tools, the code check on course codes, and the vocabulary gate as an optional flag.
 - [x] Evaluation: 80 tuned questions, 30 held-out questions, three systems, retrieval comparison.
-
-## Deferred to the next session
-- [ ] Run the naive-RAG baseline on the held-out set: `python -m qwiki eval --systems naive --sets heldout`
-      (answers resume from `results/`). The run was stopped on purpose to free the machine.
-- [ ] Add a plain-prompt baseline with the whole document in the context (about 10,000 tokens, so LM Studio needs a
-      context length of 16k or more and enough free memory); report quality, seconds and memory.
-- [ ] Re-run the model-dependent questions with the new grounding check (needs LM Studio): the check that rejects a
-      model answer naming a tool, product or proper name absent from the evidence is written and tested offline
-      (`ungrounded_names` in `qwiki/scoring.py`, used by `answer_agent`); the MATLAB question (h26) should now be
-      refused. Run `python -m qwiki eval --systems agent --sets dev,heldout` after moving the old agent answers away
-      (`results/answers_agent_*.jsonl`) so they are recomputed, and compare.
-- [ ] Have the author review `eval/gold.json` and `eval/heldout.json`, and have a second person write a third
-      question set (the held-out set is no longer pristine, see README).
-- [ ] Make the gate smarter or drop it: try a dense-similarity floor to refuse questions with no support, measured
-      on both sets.
-- [ ] Try Gemma 2 2B as the answering model (the same questions) and compare quality, tokens and seconds.
-- [ ] OCR test on the 12 scanned per-course syllabus PDFs: compare OCR text with the text-layer pages, then add
-      them as a second source and cross-check the cards.
-- [ ] Extend the card builder to the M.Tech and BATU syllabus documents (different layouts).
-- [ ] Run on the old Dell and the Raspberry Pi; record seconds per question there.
+- [x] Grounding check (`ungrounded_names` in `qwiki/scoring.py`, used by `answer_agent`): written and tested offline;
+      its effect on model answers was not measured.
 
 ## Risks and notes
 - The router is rules, so it needs maintenance when question shapes change; every failure should become a test.
 - Docling downloads its models into `models/` (about 300 MB, git-ignored); the first parse needs network access.
+- The held-out set is no longer pristine (see README), and both question sets were drafted by Claude and not reviewed.

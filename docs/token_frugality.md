@@ -8,7 +8,7 @@ Status of this page: a design checklist plus a measurement plan. This repo has m
 yet. The only numbers stated here are ones a cited source states, with their scope. Ideas taken from a
 video talk (speaker and channel unknown) are written as "the claim that ..." and are not evidence. The
 claims that could not be verified are listed in [landscape.md](landscape.md#not-confirmed-do-not-state-as-fact)
-and in [TODO.md](../TODO.md).
+and in [TODO.md](../TODO.md) (under "Status", caveats).
 
 ## What a token costs
 

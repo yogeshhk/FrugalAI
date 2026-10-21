@@ -92,7 +92,7 @@ What it shows:
   message sent to a neighbouring class (for example a chaff cutter fault read as "pest", a cold-storage grant question
   read as "other").
 - It is not a fair claim that fine-tuning beats prompting in general: a larger prompted model might do well here, and
-  the Qwen3 1.7B row was not run (it needs LM Studio, which was off). That comparison is still open.
+  the Qwen3 1.7B row was not run (it needs LM Studio, which was off). That comparison was not run.
 
 Caveats: the timing columns are not clean. The Marathi smoke evaluation (Part 2) shared the CPU during most of this run,
 so read seconds per message as an upper bound and the ordering as indicative only. Data is synthetic, one seed, six
@@ -222,7 +222,8 @@ python -m mrsj merge                 # merge the adapter into the base model (ab
 python -m pytest code/finetune-slm/tests -q      # from the repo root; offline
 ```
 
-Results are in `results/mr_summary.csv`. To evaluate a specific epoch: `python -m mrsj eval --adapter adapters/marathi_1b/epoch_3`.
+The final model as a single file is `models/marathi_1b_epoch3_bf16.gguf` (1.9 GB, bf16, not uploaded to git): load it
+with `llama_cpp.Llama(model_path=...)` or import it into LM Studio. Results are in `results/mr_summary.csv`. To evaluate a specific epoch: `python -m mrsj eval --adapter adapters/marathi_1b/epoch_3`.
 
 ## Limits
 

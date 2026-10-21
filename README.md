@@ -20,7 +20,7 @@ local. See [docs/landscape.md](docs/landscape.md) for what has actually been rep
 | [code/quantum-wiki/](code/quantum-wiki/) | Project: questions and answers with page citations over the AICTE Minor in Quantum Technologies PDF (Docling, course cards, LangChain, Qwen3 1.7B) | built, tested and measured |
 | [code/workflow-agent/](code/workflow-agent/) | Project: a LangGraph concept-intake workflow on the QCNP FAQ notes (parallel checks, draft sub-graph, lint and repair loop), plus a small helpline demo | built and tested; first measurements in |
 | [code/finetune-slm/](code/finetune-slm/) | Project: LoRA fine-tuning of small models on a CPU; a 135M intent router, and a Marathi question-answering study on the Sahaj Jeevan book | intent router trained; Marathi study at its go or no-go gate |
-| [code/wiki-rag/](code/wiki-rag/) | Project: offline Q&A over a folder of notes (hand-built BM25), with its own retrieval and answer evaluation | working, tested; retrieval measured, answer scoring pending |
+| [code/wiki-rag/](code/wiki-rag/) | Project: offline Q&A over a folder of notes (hand-built BM25), with its own retrieval and answer evaluation | working, tested; retrieval measured, answer scoring with a model not run |
 | [code/common/](code/common/) | Shared by every project: one small interface over Ollama and LM Studio, plus a benchmark command | working, tested |
 | [code/common/benchmarks/](code/common/benchmarks/) | Method and measured results: what runs where | method written, first result in |
 | [code/common/devices/](code/common/devices/) | Setup notes per device | Dell notes written, not yet measured |
@@ -40,8 +40,8 @@ Numbers appear here only after they are measured and recorded under `code/common
 | Main PC, same, CPU only | Gemma 2 2B (Q4_K_M) via LM Studio | 10.9 median (4.9 to 11.8, n=15) | 3.4 GB (engine only, 3379 MB) | 2026-10-19 | GPU offload off; only this model loaded; the 4.9 minimum is one slow run |
 | Main PC, same, GPU-assisted | Qwen3 1.7B (Q4_K_M) via LM Studio | 54.0 median (43.3 to 57.2, n=15) | 2.0 GB (engine only, 1958 MB) | 2026-10-19 | thinking mode on; GeForce MX570 (2 GB) used by LM Studio; only this model loaded |
 | Main PC, same, GPU-assisted | Gemma 2 2B (Q4_K_M) via LM Studio | 12.2 median (9.6 to 13.8, n=15) | 2.9 GB (engine only, 2944 MB) | 2026-10-19 | GeForce MX570 (2 GB) used by LM Studio, model only partly fits, so the gain over CPU is small |
-| Old Dell laptop (CPU only) | pending | pending | pending | pending | next |
-| Raspberry Pi 5 | pending | pending | pending | pending | M2 |
+| Old Dell laptop (CPU only) | pending | pending | pending | pending | not measured, not planned |
+| Raspberry Pi 5 | pending | pending | pending | pending | not measured, not planned |
 
 ## Outlook
 

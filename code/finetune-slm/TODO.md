@@ -31,16 +31,13 @@ the honest alternatives, because "can the weights hold the book" is the question
 - Progress is saved every 40 examples and a run resumes mid-epoch. `eval` resumes from `results/mr_answers_*.jsonl`:
   delete those files before re-evaluating a different adapter.
 - GGUF export: llama.cpp release v0.7.0 source (`convert_hf_to_gguf.py` with its own `gguf-py`; the installed `gguf`
-  0.3.3 is too old for Gemma 3), `--outtype bf16`. The merged folders and GGUF files made during the session were in
-  the scratchpad, not the repo; recreate them with `python -m mrsj merge --adapter adapters/marathi_1b/epoch_3 --out <folder>`
-  and the converter.
+  0.3.3 is too old for Gemma 3), `--outtype bf16`. The final model is kept at
+  `models/marathi_1b_epoch3_bf16.gguf` (1914 MB, git-ignored; SHA-256 C960ADF3...D57F7). The merged folder (4 GB) was
+  not kept; recreate it with `python -m mrsj merge --adapter adapters/marathi_1b/epoch_3 --out <folder>` and run the
+  converter on it.
 
 ## Open
-- [ ] Load the epoch 3 GGUF in LM Studio or Ollama and call it through LangChain's chat model (`ChatOpenAI` pointed at
-      LM Studio, as in the other projects); measure speed and memory.
-- [ ] Quantise the GGUF (q8_0 or a K-quant) for the old Dell and measure the quality loss.
-- [ ] Run the Qwen3 1.7B row of the router evaluation (`python -m ftslm eval --systems qwen3_few_shot`, needs LM Studio
-      serving qwen/qwen3-1.7b), and rerun the router timings on a quiet machine.
-- [ ] Repeat the training on the old Dell (CPU only) and record seconds and peak RAM there.
-- [ ] Verify the licence of each base model before recommending it; check whether 4-bit training works on CPU.
-- [ ] Record the licence and consent notes for the training data in the README.
+Nothing (closed 2026-10-21). Not planned, listed under "Future ideas" in the root `TODO.md`: calling the GGUF through
+LangChain and LM Studio, quantising it, the Qwen3 row of the router evaluation, and licence checks of the base models.
+Caveats kept in the README: the question set was drafted by Claude and not reviewed; router timings were taken on a
+shared CPU.
