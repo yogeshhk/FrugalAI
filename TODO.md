@@ -11,10 +11,13 @@ Status per project (details in each project's TODO.md and README.md):
   Deferred: naive RAG on the held-out set, whole-document baseline, MATLAB-style hallucination fix (needs LM Studio).
 - workflow-agent (faqintake): built and measured (duplicate detection 20 of 20, drafting v1 not better than one
   prompt because of exemplar copying). Deferred: run the neutral-example drafting evaluation (needs LM Studio).
-- finetune-slm: Part 1 intent router trained (evaluation of local systems pending, no LM Studio needed for three of
-  four systems); Part 2 Marathi: Gemma 3 270M fails the reading gate (1 of 12); Gemma 3 1B PASSES (reading 10 of 12,
-  closed-book 1 of 12). Question data validated; LoRA training on 1B was started in the background on 2026-10-20
-  (resumable: `python -m mrsj train --epochs 4`, then `python -m mrsj eval`). See `code/finetune-slm/TODO.md`.
+- finetune-slm: Part 1 intent router trained and evaluated 2026-10-21 (tuned 0.993 iid, 0.920 ood; base with worked
+  examples 0.567 and 0.420; base instruction-only 0.233 and 0.200; Qwen3 row still needs LM Studio); Part 2 Marathi: Gemma 3 270M fails the reading gate (1 of 12); Gemma 3 1B PASSES (reading 10 of 12,
+  closed-book 1 of 12). Question data validated. Full LoRA training on 1B has NOT run: the 2026-10-20 attempt was
+  killed for lack of memory; on 2026-10-21 a 40-example smoke run (loss 3.744, peak 6.8 GB, 211 s) proved the loop and
+  checkpointing, then was stopped on purpose. The full run is deferred to a day the author picks (about 2 hours,
+  needs about 8 GB free; resumes from the 40-example state: `python -m mrsj train --epochs 4`, then
+  `python -m mrsj eval`). See `code/finetune-slm/TODO.md`.
 - Deck (DONE 2026-10-20): TeachingDataScience `LaTeX/ai_frugal_proj_wiki.tex`, `ai_frugal_proj_intake.tex` and
   `ai_frugal_proj_finetune.tex` (procedure, theory and implementation only, by the author's request: no results) are wired
   into `seminar_ai_frugal_content.tex`, compiled (Presentation 69 pages, CheatSheet 7 pages), checked as images, and the

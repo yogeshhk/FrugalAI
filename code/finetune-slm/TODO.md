@@ -1,6 +1,20 @@
 # TODO (finetune-slm): Marathi question answering on the Sahaj Jeevan book (and the intent router)
 
-## RESUME POINT (updated 2026-10-20, autonomous session)
+## RESUME POINT (updated 2026-10-21)
+SMOKE RUN DONE, FULL TRAINING DEFERRED BY THE AUTHOR (2026-10-21). On 2026-10-21 the trainer ran 40 of 326 examples of
+epoch 1 (mean loss 3.744, 211 s, peak RSS 6.8 GB, 2.0 GB free at the peak) and was then stopped on purpose; the
+adapter and `state.json` (epoch 0, index 40) are in `adapters/marathi_1b/latest`. The full run will resume from
+there with the same shuffle order, so the 40 examples are not wasted (delete `adapters/marathi_1b` to start clean).
+It was started with `train(force=True)` because only 7.1 GB was available (guard is 8 GB); the CLI has no force flag.
+Getting memory: LM Studio, WebView2 (from Teams, Google Drive, Search), Teams and Phone Link had to be stopped; a
+reboot before the run is the cleanest way. Speed was about 5.3 s per example (slower than the 4 s first estimate), so
+plan about 2 hours for 4 epochs. A smoke evaluation (3 questions, all three systems, output kept out of `results/`
+so the real eval does not resume from it) checked the eval pipeline: it ran end to end (base closed 0 of 3, tuned
+closed 0 of 3, base with retrieval 2 of 3, 8 to 22 s per answer). Three questions and 40 training examples say nothing
+about quality; do not quote them.
+Next: full training on a day with the machine quiet, then `python -m mrsj eval`, then README and deck.
+
+## OLDER RESUME POINT (2026-10-20, autonomous session; superseded above)
 Marathi study (`mrsj/`): the go or no-go gate PASSED for Gemma 3 1B-it (reading 10 of 12, closed-book 1 of 12; the
 270M model failed). Built: question data `data/qa_mr.json` (80 training pairs; 20 reworded, 20 raw-only and 12
 control test questions, validated against the book; chapters 19, 20 and 22 withheld from training), training data
@@ -114,6 +128,8 @@ the key phrase in at least 6 of 12 reading questions and at least 90% of its out
 - [ ] Slides for the Frugal AI deck from the measured results.
 
 ## Earlier open items (still valid)
-- [ ] Run the first project's four-system evaluation (`python -m ftslm eval`); it was stopped when memory ran out.
+- [x] Run the first project's evaluation: done 2026-10-21 for three local systems (tuned 0.993 iid, 0.920 ood; results in
+      README). Still open: the Qwen3 1.7B row (`python -m ftslm eval --systems qwen3_few_shot`, needs LM Studio serving
+      qwen/qwen3-1.7b) and a rerun of the timings on a quiet machine.
 - [ ] Repeat the training on the old Dell (CPU only) and record seconds and peak RAM there.
 - [ ] Verify the licence of each base model before recommending it; check whether 4-bit training works on CPU.

@@ -3,7 +3,7 @@
 Two studies share this folder. Both use LoRA on a laptop CPU with no GPU.
 
 - **Part 1, intent router (`ftslm/`)**: teach a 135-million-parameter model one narrow job, routing a short helpline
-  message to one of six intents, then test whether the result beats prompting. Trained; its evaluation is pending.
+  message to one of six intents, then test whether the result beats prompting. Trained and evaluated (2026-10-21); the Qwen3 comparison row is open.
 - **Part 2, Marathi question answering (`mrsj/`)**: can a small Gemma model learn the Marathi book "Sahaj Jeevan"
   well enough to answer questions with no retrieval? It starts with a go or no-go gate; see the section
   "Part 2" below for the result so far.
@@ -72,10 +72,31 @@ not a benchmark.
 
 ## Measured: evaluation
 
-Pending. The evaluation run was stopped when the machine ran short of memory, so no accuracy figure exists yet.
-When it runs, `results/results.csv` will hold, for each of four systems (base with instruction, base with worked
-examples, tuned, Qwen3 1.7B with worked examples) and each test set: accuracy, macro F1, mean prompt tokens per
-message and seconds per message. Do not quote an accuracy from this project until that file exists.
+Run on 2026-10-21, main PC, one seed, 150 messages per test set (`results/results.csv`). Chance for six classes is
+about 0.17. All three systems use the same 135M model, so the comparison is "same model, three ways of using it".
+
+| System | Test set | Accuracy | Macro F1 | Prompt tokens per message | Seconds per message |
+|--------|----------|----------|----------|---------------------------|---------------------|
+| Base, instruction only | iid | 0.233 | 0.134 | 85.5 | 1.07 |
+| Base, instruction only | ood | 0.200 | 0.090 | 86.6 | 0.81 |
+| Base, worked examples in the prompt | iid | 0.567 | 0.574 | 204.5 | 2.36 |
+| Base, worked examples in the prompt | ood | 0.420 | 0.383 | 205.6 | 3.05 |
+| Tuned (LoRA adapter) | iid | 0.993 | 0.993 | 17.5 | 0.35 |
+| Tuned (LoRA adapter) | ood | 0.920 | 0.918 | 18.6 | 0.59 |
+
+What it shows:
+- The untuned 135M model is near chance when only told the labels, and worked examples help (0.57 iid) but cost about
+  2.4 times the prompt tokens and still fall to 0.42 on unseen phrasings.
+- The tuned model needs a prompt of about 18 tokens and is the most accurate on both sets. The drop from 0.99 (iid) to
+  0.92 (ood) is the cost of phrasings it never saw. The errors that were printed are a spelling-damaged or unusual
+  message sent to a neighbouring class (for example a chaff cutter fault read as "pest", a cold-storage grant question
+  read as "other").
+- It is not a fair claim that fine-tuning beats prompting in general: a larger prompted model might do well here, and
+  the Qwen3 1.7B row was not run (it needs LM Studio, which was off). That comparison is still open.
+
+Caveats: the timing columns are not clean. The Marathi smoke evaluation (Part 2) shared the CPU during most of this run,
+so read seconds per message as an upper bound and the ordering as indicative only. Data is synthetic, one seed, six
+classes.
 
 ## Part 2: Marathi question answering on the Sahaj Jeevan book
 
@@ -94,8 +115,8 @@ facts. The study is built to say which happened.
 | Go or no-go gate (base models, before any training) | done: Gemma 3 270M fails, Gemma 3 1B passes |
 | Question data, validated against the book | done |
 | Training data | done (`python -m mrsj data`) |
-| LoRA training on Gemma 3 1B | started once, stopped by the system for lack of memory; not finished, see below |
-| Three-system evaluation | written and tested offline; not run (needs the trained adapter) |
+| LoRA training on Gemma 3 1B | smoke run only (2026-10-21: 40 of 326 examples, mean loss 3.744, peak 6.8 GB); full training deferred, see below |
+| Three-system evaluation | written and tested offline; pipeline smoke-tested on 3 questions with the 40-example adapter; full run needs the trained adapter |
 
 ### The gate
 

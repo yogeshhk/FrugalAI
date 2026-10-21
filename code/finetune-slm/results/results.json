@@ -1,0 +1,805 @@
+{
+  "rows": [
+    {
+      "system": "base_instruction",
+      "split": "test_iid",
+      "n": 150,
+      "accuracy": 0.2333,
+      "macro_f1": 0.1337,
+      "prompt_tokens_mean": 85.5,
+      "seconds_per_item": 1.0691,
+      "date": "2026-10-21"
+    },
+    {
+      "system": "base_instruction",
+      "split": "test_ood",
+      "n": 150,
+      "accuracy": 0.2,
+      "macro_f1": 0.0903,
+      "prompt_tokens_mean": 86.6,
+      "seconds_per_item": 0.8091,
+      "date": "2026-10-21"
+    },
+    {
+      "system": "base_few_shot",
+      "split": "test_iid",
+      "n": 150,
+      "accuracy": 0.5667,
+      "macro_f1": 0.5744,
+      "prompt_tokens_mean": 204.5,
+      "seconds_per_item": 2.3618,
+      "date": "2026-10-21"
+    },
+    {
+      "system": "base_few_shot",
+      "split": "test_ood",
+      "n": 150,
+      "accuracy": 0.42,
+      "macro_f1": 0.3825,
+      "prompt_tokens_mean": 205.6,
+      "seconds_per_item": 3.0495,
+      "date": "2026-10-21"
+    },
+    {
+      "system": "tuned",
+      "split": "test_iid",
+      "n": 150,
+      "accuracy": 0.9933,
+      "macro_f1": 0.9933,
+      "prompt_tokens_mean": 17.5,
+      "seconds_per_item": 0.3527,
+      "date": "2026-10-21"
+    },
+    {
+      "system": "tuned",
+      "split": "test_ood",
+      "n": 150,
+      "accuracy": 0.92,
+      "macro_f1": 0.918,
+      "prompt_tokens_mean": 18.6,
+      "seconds_per_item": 0.5917,
+      "date": "2026-10-21"
+    }
+  ],
+  "details": {
+    "base_instruction": {
+      "test_iid": {
+        "confusion": {
+          "weather": {
+            "weather": 25,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "price": {
+            "weather": 25,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "pest": {
+            "weather": 19,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 6,
+            "other": 0,
+            "none": 0
+          },
+          "scheme": {
+            "weather": 25,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "repair": {
+            "weather": 15,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 10,
+            "other": 0,
+            "none": 0
+          },
+          "other": {
+            "weather": 25,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          }
+        },
+        "errors": [
+          {
+            "text": "Good morning, this is Lata.",
+            "gold": "other",
+            "pred": "weather"
+          },
+          {
+            "text": "how do i fix a leaking harvester?",
+            "gold": "repair",
+            "pred": "weather"
+          },
+          {
+            "text": "White powder on my chilli leaves, what is it?",
+            "gold": "pest",
+            "pred": "weather"
+          },
+          {
+            "text": "This is Lata, please tell me a joke.",
+            "gold": "other",
+            "pred": "weather"
+          },
+          {
+            "text": "Am I eliible for the seed subsidy?",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "Tell me today's pomegranate rate at Sangli.",
+            "gold": "price",
+            "pred": "weather"
+          },
+          {
+            "text": "My chilli plants are wilting and the roots look rotten.",
+            "gold": "pest",
+            "pred": "weather"
+          },
+          {
+            "text": "How do I apply for the solar pump subsidy?",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "When does the application for the cold strage grant close?",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "What documents do I need for the cold storage grant?",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "How do I apply for the seed subsidy?",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "When does the application for the kisan credit card close?",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "My seed drill will not start, what should I check?",
+            "gold": "repair",
+            "pred": "weather"
+          },
+          {
+            "text": "How much is pomegranate selling for in Amravati?",
+            "gold": "price",
+            "pred": "weather"
+          },
+          {
+            "text": "who built this service? regards, lata.",
+            "gold": "other",
+            "pred": "weather"
+          }
+        ]
+      },
+      "test_ood": {
+        "confusion": {
+          "weather": {
+            "weather": 25,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "price": {
+            "weather": 23,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 2,
+            "other": 0,
+            "none": 0
+          },
+          "pest": {
+            "weather": 11,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 14,
+            "other": 0,
+            "none": 0
+          },
+          "scheme": {
+            "weather": 25,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "repair": {
+            "weather": 20,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 5,
+            "other": 0,
+            "none": 0
+          },
+          "other": {
+            "weather": 25,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          }
+        },
+        "errors": [
+          {
+            "text": "Hi, is anyone free to chat? - Mohan",
+            "gold": "other",
+            "pred": "weather"
+          },
+          {
+            "text": "Hi, is anyone free to chat? - Arjun",
+            "gold": "other",
+            "pred": "weather"
+          },
+          {
+            "text": "My bajra fruit is rotting from inside, what is the cause?",
+            "gold": "pest",
+            "pred": "repair"
+          },
+          {
+            "text": "Small black bugs are all over my pomegranate, which medicine works?",
+            "gold": "pest",
+            "pred": "weather"
+          },
+          {
+            "text": "Is it worth fixing an old chaff cutter or should I buy new?",
+            "gold": "repair",
+            "pred": "weather"
+          },
+          {
+            "text": "Current market value of bajra at Sangli, please.",
+            "gold": "price",
+            "pred": "repair"
+          },
+          {
+            "text": "Who shoud I meet at the block office about the cold storage grant?",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "Can a small farmr get the solar pump subsidy?",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "What is your name? Mine is Santosh.",
+            "gold": "other",
+            "pred": "weather"
+          },
+          {
+            "text": "Small black bugs are all over my jowar, which medicine works?",
+            "gold": "pest",
+            "pred": "weather"
+          },
+          {
+            "text": "Current market value of groundnut at Kolhapur, please.",
+            "gold": "price",
+            "pred": "weather"
+          },
+          {
+            "text": "Cost per kilo of turmeric right now?",
+            "gold": "price",
+            "pred": "weather"
+          },
+          {
+            "text": "Can a small farmer get the kisan credit card?",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "tell me about the benefits of the cold storage grant.",
+            "gold": "scheme",
+            "pred": "weather"
+          },
+          {
+            "text": "Belt on the seed drill has snapped, where do I buy a new one near Beed?",
+            "gold": "repair",
+            "pred": "weather"
+          }
+        ]
+      }
+    },
+    "base_few_shot": {
+      "test_iid": {
+        "confusion": {
+          "weather": {
+            "weather": 13,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 7,
+            "other": 5,
+            "none": 0
+          },
+          "price": {
+            "weather": 0,
+            "price": 7,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 4,
+            "other": 14,
+            "none": 0
+          },
+          "pest": {
+            "weather": 0,
+            "price": 0,
+            "pest": 21,
+            "scheme": 0,
+            "repair": 4,
+            "other": 0,
+            "none": 0
+          },
+          "scheme": {
+            "weather": 0,
+            "price": 0,
+            "pest": 0,
+            "scheme": 7,
+            "repair": 2,
+            "other": 16,
+            "none": 0
+          },
+          "repair": {
+            "weather": 0,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 21,
+            "other": 4,
+            "none": 0
+          },
+          "other": {
+            "weather": 1,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 8,
+            "other": 16,
+            "none": 0
+          }
+        },
+        "errors": [
+          {
+            "text": "Good morning, this is Lata.",
+            "gold": "other",
+            "pred": "weather"
+          },
+          {
+            "text": "Tell me today's pomegranate rate at Sangli.",
+            "gold": "price",
+            "pred": "other"
+          },
+          {
+            "text": "My chilli plants are wilting and the roots look rotten.",
+            "gold": "pest",
+            "pred": "repair"
+          },
+          {
+            "text": "When does the application for the cold strage grant close?",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "Will it rain in Amravati next Monday?",
+            "gold": "weather",
+            "pred": "other"
+          },
+          {
+            "text": "What documents do I need for the cold storage grant?",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "When does the application for the kisan credit card close?",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "How much is pomegranate selling for in Amravati?",
+            "gold": "price",
+            "pred": "other"
+          },
+          {
+            "text": "How hot will it be in Sangli tonight?",
+            "gold": "weather",
+            "pred": "other"
+          },
+          {
+            "text": "Where can I get my harvester serviced near Amravati?",
+            "gold": "repair",
+            "pred": "other"
+          },
+          {
+            "text": "When does the appication for the cold storage grant close?",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "Am I elgible for the cold storage grant?",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "Tell me today's chilli rate at Kolhapur.",
+            "gold": "price",
+            "pred": "other"
+          },
+          {
+            "text": "Should I irrigate my grapes field, will it rain tonight?",
+            "gold": "weather",
+            "pred": "repair"
+          },
+          {
+            "text": "Who built this service? Regards, Arjun.",
+            "gold": "other",
+            "pred": "repair"
+          }
+        ]
+      },
+      "test_ood": {
+        "confusion": {
+          "weather": {
+            "weather": 7,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 6,
+            "other": 12,
+            "none": 0
+          },
+          "price": {
+            "weather": 0,
+            "price": 1,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 11,
+            "other": 13,
+            "none": 0
+          },
+          "pest": {
+            "weather": 0,
+            "price": 0,
+            "pest": 13,
+            "scheme": 0,
+            "repair": 12,
+            "other": 0,
+            "none": 0
+          },
+          "scheme": {
+            "weather": 0,
+            "price": 0,
+            "pest": 0,
+            "scheme": 3,
+            "repair": 2,
+            "other": 20,
+            "none": 0
+          },
+          "repair": {
+            "weather": 0,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 24,
+            "other": 1,
+            "none": 0
+          },
+          "other": {
+            "weather": 0,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 10,
+            "other": 15,
+            "none": 0
+          }
+        },
+        "errors": [
+          {
+            "text": "Hi, is anyone free to chat? - Mohan",
+            "gold": "other",
+            "pred": "repair"
+          },
+          {
+            "text": "Hi, is anyone free to chat? - Arjun",
+            "gold": "other",
+            "pred": "repair"
+          },
+          {
+            "text": "Please give me the Amravati temperatre outlook for tonight.",
+            "gold": "weather",
+            "pred": "other"
+          },
+          {
+            "text": "Current market value of bajra at Sangli, please.",
+            "gold": "price",
+            "pred": "repair"
+          },
+          {
+            "text": "Heavy wind expected at Kolhapur this weekend, is that right?",
+            "gold": "weather",
+            "pred": "other"
+          },
+          {
+            "text": "Who shoud I meet at the block office about the cold storage grant?",
+            "gold": "scheme",
+            "pred": "repair"
+          },
+          {
+            "text": "Current market value of groundnut at Kolhapur, please.",
+            "gold": "price",
+            "pred": "other"
+          },
+          {
+            "text": "Cost per kilo of turmeric right now?",
+            "gold": "price",
+            "pred": "other"
+          },
+          {
+            "text": "Can a small farmer get the kisan credit card?",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "tell me about the benefits of the cold storage grant.",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "Are traders paying more for jowar tonight?",
+            "gold": "price",
+            "pred": "repair"
+          },
+          {
+            "text": "tell me about the benefits of the seed subsidy.",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "Cost per kilo of banana right now?",
+            "gold": "price",
+            "pred": "other"
+          },
+          {
+            "text": "Heavy wind expected at Jalgaon next Monday, is that right?",
+            "gold": "weather",
+            "pred": "other"
+          },
+          {
+            "text": "Current market value of pomegranate at Jalgaon, please.",
+            "gold": "price",
+            "pred": "repair"
+          }
+        ]
+      }
+    },
+    "tuned": {
+      "test_iid": {
+        "confusion": {
+          "weather": {
+            "weather": 25,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "price": {
+            "weather": 0,
+            "price": 25,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "pest": {
+            "weather": 0,
+            "price": 0,
+            "pest": 25,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "scheme": {
+            "weather": 0,
+            "price": 0,
+            "pest": 0,
+            "scheme": 25,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "repair": {
+            "weather": 0,
+            "price": 0,
+            "pest": 1,
+            "scheme": 0,
+            "repair": 24,
+            "other": 0,
+            "none": 0
+          },
+          "other": {
+            "weather": 0,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 25,
+            "none": 0
+          }
+        },
+        "errors": [
+          {
+            "text": "My chaff cutter will not start, what sould I check?",
+            "gold": "repair",
+            "pred": "pest"
+          }
+        ]
+      },
+      "test_ood": {
+        "confusion": {
+          "weather": {
+            "weather": 25,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "price": {
+            "weather": 0,
+            "price": 24,
+            "pest": 0,
+            "scheme": 1,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "pest": {
+            "weather": 0,
+            "price": 0,
+            "pest": 25,
+            "scheme": 0,
+            "repair": 0,
+            "other": 0,
+            "none": 0
+          },
+          "scheme": {
+            "weather": 0,
+            "price": 0,
+            "pest": 0,
+            "scheme": 23,
+            "repair": 0,
+            "other": 2,
+            "none": 0
+          },
+          "repair": {
+            "weather": 0,
+            "price": 0,
+            "pest": 9,
+            "scheme": 0,
+            "repair": 16,
+            "other": 0,
+            "none": 0
+          },
+          "other": {
+            "weather": 0,
+            "price": 0,
+            "pest": 0,
+            "scheme": 0,
+            "repair": 0,
+            "other": 25,
+            "none": 0
+          }
+        },
+        "errors": [
+          {
+            "text": "Who shoud I meet at the block office about the cold storage grant?",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "Smoke is coming from my chaff cutter, what now?",
+            "gold": "repair",
+            "pred": "pest"
+          },
+          {
+            "text": "Who should I meet at the block ofice about the cold storage grant?",
+            "gold": "scheme",
+            "pred": "other"
+          },
+          {
+            "text": "Smoke is coming from my seed drill, what now?",
+            "gold": "repair",
+            "pred": "pest"
+          },
+          {
+            "text": "The engne of my harvester keeps stalling, any advice?",
+            "gold": "repair",
+            "pred": "pest"
+          },
+          {
+            "text": "Smoke is cming from my seed drill, what now?",
+            "gold": "repair",
+            "pred": "pest"
+          },
+          {
+            "text": "Smoke is cming from my harvester, what now?",
+            "gold": "repair",
+            "pred": "pest"
+          },
+          {
+            "text": "Smoke is comng from my chaff cutter, what now?",
+            "gold": "repair",
+            "pred": "pest"
+          },
+          {
+            "text": "Are traders pying more for pomegranate in two days?",
+            "gold": "price",
+            "pred": "scheme"
+          },
+          {
+            "text": "smoke is coming from my seed drill, what now?",
+            "gold": "repair",
+            "pred": "pest"
+          },
+          {
+            "text": "Smoke is coming from my harvester, what now?",
+            "gold": "repair",
+            "pred": "pest"
+          },
+          {
+            "text": "Smoke is coing from my harvester, what now?",
+            "gold": "repair",
+            "pred": "pest"
+          }
+        ]
+      }
+    }
+  },
+  "labels": [
+    "weather",
+    "price",
+    "pest",
+    "scheme",
+    "repair",
+    "other"
+  ]
+}

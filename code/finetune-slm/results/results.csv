@@ -1,0 +1,7 @@
+system,split,n,accuracy,macro_f1,prompt_tokens_mean,seconds_per_item,date
+base_instruction,test_iid,150,0.2333,0.1337,85.5,1.0691,2026-10-21
+base_instruction,test_ood,150,0.2,0.0903,86.6,0.8091,2026-10-21
+base_few_shot,test_iid,150,0.5667,0.5744,204.5,2.3618,2026-10-21
+base_few_shot,test_ood,150,0.42,0.3825,205.6,3.0495,2026-10-21
+tuned,test_iid,150,0.9933,0.9933,17.5,0.3527,2026-10-21
+tuned,test_ood,150,0.92,0.918,18.6,0.5917,2026-10-21
