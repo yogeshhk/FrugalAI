@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "run": "extract_mr_direct_gemma-2-2b-it_reference",
+    "lang": "mr",
+    "route": "direct",
+    "model": "gemma-2-2b-it",
+    "condition": "reference",
+    "transcripts": null,
+    "date": "2026-10-24",
+    "host": "Windows 10, 10 cores, 17 GB RAM"
+  },
+  "summary": {
+    "tune": {
+      "utterances": 18,
+      "field_accuracy": 0.92,
+      "to_fix_per_utterance": 0.89,
+      "spurious": 6,
+      "uncertain": 24,
+      "all_correct_utterances": 10,
+      "mean_seconds": 32.46
+    },
+    "all": {
+      "utterances": 18,
+      "field_accuracy": 0.92,
+      "to_fix_per_utterance": 0.89,
+      "spurious": 6,
+      "uncertain": 24,
+      "all_correct_utterances": 10,
+      "mean_seconds": 32.46
+    }
+  }
+}

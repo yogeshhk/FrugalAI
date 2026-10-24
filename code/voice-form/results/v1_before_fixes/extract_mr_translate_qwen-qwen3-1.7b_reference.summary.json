@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "run": "extract_mr_translate_qwen-qwen3-1.7b_reference",
+    "lang": "mr",
+    "route": "translate",
+    "model": "qwen/qwen3-1.7b",
+    "condition": "reference",
+    "transcripts": null,
+    "date": "2026-10-24",
+    "host": "Windows 10, 10 cores, 17 GB RAM"
+  },
+  "summary": {
+    "tune": {
+      "utterances": 18,
+      "field_accuracy": 0.504,
+      "to_fix_per_utterance": 3.83,
+      "spurious": 7,
+      "uncertain": 14,
+      "all_correct_utterances": 0,
+      "mean_seconds": 11.13
+    },
+    "all": {
+      "utterances": 18,
+      "field_accuracy": 0.504,
+      "to_fix_per_utterance": 3.83,
+      "spurious": 7,
+      "uncertain": 14,
+      "all_correct_utterances": 0,
+      "mean_seconds": 11.13
+    }
+  }
+}

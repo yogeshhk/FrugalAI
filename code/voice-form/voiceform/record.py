@@ -58,7 +58,10 @@ def coerce(spec: FieldSpec, raw, today: Optional[_dt.date] = None) -> FieldValue
     t = spec.type
     try:
         if t == "text":
-            value = re.sub(r"\s+", " ", str(raw)).strip(" .,")
+            value = strip_label_words(re.sub(r"\s+", " ", str(raw)).strip(" .,"), spec)
+            if not value:
+                fv.note = "only the field's own name was given, not a value"
+                return fv
         elif t in ("int", "float"):
             num = nz.first_number(raw)
             if num is None:
@@ -109,6 +112,108 @@ def coerce(spec: FieldSpec, raw, today: Optional[_dt.date] = None) -> FieldValue
         return _bad(fv, f"could not parse: {exc}")
     fv.value, fv.status = value, FILLED
     return fv
+
+
+# Words that introduce a value in speech ("नाव सुनीता", "गाव वडगाव") and must not end up inside it.
+_INTRO = {nz.fold(w) for w in ("नाव", "नाम", "name", "गाव", "गांव", "village", "भाग", "मोहल्ला", "area", "शेरा",
+                                "टिप्पणी", "remarks", "ग्राहक", "customer", "मतदार", "मतदाता", "घर", "मकान",
+                                "क्रमांक", "नंबर", "number", "का", "की", "चे", "ची", ":", "-")}
+
+
+# Common words inside labels that say nothing about the field ("वॉरंटीमध्ये आहे", "Remarks as said by the worker").
+_COMMON = {nz.fold(w) for w in ("आहे", "है", "में", "का", "की", "के", "चे", "चा", "ची", "या", "आणि", "और", "किती", "कितने",
+                                 "under", "the", "as", "said", "by", "worker", "of", "in", "or", "is", "to", "years",
+                                 "kg", "number", "name", "date")}
+
+
+def label_words(spec: FieldSpec) -> set:
+    """Content words of a field's labels in every language, for 'was this field mentioned at all' checks."""
+    words = set()
+    for label in [spec.label, *spec.labels.values()]:
+        for w in re.split(r"[\s(),/]+", label or ""):
+            k = nz.fold(w)
+            if len(k) >= 2 and k not in _COMMON:
+                words.add(k)
+    return words
+
+
+def mentioned(spec: FieldSpec, text: str) -> bool:
+    """A content word of the field's label occurs in the text, allowing case endings ('वॉरंटी' ~ 'वॉरंटीमध्ये')."""
+    ftoks = [nz.fold(t) for t in nz.tokens(text)]
+    return any((ft.startswith(lw) or lw.startswith(ft)) and len(ft) >= 4 for lw in label_words(spec) for ft in ftoks)
+
+
+def strip_label_words(value: str, spec: FieldSpec) -> str:
+    """'गाव केडगाव' -> 'केडगाव'; 'शेरा' -> '' (the label alone is not a value)."""
+    stop = _INTRO | label_words(spec)
+    toks = value.split()
+    while toks and nz.fold(toks[0]).strip(":,.-") in stop:
+        toks = toks[1:]
+    return " ".join(toks)
+
+
+def grounded(spec: FieldSpec, value, text: str, today=None) -> bool:
+    """Plain-code check that a parsed value was actually said: the number, the digits, the date, the option word or the
+    name occurs in the text. A model's quote can be wrong while the value is right, and the other way round; this
+    checks the value itself."""
+    if value is None:
+        return False
+    norm = nz.normalize_text(text)
+    toks = norm.split()
+    ftoks = [nz.fold(t) for t in toks]
+    t = spec.type
+    if t in ("int", "float"):
+        target = nz._fmt(float(value))
+        return any(re.fullmatch(r"\d+(\.\d+)?", x) and nz._fmt(float(x)) == target for x in toks)
+    if t in ("phone", "pattern"):
+        runs, cur = [], ""
+        for x in toks + [""]:
+            if re.fullmatch(r"\d+", x):
+                cur += x
+            elif cur:
+                runs.append(cur)
+                cur = ""
+        digits = re.sub(r"\D", "", str(value))
+        letters = re.sub(r"[^A-Z]", "", str(value))
+        return any(digits in r for r in runs) and (not letters or letters in norm.upper().replace(" ", ""))
+    if t == "bp":
+        s, d = str(value).split("/")
+        return s in toks and d in toks
+    if t == "date":
+        for i in range(len(toks)):
+            for width in (1, 2, 3):
+                chunk = " ".join(toks[i:i + width])
+                if re.fullmatch(r"\d+", chunk):
+                    continue
+                try:
+                    if (d := nz.parse_date(chunk, today)) and d.isoformat() == value:
+                        return True
+                except nz.DateAmbiguous:
+                    pass
+        return False
+    if t == "enum":
+        words = [str(value).replace("_", " ")] + spec.options.get(value, [])
+        return any(_said(w, ftoks) for w in words)
+    if t == "bool":
+        return mentioned(spec, text)
+    if t == "text":
+        if spec.free_text:
+            v = {nz.fold(w) for w in str(value).split()}
+            return bool(v) and len(v & set(ftoks)) / len(v) >= 0.5
+        return _said(str(value), ftoks)
+    return True
+
+
+def _said(phrase: str, ftoks) -> bool:
+    """Whole words of `phrase` occur in order in the text; a case ending may follow the last word ('वडिलांचे')."""
+    p = nz.fold(phrase).split()
+    if not p:
+        return False
+    for i in range(len(ftoks) - len(p) + 1):
+        w = ftoks[i:i + len(p)]
+        if all(a == b for a, b in zip(w[:-1], p[:-1])) and w[-1].startswith(p[-1]):
+            return True
+    return False
 
 
 def _bad(fv: FieldValue, note: str, value=None) -> FieldValue:

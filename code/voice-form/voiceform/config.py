@@ -14,7 +14,7 @@ SCRIPTS_DIR = EVAL_DIR / "scripts"
 AUDIO_DIR = EVAL_DIR / "audio"          # your recordings, 16 kHz mono WAV, never committed
 SMOKE_AUDIO_DIR = EVAL_DIR / "smoke_audio"  # machine voice for smoke runs only, never committed
 RESULTS_DIR = ROOT / "results"
-MODELS_DIR = ROOT / "models"            # Vosk models; Hugging Face models stay in the normal HF cache
+MODELS_DIR = ROOT / "models"            # every model, as plain folders; gitignored except models/README.md
 OUTBOX_DIR = ROOT / "outbox"            # where the sinks write (local files only)
 
 LLM_URL = os.environ.get("VOICEFORM_LLM_URL", "http://localhost:1234/v1")
@@ -52,9 +52,11 @@ LANG_NAMES = {"mr": "Marathi", "hi": "Hindi", "en": "English"}
 
 
 def model_source(name: str, repo: str) -> str:
-    """models/<name> if the download fell back to a plain folder there, else the Hugging Face repo id (cache)."""
+    """models/<name>, the only place models are loaded from (gitignored). Missing: say how to get it."""
     local = MODELS_DIR / name
-    return str(local) if (local / "config.json").exists() else repo
+    if not (local / "config.json").exists():
+        raise FileNotFoundError(f"{local} is missing ({repo}); run: python -m voiceform download --only {name}")
+    return str(local)
 
 
 def go_offline() -> None:

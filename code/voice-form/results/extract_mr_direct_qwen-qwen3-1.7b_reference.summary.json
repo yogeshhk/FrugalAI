@@ -12,21 +12,21 @@
   "summary": {
     "tune": {
       "utterances": 18,
-      "field_accuracy": 0.832,
-      "to_fix_per_utterance": 1.72,
-      "spurious": 10,
-      "uncertain": 21,
-      "all_correct_utterances": 3,
-      "mean_seconds": 9.53
+      "field_accuracy": 0.848,
+      "to_fix_per_utterance": 1.17,
+      "spurious": 2,
+      "uncertain": 0,
+      "all_correct_utterances": 8,
+      "mean_seconds": 10.08
     },
     "all": {
       "utterances": 18,
-      "field_accuracy": 0.832,
-      "to_fix_per_utterance": 1.72,
-      "spurious": 10,
-      "uncertain": 21,
-      "all_correct_utterances": 3,
-      "mean_seconds": 9.53
+      "field_accuracy": 0.848,
+      "to_fix_per_utterance": 1.17,
+      "spurious": 2,
+      "uncertain": 0,
+      "all_correct_utterances": 8,
+      "mean_seconds": 10.08
     }
   }
 }

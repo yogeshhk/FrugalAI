@@ -68,7 +68,8 @@ def test_direct_route_fills_and_flags_unbacked_values():
     rec, info = fill(ASHA, TEXT, "mr", route="direct", llm=llm, today=TODAY)
     f = rec.fields
     assert f["woman_name"].status == FILLED and f["age"].value == 24 and f["bp"].value == "120/80"
-    assert f["weight_kg"].status == UNCERTAIN       # the model invented a weight that was never said
+    assert f["weight_kg"].status == MISSING         # the model invented a weight that was never said: dropped
+    assert "not found in what was said" in f["weight_kg"].note
     assert f["phone"].status == MISSING
     assert info["llm_calls"] == 1 and info["reply_parsed"]
     assert "weeks_pregnant" in rec.missing_required(ASHA)
@@ -85,9 +86,13 @@ def test_translate_route_calls_the_model_twice():
 def test_model_that_returns_bare_values_or_junk():
     llm = FakeLLM([{"age": "24", "village": "वडगाव"}])
     rec, _ = fill(ASHA, TEXT, "mr", route="direct", llm=llm, today=TODAY)
-    assert rec.fields["age"].value == 24 and rec.fields["age"].status == UNCERTAIN  # no quoted words
+    # No quote, but code finds 24 in what was said: the value stands, without a highlight.
+    assert rec.fields["age"].value == 24 and rec.fields["age"].status == FILLED and rec.fields["age"].evidence == ""
     rec, info = fill(ASHA, TEXT, "mr", route="direct", llm=FakeLLM(["sorry, I cannot"]), today=TODAY)
-    assert not info["reply_parsed"] and all(fv.status == MISSING for fv in rec.fields.values())
+    assert not info["reply_parsed"]
+    # The model gave nothing, but code still reads the BP; every other field stays empty.
+    assert rec.fields["bp"].value == "120/80"
+    assert all(fv.status == MISSING for n, fv in rec.fields.items() if n != "bp")
 
 
 def test_parse_json_fallback():
@@ -116,6 +121,46 @@ def test_rules_option_match_is_whole_word():
     sir = FORMS["sir_enumeration"]
     out = rules_extract(sir, "नाव संजय. मोबाईल नऊ आठ. पुरुष.", TODAY)
     assert out["gender"].value == "male"         # not 'female' from 'बाई' inside 'मोबाईल'
+
+
+def test_label_words_are_stripped_from_values():
+    assert coerce(ASHA.get("village"), "गाव केडगाव", TODAY).value == "केडगाव"
+    assert coerce(ASHA.get("woman_name"), "नाव: रेखा जाधव", TODAY).value == "रेखा जाधव"
+    fv = coerce(ASHA.get("remarks"), "शेरा", TODAY)
+    assert fv.status == MISSING and "own name" in fv.note
+
+
+def test_remarks_only_when_their_name_is_said():
+    said_none = "सविता मोरे, वय सव्वीस. पुढच्या वेळी पती घरी असतील."
+    llm = FakeLLM([_reply(remarks=("पुढच्या वेळी पती घरी असतील", "पुढच्या वेळी पती घरी असतील"))])
+    rec, _ = fill(ASHA, said_none, "mr", route="direct", llm=llm, today=TODAY)
+    assert rec.fields["remarks"].status == MISSING
+    said = "सविता मोरे. शेरा, पुढच्या वेळी पती घरी असतील."
+    llm = FakeLLM([_reply(remarks=("पुढच्या वेळी पती घरी असतील", "पुढच्या वेळी पती घरी असतील"))])
+    rec, _ = fill(ASHA, said, "mr", route="direct", llm=llm, today=TODAY)
+    assert rec.fields["remarks"].status == FILLED
+
+
+def test_invented_dates_options_and_yes_no_are_dropped():
+    said = "नाव हरी गावडे. मोटर खूप आवाज करते."
+    reply = {n: {"value": None, "evidence": None} for n in TICKET.names}
+    reply.update({"visit_date": {"value": "2023-10-11", "evidence": "x"},
+                  "urgency": {"value": "high", "evidence": "x"},
+                  "under_warranty": {"value": True, "evidence": "x"},
+                  "product": {"value": "water_pump", "evidence": "मोटर"}})
+    rec, _ = fill(TICKET, said, "mr", route="direct", llm=FakeLLM([reply]), today=TODAY)
+    assert rec.fields["visit_date"].status == MISSING
+    assert rec.fields["urgency"].status == MISSING
+    assert rec.fields["under_warranty"].status == MISSING
+    assert rec.fields["product"].value == "water_pump"   # 'मोटर' was said
+
+
+def test_phone_bp_are_read_by_code_first():
+    said = TEXT + " मोबाईल नऊ आठ दोन तीन चार पाच सहा सात आठ नऊ"
+    llm = FakeLLM([_reply(phone=("982345678", "x"), bp=("12/80", "x"))])  # the model dropped a digit
+    rec, _ = fill(ASHA, said, "mr", route="direct", llm=llm, today=TODAY)
+    assert rec.fields["phone"].value == "9823456789" and rec.fields["phone"].source == "rules"
+    assert rec.fields["bp"].value == "120/80"
 
 
 def test_merge_follow_up_and_english_request():

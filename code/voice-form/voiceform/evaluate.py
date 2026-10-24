@@ -102,7 +102,8 @@ def score_record(form: FormSpec, gold: Dict, record) -> dict:
                 c["correct"] += 1
             elif pred is None:
                 c["missed"] += 1
-                c["errors"].append(f"{f.name}: missed ({gold[f.name]})" + (f" [{fv.note}]" if fv and fv.note else ""))
+                c["errors"].append(f"{f.name}: missed ({gold[f.name]})" + (f" [{fv.note}]" if fv and fv.note else "")
+                                   + (f" raw={fv.raw!r}" if fv and fv.raw not in (None, "") else ""))
             else:
                 c["wrong"] += 1
                 c["errors"].append(f"{f.name}: {pred!r} != {gold[f.name]!r}")

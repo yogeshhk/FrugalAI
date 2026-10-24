@@ -14,7 +14,7 @@ import time
 from typing import Dict, Optional, Tuple
 
 from . import normalize as nz
-from .record import FILLED, UNCERTAIN, FieldValue, Record, coerce, evidence_ok
+from .record import FILLED, UNCERTAIN, FieldValue, Record, coerce, evidence_ok, grounded, mentioned
 from .schema import FieldSpec, FormSpec
 
 ROUTES = ("rules", "direct", "translate")
@@ -23,8 +23,13 @@ SYSTEM = (
     "You fill a form from what a field worker said. Use only what was said. Never guess or add a value.\n"
     "For every field return value and evidence. value: the value as said (digits for numbers), or null if it was "
     "not said. evidence: the exact words copied from the text that give the value, or null.\n"
+    "Give only the value, never the field's own name (write 'Wadgaon', not 'village Wadgaon'). A date field gets a "
+    "date only if the text gives a date for that field; 'today' is the day of the visit, not a next-visit date.\n"
     "Return one JSON object only."
 )
+
+# Field types plain code reads better than a small model; the model's value is used only when code finds nothing.
+CODE_FIRST = ("phone", "bp", "pattern")
 
 TRANSLATE_SYSTEM = (
     "Translate the text into simple English. Keep every name, number, date and place exactly as it is. "
@@ -62,9 +67,13 @@ def json_schema(form: FormSpec) -> dict:
             "properties": {n: item for n in form.names}}
 
 
-def _from_reply(form: FormSpec, reply: Optional[dict], read_text: str, today, source: str) -> Dict[str, FieldValue]:
+def _from_reply(form: FormSpec, reply: Optional[dict], read_text: str, today, source: str,
+                original: str = "") -> Dict[str, FieldValue]:
+    """Model reply -> checked values. A value that code cannot find in what was said is dropped (it was invented);
+    an optional free-text field is kept only if its own name was said ('शेरा', 'टिप्पणी', 'remarks')."""
     out = {}
     reply = reply or {}
+    texts = [t for t in (read_text, original) if t]
     for f in form.fields:
         item = reply.get(f.name)
         if isinstance(item, dict):
@@ -73,9 +82,13 @@ def _from_reply(form: FormSpec, reply: Optional[dict], read_text: str, today, so
             raw, ev = item, ""
         fv = coerce(f, raw, today)
         fv.evidence, fv.source = str(ev or ""), source
-        if fv.status == FILLED and not evidence_ok(fv.evidence, read_text):
-            fv.status = UNCERTAIN
-            fv.note = (fv.note + "; " if fv.note else "") + "no matching words in the transcript"
+        if fv.status == FILLED:
+            if f.free_text and not f.required and not any(mentioned(f, t) for t in texts):
+                fv = FieldValue(f.name, raw=raw, source=source, note="its name was not said; left empty")
+            elif not any(grounded(f, fv.value, t, today) for t in texts):
+                fv = FieldValue(f.name, raw=raw, source=source, note=f"{fv.value!r} was not found in what was said")
+            elif not evidence_ok(fv.evidence, read_text):
+                fv.evidence = ""  # the value is real; the quote was not, so the highlight is left out
         out[f.name] = fv
     return out
 
@@ -206,7 +219,11 @@ def fill(form: FormSpec, text: str, lang: str, route: str = "direct", llm=None,
 
         reply = parse_json(llm.chat(SYSTEM, build_prompt(form, read_text, lang), schema=json_schema(form)))
         info["reply_parsed"] = reply is not None
-        rec.fields = _from_reply(form, reply, read_text, today, source=llm.model)
+        rec.fields = _from_reply(form, reply, read_text, today, source=llm.model, original=norm)
+        code = rules_extract(form, text, today)
+        for f in form.fields:
+            if f.type in CODE_FIRST and code[f.name].status == FILLED:
+                rec.fields[f.name] = code[f.name]
         after = llm.snapshot()
         info.update({k: round(after[k] - before[k], 2) for k in after})
     info["seconds"] = round(time.perf_counter() - t0, 3)

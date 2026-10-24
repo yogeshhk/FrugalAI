@@ -123,7 +123,8 @@ class IndicConformerASR(ASRBackend):
         config.go_offline()
         from transformers import AutoModel
 
-        self.model = AutoModel.from_pretrained(spec["repo"], trust_remote_code=True)
+        source = config.model_source(name, spec["repo"])
+        self.model = AutoModel.from_pretrained(source, trust_remote_code=True)
 
     def _run(self, wav, lang):
         import torch

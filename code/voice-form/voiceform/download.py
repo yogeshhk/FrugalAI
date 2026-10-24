@@ -24,19 +24,12 @@ def _weights_patterns(repo: str) -> List[str]:
     return ["*.bin"]
 
 
-def fetch_hf(repo: str, local_name: Optional[str] = None) -> str:
-    """Into the normal Hugging Face cache; if Windows refuses the cache's symlinks (WinError 1314), into
-    models/<local_name> as plain files instead. The loaders look in models/ first."""
+def fetch_hf(repo: str, local_name: str) -> str:
+    """Into models/<local_name> as plain files (no shared cache, no symlinks). The loaders read only from models/."""
     from huggingface_hub import snapshot_download
 
-    patterns = HF_PATTERNS + _weights_patterns(repo)
-    try:
-        return snapshot_download(repo, allow_patterns=patterns)
-    except OSError as exc:
-        if getattr(exc, "winerror", None) != 1314 or not local_name:
-            raise
-        target = config.MODELS_DIR / local_name
-        return snapshot_download(repo, allow_patterns=patterns, local_dir=str(target))
+    target = config.MODELS_DIR / local_name
+    return snapshot_download(repo, allow_patterns=HF_PATTERNS + _weights_patterns(repo), local_dir=str(target))
 
 
 def fetch_vosk(url: str, dest_parent) -> str:

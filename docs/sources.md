@@ -238,6 +238,46 @@ Publisher: LangChain. URL: https://docs.langchain.com/oss/python/integrations/do
 mode and a custom chunker. The quantum-wiki project did not use it (it would upgrade Docling in a shared
 environment); it wraps Docling's output as LangChain documents itself.
 
+<a id="s35"></a>
+## S35. Sarvam Edge product page
+Publisher: Sarvam AI. URL: https://www.sarvam.ai/products/edge. Read 2026-10-24. Used for: the on-device stack
+(Saaras speech recognition 294 MB, Mayura translation 334 MB, Bulbul text-to-speech 60 MB, "under 1GB" in total;
+Saaras and Mayura for 22 Indian languages, Bulbul for 11), target chips, and access only through "Contact Us" and a
+commercial partnership. The page does not say the Edge models are open source and lists no languages by name, so
+Marathi support on device is not confirmed. Bulbul is a text-to-speech model (a voice), not speech recognition.
+
+<a id="s36"></a>
+## S36. Sarvam documentation: models overview, and the 30B and 105B release
+Publisher: Sarvam AI. URLs: https://docs.sarvam.ai/api/getting-started/models and
+https://www.sarvam.ai/blogs/sarvam-30b-105b. Seen 2026-10-24 through search summaries only. Used for: the cloud
+speech models (Saaras for speech to text, Bulbul for text to speech) being offered as an API, and the 30B and 105B
+language models being released with open weights under Apache 2.0 (the Hugging Face cards
+`sarvamai/sarvam-30b` and `sarvamai/sarvam-105b` show the licence). No open-weight Sarvam speech model was found.
+
+<a id="s37"></a>
+## S37. Vosk model list
+Publisher: Alpha Cephei. URL: https://alphacephei.com/vosk/models. Read 2026-10-24. Used for:
+`vosk-model-small-hi-0.22` (42 MB, Apache 2.0, stated WER 20.89 on the IITM challenge set and 24.72 on MUCS),
+the larger Hindi model (1.5 GB), and the absence of any Marathi model on the list. The WER figures are Alpha
+Cephei's own, on their test sets.
+
+<a id="s38"></a>
+## S38. Hugging Face model cards and metadata: speech models used by voice-form
+Publisher: Hugging Face (public API `https://huggingface.co/api/models/<id>` and the model pages). Read 2026-10-24.
+Used for the licence tags and gating of `openai/whisper-base` and `openai/whisper-small` (apache-2.0),
+`vittai23/whisper-small-marathi` and `vasista22/whisper-hindi-small` (apache-2.0, community fine-tunes; the cards
+were not read in detail), `ai4bharat/indic-conformer-600m-multilingual` (MIT, gated with automatic approval, 600M
+parameters, 22 languages including Hindi and Marathi, Hindi WER 13.2 on the Vaani benchmark as stated on the card,
+which also recommends a newer Indic-Transcribe model), and `facebook/mms-tts-mar` and `facebook/mms-tts-hin`
+(cc-by-nc-4.0: non-commercial, so voice-form uses them only for smoke-test audio that is never committed).
+
+<a id="s39"></a>
+## S39. IndicTrans2 paper and distilled models
+Authors: Gala, Chitale and others (AI4Bharat). arXiv:2305.16307. URL: https://arxiv.org/abs/2305.16307 and the
+model page `ai4bharat/indictrans2-indic-en-dist-200M`. Seen 2026-10-24 through search summaries and the Hugging Face
+metadata. Used for: a distilled Indic-to-English translation model of about 211M parameters under the MIT licence,
+gated download. Its CPU speed was not checked; it is listed in voice-form as an idea, not used.
+
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":
   https://www.ey.com/en_in/insights/ai/agentic-ai-india/small-language-models

@@ -1,0 +1,19 @@
+id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
+hi-asha-01,asha_anc_visit,tune,41.62,395,349,6,6,0,0,1,1,1,ifa_tablets_given: spurious 0
+hi-asha-02,asha_anc_visit,tune,36.59,417,380,7,7,0,0,0,1,0,
+hi-asha-03,asha_anc_visit,tune,35.504,406,368,7,7,0,0,0,0,0,
+hi-asha-04,asha_anc_visit,tune,33.004,390,324,6,6,0,0,1,2,1,ifa_tablets_given: spurious 0
+hi-asha-05,asha_anc_visit,tune,34.23,404,343,7,7,0,0,1,1,1,weight_kg: spurious 60.0
+hi-asha-06,asha_anc_visit,tune,36.592,412,383,7,7,0,0,0,1,0,
+hi-sir-01,sir_enumeration,tune,28.538,336,290,7,7,0,0,0,0,0,
+hi-sir-02,sir_enumeration,tune,31.453,352,337,8,8,0,0,1,1,1,epic_number: spurious 'ABC1234567'
+hi-sir-03,sir_enumeration,tune,30.53,345,312,7,7,0,0,0,0,0,
+hi-sir-04,sir_enumeration,tune,29.095,331,289,7,7,0,0,0,0,0,
+hi-sir-05,sir_enumeration,tune,32.702,349,341,8,8,0,0,1,1,1,epic_number: spurious 'ABC1234567'
+hi-sir-06,sir_enumeration,tune,33.019,346,318,7,7,0,0,0,0,0,
+hi-tkt-01,service_ticket,tune,26.81,305,262,7,7,0,0,0,2,0,
+hi-tkt-02,service_ticket,tune,27.842,311,283,7,6,1,0,0,1,1,urgency: 'high' != 'low'
+hi-tkt-03,service_ticket,tune,27.372,301,275,6,6,0,0,1,1,1,urgency: spurious 'high'
+hi-tkt-04,service_ticket,tune,28.173,306,272,7,5,1,1,1,2,3,phone: missed (8999887766) [not a 10-digit mobile number] | urgency: spurious 'high' | visit_date: '2026-12-12' != '2026-12-03'
+hi-tkt-05,service_ticket,tune,27.843,297,284,6,5,0,1,1,2,2,"product: missed (water_pump) [not one of: water_pump, solar_light, tractor, sprayer] | under_warranty: spurious False"
+hi-tkt-06,service_ticket,tune,27.681,305,283,7,7,0,0,1,1,1,urgency: spurious 'high'

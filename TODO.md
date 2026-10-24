@@ -24,9 +24,20 @@ author; no benchmark number exists for the old Dell, a Raspberry Pi or a power m
 "not confirmed" in `docs/` are unverified; the legal position for clinical decision-support software in India has
 not been checked (`docs/safety.md`).
 
-## Open
-Nothing. On 2026-10-21 every earlier open item was decided: other-hardware items (old Dell, Raspberry Pi, power
-meter) and the review tasks were dropped, and the rest moved to the list below.
+## Open (added 2026-10-24)
+- [ ] REMIND THE AUTHOR: start the Frugal AI campaign on Sun 1 Nov 2026 (Medium story on Desi Stack one day, its
+  LinkedIn post the next, alternating, through Tue 10 Nov). Schedule and files: `docs/campaign/README.md`. Before
+  1 Nov: make the banners from the prompts, review the drafts. Keep 11 Nov onwards free for the Game Theory book;
+  voice-form and the internship call come after it.
+- [ ] voice-form round 2 was stopped at 2 of 16 runs when the session closed (no errors). Re-run it:
+  from `code/voice-form`, `bash eval/run_extract_all.sh tune`, then `bash eval/run_extract_all.sh heldout`, then
+  `python -m voiceform report` (needs LM Studio with qwen3-1.7b and gemma-2-2b-it; about 50 minutes). Round 1 is
+  kept in `results/v1_before_fixes/`. Then pick the default model (faster one if within 3 points, else the more
+  accurate one) and test-load IndicConformer. Details: `code/voice-form/TODO.md`.
+- [ ] voice-form needs the author: record from `code/voice-form/eval/RECORDING.md`, review the scripts first.
+
+Earlier items: on 2026-10-21 every open item was decided: other-hardware items (old Dell, Raspberry Pi, power meter)
+and the review tasks were dropped, and the rest moved to the list below.
 
 ## Future ideas (not planned, no checkboxes)
 Measurements that need LM Studio:

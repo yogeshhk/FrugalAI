@@ -1,0 +1,305 @@
+  mr-asha-01  4/6 to fix 3  0.0s   woman_name: missed (सुनीता पवार); village: missed (वडगाव); next_visit_date: spurious '2026-10-31'
+  mr-asha-02  4/7 to fix 3  0.0s   woman_name: missed (रेखा जाधव); village: missed (शिरूर); weeks_pregnant: 9 != 16
+  mr-asha-03  4/7 to fix 3  0.0s   woman_name: missed (मंगल शिंदे); village: missed (पिंपळगाव); weeks_pregnant: missed (36) [140 is outside 1 to 42]
+  mr-asha-04  4/7 to fix 3  0.0s   woman_name: missed (प्रिया कांबळे); village: missed (केडगाव); weeks_pregnant: missed (12) [45 is outside 1 to 42]
+  mr-asha-05  3/7 to fix 5  0.0s   woman_name: missed (सविता मोरे); village: missed (नांदूर); weeks_pregnant: missed (20) [110 is outside 1 to 42]
+  mr-asha-06  4/7 to fix 3  0.0s   woman_name: missed (अनिता गायकवाड); village: missed (लोणी); weeks_pregnant: missed (30) [58 is outside 1 to 42]
+  mr-sir-01   3/7 to fix 4  0.0s   elector_name: missed (संजय कुलकर्णी); relative_name: missed (रमेश कुलकर्णी); house_number: missed (12)
+  mr-sir-02   4/8 to fix 4  0.0s   elector_name: missed (सुनंदा माने); relative_name: missed (विलास माने); house_number: missed (105)
+  mr-sir-03   3/7 to fix 4  0.0s   elector_name: missed (अमोल भोसले); relative_name: missed (दत्तात्रय भोसले); area: missed (कोंढवा)
+  mr-sir-04   3/7 to fix 4  0.0s   elector_name: missed (मीना चव्हाण); relative_name: missed (लता चव्हाण); house_number: missed (7)
+  mr-sir-05   4/8 to fix 4  0.0s   elector_name: missed (राहुल जगताप); relative_name: missed (सुरेश जगताप); house_number: missed (48)
+  mr-sir-06   3/7 to fix 4  0.0s   elector_name: missed (सरस्वती ठाकूर); relative_name: missed (गणेश ठाकूर); area: missed (मंचर)
+  mr-tkt-01   3/7 to fix 4  0.0s   customer_name: missed (गणेश शेळके); village: missed (आळेफाटा); problem: missed (मोटर चालू होत नाही)
+  mr-tkt-02   3/7 to fix 4  0.0s   customer_name: missed (सुरेखा गोरे); village: missed (निरा); problem: missed (सोलर दिवा रात्री बंद पडतो)
+  mr-tkt-03   2/6 to fix 4  0.0s   customer_name: missed (बाळू धुमाळ); village: missed (सोमेश्वर); problem: missed (ट्रॅक्टरचा क्लच अडकतो)
+  mr-tkt-04   3/7 to fix 4  0.0s   customer_name: missed (संगीता ढोले); village: missed (वेल्हे); problem: missed (फवारणी पंप गळतो)
+  mr-tkt-05   3/6 to fix 3  0.0s   customer_name: missed (हरी गावडे); village: missed (मोरगाव); problem: missed (मोटर खूप आवाज करते)
+  mr-tkt-06   3/7 to fix 4  0.0s   customer_name: missed (वंदना खैरे); village: missed (राजगुरूनगर); problem: missed (सोलर लाइट चार्ज होत नाही)
+{
+  "tune": {
+    "utterances": 18,
+    "field_accuracy": 0.48,
+    "to_fix_per_utterance": 3.72,
+    "spurious": 2,
+    "uncertain": 0,
+    "all_correct_utterances": 0,
+    "mean_seconds": 0.0
+  },
+  "all": {
+    "utterances": 18,
+    "field_accuracy": 0.48,
+    "to_fix_per_utterance": 3.72,
+    "spurious": 2,
+    "uncertain": 0,
+    "all_correct_utterances": 0,
+    "mean_seconds": 0.0
+  }
+}
+  mr-asha-01  6/6 to fix 1  14.2s   remarks: spurious 'आज सुनीता पवार यांच्याकडे गृहभेट दिली'
+  mr-asha-02  7/7 to fix 1  10.3s   remarks: spurious 'शेरा'
+  mr-asha-03  7/7 to fix 0  10.9s
+  mr-asha-04  5/7 to fix 3  8.9s   village: 'गाव केडगाव' != 'केडगाव'; next_visit_date: missed (2026-11-01); remarks: spurious 'शेरा'
+  mr-asha-05  6/7 to fix 3  9.3s   weight_kg: spurious 60.0; next_visit_date: spurious '2026-10-31'; remarks: 'शेरा' != 'पुढच्या वेळी पती घरी असतील'
+  mr-asha-06  7/7 to fix 0  9.7s
+  mr-sir-01   5/7 to fix 2  9.1s   relation: 'husband' != 'father'; gender: missed (male) [not one of: female, male, third_gender]
+  mr-sir-02   7/8 to fix 1  9.3s   phone: missed (9850123456) [not a 10-digit mobile number]
+  mr-sir-03   5/7 to fix 3  9.6s   relation: missed (father) [not one of: father, mother, husband]; gender: missed (male) [not one of: female, male, third_gender]; house_number: spurious 'कोंढवा'
+  mr-sir-04   7/7 to fix 0  8.4s
+  mr-sir-05   3/8 to fix 5  8.5s   elector_name: missed (राहुल जगताप); relative_name: missed (सुरेश जगताप); relation: missed (father)
+  mr-sir-06   6/7 to fix 1  9.3s   elector_name: missed (सरस्वती ठाकूर)
+  mr-tkt-01   6/7 to fix 1  9.6s   problem: 'काम तातडीने करायचे' != 'मोटर चालू होत नाही'
+  mr-tkt-02   6/7 to fix 1  8.6s   village: 'गाव निरा' != 'निरा'
+  mr-tkt-03   5/6 to fix 1  8.9s   customer_name: missed (बाळू धुमाळ)
+  mr-tkt-04   4/7 to fix 4  10.0s   village: 'गाव वेल्हे' != 'वेल्हे'; problem: 'गळतो' != 'फवारणी पंप गळतो'; urgency: spurious 'high'
+  mr-tkt-05   5/6 to fix 3  8.4s   village: 'गाव' != 'मोरगाव'; visit_date: spurious '2023-10-11'; under_warranty: spurious True
+  mr-tkt-06   7/7 to fix 1  8.8s   urgency: spurious 'medium'
+{
+  "tune": {
+    "utterances": 18,
+    "field_accuracy": 0.832,
+    "to_fix_per_utterance": 1.72,
+    "spurious": 10,
+    "uncertain": 21,
+    "all_correct_utterances": 3,
+    "mean_seconds": 9.53
+  },
+  "all": {
+    "utterances": 18,
+    "field_accuracy": 0.832,
+    "to_fix_per_utterance": 1.72,
+    "spurious": 10,
+    "uncertain": 21,
+    "all_correct_utterances": 3,
+    "mean_seconds": 9.53
+  }
+}
+  mr-asha-01  6/6 to fix 0  43.2s
+  mr-asha-02  7/7 to fix 0  36.9s
+  mr-asha-03  7/7 to fix 0  37.6s
+  mr-asha-04  7/7 to fix 0  37.5s
+  mr-asha-05  7/7 to fix 0  36.9s
+  mr-asha-06  7/7 to fix 0  38.9s
+  mr-sir-01   7/7 to fix 0  30.4s
+  mr-sir-02   8/8 to fix 1  32.6s   epic_number: spurious 'ABC1234567'
+  mr-sir-03   7/7 to fix 0  29.6s
+  mr-sir-04   4/7 to fix 3  28.7s   elector_name: 'Meena Chavan' != 'मीना चव्हाण'; relative_name: 'Lata Chavan' != 'लता चव्हाण'; area: 'Ganeshapeth' != 'गणेशपेठ'
+  mr-sir-05   8/8 to fix 1  31.6s   epic_number: spurious 'ABC1234567'
+  mr-sir-06   7/7 to fix 0  31.4s
+  mr-tkt-01   7/7 to fix 0  28.0s
+  mr-tkt-02   6/7 to fix 1  27.6s   urgency: 'high' != 'low'
+  mr-tkt-03   5/6 to fix 3  29.6s   urgency: spurious 'high'; visit_date: missed (2026-11-20) [not a date]; under_warranty: spurious False
+  mr-tkt-04   4/7 to fix 4  27.0s   phone: missed (8999887766) [not a 10-digit mobile number]; product: 'water_pump' != 'sprayer'; urgency: spurious 'high'
+  mr-tkt-05   4/6 to fix 2  27.2s   product: missed (water_pump); problem: 'लगेच या / no_think' != 'मोटर खूप आवाज करते'
+  mr-tkt-06   7/7 to fix 1  29.7s   urgency: spurious 'high'
+{
+  "tune": {
+    "utterances": 18,
+    "field_accuracy": 0.92,
+    "to_fix_per_utterance": 0.89,
+    "spurious": 6,
+    "uncertain": 24,
+    "all_correct_utterances": 10,
+    "mean_seconds": 32.46
+  },
+  "all": {
+    "utterances": 18,
+    "field_accuracy": 0.92,
+    "to_fix_per_utterance": 0.89,
+    "spurious": 6,
+    "uncertain": 24,
+    "all_correct_utterances": 10,
+    "mean_seconds": 32.46
+  }
+}
+  mr-asha-01  4/6 to fix 2  16.4s   woman_name: 'Sunita Pawar' != 'सुनीता पवार'; village: missed (वडगाव)
+  mr-asha-02  4/7 to fix 3  11.5s   woman_name: 'Raksha Jadhav' != 'रेखा जाधव'; village: 'Shriram' != 'शिरूर'; weeks_pregnant: missed (16)
+  mr-asha-03  4/7 to fix 3  13.6s   woman_name: 'Mangal Shinde' != 'मंगल शिंदे'; village: 'Pimpalgaon' != 'पिंपळगाव'; next_visit_date: missed (2026-11-12) [not a date]
+  mr-asha-04  4/7 to fix 4  12.0s   woman_name: 'Kabale' != 'प्रिया कांबळे'; village: 'Kodagad' != 'केडगाव'; next_visit_date: missed (2026-11-01)
+  mr-asha-05  2/7 to fix 5  12.0s   woman_name: 'Savitaa Moré' != 'सविता मोरे'; village: 'Vy' != 'नांदूर'; weeks_pregnant: 26 != 20
+  mr-asha-06  5/7 to fix 2  12.3s   woman_name: 'Anita Gaikevad' != 'अनिता गायकवाड'; village: 'Loni' != 'लोणी'
+  mr-sir-01   4/7 to fix 3  11.0s   elector_name: 'Sanjay Kulkarni' != 'संजय कुलकर्णी'; relative_name: 'Ramesh Kulkarni' != 'रमेश कुलकर्णी'; area: 'Shivajinagar' != 'शिवाजीनगर'
+  mr-sir-02   4/8 to fix 4  9.8s   elector_name: 'Vilas' != 'सुनंदा माने'; relative_name: missed (विलास माने); relation: missed (husband)
+  mr-sir-03   4/7 to fix 3  10.1s   elector_name: 'Amol Bhosale' != 'अमोल भोसले'; relative_name: 'Dattatriy Bhosale' != 'दत्तात्रय भोसले'; area: 'Kondhwa' != 'कोंढवा'
+  mr-sir-04   4/7 to fix 3  9.9s   elector_name: 'Minna Chavhan' != 'मीना चव्हाण'; relative_name: 'Lata Chavhan' != 'लता चव्हाण'; area: 'Ganesha Peth' != 'गणेशपेठ'
+  mr-sir-05   5/8 to fix 3  11.5s   elector_name: 'Shresh Jagatap' != 'राहुल जगताप'; relative_name: missed (सुरेश जगताप); area: 'Urlie' != 'उरुळी'
+  mr-sir-06   4/7 to fix 3  10.7s   elector_name: 'Saraswati Thakur' != 'सरस्वती ठाकूर'; relative_name: 'Ganesh Thakur' != 'गणेश ठाकूर'; area: 'Manchar' != 'मंचर'
+  mr-tkt-01   4/7 to fix 3  9.9s   customer_name: 'Ganesh Shekale' != 'गणेश शेळके'; village: 'Garden Alafata' != 'आळेफाटा'; problem: 'Water Motor is not working' != 'मोटर चालू होत नाही'
+  mr-tkt-02   2/7 to fix 5  9.7s   customer_name: 'Surakha Gorae Gaav Niram' != 'सुरेखा गोरे'; phone: missed (7878121234) [not a 10-digit mobile number]; village: 'Niram' != 'निरा'
+  mr-tkt-03   3/6 to fix 5  9.7s   customer_name: 'Someshwar' != 'बाळू धुमाळ'; village: 'Someshwar' != 'सोमेश्वर'; problem: 'clutch engages' != 'ट्रॅक्टरचा क्लच अडकतो'
+  mr-tkt-04   1/7 to fix 7  9.6s   customer_name: 'Sangeeta Dolle' != 'संगीता ढोले'; village: 'Wellheer' != 'वेल्हे'; product: 'water_pump' != 'sprayer'
+  mr-tkt-05   2/6 to fix 6  10.7s   customer_name: 'Harie Gavade' != 'हरी गावडे'; village: 'Moragav' != 'मोरगाव'; product: missed (water_pump) [not one of: water_pump, solar_light, tractor, sprayer]
+  mr-tkt-06   3/7 to fix 5  10.0s   customer_name: 'Vandana Khairé Gangarurunagar' != 'वंदना खैरे'; village: 'Gangarurunagar' != 'राजगुरूनगर'; problem: 'Charge Not Working' != 'सोलर लाइट चार्ज होत नाही'
+{
+  "tune": {
+    "utterances": 18,
+    "field_accuracy": 0.504,
+    "to_fix_per_utterance": 3.83,
+    "spurious": 7,
+    "uncertain": 14,
+    "all_correct_utterances": 0,
+    "mean_seconds": 11.13
+  },
+  "all": {
+    "utterances": 18,
+    "field_accuracy": 0.504,
+    "to_fix_per_utterance": 3.83,
+    "spurious": 7,
+    "uncertain": 14,
+    "all_correct_utterances": 0,
+    "mean_seconds": 11.13
+  }
+}
+  hi-asha-01  4/6 to fix 3  0.0s   woman_name: missed (सुनीता यादव); village: missed (रामपुर); next_visit_date: spurious '2026-10-31'
+  hi-asha-02  4/7 to fix 3  0.0s   woman_name: missed (रेखा वर्मा); village: missed (सीतापुर); weeks_pregnant: 9 != 16
+  hi-asha-03  4/7 to fix 3  0.0s   woman_name: missed (मंजू शर्मा); village: missed (बिलासपुर); weeks_pregnant: missed (36) [140 is outside 1 to 42]
+  hi-asha-04  3/6 to fix 3  0.0s   woman_name: missed (प्रिया कुमारी); village: missed (मोहनपुर); weeks_pregnant: missed (12) [45 is outside 1 to 42]
+  hi-asha-05  3/7 to fix 5  0.0s   woman_name: missed (सविता मौर्य); village: missed (नरसिंहपुर); weeks_pregnant: missed (20) [110 is outside 1 to 42]
+  hi-asha-06  4/7 to fix 3  0.0s   woman_name: missed (अनीता गुप्ता); village: missed (लालगंज); weeks_pregnant: 6 != 30
+  hi-sir-01   3/7 to fix 4  0.0s   elector_name: missed (संजय तिवारी); relative_name: missed (रमेश तिवारी); house_number: missed (12)
+  hi-sir-02   4/8 to fix 4  0.0s   elector_name: missed (सुनंदा पांडे); relative_name: missed (विलास पांडे); house_number: missed (105)
+  hi-sir-03   3/7 to fix 4  0.0s   elector_name: missed (अमित चौहान); relative_name: missed (दयाराम चौहान); area: missed (कोटा खुर्द)
+  hi-sir-04   3/7 to fix 4  0.0s   elector_name: missed (मीना सक्सेना); relative_name: missed (लता सक्सेना); house_number: missed (7)
+  hi-sir-05   4/8 to fix 4  0.0s   elector_name: missed (राहुल जाटव); relative_name: missed (सुरेश जाटव); house_number: missed (48)
+  hi-sir-06   3/7 to fix 4  0.0s   elector_name: missed (सरस्वती ठाकुर); relative_name: missed (गणेश ठाकुर); area: missed (मंडावर)
+  hi-tkt-01   3/7 to fix 4  0.0s   customer_name: missed (गणेश यादव); village: missed (अलीगंज); problem: missed (पानी की मोटर चालू नहीं हो रही)
+  hi-tkt-02   3/7 to fix 4  0.0s   customer_name: missed (सुरेखा गौड़); village: missed (नरौरा); problem: missed (सोलर लाइट रात को बंद हो जाती है)
+  hi-tkt-03   2/6 to fix 4  0.0s   customer_name: missed (बालू धुमाल); village: missed (सोमपुर); problem: missed (ट्रैक्टर का क्लच अटकता है)
+  hi-tkt-04   2/7 to fix 5  0.0s   customer_name: missed (संगीता ढोलकिया); village: missed (बेलहा); problem: missed (स्प्रे पंप लीक कर रहा है)
+  hi-tkt-05   3/6 to fix 3  0.0s   customer_name: missed (हरि गावड़े); village: missed (मोरगांव); problem: missed (मोटर बहुत आवाज़ करती है)
+  hi-tkt-06   3/7 to fix 4  0.0s   customer_name: missed (वंदना खरे); village: missed (राजपुर); problem: missed (सोलर लाइट चार्ज नहीं होती)
+{
+  "tune": {
+    "utterances": 18,
+    "field_accuracy": 0.468,
+    "to_fix_per_utterance": 3.78,
+    "spurious": 2,
+    "uncertain": 0,
+    "all_correct_utterances": 0,
+    "mean_seconds": 0.0
+  },
+  "all": {
+    "utterances": 18,
+    "field_accuracy": 0.468,
+    "to_fix_per_utterance": 3.78,
+    "spurious": 2,
+    "uncertain": 0,
+    "all_correct_utterances": 0,
+    "mean_seconds": 0.0
+  }
+}
+  hi-asha-01  6/6 to fix 0  8.7s
+  hi-asha-02  7/7 to fix 0  11.3s
+  hi-asha-03  7/7 to fix 0  9.6s
+  hi-asha-04  6/6 to fix 1  10.0s   remarks: spurious 'प्रिया कुमारी'
+  hi-asha-05  7/7 to fix 0  11.0s
+  hi-asha-06  7/7 to fix 0  10.8s
+  hi-sir-01   7/7 to fix 0  9.0s
+  hi-sir-02   8/8 to fix 0  9.3s
+  hi-sir-03   6/7 to fix 2  10.0s   house_number: spurious 'कोटा खुर्द'; area: 'खुर्द' != 'कोटा खुर्द'
+  hi-sir-04   7/7 to fix 0  9.5s
+  hi-sir-05   8/8 to fix 0  9.8s
+  hi-sir-06   6/7 to fix 2  9.2s   house_number: spurious '9'; epic_number: missed (MHT9876543) [does not match ^[A-Z]{3}[0-9]{7}$]
+  hi-tkt-01   6/7 to fix 1  9.2s   problem: 'काम तुरंत करना है' != 'पानी की मोटर चालू नहीं हो रही'
+  hi-tkt-02   6/7 to fix 1  9.4s   urgency: 'high' != 'low'
+  hi-tkt-03   5/6 to fix 1  7.4s   customer_name: missed (बालू धुमाल)
+  hi-tkt-04   5/7 to fix 3  8.6s   phone: missed (8999887766) [not a 10-digit mobile number]; urgency: spurious 'high'; visit_date: missed (2026-12-03) [not a date]
+  hi-tkt-05   4/6 to fix 2  9.6s   customer_name: 'हरि' != 'हरि गावड़े'; village: 'गांव मोरगांव' != 'मोरगांव'
+  hi-tkt-06   7/7 to fix 1  8.7s   urgency: spurious 'high'
+{
+  "tune": {
+    "utterances": 18,
+    "field_accuracy": 0.927,
+    "to_fix_per_utterance": 0.78,
+    "spurious": 5,
+    "uncertain": 15,
+    "all_correct_utterances": 9,
+    "mean_seconds": 9.51
+  },
+  "all": {
+    "utterances": 18,
+    "field_accuracy": 0.927,
+    "to_fix_per_utterance": 0.78,
+    "spurious": 5,
+    "uncertain": 15,
+    "all_correct_utterances": 9,
+    "mean_seconds": 9.51
+  }
+}
+  hi-asha-01  6/6 to fix 1  41.6s   ifa_tablets_given: spurious 0
+  hi-asha-02  7/7 to fix 0  36.6s
+  hi-asha-03  7/7 to fix 0  35.5s
+  hi-asha-04  6/6 to fix 1  33.0s   ifa_tablets_given: spurious 0
+  hi-asha-05  7/7 to fix 1  34.2s   weight_kg: spurious 60.0
+  hi-asha-06  7/7 to fix 0  36.6s
+  hi-sir-01   7/7 to fix 0  28.5s
+  hi-sir-02   8/8 to fix 1  31.5s   epic_number: spurious 'ABC1234567'
+  hi-sir-03   7/7 to fix 0  30.5s
+  hi-sir-04   7/7 to fix 0  29.1s
+  hi-sir-05   8/8 to fix 1  32.7s   epic_number: spurious 'ABC1234567'
+  hi-sir-06   7/7 to fix 0  33.0s
+  hi-tkt-01   7/7 to fix 0  26.8s
+  hi-tkt-02   6/7 to fix 1  27.8s   urgency: 'high' != 'low'
+  hi-tkt-03   6/6 to fix 1  27.4s   urgency: spurious 'high'
+  hi-tkt-04   5/7 to fix 3  28.2s   phone: missed (8999887766) [not a 10-digit mobile number]; urgency: spurious 'high'; visit_date: '2026-12-12' != '2026-12-03'
+  hi-tkt-05   5/6 to fix 2  27.8s   product: missed (water_pump) [not one of: water_pump, solar_light, tractor, sprayer]; under_warranty: spurious False
+  hi-tkt-06   7/7 to fix 1  27.7s   urgency: spurious 'high'
+{
+  "tune": {
+    "utterances": 18,
+    "field_accuracy": 0.968,
+    "to_fix_per_utterance": 0.72,
+    "spurious": 9,
+    "uncertain": 17,
+    "all_correct_utterances": 8,
+    "mean_seconds": 31.59
+  },
+  "all": {
+    "utterances": 18,
+    "field_accuracy": 0.968,
+    "to_fix_per_utterance": 0.72,
+    "spurious": 9,
+    "uncertain": 17,
+    "all_correct_utterances": 8,
+    "mean_seconds": 31.59
+  }
+}
+  hi-asha-01  4/6 to fix 2  19.3s   woman_name: 'Sunita Yadav' != 'सुनीता यादव'; village: 'Rampur' != 'रामपुर'
+  hi-asha-02  5/7 to fix 2  12.2s   woman_name: 'Raksha Verma' != 'रेखा वर्मा'; village: 'Sitapur' != 'सीतापुर'
+  hi-asha-03  5/7 to fix 2  14.6s   woman_name: 'Mujju Sharma' != 'मंजू शर्मा'; village: 'Bilaspur' != 'बिलासपुर'
+  hi-asha-04  4/6 to fix 2  10.3s   woman_name: 'Pritha' != 'प्रिया कुमारी'; village: 'Mohanpur' != 'मोहनपुर'
+  hi-asha-05  4/7 to fix 3  13.9s   woman_name: 'Savitaa Mauray' != 'सविता मौर्य'; village: 'Narsingpur' != 'नरसिंहपुर'; remarks: 'Savitaa Mauray age 26 village Narsingpur 20 weeks BP 110 by 70 today 60 bullets given comment Next time husband will be at home' != 'अगली बार पति घर पर होंगे'
+  hi-asha-06  5/7 to fix 3  12.3s   woman_name: 'Anietaa Gupta' != 'अनीता गुप्ता'; village: 'Lalagang' != 'लालगंज'; ifa_tablets_given: spurious 3
+  hi-sir-01   4/7 to fix 3  11.5s   elector_name: 'Sanjay Tivari' != 'संजय तिवारी'; relative_name: 'Ramesh Tivari' != 'रमेश तिवारी'; area: 'Gandhi Nagar' != 'गांधी नगर'
+  hi-sir-02   5/8 to fix 3  10.9s   elector_name: 'Sunita Pande' != 'सुनंदा पांडे'; relative_name: 'Vilas Pande' != 'विलास पांडे'; area: 'Bawaroli' != 'बरौली'
+  hi-sir-03   4/7 to fix 4  10.5s   elector_name: 'Amit Chauhan' != 'अमित चौहान'; relative_name: 'Deyaraj Chauhan' != 'दयाराम चौहान'; house_number: spurious 'Kothi Khurd'
+  hi-sir-04   3/7 to fix 4  9.8s   elector_name: 'Minaa Saksena' != 'मीना सक्सेना'; relative_name: 'Lata Saksena' != 'लता सक्सेना'; house_number: '7 Colony Ganesh Gang' != '7'
+  hi-sir-05   5/8 to fix 3  11.6s   elector_name: 'Suraj Jatav' != 'राहुल जाटव'; relative_name: missed (सुरेश जाटव); area: 'Umri' != 'उमरी'
+  hi-sir-06   4/7 to fix 4  12.1s   elector_name: 'Saraswati Thakur' != 'सरस्वती ठाकुर'; relative_name: 'Ganesh Thakur' != 'गणेश ठाकुर'; house_number: spurious 'MHT 9 8 7 6 5 4 3'
+  hi-tkt-01   4/7 to fix 3  10.2s   customer_name: 'Ganesh Yadav' != 'गणेश यादव'; village: 'Aligangj' != 'अलीगंज'; problem: 'Motor is not running' != 'पानी की मोटर चालू नहीं हो रही'
+  hi-tkt-02   3/7 to fix 4  10.2s   customer_name: 'Surakha Gauda' != 'सुरेखा गौड़'; village: 'Naraura' != 'नरौरा'; problem: 'goes off at night soon' != 'सोलर लाइट रात को बंद हो जाती है'
+  hi-tkt-03   3/6 to fix 5  9.7s   customer_name: 'Tractor s clutch stops' != 'बालू धुमाल'; village: 'Sompur' != 'सोमपुर'; problem: 'clutch stops' != 'ट्रैक्टर का क्लच अटकता है'
+  hi-tkt-04   3/7 to fix 5  10.5s   customer_name: 'Santy Dolakia' != 'संगीता ढोलकिया'; village: 'Belha' != 'बेलहा'; problem: 'leaking' != 'स्प्रे पंप लीक कर रहा है'
+  hi-tkt-05   1/6 to fix 5  9.5s   customer_name: 'Hari Gavade' != 'हरि गावड़े'; village: 'Moragav' != 'मोरगांव'; product: missed (water_pump) [not one of: water_pump, solar_light, tractor, sprayer]
+  hi-tkt-06   2/7 to fix 6  9.9s   customer_name: 'Vandana' != 'वंदना खरे'; phone: missed (7020304050); village: missed (राजपुर)
+{
+  "tune": {
+    "utterances": 18,
+    "field_accuracy": 0.548,
+    "to_fix_per_utterance": 3.5,
+    "spurious": 7,
+    "uncertain": 12,
+    "all_correct_utterances": 0,
+    "mean_seconds": 11.61
+  },
+  "all": {
+    "utterances": 18,
+    "field_accuracy": 0.548,
+    "to_fix_per_utterance": 3.5,
+    "spurious": 7,
+    "uncertain": 12,
+    "all_correct_utterances": 0,
+    "mean_seconds": 11.61
+  }
+}
+D:\Yogesh\GitHub\FrugalAI\code\voice-form\results\RESULTS.md

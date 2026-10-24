@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "run": "extract_hi_rules_none_reference",
+    "lang": "hi",
+    "route": "rules",
+    "model": "none",
+    "condition": "reference",
+    "transcripts": null,
+    "date": "2026-10-24",
+    "host": "Windows 10, 10 cores, 17 GB RAM"
+  },
+  "summary": {
+    "tune": {
+      "utterances": 18,
+      "field_accuracy": 0.468,
+      "to_fix_per_utterance": 3.78,
+      "spurious": 2,
+      "uncertain": 0,
+      "all_correct_utterances": 0,
+      "mean_seconds": 0.0
+    },
+    "all": {
+      "utterances": 18,
+      "field_accuracy": 0.468,
+      "to_fix_per_utterance": 3.78,
+      "spurious": 2,
+      "uncertain": 0,
+      "all_correct_utterances": 0,
+      "mean_seconds": 0.0
+    }
+  }
+}

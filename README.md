@@ -21,6 +21,7 @@ local. See [docs/landscape.md](docs/landscape.md) for what has actually been rep
 | [code/workflow-agent/](code/workflow-agent/) | Project: a LangGraph concept-intake workflow on the QCNP FAQ notes (parallel checks, draft sub-graph, lint and repair loop), plus a small helpline demo | built and tested; first measurements in |
 | [code/finetune-slm/](code/finetune-slm/) | Project: LoRA fine-tuning of small models on a CPU; a 135M intent router, and a Marathi question-answering study on the Sahaj Jeevan book | intent router trained; Marathi study at its go or no-go gate |
 | [code/wiki-rag/](code/wiki-rag/) | Project: offline Q&A over a folder of notes (hand-built BM25), with its own retrieval and answer evaluation | working, tested; retrieval measured, answer scoring with a model not run |
+| [code/voice-form/](code/voice-form/) | Project: speak a form in Marathi or Hindi (ASHA visit, SIR-style enumeration, service ticket); offline speech to text, plain-code number and date handling, a small model that must quote its evidence, confirm before save | built and tested; extraction measured on script text, speech numbers wait for recordings |
 | [code/common/](code/common/) | Shared by every project: one small interface over Ollama and LM Studio, plus a benchmark command | working, tested |
 | [code/common/benchmarks/](code/common/benchmarks/) | Method and measured results: what runs where | method written, first result in |
 | [code/common/devices/](code/common/devices/) | Setup notes per device | Dell notes written, not yet measured |
@@ -28,6 +29,7 @@ local. See [docs/landscape.md](docs/landscape.md) for what has actually been rep
 | [_scripts/](_scripts/) | Repo tools: the AWESOME.md checker and a relative-link checker | working, tested |
 | [GETTING_STARTED.md](GETTING_STARTED.md) | How to run what exists, step by step, and the checks | written |
 | [docs/internship-ideas.md](docs/internship-ideas.md) | Project ideas that could be floated to students | plan only |
+| [docs/campaign/](docs/campaign/) | Draft LinkedIn series, one post per project, with banner prompts | drafts, not posted |
 | [AWESOME.md](AWESOME.md) | Curated list of frugal AI efforts by platform (old laptop, Raspberry Pi, phone, microcontroller, browser) | open for entries |
 
 ## What runs where

@@ -65,6 +65,17 @@ Rules for every project:
   Community Marathi Whisper-small fine-tunes exist with Apache-2.0 model cards, for example
   [vittai23/whisper-small-marathi](https://huggingface.co/vittai23/whisper-small-marathi); read each card first.
 - Deliverable: a table of word error rate against speed against RAM, and a recommendation per device.
+- Now has a home: `code/voice-form/` already wraps Vosk, Whisper and IndicConformer behind one interface, with
+  `eval-asr` for WER, real-time factor and RAM. Tasks there that suit one student each:
+  - Android: whisper.cpp or sherpa-onnx for speech, llama.cpp for the model, the same YAML forms; measure on a
+    mid-range phone.
+  - Speakers and noise: record ten or more speakers (with written consent, audio kept off the repo), real field
+    noise, dialects; report WER per speaker group.
+  - IndicTrans2 (about 211M parameters, MIT, [S39](sources.md#s39)) as the translate step, against the small model.
+  - New forms as YAML only (ration card, school attendance, grievance desk), each with a script set and gold values.
+  - A model cascade: rules first, the model only for the fields rules cannot fill; measure model calls saved.
+  - Paper angle: field extraction from code-mixed Marathi and English speech with small local models, and how much
+    of the error is the ear (speech to text) and how much the understanding.
 
 ### 5. Bearing fault diagnosis with tiny models
 - A mechanical-engineering fit. Compare hand-made features (RMS, kurtosis, FFT peaks) with a tiny classifier
