@@ -8,6 +8,8 @@ dependencies:
   - psutil
   - pyyaml
   - requests
+  - scipy
+  - ffmpeg          # voice-form: decodes phone recordings
   - pip:
       - --extra-index-url https://download.pytorch.org/whl/cpu
       - watchdog
@@ -18,3 +20,4 @@ dependencies:
       - peft
       - langgraph
       - pydantic
+      - vosk          # voice-form: small offline speech model runtime

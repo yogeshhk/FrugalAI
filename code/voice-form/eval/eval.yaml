@@ -1,0 +1,3 @@
+# Fixed settings for every evaluation run, so dates in the scripts resolve the same way each time.
+today: 2026-10-31      # the workshop day; "उद्या" in a script means 2026-11-01
+noise_snr_db: 10       # synthetic background noise for the smoke run's noisy condition

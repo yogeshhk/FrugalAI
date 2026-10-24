@@ -1,0 +1,174 @@
+# Hindi utterances to record. SYNTHETIC: every name, village and number is made up.
+# Drafted by Claude for the author to read aloud; the author should review the wording before recording.
+# Same layout as mr.yaml. hi-asha-08 says "कल", which in Hindi can mean yesterday or tomorrow: the expected
+# result is that the date stays empty and the app asks for the date, so the gold has no next_visit_date.
+- id: hi-asha-01
+  form: asha_anc_visit
+  set: tune
+  text: आज सुनीता यादव के घर गई. उम्र चौबीस साल. गांव रामपुर. अट्ठाईस हफ्ते हो गए हैं. बीपी एक सौ बीस बाय अस्सी. वज़न बावन किलो.
+  gold: {woman_name: सुनीता यादव, age: 24, village: रामपुर, weeks_pregnant: 28, bp: 120/80, weight_kg: 52}
+- id: hi-asha-02
+  form: asha_anc_visit
+  set: tune
+  text: रेखा वर्मा, उम्र उनतीस, गांव सीतापुर. मोबाइल नंबर नौ आठ दो तीन चार पांच छह सात आठ नौ. सोलह हफ्ते पूरे हुए. हीमोग्लोबिन साढ़े दस है. आयरन की तीस गोलियां दीं.
+  gold: {woman_name: रेखा वर्मा, age: 29, village: सीतापुर, phone: "9823456789", weeks_pregnant: 16, hb: 10.5, ifa_tablets_given: 30}
+- id: hi-asha-03
+  form: asha_anc_visit
+  set: tune
+  text: मंजू शर्मा की जांच की. उम्र बत्तीस साल. गांव बिलासपुर. छत्तीस हफ्ते हुए. बीपी एक सौ चालीस बाय नब्बे. वज़न साठ किलो. अगली मुलाकात बारह नवंबर.
+  gold: {woman_name: मंजू शर्मा, age: 32, village: बिलासपुर, weeks_pregnant: 36, bp: 140/90, weight_kg: 60, next_visit_date: "2026-11-12"}
+- id: hi-asha-04
+  form: asha_anc_visit
+  set: tune
+  text: प्रिया कुमारी, इक्कीस साल की, गांव मोहनपुर. पहली मुलाकात, बारह हफ्ते. वज़न पैंतालीस किलो. हीमोग्लोबिन नौ.
+  gold: {woman_name: प्रिया कुमारी, age: 21, village: मोहनपुर, weeks_pregnant: 12, weight_kg: 45, hb: 9}
+- id: hi-asha-05
+  form: asha_anc_visit
+  set: tune
+  text: सविता मौर्य, उम्र छब्बीस, गांव नरसिंहपुर. बीस हफ्ते. बीपी एक सौ दस बाय सत्तर. आज साठ गोलियां दीं. टिप्पणी, अगली बार पति घर पर होंगे.
+  gold: {woman_name: सविता मौर्य, age: 26, village: नरसिंहपुर, weeks_pregnant: 20, bp: 110/70, ifa_tablets_given: 60, remarks: अगली बार पति घर पर होंगे}
+- id: hi-asha-06
+  form: asha_anc_visit
+  set: tune
+  text: नाम अनीता गुप्ता. उम्र पैंतीस. गांव लालगंज. मोबाइल सात तीन आठ शून्य एक दो तीन चार पांच छह. तीस हफ्ते हो गए. वज़न अट्ठावन किलो. हीमोग्लोबिन ग्यारह.
+  gold: {woman_name: अनीता गुप्ता, age: 35, village: लालगंज, phone: "7380123456", weeks_pregnant: 30, weight_kg: 58, hb: 11}
+- id: hi-asha-07
+  form: asha_anc_visit
+  set: heldout
+  text: आज कविता राठौर के घर गई. उम्र सत्ताईस. गांव मालपुरा. चौबीस हफ्ते. बीपी एक सौ तीस बाय पचासी. अगली मुलाकात पंद्रह दिसंबर.
+  gold: {woman_name: कविता राठौर, age: 27, village: मालपुरा, weeks_pregnant: 24, bp: 130/85, next_visit_date: "2026-12-15"}
+- id: hi-asha-08
+  form: asha_anc_visit
+  set: heldout
+  text: शीतल सिंह, उम्र बाईस साल, गांव खेड़ा. आठ हफ्ते. वज़न अड़तालीस किलो. अगली मुलाकात कल.
+  gold: {woman_name: शीतल सिंह, age: 22, village: खेड़ा, weeks_pregnant: 8, weight_kg: 48}
+- id: hi-asha-09
+  form: asha_anc_visit
+  set: heldout
+  text: वैशाली मिश्रा से मिली. उम्र तैंतीस. गांव सरैया. चौंतीस हफ्ते हो गए. हीमोग्लोबिन साढ़े आठ. आयरन की सौ गोलियां दीं. मोबाइल नौ आठ सात छह पांच चार तीन दो एक शून्य.
+  gold: {woman_name: वैशाली मिश्रा, age: 33, village: सरैया, weeks_pregnant: 34, hb: 8.5, ifa_tablets_given: 100, phone: "9876543210"}
+
+- id: hi-sir-01
+  form: sir_enumeration
+  set: tune
+  text: मतदाता का नाम संजय तिवारी. पिता का नाम रमेश तिवारी. उम्र पैंतालीस. पुरुष. मकान नंबर बारह. मोहल्ला गांधी नगर.
+  gold: {elector_name: संजय तिवारी, relative_name: रमेश तिवारी, relation: father, age: 45, gender: male, house_number: "12", area: गांधी नगर}
+- id: hi-sir-02
+  form: sir_enumeration
+  set: tune
+  text: नाम सुनंदा पांडे. पति का नाम विलास पांडे. उम्र अड़तीस. महिला. मकान नंबर एक सौ पांच. गांव बरौली. मोबाइल नौ आठ पांच शून्य एक दो तीन चार पांच छह.
+  gold: {elector_name: सुनंदा पांडे, relative_name: विलास पांडे, relation: husband, age: 38, gender: female, house_number: "105", area: बरौली, phone: "9850123456"}
+- id: hi-sir-03
+  form: sir_enumeration
+  set: tune
+  text: मतदाता अमित चौहान, पिता दयाराम चौहान, उम्र उन्नीस, पुरुष, गांव कोटा खुर्द, वोटर आईडी नंबर ABC एक दो तीन चार पांच छह सात.
+  gold: {elector_name: अमित चौहान, relative_name: दयाराम चौहान, relation: father, age: 19, gender: male, area: कोटा खुर्द, epic_number: ABC1234567}
+- id: hi-sir-04
+  form: sir_enumeration
+  set: tune
+  text: नाम मीना सक्सेना. माता का नाम लता सक्सेना. उम्र इक्कीस. महिला. मकान नंबर सात. मोहल्ला गणेश गंज.
+  gold: {elector_name: मीना सक्सेना, relative_name: लता सक्सेना, relation: mother, age: 21, gender: female, house_number: "7", area: गणेश गंज}
+- id: hi-sir-05
+  form: sir_enumeration
+  set: tune
+  text: राहुल जाटव, पिता का नाम सुरेश जाटव, उम्र तीस, पुरुष, मकान नंबर अड़तालीस, गांव उमरी, मोबाइल सात सात नौ आठ एक एक दो दो तीन तीन.
+  gold: {elector_name: राहुल जाटव, relative_name: सुरेश जाटव, relation: father, age: 30, gender: male, house_number: "48", area: उमरी, phone: "7798112233"}
+- id: hi-sir-06
+  form: sir_enumeration
+  set: tune
+  text: नाम सरस्वती ठाकुर, पति का नाम गणेश ठाकुर, उम्र बासठ, महिला, गांव मंडावर, वोटर आईडी नंबर MHT नौ आठ सात छह पांच चार तीन.
+  gold: {elector_name: सरस्वती ठाकुर, relative_name: गणेश ठाकुर, relation: husband, age: 62, gender: female, area: मंडावर, epic_number: MHT9876543}
+- id: hi-sir-07
+  form: sir_enumeration
+  set: heldout
+  text: मतदाता का नाम विजय सिसोदिया. पिता बलवंत सिसोदिया. उम्र छप्पन. पुरुष. मकान नंबर तेईस. मोहल्ला कसबा.
+  gold: {elector_name: विजय सिसोदिया, relative_name: बलवंत सिसोदिया, relation: father, age: 56, gender: male, house_number: "23", area: कसबा}
+- id: hi-sir-08
+  form: sir_enumeration
+  set: heldout
+  text: नाम पूजा कश्यप, मां सुमन कश्यप, उम्र अठारह, महिला, गांव जुनवानी, मोबाइल आठ आठ शून्य शून्य एक दो तीन चार पांच छह.
+  gold: {elector_name: पूजा कश्यप, relative_name: सुमन कश्यप, relation: mother, age: 18, gender: female, area: जुनवानी, phone: "8800123456"}
+- id: hi-sir-09
+  form: sir_enumeration
+  set: heldout
+  text: नाम दीपक बघेल, पिता का नाम नामदेव बघेल, उम्र चवालीस, पुरुष, मकान नंबर नौ, गांव भोरी, वोटर आईडी नंबर KLM एक एक एक दो दो दो तीन.
+  gold: {elector_name: दीपक बघेल, relative_name: नामदेव बघेल, relation: father, age: 44, gender: male, house_number: "9", area: भोरी, epic_number: KLM1112223}
+
+- id: hi-tkt-01
+  form: service_ticket
+  set: tune
+  text: ग्राहक का नाम गणेश यादव. मोबाइल नौ आठ दो दो तीन तीन चार चार पांच पांच. गांव अलीगंज. पानी की मोटर चालू नहीं हो रही. काम तुरंत करना है. वारंटी है.
+  gold: {customer_name: गणेश यादव, phone: "9822334455", village: अलीगंज, product: water_pump, problem: पानी की मोटर चालू नहीं हो रही, urgency: high, under_warranty: true}
+- id: hi-tkt-02
+  form: service_ticket
+  set: tune
+  text: नाम सुरेखा गौड़, गांव नरौरा, मोबाइल सात आठ सात आठ एक दो एक दो तीन चार. सोलर लाइट रात को बंद हो जाती है. जल्दी नहीं है, आराम से आइए. वारंटी नहीं है.
+  gold: {customer_name: सुरेखा गौड़, village: नरौरा, phone: "7878121234", product: solar_light, problem: सोलर लाइट रात को बंद हो जाती है, urgency: low, under_warranty: false}
+- id: hi-tkt-03
+  form: service_ticket
+  set: tune
+  text: ट्रैक्टर का क्लच अटकता है. ग्राहक बालू धुमाल, गांव सोमपुर, मोबाइल नौ एक सात दो शून्य शून्य तीन चार पांच छह. बीस नवंबर को आइए.
+  gold: {customer_name: बालू धुमाल, village: सोमपुर, phone: "9172003456", product: tractor, problem: ट्रैक्टर का क्लच अटकता है, visit_date: "2026-11-20"}
+- id: hi-tkt-04
+  form: service_ticket
+  set: tune
+  text: स्प्रे पंप लीक कर रहा है. नाम संगीता ढोलकिया, गांव बेलहा, मोबाइल आठ नौ नौ नौ आठ आठ सात सात छह छह. तीन दिसंबर को आ सकते हैं. वारंटी में है.
+  gold: {customer_name: संगीता ढोलकिया, village: बेलहा, phone: "8999887766", product: sprayer, problem: स्प्रे पंप लीक कर रहा है, visit_date: "2026-12-03", under_warranty: true}
+- id: hi-tkt-05
+  form: service_ticket
+  set: tune
+  text: नाम हरि गावड़े. गांव मोरगांव. मोबाइल नौ चार शून्य चार शून्य चार शून्य चार एक एक. मोटर बहुत आवाज़ करती है. तुरंत आइए.
+  gold: {customer_name: हरि गावड़े, village: मोरगांव, phone: "9404040411", product: water_pump, problem: मोटर बहुत आवाज़ करती है, urgency: high}
+- id: hi-tkt-06
+  form: service_ticket
+  set: tune
+  text: ग्राहक वंदना खरे, गांव राजपुर, मोबाइल सात शून्य दो शून्य तीन शून्य चार शून्य पांच शून्य. सोलर लाइट चार्ज नहीं होती. पच्चीस नवंबर को आइए. वारंटी है.
+  gold: {customer_name: वंदना खरे, village: राजपुर, phone: "7020304050", product: solar_light, problem: सोलर लाइट चार्ज नहीं होती, visit_date: "2026-11-25", under_warranty: true}
+- id: hi-tkt-07
+  form: service_ticket
+  set: heldout
+  text: नाम प्रकाश लोधी, गांव जैतपुर, मोबाइल नौ आठ एक शून्य दो शून्य तीन शून्य चार शून्य. पानी की मोटर गरम हो जाती है. तुरंत आइए. वारंटी नहीं है.
+  gold: {customer_name: प्रकाश लोधी, village: जैतपुर, phone: "9810203040", product: water_pump, problem: पानी की मोटर गरम हो जाती है, urgency: high, under_warranty: false}
+- id: hi-tkt-08
+  form: service_ticket
+  set: heldout
+  text: ट्रैक्टर स्टार्ट नहीं हो रहा. ग्राहक अशोक बांगड़, गांव पारसौली, मोबाइल आठ सात आठ सात आठ सात एक दो एक दो. तीस नवंबर को आइए.
+  gold: {customer_name: अशोक बांगड़, village: पारसौली, phone: "8787871212", product: tractor, problem: ट्रैक्टर स्टार्ट नहीं हो रहा, visit_date: "2026-11-30"}
+- id: hi-tkt-09
+  form: service_ticket
+  set: heldout
+  text: नाम रोहिणी काले, गांव बारां, मोबाइल नौ नौ शून्य शून्य एक एक दो दो तीन तीन. स्प्रेयर का नोजल टूट गया है. जल्दी नहीं है. वारंटी में है.
+  gold: {customer_name: रोहिणी काले, village: बारां, phone: "9900112233", product: sprayer, problem: स्प्रेयर का नोजल टूट गया है, urgency: low, under_warranty: true}
+
+# Free speech: read the facts, then say them in your own words, in any order, as you would in the field.
+# No reference transcript, so only field accuracy is scored. Never looked at while tuning.
+- id: hi-free-01
+  form: asha_anc_visit
+  set: free
+  facts: कमला वर्मा, उम्र 28, गांव अमरपुर, 22 हफ्ते, बीपी 118/76, वज़न 55 किलो
+  gold: {woman_name: कमला वर्मा, age: 28, village: अमरपुर, weeks_pregnant: 22, bp: 118/76, weight_kg: 55}
+- id: hi-free-02
+  form: asha_anc_visit
+  set: free
+  facts: जया सोनी, उम्र 31, गांव तालबेहट, 32 हफ्ते, हीमोग्लोबिन 9.5, आयरन की 30 गोलियां दीं
+  gold: {woman_name: जया सोनी, age: 31, village: तालबेहट, weeks_pregnant: 32, hb: 9.5, ifa_tablets_given: 30}
+- id: hi-free-03
+  form: sir_enumeration
+  set: free
+  facts: मतदाता किरण सोलंकी, पिता मधुकर सोलंकी, उम्र 27, पुरुष, मकान नंबर 64, गांव चाकसू
+  gold: {elector_name: किरण सोलंकी, relative_name: मधुकर सोलंकी, relation: father, age: 27, gender: male, house_number: "64", area: चाकसू}
+- id: hi-free-04
+  form: sir_enumeration
+  set: free
+  facts: मतदाता उषा बघेल, पति अरुण बघेल, उम्र 41, महिला, गांव शिवपुरी, मोबाइल 9763112244
+  gold: {elector_name: उषा बघेल, relative_name: अरुण बघेल, relation: husband, age: 41, gender: female, area: शिवपुरी, phone: "9763112244"}
+- id: hi-free-05
+  form: service_ticket
+  set: free
+  facts: ग्राहक नितिन कोकाटे, गांव इंदौरा, मोबाइल 9822001122, पानी की मोटर, फ्यूज बार बार उड़ता है, तुरंत
+  gold: {customer_name: नितिन कोकाटे, village: इंदौरा, phone: "9822001122", product: water_pump, problem: फ्यूज बार बार उड़ता है, urgency: high}
+- id: hi-free-06
+  form: service_ticket
+  set: free
+  facts: ग्राहक सुजाता पाल, गांव वाई, मोबाइल 7720554433, सोलर लाइट, बैटरी जल्दी खत्म होती है, वारंटी है
+  gold: {customer_name: सुजाता पाल, village: वाई, phone: "7720554433", product: solar_light, problem: बैटरी जल्दी खत्म होती है, under_warranty: true}

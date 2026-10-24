@@ -1,0 +1,175 @@
+# Marathi utterances to record. SYNTHETIC: every name, village and number is made up.
+# Drafted by Claude for the author to read aloud; the author should review the wording before recording.
+# set: tune (prompts and rules may be adjusted while looking at these) or heldout (never looked at while tuning).
+# text: what to say, and the reference transcript. gold: the values the form should end up with.
+# Dates are relative to the evaluation day in eval/eval.yaml (today: 2026-10-31).
+- id: mr-asha-01
+  form: asha_anc_visit
+  set: tune
+  text: आज सुनीता पवार यांच्याकडे गृहभेट दिली. त्यांचे वय चोवीस वर्षे आहे. गाव वडगाव. गरोदरपणाचे अठ्ठावीस आठवडे झाले आहेत. बीपी एकशे वीस बाय ऐंशी आहे. वजन बावन्न किलो.
+  gold: {woman_name: सुनीता पवार, age: 24, village: वडगाव, weeks_pregnant: 28, bp: 120/80, weight_kg: 52}
+- id: mr-asha-02
+  form: asha_anc_visit
+  set: tune
+  text: रेखा जाधव, वय एकोणतीस, गाव शिरूर. मोबाईल नंबर नऊ आठ दोन तीन चार पाच सहा सात आठ नऊ. सोळा आठवडे पूर्ण झाले. हिमोग्लोबिन साडे दहा आहे. लोहाच्या तीस गोळ्या दिल्या.
+  gold: {woman_name: रेखा जाधव, age: 29, village: शिरूर, phone: "9823456789", weeks_pregnant: 16, hb: 10.5, ifa_tablets_given: 30}
+- id: mr-asha-03
+  form: asha_anc_visit
+  set: tune
+  text: मंगल शिंदे यांची तपासणी केली. वय बत्तीस वर्षे. गाव पिंपळगाव. छत्तीस आठवडे झाले. बीपी एकशे चाळीस बाय नव्वद. वजन साठ किलो. पुढची भेट बारा नोव्हेंबरला.
+  gold: {woman_name: मंगल शिंदे, age: 32, village: पिंपळगाव, weeks_pregnant: 36, bp: 140/90, weight_kg: 60, next_visit_date: "2026-11-12"}
+- id: mr-asha-04
+  form: asha_anc_visit
+  set: tune
+  text: प्रिया कांबळे, एकवीस वर्षांची, गाव केडगाव. पहिली भेट, बारा आठवडे. वजन पंचेचाळीस किलो. हिमोग्लोबिन नऊ. पुढची भेट उद्या.
+  gold: {woman_name: प्रिया कांबळे, age: 21, village: केडगाव, weeks_pregnant: 12, weight_kg: 45, hb: 9, next_visit_date: "2026-11-01"}
+- id: mr-asha-05
+  form: asha_anc_visit
+  set: tune
+  text: सविता मोरे, वय सव्वीस, गाव नांदूर. वीस आठवडे. बीपी एकशे दहा बाय सत्तर. आज साठ गोळ्या दिल्या. शेरा, पुढच्या वेळी पती घरी असतील.
+  gold: {woman_name: सविता मोरे, age: 26, village: नांदूर, weeks_pregnant: 20, bp: 110/70, ifa_tablets_given: 60, remarks: पुढच्या वेळी पती घरी असतील}
+- id: mr-asha-06
+  form: asha_anc_visit
+  set: tune
+  text: नाव अनिता गायकवाड. वय पस्तीस. गाव लोणी. मोबाईल सात तीन आठ शून्य एक दोन तीन चार पाच सहा. तीस आठवडे झाले. वजन अठ्ठावन्न किलो. हिमोग्लोबिन अकरा.
+  gold: {woman_name: अनिता गायकवाड, age: 35, village: लोणी, phone: "7380123456", weeks_pregnant: 30, weight_kg: 58, hb: 11}
+- id: mr-asha-07
+  form: asha_anc_visit
+  set: heldout
+  text: आज कविता राऊत यांच्याकडे गेले. वय सत्तावीस. गाव मालेगाव. चोवीस आठवडे. बीपी एकशे तीस बाय पंच्याऐंशी. पुढची भेट पंधरा डिसेंबर.
+  gold: {woman_name: कविता राऊत, age: 27, village: मालेगाव, weeks_pregnant: 24, bp: 130/85, next_visit_date: "2026-12-15"}
+- id: mr-asha-08
+  form: asha_anc_visit
+  set: heldout
+  text: शीतल पाटील, वय बावीस वर्षे, गाव खेड. आठ आठवडे. वजन अठ्ठेचाळीस किलो. मोबाईल नऊ आठ सात सहा पाच चार तीन दोन एक शून्य.
+  gold: {woman_name: शीतल पाटील, age: 22, village: खेड, weeks_pregnant: 8, weight_kg: 48, phone: "9876543210"}
+- id: mr-asha-09
+  form: asha_anc_visit
+  set: heldout
+  text: वैशाली देशमुख यांची भेट. वय तेहेतीस. गाव सासवड. चौतीस आठवडे झाले. हिमोग्लोबिन साडे आठ. लोहाच्या शंभर गोळ्या दिल्या. पुढची भेट परवा.
+  gold: {woman_name: वैशाली देशमुख, age: 33, village: सासवड, weeks_pregnant: 34, hb: 8.5, ifa_tablets_given: 100, next_visit_date: "2026-11-02"}
+
+- id: mr-sir-01
+  form: sir_enumeration
+  set: tune
+  text: मतदाराचे नाव संजय कुलकर्णी. वडिलांचे नाव रमेश कुलकर्णी. वय पंचेचाळीस. पुरुष. घर क्रमांक बारा. भाग शिवाजीनगर.
+  gold: {elector_name: संजय कुलकर्णी, relative_name: रमेश कुलकर्णी, relation: father, age: 45, gender: male, house_number: "12", area: शिवाजीनगर}
+- id: mr-sir-02
+  form: sir_enumeration
+  set: tune
+  text: नाव सुनंदा माने. पतीचे नाव विलास माने. वय अडतीस. स्त्री. घर क्रमांक एकशे पाच. गाव वाघोली. मोबाईल नऊ आठ पाच शून्य एक दोन तीन चार पाच सहा.
+  gold: {elector_name: सुनंदा माने, relative_name: विलास माने, relation: husband, age: 38, gender: female, house_number: "105", area: वाघोली, phone: "9850123456"}
+- id: mr-sir-03
+  form: sir_enumeration
+  set: tune
+  text: मतदार अमोल भोसले, वडील दत्तात्रय भोसले, वय एकोणीस, पुरुष, गाव कोंढवा, मतदार ओळखपत्र क्रमांक ABC एक दोन तीन चार पाच सहा सात.
+  gold: {elector_name: अमोल भोसले, relative_name: दत्तात्रय भोसले, relation: father, age: 19, gender: male, area: कोंढवा, epic_number: ABC1234567}
+- id: mr-sir-04
+  form: sir_enumeration
+  set: tune
+  text: नाव मीना चव्हाण. आईचे नाव लता चव्हाण. वय एकवीस. स्त्री. घर क्रमांक सात. भाग गणेशपेठ.
+  gold: {elector_name: मीना चव्हाण, relative_name: लता चव्हाण, relation: mother, age: 21, gender: female, house_number: "7", area: गणेशपेठ}
+- id: mr-sir-05
+  form: sir_enumeration
+  set: tune
+  text: राहुल जगताप, वडिलांचे नाव सुरेश जगताप, वय तीस, पुरुष, घर क्रमांक अठ्ठेचाळीस, गाव उरुळी, मोबाईल सात सात नऊ आठ एक एक दोन दोन तीन तीन.
+  gold: {elector_name: राहुल जगताप, relative_name: सुरेश जगताप, relation: father, age: 30, gender: male, house_number: "48", area: उरुळी, phone: "7798112233"}
+- id: mr-sir-06
+  form: sir_enumeration
+  set: tune
+  text: नाव सरस्वती ठाकूर, पतीचे नाव गणेश ठाकूर, वय बासष्ट, स्त्री, गाव मंचर, ओळखपत्र क्रमांक MHT नऊ आठ सात सहा पाच चार तीन.
+  gold: {elector_name: सरस्वती ठाकूर, relative_name: गणेश ठाकूर, relation: husband, age: 62, gender: female, area: मंचर, epic_number: MHT9876543}
+- id: mr-sir-07
+  form: sir_enumeration
+  set: heldout
+  text: मतदाराचे नाव विजय सावंत. वडील बाळासाहेब सावंत. वय छप्पन्न. पुरुष. घर क्रमांक तेवीस. भाग कसबा पेठ.
+  gold: {elector_name: विजय सावंत, relative_name: बाळासाहेब सावंत, relation: father, age: 56, gender: male, house_number: "23", area: कसबा पेठ}
+- id: mr-sir-08
+  form: sir_enumeration
+  set: heldout
+  text: नाव पूजा कदम, आई सुमन कदम, वय अठरा, स्त्री, गाव जुन्नर, मोबाईल आठ आठ शून्य शून्य एक दोन तीन चार पाच सहा.
+  gold: {elector_name: पूजा कदम, relative_name: सुमन कदम, relation: mother, age: 18, gender: female, area: जुन्नर, phone: "8800123456"}
+- id: mr-sir-09
+  form: sir_enumeration
+  set: heldout
+  text: नाव दीपक पवार, वडिलांचे नाव नामदेव पवार, वय चव्वेचाळीस, पुरुष, घर क्रमांक नऊ, गाव भोर, ओळखपत्र क्रमांक KLM एक एक एक दोन दोन दोन तीन.
+  gold: {elector_name: दीपक पवार, relative_name: नामदेव पवार, relation: father, age: 44, gender: male, house_number: "9", area: भोर, epic_number: KLM1112223}
+
+- id: mr-tkt-01
+  form: service_ticket
+  set: tune
+  text: ग्राहकाचे नाव गणेश शेळके. मोबाईल नऊ आठ दोन दोन तीन तीन चार चार पाच पाच. गाव आळेफाटा. पाण्याची मोटर चालू होत नाही. काम तातडीने करायचे आहे. वॉरंटी आहे.
+  gold: {customer_name: गणेश शेळके, phone: "9822334455", village: आळेफाटा, product: water_pump, problem: मोटर चालू होत नाही, urgency: high, under_warranty: true}
+- id: mr-tkt-02
+  form: service_ticket
+  set: tune
+  text: नाव सुरेखा गोरे, गाव निरा, मोबाईल सात आठ सात आठ एक दोन एक दोन तीन चार. सोलर दिवा रात्री बंद पडतो. घाई नाही. वॉरंटी नाही.
+  gold: {customer_name: सुरेखा गोरे, village: निरा, phone: "7878121234", product: solar_light, problem: सोलर दिवा रात्री बंद पडतो, urgency: low, under_warranty: false}
+- id: mr-tkt-03
+  form: service_ticket
+  set: tune
+  text: ट्रॅक्टरचा क्लच अडकतो. ग्राहक बाळू धुमाळ, गाव सोमेश्वर, मोबाईल नऊ एक सात दोन शून्य शून्य तीन चार पाच सहा. वीस नोव्हेंबरला या.
+  gold: {customer_name: बाळू धुमाळ, village: सोमेश्वर, phone: "9172003456", product: tractor, problem: ट्रॅक्टरचा क्लच अडकतो, visit_date: "2026-11-20"}
+- id: mr-tkt-04
+  form: service_ticket
+  set: tune
+  text: फवारणी पंप गळतो. नाव संगीता ढोले, गाव वेल्हे, मोबाईल आठ नऊ नऊ नऊ आठ आठ सात सात सहा सहा. उद्या येऊ शकता. वॉरंटीमध्ये आहे.
+  gold: {customer_name: संगीता ढोले, village: वेल्हे, phone: "8999887766", product: sprayer, problem: फवारणी पंप गळतो, visit_date: "2026-11-01", under_warranty: true}
+- id: mr-tkt-05
+  form: service_ticket
+  set: tune
+  text: नाव हरी गावडे. गाव मोरगाव. मोबाईल नऊ चार शून्य चार शून्य चार शून्य चार एक एक. मोटर खूप आवाज करते. लगेच या.
+  gold: {customer_name: हरी गावडे, village: मोरगाव, phone: "9404040411", product: water_pump, problem: मोटर खूप आवाज करते, urgency: high}
+- id: mr-tkt-06
+  form: service_ticket
+  set: tune
+  text: ग्राहक वंदना खैरे, गाव राजगुरूनगर, मोबाईल सात शून्य दोन शून्य तीन शून्य चार शून्य पाच शून्य. सोलर लाइट चार्ज होत नाही. पंचवीस नोव्हेंबरला भेट द्या. वॉरंटी आहे.
+  gold: {customer_name: वंदना खैरे, village: राजगुरूनगर, phone: "7020304050", product: solar_light, problem: सोलर लाइट चार्ज होत नाही, visit_date: "2026-11-25", under_warranty: true}
+- id: mr-tkt-07
+  form: service_ticket
+  set: heldout
+  text: नाव प्रकाश लोंढे, गाव जेजुरी, मोबाईल नऊ आठ एक शून्य दोन शून्य तीन शून्य चार शून्य. पाण्याची मोटर गरम होते. तातडीने या. वॉरंटी नाही.
+  gold: {customer_name: प्रकाश लोंढे, village: जेजुरी, phone: "9810203040", product: water_pump, problem: पाण्याची मोटर गरम होते, urgency: high, under_warranty: false}
+- id: mr-tkt-08
+  form: service_ticket
+  set: heldout
+  text: ट्रॅक्टर सुरू होत नाही. ग्राहक अशोक बांगर, गाव पारगाव, मोबाईल आठ सात आठ सात आठ सात एक दोन एक दोन. तीस नोव्हेंबरला या.
+  gold: {customer_name: अशोक बांगर, village: पारगाव, phone: "8787871212", product: tractor, problem: ट्रॅक्टर सुरू होत नाही, visit_date: "2026-11-30"}
+- id: mr-tkt-09
+  form: service_ticket
+  set: heldout
+  text: नाव रोहिणी काळे, गाव बारामती, मोबाईल नऊ नऊ शून्य शून्य एक एक दोन दोन तीन तीन. फवारणी पंपाचा नोझल तुटला आहे. घाई नाही. वॉरंटीमध्ये आहे.
+  gold: {customer_name: रोहिणी काळे, village: बारामती, phone: "9900112233", product: sprayer, problem: फवारणी पंपाचा नोझल तुटला आहे, urgency: low, under_warranty: true}
+
+# Free speech: read the facts, then say them in your own words, in any order, as you would in the field.
+# No reference transcript, so only field accuracy is scored. Never looked at while tuning.
+- id: mr-free-01
+  form: asha_anc_visit
+  set: free
+  facts: कमल वाघ, वय 28, गाव आंबेगाव, 22 आठवडे, बीपी 118/76, वजन 55 किलो
+  gold: {woman_name: कमल वाघ, age: 28, village: आंबेगाव, weeks_pregnant: 22, bp: 118/76, weight_kg: 55}
+- id: mr-free-02
+  form: asha_anc_visit
+  set: free
+  facts: जया लोखंडे, वय 31, गाव तळेगाव, 32 आठवडे, हिमोग्लोबिन 9.5, लोहाच्या 30 गोळ्या दिल्या
+  gold: {woman_name: जया लोखंडे, age: 31, village: तळेगाव, weeks_pregnant: 32, hb: 9.5, ifa_tablets_given: 30}
+- id: mr-free-03
+  form: sir_enumeration
+  set: free
+  facts: मतदार किरण साळुंखे, वडील मधुकर साळुंखे, वय 27, पुरुष, घर क्रमांक 64, गाव चाकण
+  gold: {elector_name: किरण साळुंखे, relative_name: मधुकर साळुंखे, relation: father, age: 27, gender: male, house_number: "64", area: चाकण}
+- id: mr-free-04
+  form: sir_enumeration
+  set: free
+  facts: मतदार उषा बागुल, पती अरुण बागुल, वय 41, स्त्री, गाव शिक्रापूर, मोबाईल 9763112244
+  gold: {elector_name: उषा बागुल, relative_name: अरुण बागुल, relation: husband, age: 41, gender: female, area: शिक्रापूर, phone: "9763112244"}
+- id: mr-free-05
+  form: service_ticket
+  set: free
+  facts: ग्राहक नितीन कोकाटे, गाव इंदापूर, मोबाईल 9822001122, पाण्याची मोटर, फ्यूज सारखा उडतो, तातडीने
+  gold: {customer_name: नितीन कोकाटे, village: इंदापूर, phone: "9822001122", product: water_pump, problem: फ्यूज सारखा उडतो, urgency: high}
+- id: mr-free-06
+  form: service_ticket
+  set: free
+  facts: ग्राहक सुजाता पिसाळ, गाव वाई, मोबाईल 7720554433, सोलर दिवा, बॅटरी लवकर संपते, वॉरंटी आहे
+  gold: {customer_name: सुजाता पिसाळ, village: वाई, phone: "7720554433", product: solar_light, problem: बॅटरी लवकर संपते, under_warranty: true}

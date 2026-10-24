@@ -1,0 +1,62 @@
+# Field-service ticket, CRM style. SYNTHETIC DATA ONLY.
+# Shows that the same pipeline fills any form: a technician or a call-centre agent speaks, a ticket is created.
+id: service_ticket
+title: Field service ticket
+title_mr: सेवा तक्रार
+title_hi: सेवा शिकायत
+fields:
+  - name: customer_name
+    type: text
+    required: true
+    label: Customer name
+    label_mr: ग्राहकाचे नाव
+    label_hi: ग्राहक का नाम
+  - name: phone
+    type: phone
+    required: true
+    label: Mobile number
+    label_mr: मोबाईल नंबर
+    label_hi: मोबाइल नंबर
+  - name: village
+    type: text
+    required: true
+    label: Village or area
+    label_mr: गाव
+    label_hi: गांव
+  - name: product
+    type: enum
+    required: true
+    label: Product
+    label_mr: उत्पादन
+    label_hi: उत्पाद
+    options:
+      water_pump: [water pump, pump, मोटर, पंप, पाण्याची मोटर, पानी की मोटर]
+      solar_light: [solar light, solar lamp, सोलर दिवा, सोलर लाइट, सोलर लॅम्प]
+      tractor: [tractor, ट्रॅक्टर, ट्रैक्टर]
+      sprayer: [sprayer, फवारणी पंप, स्प्रेयर, स्प्रे पंप]
+  - name: problem
+    type: text
+    free_text: true
+    required: true
+    label: Problem, in the customer's words
+    label_mr: अडचण
+    label_hi: समस्या
+  - name: urgency
+    type: enum
+    label: Urgency
+    label_mr: तातडी
+    label_hi: जल्दी
+    options:
+      high: [urgent, high, लगेच, तातडीने, ताबडतोब, अर्जंट, जल्दी, तुरंत]
+      medium: [medium, मध्यम, या आठवड्यात, इस हफ्ते]
+      low: [low, not urgent, सावकाश, घाई नाही, जल्दी नहीं, आराम से]
+  - name: visit_date
+    type: date
+    label: Preferred visit date
+    label_mr: भेटीची तारीख
+    label_hi: आने की तारीख
+  - name: under_warranty
+    type: bool
+    label: Under warranty
+    label_mr: वॉरंटीमध्ये आहे
+    label_hi: वारंटी में है

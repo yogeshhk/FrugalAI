@@ -1,0 +1,19 @@
+id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
+mr-asha-01,asha_anc_visit,tune,14.177,517,598,6,6,0,0,1,0,1,remarks: spurious 'आज सुनीता पवार यांच्याकडे गृहभेट दिली'
+mr-asha-02,asha_anc_visit,tune,10.254,510,396,7,7,0,0,1,1,1,remarks: spurious 'शेरा'
+mr-asha-03,asha_anc_visit,tune,10.896,503,423,7,7,0,0,0,1,0,
+mr-asha-04,asha_anc_visit,tune,8.907,477,334,7,5,1,1,1,1,3,village: 'गाव केडगाव' != 'केडगाव' | next_visit_date: missed (2026-11-01) | remarks: spurious 'शेरा'
+mr-asha-05,asha_anc_visit,tune,9.255,489,356,7,6,1,0,2,3,3,weight_kg: spurious 60.0 | next_visit_date: spurious '2026-10-31' | remarks: 'शेरा' != 'पुढच्या वेळी पती घरी असतील'
+mr-asha-06,asha_anc_visit,tune,9.715,483,364,7,7,0,0,0,1,0,
+mr-sir-01,sir_enumeration,tune,9.078,426,330,7,5,1,1,0,1,2,"relation: 'husband' != 'father' | gender: missed (male) [not one of: female, male, third_gender]"
+mr-sir-02,sir_enumeration,tune,9.272,432,343,8,7,0,1,0,0,1,phone: missed (9850123456) [not a 10-digit mobile number]
+mr-sir-03,sir_enumeration,tune,9.58,430,352,7,5,0,2,1,0,3,"relation: missed (father) [not one of: father, mother, husband] | gender: missed (male) [not one of: female, male, third_gender] | house_number: spurious 'कोंढवा'"
+mr-sir-04,sir_enumeration,tune,8.368,407,292,7,7,0,0,0,1,0,
+mr-sir-05,sir_enumeration,tune,8.536,434,308,8,3,0,5,0,0,5,elector_name: missed (राहुल जगताप) | relative_name: missed (सुरेश जगताप) | relation: missed (father) | house_number: missed (48) | phone: missed (7798112233)
+mr-sir-06,sir_enumeration,tune,9.257,426,335,7,6,0,1,0,2,1,elector_name: missed (सरस्वती ठाकूर)
+mr-tkt-01,service_ticket,tune,9.609,409,354,7,6,1,0,0,4,1,problem: 'काम तातडीने करायचे' != 'मोटर चालू होत नाही'
+mr-tkt-02,service_ticket,tune,8.557,382,304,7,6,1,0,0,0,1,village: 'गाव निरा' != 'निरा'
+mr-tkt-03,service_ticket,tune,8.903,382,331,6,5,0,1,0,0,1,customer_name: missed (बाळू धुमाळ)
+mr-tkt-04,service_ticket,tune,9.963,387,387,7,4,2,1,1,1,4,village: 'गाव वेल्हे' != 'वेल्हे' | problem: 'गळतो' != 'फवारणी पंप गळतो' | urgency: spurious 'high' | visit_date: missed (2026-11-01)
+mr-tkt-05,service_ticket,tune,8.361,362,294,6,5,1,0,2,4,3,village: 'गाव' != 'मोरगाव' | visit_date: spurious '2023-10-11' | under_warranty: spurious True
+mr-tkt-06,service_ticket,tune,8.821,406,317,7,7,0,0,1,1,1,urgency: spurious 'medium'

@@ -1,0 +1,71 @@
+# Electoral roll enumeration, SIR-style, simplified. SYNTHETIC DATA ONLY.
+# A demonstration of door-to-door form filling by a booth-level worker. It is not the official Election Commission
+# form, and the EPIC pattern below is the commonly seen 3 letters + 7 digits (to verify before any real use).
+id: sir_enumeration
+title: Electoral roll enumeration (SIR-style), simplified
+title_mr: मतदार यादी गणना (सोपे स्वरूप)
+title_hi: मतदाता सूची गणना (सरल रूप)
+fields:
+  - name: elector_name
+    type: text
+    required: true
+    label: Name of the elector
+    label_mr: मतदाराचे नाव
+    label_hi: मतदाता का नाम
+  - name: relative_name
+    type: text
+    required: true
+    label: Name of father, mother or husband
+    label_mr: वडील, आई किंवा पतीचे नाव
+    label_hi: पिता, माता या पति का नाम
+  - name: relation
+    type: enum
+    required: true
+    label: Relation
+    label_mr: नाते
+    label_hi: रिश्ता
+    options:
+      father: [father, वडील, वडिलांचे, बाबा, पिता, पिताजी]
+      mother: [mother, आई, आईचे, माता, मां, माँ]
+      husband: [husband, पती, पतीचे, नवरा, नवऱ्याचे, पति]
+  - name: age
+    type: int
+    required: true
+    min: 18
+    max: 120
+    unit: years
+    label: Age in years
+    label_mr: वय
+    label_hi: उम्र
+  - name: gender
+    type: enum
+    required: true
+    label: Gender
+    label_mr: लिंग
+    label_hi: लिंग
+    options:
+      female: [female, woman, स्त्री, महिला, बाई]
+      male: [male, man, पुरुष, पुरूष]
+      third_gender: [third gender, तृतीयपंथी, ट्रांसजेंडर, किन्नर]
+  - name: house_number
+    type: text
+    label: House number
+    label_mr: घर क्रमांक
+    label_hi: मकान नंबर
+  - name: area
+    type: text
+    required: true
+    label: Village or area
+    label_mr: गाव किंवा भाग
+    label_hi: गांव या मोहल्ला
+  - name: epic_number
+    type: pattern
+    pattern: "^[A-Z]{3}[0-9]{7}$"
+    label: EPIC (voter ID) number
+    label_mr: मतदार ओळखपत्र क्रमांक
+    label_hi: वोटर आईडी नंबर
+  - name: phone
+    type: phone
+    label: Mobile number
+    label_mr: मोबाईल नंबर
+    label_hi: मोबाइल नंबर

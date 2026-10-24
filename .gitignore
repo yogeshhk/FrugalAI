@@ -29,6 +29,13 @@ code/workflow-agent/cache/
 code/finetune-slm/results/gate_*.json
 code/finetune-slm/merged/
 code/finetune-slm/models/
+# voice-form: models, the author's voice recordings (personal data), machine-voice smoke audio (CC BY-NC),
+# the local outbox the sinks write to, and run logs
+code/voice-form/models/
+code/voice-form/eval/audio/
+code/voice-form/eval/smoke_audio/
+code/voice-form/outbox/
+code/voice-form/results/*_log.txt
 
 # Local scratch
 scratch/

@@ -1,0 +1,83 @@
+# ASHA home visit, antenatal (simplified). SYNTHETIC DATA ONLY.
+# Data entry only: the app records what the worker says. It gives no advice, no diagnosis and no dosing, and it
+# does not judge danger signs (see docs/safety.md). This is not an official government form.
+id: asha_anc_visit
+title: ASHA home visit (antenatal), simplified
+title_mr: आशा गृहभेट (गरोदरपणातील तपासणी)
+title_hi: आशा गृह भ्रमण (प्रसव पूर्व जांच)
+data_entry_only: true
+fields:
+  - name: woman_name
+    type: text
+    required: true
+    label: Name of the woman
+    label_mr: महिलेचे नाव
+    label_hi: महिला का नाम
+  - name: age
+    type: int
+    required: true
+    min: 14
+    max: 55
+    unit: years
+    label: Age in years
+    label_mr: वय
+    label_hi: उम्र
+  - name: village
+    type: text
+    required: true
+    label: Village
+    label_mr: गाव
+    label_hi: गांव
+  - name: phone
+    type: phone
+    label: Mobile number
+    label_mr: मोबाईल नंबर
+    label_hi: मोबाइल नंबर
+  - name: weeks_pregnant
+    type: int
+    required: true
+    min: 1
+    max: 42
+    unit: weeks
+    label: Weeks of pregnancy
+    label_mr: किती आठवडे झाले
+    label_hi: कितने हफ्ते हुए
+  - name: bp
+    type: bp
+    label: Blood pressure (systolic/diastolic)
+    label_mr: बीपी
+    label_hi: बीपी
+  - name: weight_kg
+    type: float
+    min: 25
+    max: 150
+    unit: kg
+    label: Weight in kg
+    label_mr: वजन (किलो)
+    label_hi: वज़न (किलो)
+  - name: hb
+    type: float
+    min: 3
+    max: 20
+    unit: g/dL
+    label: Haemoglobin (g/dL)
+    label_mr: हिमोग्लोबिन
+    label_hi: हीमोग्लोबिन
+  - name: ifa_tablets_given
+    type: int
+    min: 0
+    max: 200
+    label: Iron (IFA) tablets given
+    label_mr: लोहाच्या गोळ्या दिल्या
+    label_hi: आयरन की गोलियां दीं
+  - name: next_visit_date
+    type: date
+    label: Next visit date
+    label_mr: पुढची भेट
+    label_hi: अगली मुलाकात
+  - name: remarks
+    type: text
+    free_text: true
+    label: Remarks as said by the worker
+    label_mr: शेरा
+    label_hi: टिप्पणी
