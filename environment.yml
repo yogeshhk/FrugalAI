@@ -1,3 +1,10 @@
+# One environment for the whole repo. Create it from the repo root (the editable install below is a path
+# relative to where you run the command):
+#   conda env create -f environment.yml
+#   conda activate frugalai
+# Tests run offline and need no model server. Python 3.11 is the version this file is tested on.
+# Optional, not installed here: llama-cpp-python, only if you want to load the Marathi GGUF from Python
+# (finetune-slm README). LM Studio can load that file instead.
 name: frugalai
 channels:
   - conda-forge
@@ -5,19 +12,29 @@ dependencies:
   - python=3.11
   - pip
   - pytest
+  - numpy
   - psutil
   - pyyaml
   - requests
   - scipy
-  - ffmpeg          # voice-form: decodes phone recordings
+  - scikit-learn      # quantum-wiki: English stop-word list
+  - matplotlib        # _scripts/make_campaign_diagrams.py
+  - ffmpeg            # voice-form: decodes phone recordings
   - pip:
       - --extra-index-url https://download.pytorch.org/whl/cpu
-      - watchdog
-      - chromadb
-      - sentence-transformers
       - torch
       - transformers
-      - peft
-      - langgraph
+      - peft                      # finetune-slm: LoRA
+      - rank-bm25                 # finetune-slm: retrieval baseline
+      - langgraph                 # workflow-agent
+      - langchain-core
+      - langchain-openai          # quantum-wiki, faqintake: chat model pointed at LM Studio
+      - langchain-community       # quantum-wiki: BM25 retriever
+      - langchain-text-splitters  # quantum-wiki: chunking
       - pydantic
-      - vosk          # voice-form: small offline speech model runtime
+      - pymupdf                   # quantum-wiki: page text
+      - docling                   # quantum-wiki: PDF parsing (large; only the parse step needs it)
+      - huggingface-hub           # voice-form: model download
+      - onnxruntime               # voice-form: IndicConformer
+      - vosk                      # voice-form: small offline speech model runtime
+      - -e ./code/common          # frugalai_common, importable from every project

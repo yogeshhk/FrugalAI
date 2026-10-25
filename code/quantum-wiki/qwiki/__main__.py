@@ -19,7 +19,7 @@ def main(argv=None):
     a = sub.add_parser("ask", help="answer one question and show the route and evidence")
     a.add_argument("question")
     a.add_argument("--fake", action="store_true", help="scripted model and hash embeddings: no server needed")
-    sub.add_parser("retrieval", help="retrieval quality of the chunkings and retrievers (no chat model)")
+    sub.add_parser("retrieval", help="retrieval quality of the chunkings and retrievers (no chat model; the embedding model must be served)")
     e = sub.add_parser("eval", help="answer quality of the systems on the tuned and held-out sets")
     e.add_argument("--systems", default="naive,struct,agent")
     e.add_argument("--sets", default="dev,heldout")

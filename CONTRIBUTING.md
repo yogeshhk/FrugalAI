@@ -14,10 +14,12 @@ OS, runtime and version, model and quantisation, date, and number of repeats. Do
 not copy numbers from elsewhere.
 
 ## 3. Add or improve a recipe
-Copy `code/_template/`, keep the recipe self-contained, and include:
-- a README with the problem, the model choice and why, and exact run steps;
+Copy `code/_template/` (a runnable stub with one offline test), keep the recipe self-contained, and include:
+- a README with a status line, the problem, the model choice and why, and exact run steps;
 - an evaluation script, even a tiny one;
-- the measured resource use on at least one device.
+- the resource use on a named device, if you measured it (say "not measured" otherwise; never estimate).
+
+For a new measurement of an existing model on your device, use the "New measurement" issue form.
 
 ## 4. Fix or add documentation
 Every factual claim needs a source in `docs/sources.md`, or a "to verify" tag. Prefer primary sources

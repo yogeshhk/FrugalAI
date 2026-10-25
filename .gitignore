@@ -29,6 +29,13 @@ code/workflow-agent/cache/
 code/finetune-slm/results/gate_*.json
 code/finetune-slm/merged/
 code/finetune-slm/models/
+# finetune-slm: a leftover resume marker, and the text of the author's Marathi book (Sahaj Jeevan): raw passages,
+# training pairs and model answers that quote it. The licence of the source book is unconfirmed, so only the
+# questions (eval/mr_test_questions.json) and the metrics (results/mr_summary.csv) are published.
+code/finetune-slm/adapters/*/state.json
+code/finetune-slm/data/train_mr.jsonl
+code/finetune-slm/data/qa_mr.json
+code/finetune-slm/results/mr_answers_*.jsonl
 # voice-form: models, the author's voice recordings (personal data), machine-voice smoke audio (CC BY-NC),
 # the local outbox the sinks write to, and run logs
 code/voice-form/models/*

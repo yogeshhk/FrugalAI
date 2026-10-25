@@ -3,6 +3,8 @@
 import os
 from pathlib import Path
 
+from frugalai_common import config as shared
+
 ROOT = Path(__file__).resolve().parents[1]
 REPOS = ROOT.parents[2]             # the folder that holds the sibling repositories (FrugalAI/code/<project>)
 
@@ -21,6 +23,6 @@ EVAL = ROOT / "eval"
 RESULTS = ROOT / "results"
 
 # LM Studio (OpenAI-compatible) on this machine.
-LLM_URL = os.environ.get("QWIKI_LLM_URL", "http://localhost:1234/v1")
-CHAT_MODEL = os.environ.get("QWIKI_CHAT_MODEL", "qwen/qwen3-1.7b")
-EMBED_MODEL = os.environ.get("QWIKI_EMBED_MODEL", "text-embedding-nomic-embed-text-v1.5")
+LLM_URL = os.environ.get("QWIKI_LLM_URL", shared.LLM_URL)
+CHAT_MODEL = os.environ.get("QWIKI_CHAT_MODEL", shared.CHAT_MODEL)
+EMBED_MODEL = os.environ.get("QWIKI_EMBED_MODEL", shared.EMBED_MODEL)

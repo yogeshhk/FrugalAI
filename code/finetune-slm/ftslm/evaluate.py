@@ -2,9 +2,11 @@
 
 import csv
 import json
-import sys
 import time
 from pathlib import Path
+
+from frugalai_common.config import CHAT_MODEL
+from frugalai_common.llm import no_think_suffix
 
 from . import data as D
 from .metrics import accuracy, confusion, macro_f1, parse_label
@@ -46,7 +48,6 @@ def run_local(system, model_id, adapter, data, shots, log):
 
 def run_qwen(model_name, data, shots, log):
     """The same test through LM Studio: free-text answer, parsed for a label (no label-scoring available)."""
-    sys.path.insert(0, str(ROOT.parent / "common"))
     from frugalai_common import LMStudioBackend
 
     backend = LMStudioBackend()
@@ -58,7 +59,7 @@ def run_qwen(model_name, data, shots, log):
         test = data[split]
         pred, tokens, secs = [], 0, 0.0
         for r in test:
-            prompt = instruction_prompt(r["text"], shots) + " /no_think"
+            prompt = instruction_prompt(r["text"], shots) + no_think_suffix(model_name)
             res = backend.generate(model_name, prompt, max_tokens=48, temperature=0.0)
             pred.append(parse_label(res.text, D.LABELS))
             tokens += res.prompt_tokens
@@ -75,7 +76,7 @@ def run_qwen(model_name, data, shots, log):
 
 
 def evaluate(systems=SYSTEMS, model_id=DEFAULT_MODEL, adapter=ROOT / "adapters" / "intent",
-             data_dir=ROOT / "data", out_dir=ROOT / "results", qwen_model="qwen/qwen3-1.7b", log=print):
+             data_dir=ROOT / "data", out_dir=ROOT / "results", qwen_model=CHAT_MODEL, log=print):
     data = {k: D.read(data_dir, k) for k in ("train", "test_iid", "test_ood")}
     shots = pick_examples(data["train"])
     all_rows, all_details = [], {}

@@ -3,6 +3,19 @@
 This is a judgement written on 2026-10-19, not a sourced finding. It is meant to be revisited every few
 months and corrected when evidence arrives.
 
+## Outlook
+The value here is in the measurements and the finished recipes, not in any single model. Models change
+every few months, while the question "what runs on this device, how fast, and is it good enough for this
+job" stays, so the method and recipes should outlast them. That makes it a relatively durable and
+low-capital direction, with consulting and training as the first way to earn from it and a packaged device
+as a later option. The main risks are stale numbers, crowding by runtime vendors, the safety and legal
+side of health recipes, weak small-model quality in Indian languages, and one person's time. Nothing here
+has been tested with paying users yet. The reasoning, the risks and what would raise confidence follow below.
+
+For the cost side of a token (time, memory, energy), practices to try and how to measure energy per task,
+see [token_frugality.md](token_frugality.md). It is a checklist and a plan; this repo has measured
+no energy figure yet.
+
 ## Why the plan looks durable
 - **It measures instead of building models.** Models change every few months, but the questions "what runs
   on this device, how fast, in how much memory, and is it good enough for this job" stay. The method and

@@ -20,10 +20,12 @@ Goal: numbers that someone else can reproduce on the same device and compare wit
 2. Start the runtime and load exactly one model. Note the file's quantisation.
 3. Run `python -m frugalai_common.bench` with `--device`, `--quantisation`, `--repeats 3` (the default).
 4. One warm-up generation is discarded. Each of 5 fixed prompts is run 3 times, capped at 128 new tokens.
-5. Report the median and the min to max range, never a single run. Run-to-run spread on a desktop PC was
-   about 8 percent between two identical runs on the first day.
+5. Report the median and the min to max range, never a single run. In the committed CPU-only Qwen3 run the 15
+   values range from 17.7 to 22.4 tokens/s around a median of 20.3. An earlier remark of about 8 percent between two
+   identical runs is not reproduced in-repo: only one run per setup is committed.
 6. Commit the CSV unmodified, with the device, model, date and runtime version in the filename or the
-   pull request description.
+   pull request description. The command refuses to overwrite a CSV with the same device, model and date; use a
+   different `--device` label for a second run (or `--force` to replace it on purpose).
 
 ## Rules
 - Do not compare numbers across different `timing_source` values without saying so.
@@ -53,6 +55,11 @@ Plan only; nothing here is measured yet. Background in [token_frugality.md](../.
   energy tracks tokens on that device.
 
 ## Known limits
+- The `os` column of the four committed CSVs reads `Windows-10-10.0.26300-SP0`, because Python reports Windows 11 as
+  Windows 10 (the kernel version stays 10.0). Build 26300 is Windows 11 (builds from 22000 up are). New runs write
+  `Windows-11-...` through `frugalai_common.metrics.os_label()`; the committed files are left as they were produced.
+- The Ollama backend has never been run against a live server; its timing path (`timing_source = server`) is tested
+  with canned replies only.
 - Short 128-token generations measure steady decode speed, not long-context behaviour.
 - Peak RAM sampling can miss very short spikes.
 - Results are for one device, one runtime version and one day. Models and runtimes change quickly, so every

@@ -31,11 +31,28 @@ def detect_gpus(timeout_s: float = 5.0) -> str:
     return "; ".join(names) or "none detected"
 
 
+def os_label() -> str:
+    """platform.platform(), except that Windows 11 is named as such.
+
+    Python (before 3.12 at least) reports Windows 11 as "Windows-10-10.0.2xxxx" because the kernel version stays
+    10.0. A build number of 22000 or more is Windows 11, so the label says so and keeps the build number.
+    """
+    label = platform.platform()
+    if platform.system() == "Windows":
+        try:
+            build = int(platform.version().split(".")[-1])
+        except ValueError:
+            return label
+        if build >= 22000 and label.startswith("Windows-10-"):
+            label = "Windows-11-" + label[len("Windows-10-"):]
+    return label
+
+
 def host_info() -> dict:
     """Facts that make a benchmark row reproducible. Numbers only, no personal data."""
     freq = psutil.cpu_freq()
     return {
-        "os": platform.platform(),
+        "os": os_label(),
         "cpu": platform.processor() or platform.machine(),
         "cores_physical": psutil.cpu_count(logical=False),
         "cores_logical": psutil.cpu_count(logical=True),

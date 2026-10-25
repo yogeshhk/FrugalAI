@@ -1,0 +1,2 @@
+mode,n_questions,hit_at_1,hit_at_3,max_retrieval_ms,notes_in_wiki,date
+bm25,10,1.0,1.0,0.39,6,2026-10-25

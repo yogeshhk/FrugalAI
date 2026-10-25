@@ -1,6 +1,6 @@
 """Command line: python -m wikirag {index,search,ask,watch,eval} WIKI_FOLDER ...
 
-Run from wiki-rag/. The shared library (common/) is found automatically.
+Run from wiki-rag/ in the frugalai conda environment (it installs the shared library, code/common, in editable mode).
 """
 
 import argparse
@@ -22,7 +22,6 @@ def say(text: str = "") -> None:
 
 
 def _harness_backend(name: str, url):
-    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "common"))
     from frugalai_common import LMStudioBackend, OllamaBackend
     cls = OllamaBackend if name == "ollama" else LMStudioBackend
     return cls(url) if url else cls()

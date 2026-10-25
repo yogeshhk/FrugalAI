@@ -1,5 +1,8 @@
 # Project: voice to form (Marathi, Hindi)
 
+> Status: built: yes | measured: extraction on script text only (round 2 partial), nothing on real speech | reviewed-by-author: no
+> (the scripts were drafted by Claude) | needs LM Studio: yes for extraction runs and `fill`; the tests do not
+
 A field worker speaks in Marathi or Hindi; a small offline pipeline fills a form, shows where each value came from,
 asks for what is missing, and saves the record only after the worker confirms it. Speech-to-text, the normalising and
 the checks run on the laptop; the one language model runs in LM Studio on the same machine. No cloud call at any step.
@@ -60,19 +63,19 @@ for speaking, not for listening. It is a slot to fill if the weights become avai
 | `voiceform/normalize.py` | Marathi and Hindi number words, digits, BP, phone, dates, yes/no, option synonyms |
 | `voiceform/record.py` | typed values, range checks, evidence check, merging a correction, English request, follow-up questions |
 | `voiceform/extract.py` | three routes: `rules` (no model), `direct` (model reads the transcript), `translate` (model translates to English first) |
-| `voiceform/llm.py` | LM Studio client with JSON-schema output, and a fake for tests |
+| `voiceform/llm.py` | binds this project's server URL and model ids to the shared chat helpers (`frugalai_common.llm`: JSON-schema output with a regex fallback, counters, the scripted fake for tests) |
 | `voiceform/asr.py` | speech backends behind one interface |
 | `voiceform/netguard.py` | blocks and counts any connection that is not to this machine |
 | `voiceform/pipeline.py` | speech or text to an unconfirmed record, inside the guard |
 | `voiceform/sinks.py` | form JSON, SQLite, CRM record, API payload; refuses an unconfirmed record |
-| `voiceform/evaluate.py` | speech and extraction evaluation, `results/RESULTS.md` |
+| `voiceform/evaluate.py` | speech and extraction evaluation; `report` writes `results/RESULTS.md` (not committed yet: it is written when the evaluation is complete) |
 | `voiceform/recording.py`, `smoke.py` | recording sheet and importer; machine-voice smoke audio |
 | `eval/scripts/mr.yaml`, `hi.yaml` | 33 lines per language: 18 tune, 9 held-out, 6 free-speech cards, with gold values |
 | `eval/RECORDING.md` | the sheet to read from when recording |
 | `tests/` | offline tests (no model server, no download, no network) |
 
 ## Run it
-From `code/voice-form`, with the `genai` conda env (the `frugalai` env from `environment.yml` also works once built):
+From `code/voice-form`, in the `frugalai` conda environment (`environment.yml`):
 ```
 python -m voiceform download                      # once, needs internet; nothing else does
 python -m voiceform fill --form service_ticket --lang mr --text "नाव हरी गावडे. गाव मोरगाव. ..."
@@ -82,7 +85,7 @@ python -m voiceform import D:\path\to\recordings  # files named <id>_clean.m4a o
 python -m voiceform eval-asr --lang mr --asr whisper-small-mr
 python -m voiceform eval-extract --lang mr --route direct --model qwen/qwen3-1.7b --set tune
 python -m voiceform eval-extract --lang mr --route direct --transcripts asr_mr_whisper-small-mr_recordings
-python -m voiceform report                        # results/RESULTS.md
+python -m voiceform report                        # writes results/RESULTS.md from all runs
 ```
 LM Studio must be running with the model loaded. RAM per speech model is measured by `eval-asr` (see the results).
 
@@ -97,7 +100,37 @@ LM Studio must be running with the model loaded. RAM per speech model is measure
 - Speech: word and character error rate after the same normalising on both sides, real-time factor, RAM.
 - The scripts were drafted by Claude and are synthetic; the recordings are the author's voice only.
 
-Results: `results/RESULTS.md`. Numbers on recordings are pending until the recordings exist.
+### Results so far: extraction on script text, tune set only
+
+Every number below is on the **script text** (condition `reference`, a perfect ear), on the **tune set** (18 lines per
+language, the lines the prompts and rules were adjusted on, so they are optimistic). The held-out set, the free-speech
+cards and every number on real speech are **not run**. One run per row, on the main PC through LM Studio; "field
+accuracy" is the share of gold values the pipeline got right, "to fix" is what a worker would have to change per
+utterance (wrong, missed and invented values). The table is built from `results/extract_*_reference.summary.json`;
+the same files from before the fixes are in `results/v1_before_fixes/`.
+
+| Language | Route | Model | Field accuracy | To fix per utterance | Fully correct (of 18) | Mean seconds per line | Round |
+|----------|-------|-------|----------------|----------------------|-----------------------|-----------------------|-------|
+| Hindi | rules, no model | none | 0.468 | 3.78 | 0 | 0.0 | round 1 |
+| Hindi | direct | Qwen3 1.7B | 0.927 | 0.78 | 9 | 9.5 | round 1 |
+| Hindi | direct | Gemma 2 2B | 0.968 | 0.72 | 8 | 31.6 | round 1 |
+| Hindi | translate first | Qwen3 1.7B | 0.548 | 3.50 | 0 | 11.6 | round 1 |
+| Marathi | rules, no model | none | 0.480 | 3.72 | 0 | 0.0 | round 2 (summary same as round 1) |
+| Marathi | direct | Qwen3 1.7B | 0.848 | 1.17 | 8 | 10.1 | round 2 (round 1: 0.832, 1.72, 3 of 18) |
+| Marathi | direct | Gemma 2 2B | 0.928 | 0.50 | 12 | 34.7 | round 2 (round 1: 0.920, 0.89, 10 of 18) |
+| Marathi | translate first | Qwen3 1.7B | 0.504 | 3.83 | 0 | 11.1 | round 1 |
+
+How to read the rounds: **round 1** is the code before the fixes (kept in `results/v1_before_fixes/`). **Round 2** is
+the code after the fixes, and it is **partial**: only 3 of the 8 tune runs were repeated (the Marathi rules baseline and
+the two Marathi `direct` runs), none of the held-out runs. The five other rows are still round-1 results, so the Hindi
+rows and the Marathi `translate` row come from older code than the Marathi `direct` rows and are not strictly
+comparable with them. The round-2 re-run (`bash eval/run_extract_all.sh tune`, then `heldout`) needs LM Studio and is
+open; the choice of default model waits for it.
+
+Confound to know about: until the change that made `llm.py` send `/no_think` for Qwen model ids only, the switch was
+appended to every prompt, Gemma included. All rows above were produced before that change, so the Gemma rows carry the
+extra text in their prompts. It is not known whether it changed Gemma's answers; the next round will show. Gemma was
+about three times slower per line than Qwen on this machine; the GPU offload setting was not recorded for these runs.
 
 ## Limits and safety
 - One speaker (the author) and synthetic lines: the numbers say nothing about other accents, dialects or real field

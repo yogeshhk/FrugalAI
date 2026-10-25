@@ -1,19 +1,19 @@
 id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
-mr-asha-01,asha_anc_visit,tune,43.188,420,363,6,6,0,0,0,0,0,
-mr-asha-02,asha_anc_visit,tune,36.851,421,380,7,7,0,0,0,0,0,
-mr-asha-03,asha_anc_visit,tune,37.558,419,362,7,7,0,0,0,0,0,
-mr-asha-04,asha_anc_visit,tune,37.47,400,336,7,7,0,0,0,1,0,
-mr-asha-05,asha_anc_visit,tune,36.887,404,324,7,7,0,0,0,1,0,
-mr-asha-06,asha_anc_visit,tune,38.877,413,372,7,7,0,0,0,1,0,
-mr-sir-01,sir_enumeration,tune,30.36,348,313,7,7,0,0,0,1,0,
-mr-sir-02,sir_enumeration,tune,32.63,362,333,8,8,0,0,1,1,1,epic_number: spurious 'ABC1234567'
-mr-sir-03,sir_enumeration,tune,29.552,359,299,7,7,0,0,0,4,0,
-mr-sir-04,sir_enumeration,tune,28.725,338,279,7,4,3,0,0,0,3,elector_name: 'Meena Chavan' != 'मीना चव्हाण' | relative_name: 'Lata Chavan' != 'लता चव्हाण' | area: 'Ganeshapeth' != 'गणेशपेठ'
-mr-sir-05,sir_enumeration,tune,31.65,363,334,8,8,0,0,1,3,1,epic_number: spurious 'ABC1234567'
-mr-sir-06,sir_enumeration,tune,31.403,356,317,7,7,0,0,0,0,0,
-mr-tkt-01,service_ticket,tune,28.002,331,280,7,7,0,0,0,2,0,
-mr-tkt-02,service_ticket,tune,27.617,318,277,7,6,1,0,0,2,1,urgency: 'high' != 'low'
-mr-tkt-03,service_ticket,tune,29.612,322,293,6,5,0,1,2,3,3,urgency: spurious 'high' | visit_date: missed (2026-11-20) [not a date] | under_warranty: spurious False
-mr-tkt-04,service_ticket,tune,26.999,322,265,7,4,1,2,1,2,4,phone: missed (8999887766) [not a 10-digit mobile number] | product: 'water_pump' != 'sprayer' | urgency: spurious 'high' | visit_date: missed (2026-11-01)
-mr-tkt-05,service_ticket,tune,27.237,310,276,6,4,1,1,0,2,2,product: missed (water_pump) | problem: 'लगेच या / no_think' != 'मोटर खूप आवाज करते'
-mr-tkt-06,service_ticket,tune,29.66,333,315,7,7,0,0,1,1,1,urgency: spurious 'high'
+mr-asha-01,asha_anc_visit,tune,46.291,479,367,6,5,0,1,0,0,1,village: missed (वडगाव) ['Wadgaon' was not found in what was said] raw='Wadgaon'
+mr-asha-02,asha_anc_visit,tune,39.247,480,378,7,7,0,0,0,0,0,
+mr-asha-03,asha_anc_visit,tune,39.292,478,362,7,7,0,0,0,0,0,
+mr-asha-04,asha_anc_visit,tune,37.772,459,340,7,7,0,0,0,0,0,
+mr-asha-05,asha_anc_visit,tune,39.31,463,351,7,7,0,0,0,0,0,
+mr-asha-06,asha_anc_visit,tune,40.207,472,374,7,7,0,0,0,0,0,
+mr-sir-01,sir_enumeration,tune,33.085,407,312,7,7,0,0,0,0,0,
+mr-sir-02,sir_enumeration,tune,35.896,421,344,8,7,0,1,0,0,1,area: missed (वाघोली) ['Wadgaon' was not found in what was said] raw='Wadgaon'
+mr-sir-03,sir_enumeration,tune,35.754,418,322,7,7,0,0,0,0,0,
+mr-sir-04,sir_enumeration,tune,30.618,397,279,7,4,0,3,0,0,3,elector_name: missed (मीना चव्हाण) ['Meena Chavan' was not found in what was said] raw='Meena Chavan' | relative_name: missed (लता चव्हाण) ['Lata Chavan' was not found in what was said] raw='Lata Chavan' | area: missed (गणेशपेठ) ['Ganeshapeth' was not found in what was said] raw='Ganeshapeth'
+mr-sir-05,sir_enumeration,tune,35.722,422,348,8,8,0,0,0,0,0,
+mr-sir-06,sir_enumeration,tune,33.855,415,317,7,7,0,0,0,0,0,
+mr-tkt-01,service_ticket,tune,30.606,390,280,7,7,0,0,0,0,0,
+mr-tkt-02,service_ticket,tune,30.956,377,275,7,7,0,0,0,0,0,
+mr-tkt-03,service_ticket,tune,29.226,381,293,6,5,0,1,0,0,1,visit_date: missed (2026-11-20) [not a date] raw='20 नव्हेंबर'
+mr-tkt-04,service_ticket,tune,27.321,381,260,7,5,1,1,0,0,2,product: 'water_pump' != 'sprayer' | visit_date: missed (2026-11-01) raw='null'
+mr-tkt-05,service_ticket,tune,27.773,369,268,6,5,0,1,0,0,1,"product: missed (water_pump) [not one of: water_pump, solar_light, tractor, sprayer] raw='motor'"
+mr-tkt-06,service_ticket,tune,32.211,392,315,7,7,0,0,0,0,0,

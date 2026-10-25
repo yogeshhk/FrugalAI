@@ -1,10 +1,15 @@
 # Project: workflow agents with LangGraph
 
+> Status: built: yes | measured: faqintake yes (one run, on private data), wfagent plumbing only | reviewed-by-author: no
+> | needs LM Studio: yes for a real intake run and for `wfagent eval`; the tests and `--fake` runs do not
+
 Two small workflows on local models, one real and one a pattern demo.
 
 - `faqintake/`: a concept-intake workflow on the author's QCNP FAQ notes. It does the mechanical half of the
   author's `concept-intake` skill (find where a concept already lives, decide new or covered, draft the FAQ entry,
-  lint it, list what else would need updating). The evaluation data is the author's 36 real FAQ entries.
+  lint it, list what else would need updating). The evaluation data is the author's 36 real FAQ entries, which are
+  private. A folder of 5 invented sample entries (`sample_faqs/`) is used by default, so anyone can run it; see
+  "Which FAQ folder is used" below.
 - `wfagent/`: an older farmer-helpline router over made-up tables, kept as a small demo of tools, a number check and
   a retry loop. Its model evaluation was never run.
 
@@ -38,21 +43,46 @@ fields (title, question, answer, fallacy) and repairs them if the linter objects
 Sources section and the closing "Unverified draft" line are code, so a draft can never claim to be verified, and a
 link appears only if the author typed it. A dash-removing step is code too, because a prompt cannot reliably stop a
 small model from writing dashes. `python -m faqintake lint` checks all 36 real entries against the house rules; all
-pass, which also tests the linter.
+pass, which also tests the linter (private entries: not reproducible from this repo alone; the 5 sample entries pass too).
+
+## Which FAQ folder is used
+
+By default `faqintake` reads `sample_faqs/`: five invented, generic entries (about running small models) in the same
+format as the real ones, written for this demo, not copies of anything. Set `FAQINTAKE_QCNP` to a folder that holds
+`faqs/` (and, optionally, `docs/concept_check.py`, the author's regex counter) to use your own notes instead; if the
+variable is unset or points at a missing folder, the sample is used.
+
+| What | Sample (default) | Your own folder (`FAQINTAKE_QCNP`) |
+|------|------------------|------------------------------------|
+| `intake`, `lint` | works | works |
+| Regex check (the author's counter) | skipped, no `concept_check.py` | used if the file is there |
+| `eval` (theme, duplicates, drafting) | refused: 5 entries cannot be evaluated | works if `eval/intake_cases.json` matches your entries |
+| Offline tests | `test_faqintake_sample.py` runs | the 16 tests in `test_faqintake.py` run too |
+
+**Which results use private data:** every number in this README comes from the author's 36 private QCNP FAQ entries
+(and `eval/intake_cases.json`, which names them). They cannot be reproduced from this repo alone; the sample folder
+only lets you run the code. The files in `results/` were produced on the private entries.
 
 ## Run it
 
-From `code/workflow-agent/`, with LM Studio serving a chat model and nomic-embed-text-v1.5:
+From `code/workflow-agent/`, in the `frugalai` conda environment. A real `intake` run or an `eval` needs LM Studio
+serving the embedding model nomic-embed-text-v1.5 (the duplicate and theme checks embed the text), and `intake`
+and the draft evaluation also need a chat model. `--fake` needs no server. The embedding results are cached in
+`cache/embeddings.json` (git-ignored), so an `eval` that has already run once needs no server for the same texts.
 
 ```bash
-python -m faqintake intake "Why does a quantum computer need a classical computer to control it?"
-python -m faqintake lint                       # the house rules against every real entry
-python -m faqintake eval --parts theme,dup     # no chat model needed
-python -m faqintake eval --parts draft --n 12 --exemplar neutral     # needs the chat model; resumes if interrupted
+python -m faqintake intake --fake "Why do small models run slowly on a laptop?"   # no server: hash embeddings, scripted model
+python -m faqintake intake "Why do small models run slowly on a laptop?"          # needs LM Studio: embedding model and chat model
+python -m faqintake lint                       # the house rules against every entry in the folder; no server
+python -m faqintake eval --parts theme,dup     # private folder only; needs the embedding model, no chat model
+python -m faqintake eval --parts draft --n 12 --exemplar neutral     # private folder only; needs the chat model too; resumes if interrupted
 python -m pytest code/workflow-agent/tests -q  # from the repo root; offline
 ```
 
-## Measured (2026-10-20, main PC, Qwen3 1.7B and nomic-embed-text-v1.5 through LM Studio; one run)
+## Measured (2026-10-20, main PC, Qwen3 1.7B and nomic-embed-text-v1.5 through LM Studio; one run; private FAQ entries)
+
+The theme and duplicate numbers are in `results/intake_summary.json` (recomputed on 2026-10-25 from the saved embedding
+cache, same values), the per-case scores in `results/dup_scores.json`, the drafting numbers in `results/drafts_summary.csv`.
 
 Duplicate detection: 20 reworded questions that should route to "covered" and 12 genuinely new concepts. The cover
 threshold is calibrated on one half of the cases and reported on the other half.
@@ -105,6 +135,7 @@ evaluated yet. The first-version results are kept in `results/drafts_leave_one_o
 `python -m wfagent ask "What is the price of onion in Nashik?"` routes a farmer's message through a LangGraph graph
 (classify, extract, tool, compose, check, retry, fallback). The tools read small made-up tables
 (`wfagent/knowledge.py`), and a code check rejects any number the tool did not return. Ten offline tests pass, and
-one live run answered correctly (2 model calls, 191 prompt tokens, 30 completion tokens, 7.6 s). The 30-case model
-evaluation (`python -m wfagent eval`) has not been run; `results/results.csv` there holds a scripted-model run that
+one live run answered correctly (2 model calls, 191 prompt tokens, 30 completion tokens, 7.6 s; not reproduced
+in-repo, no log of that run was kept). The 31-case model
+evaluation (`eval/cases.json`, `python -m wfagent eval`, needs LM Studio) has not been run; `results/results.csv` there holds a scripted-model run that
 only checks the plumbing and is not a model result. Print the graph with `python -m wfagent graph`.

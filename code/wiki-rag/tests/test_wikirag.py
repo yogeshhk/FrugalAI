@@ -129,6 +129,17 @@ class TestRouter:
     def test_a_bare_number_is_not_a_calculation(self):
         assert route("2024").kind == "retrieve"
 
+    @pytest.mark.parametrize("q", ["What is 2026-10-19?", "2026-10-19", "What is 19/10/2026?",
+                                   "What is 123-456-7890?", "what's 12.10.2026"])
+    def test_a_date_or_id_after_what_is_is_looked_up_not_calculated(self, q):
+        assert route(q).kind == "retrieve"
+
+    @pytest.mark.parametrize("q,expr", [("What is 2026 - 10 - 19?", "2026 - 10 - 19"), ("What is 12-4?", "12-4"),
+                                        ("calculate 10 / 5 / 2", "10 / 5 / 2"), ("What is 3.5 * 2?", "3.5 * 2")])
+    def test_spaced_or_two_number_expressions_are_still_calculated(self, q, expr):
+        r = route(q)
+        assert (r.kind, r.payload) == ("calc", expr)
+
     @pytest.mark.parametrize("bad", ["__import__('os')", "1 +", "2 ** 100000", "abs(3)"])
     def test_safe_eval_rejects_anything_else(self, bad):
         with pytest.raises((ValueError, SyntaxError)):

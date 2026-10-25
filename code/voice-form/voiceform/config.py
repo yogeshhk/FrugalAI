@@ -7,6 +7,8 @@ pipeline talks to is LM Studio on this machine (localhost), and `netguard` check
 import os
 from pathlib import Path
 
+from frugalai_common import config as shared
+
 ROOT = Path(__file__).resolve().parent.parent
 FORMS_DIR = ROOT / "forms"
 EVAL_DIR = ROOT / "eval"
@@ -17,8 +19,8 @@ RESULTS_DIR = ROOT / "results"
 MODELS_DIR = ROOT / "models"            # every model, as plain folders; gitignored except models/README.md
 OUTBOX_DIR = ROOT / "outbox"            # where the sinks write (local files only)
 
-LLM_URL = os.environ.get("VOICEFORM_LLM_URL", "http://localhost:1234/v1")
-LLM_MODELS = ["qwen/qwen3-1.7b", "gemma-2-2b-it"]
+LLM_URL = os.environ.get("VOICEFORM_LLM_URL", shared.LLM_URL)
+LLM_MODELS = [shared.CHAT_MODEL, "gemma-2-2b-it"]
 DEFAULT_LLM = LLM_MODELS[0]
 
 # Speech-to-text backends. "langs" is what the model was trained or fine-tuned for.

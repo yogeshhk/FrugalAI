@@ -1,5 +1,8 @@
 # Project: fine-tuning small models on a CPU
 
+> Status: built: yes | measured: yes (one seed, one machine) | reviewed-by-author: no (the Marathi question set was drafted by Claude)
+> | needs LM Studio: only the Qwen3 row of Part 1 (not run)
+
 Two studies share this folder. Both use LoRA on a laptop CPU with no GPU.
 
 - **Part 1, intent router (`ftslm/`)**: teach a 135-million-parameter model one narrow job, routing a short helpline
@@ -39,7 +42,8 @@ not that the approach is ready for real helpline traffic.
 
 ## Run it
 
-From `code/finetune-slm/`, in an environment with torch, transformers and peft (see the repo `environment.yml`):
+From `code/finetune-slm/`, in the `frugalai` conda environment (`environment.yml` has torch, transformers and peft;
+the numbers below were measured on Python 3.10 in a different environment, see the Python line under "Measured: training"):
 
 ```bash
 python -m ftslm data        # regenerate data/ (already included)
@@ -126,17 +130,26 @@ in at least 6 of 12 reading questions and at least 90% of its output is Devanaga
 
 | Model | Tokens per Marathi word | Reading, passage given | Closed-book | Output in Devanagari | Verdict |
 |-------|-------------------------|------------------------|-------------|----------------------|---------|
-| Gemma 3 270M-it | 1.88 | 1 of 12 | 0 of 12 | 100% | no-go: fluent Marathi, but it echoes the question or says it is unclear |
-| Gemma 3 1B-it | 1.88 | 10 of 12 | 1 of 12 | 100% | go |
+| Gemma 3 270M-it | 1.88 | 1 of 12 | 0 of 12 | 100% reading, 95.8% closed-book | no-go: fluent Marathi, but it echoes the question or says it is unclear |
+| Gemma 3 1B-it | 1.88 | 10 of 12 | 1 of 12 | 100% reading, 99.1% closed-book | go |
+
+The numbers in this table are in `results/gate_summary.csv`, computed from the raw gate files by reading their
+`summary` and `rows`. The raw answers (`results/gate_unsloth_gemma-3-*-it.json`) are git-ignored because they quote
+the book; rerun `python -m mrsj gate` to recreate them (needs the book text, which is not published).
 
 The 1B model's closed-book answers are fluent and wrong: asked for the first guiding principle it says "truth and
 honesty", while the book's first principle is "do no harm". Those invented answers are the baseline training must beat.
-Raw answers are in `results/gate_unsloth_gemma-3-*-it.json` (git-ignored; rerun `python -m mrsj gate`).
+(This one example is quoted from the gate answers, which are not published: not reproduced in-repo.)
 
 ### The data and the test design
 
 - `data/qa_mr.json`: 80 training question and answer pairs, and 52 test questions in three groups. All were drafted by
   Claude from the book text and **need the author's review**; no number from this study is final before that.
+  This file, `data/train_mr.jsonl` (the raw passages) and `results/mr_answers_*.jsonl` (the model answers) contain
+  about 18,000 words of the book or text close to it, so they are git-ignored and **raw passages are not published**.
+  The licence of the source book is unconfirmed. What is published: the 52 test questions alone, without answers or
+  keys (`eval/mr_test_questions.json`), and the metrics (`results/mr_summary.csv`, `results/gate_summary.csv`).
+  Without the book text the Marathi study cannot be rerun end to end.
 - Test groups: **reworded** (20): a fact that is also in a training pair, asked in new words. **raw_only** (20): a fact
   that appears only in the raw training text, never in a training pair. **control** (12): questions about chapters 19,
   20 and 22, which are withheld from all training data; a tuned model should not beat the base model there.
@@ -151,7 +164,8 @@ Raw answers are in `results/gate_unsloth_gemma-3-*-it.json` (git-ignored; rerun 
 
 LoRA (rank 16, all attention and MLP projections, 13.0 million trainable parameters, 1.29% of the model) in plain
 PyTorch on the CPU, float32, 10 threads. Measured on the stopped run: about 4 seconds per example, so about 22 minutes
-per epoch of 326 examples; mean loss fell from 3.74 (first 40 examples) to 3.23 (240 examples).
+per epoch of 326 examples; mean loss fell from 3.74 (first 40 examples) to 3.23 (240 examples). (Not reproduced
+in-repo: the log of this stopped run was not kept; only the completed second run is in `adapters/marathi_1b/train_log.json`.)
 
 The run was stopped by Claude Code at example 240 of epoch 1 because the machine was critically low on memory: the
 process peaked at 6.8 GB resident while free memory was only about 2 GB (other programs were using the rest). Checkpoints were then only written at
@@ -168,7 +182,7 @@ different adapter.
 
 ### Results (epoch 3 adapter, 2026-10-21)
 
-52 test questions, one seed, one machine; `results/mr_summary.csv` and the raw answers in `results/mr_answers_*.jsonl`.
+52 test questions, one seed, one machine; `results/mr_summary.csv` (the raw answers in `results/mr_answers_*.jsonl` stay local, see above).
 A question counts as correct only if every key phrase appears in the answer (mechanical match). Questions were
 drafted by Claude from the book and **have not yet been reviewed by the author**, so treat all numbers as provisional.
 
@@ -223,7 +237,9 @@ python -m pytest code/finetune-slm/tests -q      # from the repo root; offline
 ```
 
 The final model as a single file is `models/marathi_1b_epoch3_bf16.gguf` (1.9 GB, bf16, not uploaded to git): load it
-with `llama_cpp.Llama(model_path=...)` or import it into LM Studio. Results are in `results/mr_summary.csv`. To evaluate a specific epoch: `python -m mrsj eval --adapter adapters/marathi_1b/epoch_3`.
+with `llama_cpp.Llama(model_path=...)` (llama-cpp-python is not in `environment.yml`; install it yourself if you want
+that route) or import it into LM Studio. The GGUF was loaded and answered once; no speed or quality number was
+measured on it. Results are in `results/mr_summary.csv`. To evaluate a specific epoch: `python -m mrsj eval --adapter adapters/marathi_1b/epoch_3`.
 
 ## Limits
 

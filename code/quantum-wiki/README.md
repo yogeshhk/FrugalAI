@@ -1,5 +1,8 @@
 # Project: quantum wiki on the AICTE Minor curriculum
 
+> Status: built: yes | measured: yes (one run, one machine) | reviewed-by-author: no (both question sets were drafted by Claude)
+> | needs LM Studio: yes for `ask`, `retrieval` and `eval` (chat and embedding models); `parse`, `cards` and the tests do not
+
 Ask questions of the AICTE "Model Curriculum for Minor Degree for UG Degree Course in Quantum Technologies" (the
 39-page PDF in `TeachingQuantumTech/Admin/Syllabus/`) and get answers with page numbers, using only small local
 models: Qwen3 1.7B for language, nomic-embed-text-v1.5 for embeddings, both through LM Studio on a CPU-class laptop.
@@ -47,7 +50,7 @@ python -m qwiki parse        # one time: Docling parse (downloads its models int
 python -m qwiki cards        # builds parsed/cards.json
 python -m qwiki ask "Which courses are optional?"
 python -m qwiki ask "What topics are in quantum communication?"
-python -m qwiki retrieval    # retrieval quality, no chat model
+python -m qwiki retrieval    # retrieval quality: no chat model, but the embedding model must be served (cached texts need no call)
 python -m qwiki eval --systems agent,struct,naive --sets dev,heldout     # resumes where it stopped
 python -m pytest code/quantum-wiki/tests -q                              # from the repo root; offline
 ```

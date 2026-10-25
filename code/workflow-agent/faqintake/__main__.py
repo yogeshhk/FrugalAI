@@ -30,6 +30,11 @@ def main(argv=None):
     from . import checks, config, corpus, lint
 
     entries = corpus.load_entries()
+    say("FAQ folder: %s (%s, %d entries)" % (config.FAQS, "your FAQINTAKE_QCNP folder" if config.USING_PRIVATE
+                                             else "the invented sample; set FAQINTAKE_QCNP to use your own", len(entries)))
+    if args.cmd == "eval" and not config.USING_PRIVATE:
+        sys.exit("eval needs a real FAQ folder: the sample has only a handful of invented entries, and the committed "
+                 "results in results/ were produced on the author's private QCNP entries. Set FAQINTAKE_QCNP.")
     if args.cmd == "lint":
         bad = {e.key: lint.errors(e.raw) for e in entries if lint.errors(e.raw)}
         say("%d entries, %d failing the house rules" % (len(entries), len(bad)))

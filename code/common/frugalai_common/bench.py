@@ -118,6 +118,11 @@ def _slug(text: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "-", text).strip("-").lower()
 
 
+def result_path(out_dir, device: str, model: str, day: Optional[str] = None) -> Path:
+    """Where a run is written: <device>_<model>_<yyyy-mm-dd>.csv under out_dir."""
+    return Path(out_dir) / ("%s_%s_%s.csv" % (_slug(device), _slug(model), day or date.today().isoformat()))
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     ap = argparse.ArgumentParser(description="Benchmark a local model and write a CSV.")
     ap.add_argument("--backend", choices=["ollama", "lmstudio"], required=True)
@@ -129,9 +134,17 @@ def main(argv: Optional[List[str]] = None) -> int:
     ap.add_argument("--url", default=None, help="override the backend URL")
     # default output folder: code/common/benchmarks/results (this file is code/common/frugalai_common/bench.py)
     ap.add_argument("--out-dir", default=str(Path(__file__).resolve().parents[1] / "benchmarks" / "results"))
+    ap.add_argument("--force", action="store_true",
+                    help="overwrite the CSV if one for the same device, model and date already exists")
     args = ap.parse_args(argv)
 
-    cls = OllamaBackend if args.backend == "ollama" else LMStudioBackend
+    target = result_path(args.out_dir, args.device, args.model)
+    if target.exists() and not args.force:
+        print("ERROR: %s already exists (same device, model and date). Use a different --device label, "
+              "or pass --force to overwrite it." % target)
+        return 2
+
+    cls =OllamaBackend if args.backend == "ollama" else LMStudioBackend
     backend = cls(args.url) if args.url else cls()
     if not backend.is_available():
         print("ERROR: %s is not reachable. Start the server first." % backend.name)
@@ -143,8 +156,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     rows = run_benchmark(backend, args.model, args.device, args.quantisation,
                          repeats=args.repeats, max_tokens=args.max_tokens)
-    name = "%s_%s_%s.csv" % (_slug(args.device), _slug(args.model), date.today().isoformat())
-    out = write_csv(rows, Path(args.out_dir) / name)
+    out = write_csv(rows, target)
     print("summary:", summarise(rows))
     print("wrote:", out)
     return 0

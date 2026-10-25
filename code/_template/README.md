@@ -1,5 +1,10 @@
 # Project: <short name>
 
+> Status: built: yes or no | measured: yes, no or partly | reviewed-by-author: yes or no | needs LM Studio: yes or no
+
+This folder is a runnable stub: `template_project/` (one function), `conftest.py` and `tests/` (one offline test).
+Copy it to `code/<short-name>/`, rename the package, and replace the stub. Delete sections below that do not apply.
+
 One sentence: what job this does, for whom, and why a small local model is enough.
 
 ## Problem and scope
@@ -25,11 +30,13 @@ How correctness is checked (a script, not a feeling). Always include:
   which numbers are tuned and which are not;
 - the failures, with the cause, not only the score.
 
-## Measured resource use
+## Measured resource use (if measured)
+Include this table only once you have measured something; leave the section out, or write "not measured", until then.
+
 | Device | Model | Tokens/s | Peak RAM | Date | CSV in code/common/benchmarks/results |
 |--------|-------|----------|----------|------|--------------------------------|
 
-A number appears only if a script produced it on a named device; otherwise write "pending".
+A number appears only if a script produced it on a named device. Measure with `python -m frugalai_common.bench`.
 
 ## Limits and safety
 Known failure cases and what the data cannot show. For anything health-related, link `docs/safety.md`.
@@ -38,5 +45,5 @@ Known failure cases and what the data cannot show. For anything health-related, 
 How to run the offline tests (no model server, no download). Every failure you find becomes a test.
 
 ## TODO.md
-Keep a `TODO.md` with a resume point at the top (what is built, what is measured, what is deferred and why), so a new
-session can restart without rereading the history.
+Keep a terse `TODO.md` of open actions. If the project has a long or interrupted history, add a resume point at the top
+(what is built, what is measured, what is deferred and why); a small project does not need one.

@@ -11,11 +11,10 @@ import re
 from pathlib import Path
 from typing import Dict, List
 
+from frugalai_common.config import DOC_PREFIX, QUERY_PREFIX    # nomic-embed-text-v1.5 task prefixes (to verify)
 from langchain_core.embeddings import Embeddings
 
 from . import config
-
-DOC_PREFIX, QUERY_PREFIX = "search_document: ", "search_query: "     # nomic-embed-text-v1.5 task prefixes (to verify)
 
 
 class CachedEmbeddings(Embeddings):

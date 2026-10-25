@@ -1,5 +1,6 @@
-"""Offline tests of the FAQ intake: the real FAQ entries, hash embeddings, a scripted model. They skip if the QCNP
-FAQ folder is not present. Run from the repo root: pytest code/workflow-agent/tests -v"""
+"""Offline tests of the FAQ intake on the author's real (private) FAQ entries, with hash embeddings and a scripted
+model. They run only when FAQINTAKE_QCNP points at that folder and skip otherwise; the tests that always run, on the
+sample FAQ folder, are in test_faqintake_sample.py. Run from the repo root: pytest code/workflow-agent/tests -v"""
 
 import pytest
 
@@ -8,8 +9,8 @@ from faqintake.embed import HashEmbeddings
 from faqintake.graph import Context, build_plan, run_intake
 from faqintake.llm import FakeChat
 
-HAVE = config.FAQS.exists()
-pytestmark = pytest.mark.skipif(not HAVE, reason="QCNP faqs folder not found")
+HAVE = config.USING_PRIVATE
+pytestmark = pytest.mark.skipif(not HAVE, reason="private QCNP faqs folder not set (FAQINTAKE_QCNP)")
 
 
 @pytest.fixture(scope="module")

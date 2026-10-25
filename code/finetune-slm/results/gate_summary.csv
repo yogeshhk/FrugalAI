@@ -1,0 +1,3 @@
+model,tokens_per_marathi_word,n_questions,reading_all_keys,closed_book_all_keys,reading_devanagari_share,closed_devanagari_share,source_file
+unsloth/gemma-3-1b-it,1.88,12,10,1,1.0,0.991,gate_unsloth_gemma-3-1b-it.json
+unsloth/gemma-3-270m-it,1.88,12,1,0,1.0,0.958,gate_unsloth_gemma-3-270m-it.json

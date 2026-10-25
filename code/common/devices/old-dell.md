@@ -29,9 +29,11 @@ dropping its unsourced speed-up percentages. Measure each change yourself.
 
 ## Run the benchmark
 ```bash
-conda env create -f environment.yml && conda activate frugalai
-cd common
+conda env create -f environment.yml && conda activate frugalai    # from the repo root; installs frugalai_common
 python -m frugalai_common.bench --backend ollama --model qwen3:1.7b --device old-dell --quantisation Q4_K_M
 ```
-Then run the wiki recipe the same way with `--backend ollama` and commit the CSV. Follow
+Run it from the repo root, in the `frugalai` environment (no `PYTHONPATH` needed). Caveat: `--backend ollama` has
+never been run against a live Ollama server; only the parsing of its replies is tested offline. A second run on the same
+day with the same device label and model is refused unless you pass `--force`. Then run the wiki recipe the same way with
+`--backend ollama` and commit the CSV. Follow
 [benchmarks/METHODOLOGY.md](../benchmarks/METHODOLOGY.md).

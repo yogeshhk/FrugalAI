@@ -1,4 +1,129 @@
 {
+ "note": "theme and dup were recomputed on 2026-10-25 from the saved embedding cache (no model server) on the author's 36 private QCNP FAQ entries and eval/intake_cases.json; draft is from the 2026-10-20 run.",
+ "theme": {
+  "n": 36,
+  "accuracy": 0.444,
+  "majority_baseline": 0.361,
+  "per_theme": {
+   "capability_and_hype": [
+    6,
+    8
+   ],
+   "computation_basics": [
+    3,
+    7
+   ],
+   "entanglement_and_locality": [
+    0,
+    3
+   ],
+   "hardware": [
+    0,
+    5
+   ],
+   "superposition_and_measurement": [
+    7,
+    13
+   ]
+  }
+ },
+ "theme_rich": {
+  "n": 36,
+  "accuracy": 0.5,
+  "majority_baseline": 0.361,
+  "per_theme": {
+   "capability_and_hype": [
+    7,
+    8
+   ],
+   "computation_basics": [
+    3,
+    7
+   ],
+   "entanglement_and_locality": [
+    0,
+    3
+   ],
+   "hardware": [
+    0,
+    5
+   ],
+   "superposition_and_measurement": [
+    8,
+    13
+   ]
+  }
+ },
+ "dup": {
+  "threshold_cover": 0.76,
+  "threshold_partial": 0.68,
+  "dev": {
+   "n": 16,
+   "accuracy": 0.938,
+   "covered_recall": 1.0,
+   "new_recall": 0.833,
+   "top1_entry_ok": 1.0,
+   "top3_entry_ok": 1.0,
+   "review_band_share": 0.312
+  },
+  "test": {
+   "n": 16,
+   "accuracy": 0.875,
+   "covered_recall": 1.0,
+   "new_recall": 0.667,
+   "top1_entry_ok": 1.0,
+   "top3_entry_ok": 1.0,
+   "review_band_share": 0.188
+  },
+  "all": {
+   "n": 32,
+   "accuracy": 0.906,
+   "covered_recall": 1.0,
+   "new_recall": 0.75,
+   "top1_entry_ok": 1.0,
+   "top3_entry_ok": 1.0,
+   "review_band_share": 0.25
+  },
+  "score_range": {
+   "covered_min": 0.763,
+   "new_max": 0.81
+  }
+ },
+ "dup_rich": {
+  "threshold_cover": 0.77,
+  "threshold_partial": 0.69,
+  "dev": {
+   "n": 16,
+   "accuracy": 0.938,
+   "covered_recall": 1.0,
+   "new_recall": 0.833,
+   "top1_entry_ok": 1.0,
+   "top3_entry_ok": 1.0,
+   "review_band_share": 0.312
+  },
+  "test": {
+   "n": 16,
+   "accuracy": 0.875,
+   "covered_recall": 1.0,
+   "new_recall": 0.667,
+   "top1_entry_ok": 1.0,
+   "top3_entry_ok": 1.0,
+   "review_band_share": 0.25
+  },
+  "all": {
+   "n": 32,
+   "accuracy": 0.906,
+   "covered_recall": 1.0,
+   "new_recall": 0.75,
+   "top1_entry_ok": 1.0,
+   "top3_entry_ok": 1.0,
+   "review_band_share": 0.281
+  },
+  "score_range": {
+   "covered_min": 0.774,
+   "new_max": 0.842
+  }
+ },
  "draft": [
   {
    "system": "workflow",

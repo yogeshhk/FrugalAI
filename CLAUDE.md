@@ -26,6 +26,12 @@ self-contained folder (code, data, tests, README, TODO): `code/wiki-rag/`, `code
 `code/common/devices/` per-device setup. `_scripts/` at the repo root holds the repo tools (AWESOME.md and link
 checkers). Run all tests with `python -m pytest code -q` and the link check with `python _scripts/check_links.py`.
 
+## Caveats that stay (not in TODO)
+- The question and case sets were drafted by Claude and not reviewed by the author.
+- No benchmark number exists for the old Dell, a Raspberry Pi or a power meter. Figures tagged "to verify" or "not confirmed" in `docs/` are unverified.
+- The legal position for clinical decision-support software in India has not been checked (`docs/safety.md`).
+- Keep TODO files terse: open actions only, no dated logs and no done lists; results live in each project's README.
+
 ## Related
 `D:\Yogesh\GitHub\AIOOLL` is a separate repo. Copy pieces from it with attribution; do not move them.
 

@@ -3,6 +3,8 @@
 import argparse
 import sys
 
+from frugalai_common.config import CHAT_MODEL
+
 from .graph import build_graph, run_message
 from .llm import LLM, FakeLLM
 
@@ -24,7 +26,7 @@ def make_llm(args):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--model", default="qwen/qwen3-1.7b")
+    ap.add_argument("--model", default=CHAT_MODEL)
     ap.add_argument("--backend", default="lmstudio", choices=["lmstudio", "ollama"])
     ap.add_argument("--fake", action="store_true", help="scripted stand-in model, no server needed")
     ap.add_argument("--fake-mode", default="good", choices=["good", "hallucinate_first"])

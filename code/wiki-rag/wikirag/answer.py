@@ -1,8 +1,9 @@
 """Turn a question plus retrieved notes into a prompt, call a backend, return answer and sources."""
 
-import re
 import time
 from typing import List, Optional
+
+from frugalai_common.llm import strip_think  # noqa: F401  (also imported from here by the tests)
 
 from .index import Embedder, Hit, WikiIndex
 from .router import route, safe_eval
@@ -11,12 +12,6 @@ SYSTEM = (
     "You answer questions using only the notes provided. If the notes do not contain the answer, say "
     "you could not find it in the notes. Be brief. Name the note you used in square brackets."
 )
-THINK_BLOCK = re.compile(r"<think>.*?</think>", re.DOTALL)
-
-
-def strip_think(text: str) -> str:
-    """Remove <think>...</think> blocks that some reasoning models put inside the answer."""
-    return THINK_BLOCK.sub("", text).strip()
 
 
 def build_prompt(question: str, hits: List[Hit], max_context_chars: int = 2400, no_think: bool = False) -> str:

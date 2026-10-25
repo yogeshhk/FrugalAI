@@ -4,6 +4,8 @@ import argparse
 import sys
 from pathlib import Path
 
+from frugalai_common.config import CHAT_MODEL
+
 from . import data as D
 from .model import DEFAULT_MODEL
 
@@ -30,7 +32,7 @@ def main(argv=None):
     e = sub.add_parser("eval", help="score the systems on the held-out messages")
     e.add_argument("--model", default=DEFAULT_MODEL)
     e.add_argument("--systems", default="base_instruction,base_few_shot,tuned,qwen3_few_shot")
-    e.add_argument("--qwen-model", default="qwen/qwen3-1.7b")
+    e.add_argument("--qwen-model", default=CHAT_MODEL)
     sub.add_parser("all", help="data, train, eval")
     args = ap.parse_args(argv)
 

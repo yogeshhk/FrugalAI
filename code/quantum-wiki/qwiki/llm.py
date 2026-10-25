@@ -1,28 +1,14 @@
-"""The chat model (LangChain ChatOpenAI pointed at LM Studio) with call, token and time counters, and a scripted fake."""
+"""The chat model (LangChain ChatOpenAI pointed at LM Studio) with call, token and time counters, and a scripted fake.
 
-import re
+strip_think, the counters and the Qwen-only no-think switch come from `frugalai_common.llm`.
+"""
+
 import time
 from typing import Optional
 
+from frugalai_common.llm import Counters, no_think_suffix, strip_think  # noqa: F401  (re-exported)
+
 from . import config
-
-
-def strip_think(text: str) -> str:
-    return re.sub(r"<think>.*?</think>", " ", text or "", flags=re.S | re.I).strip()
-
-
-class Counters:
-    def __init__(self):
-        self.calls = self.prompt_tokens = self.completion_tokens = 0
-        self.seconds = 0.0
-
-    def snapshot(self) -> dict:
-        return {"llm_calls": self.calls, "prompt_tokens": self.prompt_tokens,
-                "completion_tokens": self.completion_tokens, "llm_seconds": round(self.seconds, 2)}
-
-    def since(self, before: dict) -> dict:
-        now = self.snapshot()
-        return {k: round(now[k] - before[k], 2) for k in now}
 
 
 class Chat(Counters):
@@ -45,7 +31,8 @@ class Chat(Counters):
     def __call__(self, system: str, user: str, max_tokens: Optional[int] = None) -> str:
         t0 = time.perf_counter()
         llm = self.llm if not max_tokens else self.llm.bind(max_tokens=max_tokens)
-        msg = llm.invoke([("system", system), ("user", user + " /no_think")])      # /no_think: Qwen3's soft switch
+        # "/no_think" is Qwen3's soft switch; it is sent for Qwen model ids only.
+        msg = llm.invoke([("system", system), ("user", user + no_think_suffix(self.model))])
         self.seconds += time.perf_counter() - t0
         self.calls += 1
         usage = getattr(msg, "usage_metadata", None) or {}

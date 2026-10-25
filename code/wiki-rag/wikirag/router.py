@@ -9,7 +9,10 @@ import re
 from dataclasses import dataclass
 
 ARITH = re.compile(r"^[\d\s.+\-*/()%^]+$")
-PREFIXES = ("what is ", "what's ", "calculate ", "compute ", "how much is ")
+# Numbers glued together by the same separator, no spaces (2026-10-19, 19/10/2026, 123-456-7890) are a date or an ID
+# to look up in the notes, not a subtraction or a division. Write spaces around the operators to calculate.
+DATE_OR_ID = re.compile(r"^\d+([-/.])\d+(\1\d+)+$")
+PREFIXES =("what is ", "what's ", "calculate ", "compute ", "how much is ")
 MAX_EXPONENT = 100
 
 _BIN = {
@@ -53,6 +56,6 @@ def route(question: str) -> Route:
         if low.startswith(p):
             s = s[len(p):].strip()
             break
-    if s and ARITH.match(s) and re.search(r"\d", s) and re.search(r"[+\-*/%^]", s):
+    if s and ARITH.match(s) and re.search(r"\d", s) and re.search(r"[+\-*/%^]", s) and not DATE_OR_ID.match(s):
         return Route("calc", s)
     return Route("retrieve", question)

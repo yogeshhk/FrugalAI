@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "frugalai-common"
+version = "0.1.0"
+description = "FrugalAI shared code: backend interface for local LLM runtimes, benchmark runner, chat helpers."
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["requests", "psutil"]
+
+[tool.setuptools]
+packages = ["frugalai_common"]

@@ -1,0 +1,84 @@
+name: New measurement
+description: Report a benchmark of a small model on your device (see code/common/benchmarks/METHODOLOGY.md)
+title: "[Measurement] "
+labels: ["measurement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks. A measurement is useful only if someone else can compare it. Please follow
+        `code/common/benchmarks/METHODOLOGY.md` and attach the CSV that `python -m frugalai_common.bench` wrote.
+        Do not paste numbers from elsewhere, and do not round them up.
+  - type: input
+    id: device
+    attributes:
+      label: Device (model, CPU, RAM, GPU if any)
+      placeholder: Old laptop, Intel i3-8130U, 8 GB RAM, no GPU
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system and version
+      placeholder: Ubuntu 24.04
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime and its version
+      placeholder: Ollama 0.x.y, or LM Studio x.y.z
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model, quantisation and licence
+      placeholder: Qwen3 1.7B, Q4_K_M, Apache-2.0
+    validations:
+      required: true
+  - type: dropdown
+    id: gpu
+    attributes:
+      label: Was a GPU used by the runtime?
+      options:
+        - No, CPU only (GPU offload turned off or no GPU)
+        - Yes, fully
+        - Yes, partly (the model did not fit)
+        - I do not know
+    validations:
+      required: true
+  - type: dropdown
+    id: thinking
+    attributes:
+      label: Was thinking mode on (reasoning models only)?
+      options:
+        - Not a reasoning model
+        - Thinking on
+        - Thinking off
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Result (median and min to max of decode tokens per second, peak RAM, number of runs)
+      placeholder: "median 6.5 tok/s (5.9 to 7.1), n=15, peak engine RAM 2.1 GB"
+    validations:
+      required: true
+  - type: textarea
+    id: csv
+    attributes:
+      label: The CSV (attach the file, or paste the first rows)
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: Only this model was loaded, and no other heavy program was running.
+          required: true
+        - label: The numbers come from the benchmark command, not from memory or another source.
+          required: true
+        - label: The CSV contains no personal data.
+          required: true

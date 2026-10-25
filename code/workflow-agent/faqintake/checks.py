@@ -20,8 +20,9 @@ actually simply mean means meant does doing done make makes made same different 
 
 # ------------------------------------------------------------------ A. the author's regex counter, reused
 def load_concept_check(path: Path = config.CONCEPT_CHECK):
-    """Load docs/concept_check.py as a module (read-only reuse, nothing is copied). None if it is not there."""
-    if not Path(path).exists():
+    """Load docs/concept_check.py as a module (read-only reuse, nothing is copied). None if it is not there,
+    which is the case for the sample FAQ folder (the regex check is then skipped)."""
+    if path is None or not Path(path).exists():
         return None
     spec = importlib.util.spec_from_file_location("concept_check", str(path))
     mod = importlib.util.module_from_spec(spec)

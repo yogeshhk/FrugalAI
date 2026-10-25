@@ -1,5 +1,8 @@
 # Recipe: offline wiki Q&A
 
+> Status: built: yes | measured: retrieval yes, answer scoring with a model not run | reviewed-by-author: no (the question sets were drafted by Claude)
+> | needs LM Studio: only for `ask`, embeddings and answer scoring; `index`, `search`, `eval` and the tests need none
+
 Ask questions of a folder of markdown notes (an Obsidian or Logseq vault, or any folder of `.md` files)
 using a small local model. No cloud, and no GPU needed (retrieval is pure Python; the small model runs on a
 CPU). The model only sees the few note passages retrieved for each question.
@@ -36,6 +39,12 @@ python -m wikirag eval sample_wiki --questions eval/questions.json
 Add `--embed-model <embedding model id>` to `index`, `search`, `ask` or `eval` to turn on fused dense search.
 The index is stored in `<wiki>/.wikirag/index.json` and is safe to delete.
 
+Caveat: `--backend ollama` has never been run against a live Ollama server. The Ollama backend is covered by offline
+tests of its reply parsing only; treat it as untested until someone runs it (and reports back).
+
+A question that is plain arithmetic goes to the calculator. A date or an ID written without spaces, such as
+`2026-10-19` or `123-456-7890`, is looked up in the notes instead; write `2026 - 10 - 19` to subtract.
+
 ## Measured on 2026-10-19 (main PC, LM Studio, Qwen3 1.7B Q4_K_M; not a frugal-tier device)
 
 That PC has a small NVIDIA GPU (GeForce MX570, 2 GB) which LM Studio used for part of the model, so any
@@ -44,10 +53,10 @@ the GPU.
 
 | Check | Result |
 |-------|--------|
-| Retrieval, 10 sample questions, BM25 only | hit@1 = 1.00, hit@3 = 1.00 |
-| Retrieval, same questions, BM25 + nomic embeddings | hit@1 = 1.00, hit@3 = 1.00 |
-| Retrieval time per question | under 1 ms (BM25, 7 small notes) |
-| Grounded answers checked by hand | 2 of 2 correct; off-topic question correctly answered "not found" |
+| Retrieval, 10 sample questions, BM25 only | hit@1 = 1.00, hit@3 = 1.00 (`results/sample_retrieval.csv`, recomputed 2026-10-25) |
+| Retrieval, same questions, BM25 + nomic embeddings | hit@1 = 1.00, hit@3 = 1.00 (not reproduced in-repo: no results file; needs LM Studio to rerun) |
+| Retrieval time per question | under 1 ms (BM25, 6 small notes; the slowest of the 10 questions took 0.39 ms, `results/sample_retrieval.csv`) |
+| Grounded answers checked by hand | 2 of 2 correct; off-topic question correctly answered "not found" (not reproduced in-repo: done by hand, nothing was saved) |
 | Dell and Raspberry Pi | not measured yet |
 
 The sample wiki is small, made up and easy, so these numbers show the pipeline works. They do not show
@@ -90,8 +99,9 @@ Studio server while another job was using the CPU, so it is not a clean speed fi
   search is on (the tests show this on a toy example).
 - Answers are only as good as the retrieved passages and the small model. Always check the cited source.
 - Qwen3 may spend its token budget on hidden "thinking" for open-ended prompts. In this recipe's short,
-  grounded prompts we saw none, and `/no_think` made no difference, but the `--no-think` flag is there if
-  your model does it.
+  grounded prompts we saw none, and `/no_think` made no difference (not reproduced in-repo: no log of that
+  comparison), but the `--no-think` flag is there if your model does it. The flag appends `/no_think` to the
+  prompt whatever the model is, so use it with Qwen3 only.
 - No file watcher dependency: `watch` polls every few seconds, which is enough for notes.
 
 ## Tests

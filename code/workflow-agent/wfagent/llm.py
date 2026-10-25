@@ -1,40 +1,31 @@
 """The model behind the workflow: a local server through the shared backend, or a scripted fake for tests.
 
 Both count calls, tokens and seconds, so the evaluation can report what a workflow costs per task.
+strip_think, the counters and the Qwen-only no-think switch come from `frugalai_common.llm`.
 """
 
 import re
-import sys
-import time
-from pathlib import Path
+
+from frugalai_common import LMStudioBackend, OllamaBackend
+from frugalai_common import llm as shared
+from frugalai_common.config import CHAT_MODEL
+from frugalai_common.llm import no_think_suffix, strip_think  # noqa: F401  (re-exported)
 
 from .knowledge import rule_intent
 
-ROOT = Path(__file__).resolve().parents[1]
 
+class Counters(shared.Counters):
+    """The shared counters, with this project's snapshot key ("seconds") and three decimals."""
 
-def strip_think(text: str) -> str:
-    return re.sub(r"<think>.*?</think>", " ", text, flags=re.S | re.I).strip()
-
-
-class Counters:
-    def __init__(self):
-        self.calls = self.prompt_tokens = self.completion_tokens = 0
-        self.seconds = 0.0
-
-    def snapshot(self) -> dict:
-        return {"llm_calls": self.calls, "prompt_tokens": self.prompt_tokens,
-                "completion_tokens": self.completion_tokens, "seconds": round(self.seconds, 3)}
+    seconds_key = "seconds"
+    seconds_digits = 3
 
 
 class LLM(Counters):
     """A model served by LM Studio (default) or Ollama, called through the shared backend."""
 
-    def __init__(self, model="qwen/qwen3-1.7b", backend="lmstudio", max_tokens=160):
+    def __init__(self, model=CHAT_MODEL, backend="lmstudio", max_tokens=160):
         super().__init__()
-        sys.path.insert(0, str(ROOT.parent / "common"))
-        from frugalai_common import LMStudioBackend, OllamaBackend
-
         self.backend = OllamaBackend() if backend == "ollama" else LMStudioBackend()
         self.model, self.max_tokens = model, max_tokens
 
@@ -42,8 +33,9 @@ class LLM(Counters):
         return self.backend.is_available()
 
     def __call__(self, prompt: str, max_tokens: int = None) -> str:
-        res = self.backend.generate(self.model, prompt + " /no_think", max_tokens=max_tokens or self.max_tokens,
-                                    temperature=0.0)
+        # "/no_think" is Qwen3's soft switch; it is sent for Qwen model ids only.
+        res = self.backend.generate(self.model, prompt + no_think_suffix(self.model),
+                                    max_tokens=max_tokens or self.max_tokens, temperature=0.0)
         self.calls += 1
         self.prompt_tokens += res.prompt_tokens or 0
         self.completion_tokens += res.completion_tokens or 0
