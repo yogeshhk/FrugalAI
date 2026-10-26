@@ -1,19 +1,10 @@
 id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
-hi-asha-01,asha_anc_visit,tune,50.688,540,322,6,6,0,0,0,0,0,
-hi-asha-02,asha_anc_visit,tune,52.198,568,389,7,7,0,0,0,0,0,
-hi-asha-03,asha_anc_visit,tune,147.451,556,1200,7,1,0,6,0,0,6,woman_name: missed (मंजू शर्मा) | age: missed (32) | village: missed (बिलासपुर) | weeks_pregnant: missed (36) | weight_kg: missed (60) | next_visit_date: missed (2026-11-12)
-hi-asha-04,asha_anc_visit,tune,52.416,527,388,6,6,0,0,0,0,0,
-hi-asha-05,asha_anc_visit,tune,50.942,556,390,7,6,0,1,2,0,3,weight_kg: spurious 60.0 | next_visit_date: spurious '2026-10-31' | remarks: missed (अगली बार पति घर पर होंगे)
-hi-asha-06,asha_anc_visit,tune,53.909,552,407,7,7,0,0,1,0,1,ifa_tablets_given: spurious 3
-hi-sir-01,sir_enumeration,tune,47.167,486,324,7,7,0,0,0,0,0,
-hi-sir-02,sir_enumeration,tune,44.915,497,336,8,8,0,0,0,0,0,
-hi-sir-03,sir_enumeration,tune,48.153,493,375,7,7,0,0,1,0,1,house_number: spurious 'कोटा खुर्द'
-hi-sir-04,sir_enumeration,tune,47.182,474,350,7,7,0,0,0,0,0,
-hi-sir-05,sir_enumeration,tune,46.653,490,368,8,8,0,0,0,0,0,
-hi-sir-06,sir_enumeration,tune,49.79,490,383,7,7,0,0,1,0,1,house_number: spurious '9'
-hi-tkt-01,service_ticket,tune,46.113,457,325,7,6,1,0,0,0,1,problem: 'काम तुरंत करना है' != 'पानी की मोटर चालू नहीं हो रही'
-hi-tkt-02,service_ticket,tune,46.634,468,323,7,6,1,0,0,0,1,urgency: 'high' != 'low'
-hi-tkt-03,service_ticket,tune,39.293,438,283,6,6,0,0,0,0,0,
-hi-tkt-04,service_ticket,tune,40.495,455,303,7,7,0,0,0,0,0,
-hi-tkt-05,service_ticket,tune,49.871,430,367,6,5,0,1,0,0,1,product: missed (water_pump)
-hi-tkt-06,service_ticket,tune,42.711,447,309,7,7,0,0,0,0,0,
+hi-asha-07,asha_anc_visit,heldout,12.765,538,270,6,5,0,1,0,0,1,woman_name: missed (कविता राठौर)
+hi-asha-08,asha_anc_visit,heldout,9.797,515,377,5,5,0,0,0,0,0,
+hi-asha-09,asha_anc_visit,heldout,10.685,564,356,7,7,0,0,0,0,0,
+hi-sir-07,sir_enumeration,heldout,11.747,478,319,7,7,0,0,0,0,0,
+hi-sir-08,sir_enumeration,heldout,8.921,476,294,7,7,0,0,1,0,1,house_number: spurious '8'
+hi-sir-09,sir_enumeration,heldout,9.189,499,347,8,8,0,0,0,0,0,
+hi-tkt-07,service_ticket,heldout,9.689,446,312,7,6,0,1,0,0,1,urgency: missed (high) ['low' was not found in what was said] raw='low'
+hi-tkt-08,service_ticket,heldout,9.302,444,359,6,6,0,0,0,0,0,
+hi-tkt-09,service_ticket,heldout,9.408,449,340,7,6,1,0,0,0,1,urgency: 'high' != 'low'

@@ -1,19 +1,10 @@
 id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
-mr-asha-01,asha_anc_visit,tune,25.771,579,539,6,6,0,0,0,0,0,
-mr-asha-02,asha_anc_visit,tune,23.568,572,386,7,6,0,1,0,0,1,weeks_pregnant: missed (16) [20 was not found in what was said] raw=20
-mr-asha-03,asha_anc_visit,tune,166.014,565,388,7,7,0,0,0,0,0,
-mr-asha-04,asha_anc_visit,tune,91.053,539,305,7,6,0,1,0,0,1,next_visit_date: missed (2026-11-01)
-mr-asha-05,asha_anc_visit,tune,35.833,551,321,7,6,0,1,1,0,2,"next_visit_date: spurious '2026-10-31' | remarks: missed (पुढच्या वेळी पती घरी असतील) [only the field's own name was given, not a value] raw='शेरा'"
-mr-asha-06,asha_anc_visit,tune,25.612,545,399,7,7,0,0,0,0,0,
-mr-sir-01,sir_enumeration,tune,19.462,488,331,7,5,0,2,0,0,2,"relation: missed (father) ['husband' was not found in what was said] raw='पती' | gender: missed (male) [not one of: female, male, third_gender] raw='मूल्यमान'"
-mr-sir-02,sir_enumeration,tune,17.31,494,354,8,7,0,1,0,0,1,elector_name: missed (सुनंदा माने)
-mr-sir-03,sir_enumeration,tune,16.863,492,379,7,7,0,0,1,0,1,house_number: spurious 'ABC 1 2 3 4 5 6 7'
-mr-sir-04,sir_enumeration,tune,15.538,469,292,7,7,0,0,0,0,0,
-mr-sir-05,sir_enumeration,tune,13.77,496,311,8,4,0,4,0,0,4,elector_name: missed (राहुल जगताप) | relative_name: missed (सुरेश जगताप) | relation: missed (father) | house_number: missed (48)
-mr-sir-06,sir_enumeration,tune,15.719,488,375,7,7,0,0,1,0,1,house_number: spurious '8 7 6 5 4 3'
-mr-tkt-01,service_ticket,tune,15.43,471,359,7,7,0,0,0,0,0,
-mr-tkt-02,service_ticket,tune,13.94,444,307,7,6,1,0,0,0,1,problem: 'घाई नाही' != 'सोलर दिवा रात्री बंद पडतो'
-mr-tkt-03,service_ticket,tune,8.795,444,258,6,3,0,3,0,0,3,customer_name: missed (बाळू धुमाळ) | problem: missed (ट्रॅक्टरचा क्लच अडकतो) | visit_date: missed (2026-11-20)
-mr-tkt-04,service_ticket,tune,19.985,449,344,7,7,0,0,0,0,0,
-mr-tkt-05,service_ticket,tune,14.318,424,277,6,5,0,1,0,0,1,"village: missed (मोरगाव) [only the field's own name was given, not a value] raw='गाव'"
-mr-tkt-06,service_ticket,tune,14.932,468,294,7,6,0,1,0,0,1,"customer_name: missed (वंदना खैरे) [only the field's own name was given, not a value] raw='ग्राहक'"
+mr-asha-07,asha_anc_visit,heldout,14.91,538,380,6,6,0,0,0,0,0,
+mr-asha-08,asha_anc_visit,heldout,7.499,522,259,6,6,0,0,2,0,2,hb: spurious 6.0 | ifa_tablets_given: spurious 5
+mr-asha-09,asha_anc_visit,heldout,10.696,557,427,7,6,0,1,0,0,1,next_visit_date: missed (2026-11-02)
+mr-sir-07,sir_enumeration,heldout,8.846,477,303,7,7,0,0,0,0,0,
+mr-sir-08,sir_enumeration,heldout,9.523,470,385,7,6,1,0,1,0,2,elector_name: 'पूजा' != 'पूजा कदम' | house_number: spurious '8'
+mr-sir-09,sir_enumeration,heldout,9.463,497,341,8,6,1,1,0,0,2,area: 'भोर ओळखपत्र' != 'भोर' | epic_number: missed (KLM1112223) [does not match ^[A-Z]{3}[0-9]{7}$] raw='KLM 1 1 2 2 2 3'
+mr-tkt-07,service_ticket,heldout,8.672,445,308,7,7,0,0,0,0,0,
+mr-tkt-08,service_ticket,heldout,8.006,442,287,6,6,0,0,0,0,0,
+mr-tkt-09,service_ticket,heldout,9.746,456,374,7,6,0,1,0,0,1,urgency: missed (low) ['medium' was not found in what was said] raw='मध्यम'

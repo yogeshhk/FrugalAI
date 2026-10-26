@@ -4,9 +4,7 @@ All projects are built and measured; only voice-form is open. Tests: `python -m 
 (the `frugalai` env from `environment.yml` was never built). LM Studio is stopped on purpose; start it only for the items below.
 
 ## Open
-- [ ] voice-form round 2 stopped at 2 of 16 runs (no errors). Needs LM Studio with qwen3-1.7b and gemma-2-2b-it (about 50 min). From `code/voice-form`:
-  `bash eval/run_extract_all.sh tune`, then `bash eval/run_extract_all.sh heldout`, then `python -m voiceform report`. Round 1 is in `results/v1_before_fixes/`.
-  Then pick the default model (the faster one if within 3 points, else the more accurate) and test-load IndicConformer.
+- [ ] voice-form: test-load IndicConformer (default model is Qwen3 1.7B, see `code/voice-form/README.md`).
 - [ ] voice-form, author: record the lines in `code/voice-form/eval/RECORDING.md` after reviewing the scripts; then `python -m voiceform import <folder>`.
 - [ ] Internship call (after the Game Theory book): `docs/internship-ideas.md`.
 

@@ -7,7 +7,8 @@
     "condition": "reference",
     "transcripts": null,
     "date": "2026-10-26",
-    "host": "Windows 10, 10 cores, 17 GB RAM"
+    "host": "Windows 10, 10 cores, 17 GB RAM",
+    "note": "tune block restored from results/round2_tune_log.txt after a heldout-only run overwrote this run's files on 2026-10-26; per-utterance tune lines are in extract_hi_rules_none_reference.tune_from_log.csv (first three errors per utterance only)"
   },
   "summary": {
     "tune": {
@@ -19,10 +20,19 @@
       "all_correct_utterances": 0,
       "mean_seconds": 0.0
     },
+    "heldout": {
+      "utterances": 9,
+      "field_accuracy": 0.45,
+      "to_fix_per_utterance": 3.67,
+      "spurious": 0,
+      "uncertain": 0,
+      "all_correct_utterances": 0,
+      "mean_seconds": 0.0
+    },
     "all": {
-      "utterances": 18,
-      "field_accuracy": 0.468,
-      "to_fix_per_utterance": 3.78,
+      "utterances": 27,
+      "field_accuracy": 0.462,
+      "to_fix_per_utterance": 3.74,
       "spurious": 2,
       "uncertain": 0,
       "all_correct_utterances": 0,

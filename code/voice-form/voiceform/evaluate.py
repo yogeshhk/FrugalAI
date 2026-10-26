@@ -133,6 +133,12 @@ def summarise(rows: List[dict]) -> dict:
 
 # ---------------------------------------------------------------- runs
 
+def _subset_suffix(sets) -> str:
+    """'' for the default tune + heldout run; '_<sets>' when a run covers only some sets, so that it cannot
+    overwrite the files of a fuller run (a heldout-only run once replaced the tune rows of six runs)."""
+    return "" if set(sets) == {"tune", "heldout"} else "_" + "-".join(sorted(sets))
+
+
 def _write(run: str, rows: List[dict], summary: dict, meta: dict) -> Path:
     config.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     path = config.RESULTS_DIR / f"{run}.csv"
@@ -178,7 +184,7 @@ def eval_extract(lang: str, route: str, llm=None, condition: str = "reference", 
             print(f"  {it['id']:<11} {sc['correct']}/{sc['gold']} to fix {sc['to_fix']}  {info['seconds']:.1f}s"
                   + ("   " + "; ".join(sc["errors"][:3]) if sc["errors"] else ""))
     model = getattr(llm, "model", "none") if route != "rules" else "none"
-    run = f"extract_{lang}_{route}_{re.sub(r'[^A-Za-z0-9.-]+', '-', model)}_{condition}"
+    run = f"extract_{lang}_{route}_{re.sub(r'[^A-Za-z0-9.-]+', '-', model)}_{condition}" + _subset_suffix(sets)
     if transcripts:
         run += "_" + transcripts
     summary = summarise(rows)
@@ -254,7 +260,7 @@ def eval_asr(lang: str, backend_name: str, source: str = "recordings", noisy: bo
     if not rows:
         raise FileNotFoundError(f"no audio found for {lang} ({source}); see eval/RECORDING.md")
     cond = f"{source}{'-noisy' if noisy else ''}"
-    run = f"asr_{lang}_{backend_name}_{cond}"
+    run = f"asr_{lang}_{backend_name}_{cond}" + _subset_suffix(sets)
     summary = {}
     for key in sorted({r["set"] for r in rows}) + ["all"]:
         sub = [r for r in rows if key == "all" or r["set"] == key]

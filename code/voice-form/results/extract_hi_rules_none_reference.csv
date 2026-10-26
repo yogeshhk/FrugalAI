@@ -1,19 +1,10 @@
 id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
-hi-asha-01,asha_anc_visit,tune,0.003,0,0,6,4,0,2,1,0,3,woman_name: missed (सुनीता यादव) | village: missed (रामपुर) | next_visit_date: spurious '2026-10-31'
-hi-asha-02,asha_anc_visit,tune,0.006,0,0,7,4,1,2,0,0,3,woman_name: missed (रेखा वर्मा) | village: missed (सीतापुर) | weeks_pregnant: 9 != 16
-hi-asha-03,asha_anc_visit,tune,0.004,0,0,7,4,0,3,0,0,3,woman_name: missed (मंजू शर्मा) | village: missed (बिलासपुर) | weeks_pregnant: missed (36) [140 is outside 1 to 42] raw='140'
-hi-asha-04,asha_anc_visit,tune,0.003,0,0,6,3,0,3,0,0,3,woman_name: missed (प्रिया कुमारी) | village: missed (मोहनपुर) | weeks_pregnant: missed (12) [45 is outside 1 to 42] raw='45'
-hi-asha-05,asha_anc_visit,tune,0.003,0,0,7,3,0,4,1,0,5,woman_name: missed (सविता मौर्य) | village: missed (नरसिंहपुर) | weeks_pregnant: missed (20) [110 is outside 1 to 42] raw='110' | next_visit_date: spurious '2026-10-31' | remarks: missed (अगली बार पति घर पर होंगे)
-hi-asha-06,asha_anc_visit,tune,0.005,0,0,7,4,1,2,0,0,3,woman_name: missed (अनीता गुप्ता) | village: missed (लालगंज) | weeks_pregnant: 6 != 30
-hi-sir-01,sir_enumeration,tune,0.001,0,0,7,3,0,4,0,0,4,elector_name: missed (संजय तिवारी) | relative_name: missed (रमेश तिवारी) | house_number: missed (12) | area: missed (गांधी नगर)
-hi-sir-02,sir_enumeration,tune,0.001,0,0,8,4,0,4,0,0,4,elector_name: missed (सुनंदा पांडे) | relative_name: missed (विलास पांडे) | house_number: missed (105) | area: missed (बरौली)
-hi-sir-03,sir_enumeration,tune,0.001,0,0,7,3,0,4,0,0,4,elector_name: missed (अमित चौहान) | relative_name: missed (दयाराम चौहान) | area: missed (कोटा खुर्द) | epic_number: missed (ABC1234567)
-hi-sir-04,sir_enumeration,tune,0.001,0,0,7,3,0,4,0,0,4,elector_name: missed (मीना सक्सेना) | relative_name: missed (लता सक्सेना) | house_number: missed (7) | area: missed (गणेश गंज)
-hi-sir-05,sir_enumeration,tune,0.001,0,0,8,4,0,4,0,0,4,elector_name: missed (राहुल जाटव) | relative_name: missed (सुरेश जाटव) | house_number: missed (48) | area: missed (उमरी)
-hi-sir-06,sir_enumeration,tune,0.001,0,0,7,3,0,4,0,0,4,elector_name: missed (सरस्वती ठाकुर) | relative_name: missed (गणेश ठाकुर) | area: missed (मंडावर) | epic_number: missed (MHT9876543)
-hi-tkt-01,service_ticket,tune,0.006,0,0,7,3,0,4,0,0,4,customer_name: missed (गणेश यादव) | village: missed (अलीगंज) | problem: missed (पानी की मोटर चालू नहीं हो रही) | under_warranty: missed (True)
-hi-tkt-02,service_ticket,tune,0.006,0,0,7,3,0,4,0,0,4,customer_name: missed (सुरेखा गौड़) | village: missed (नरौरा) | problem: missed (सोलर लाइट रात को बंद हो जाती है) | under_warranty: missed (False)
-hi-tkt-03,service_ticket,tune,0.004,0,0,6,2,1,3,0,0,4,customer_name: missed (बालू धुमाल) | village: missed (सोमपुर) | problem: missed (ट्रैक्टर का क्लच अटकता है) | visit_date: '2026-11-06' != '2026-11-20'
-hi-tkt-04,service_ticket,tune,0.004,0,0,7,2,1,4,0,0,5,customer_name: missed (संगीता ढोलकिया) | village: missed (बेलहा) | problem: missed (स्प्रे पंप लीक कर रहा है) | visit_date: '2026-12-06' != '2026-12-03' | under_warranty: missed (True)
-hi-tkt-05,service_ticket,tune,0.004,0,0,6,3,0,3,0,0,3,customer_name: missed (हरि गावड़े) | village: missed (मोरगांव) | problem: missed (मोटर बहुत आवाज़ करती है)
-hi-tkt-06,service_ticket,tune,0.004,0,0,7,3,0,4,0,0,4,customer_name: missed (वंदना खरे) | village: missed (राजपुर) | problem: missed (सोलर लाइट चार्ज नहीं होती) | under_warranty: missed (True)
+hi-asha-07,asha_anc_visit,heldout,0.003,0,0,6,2,1,3,0,0,4,woman_name: missed (कविता राठौर) | village: missed (मालपुरा) | weeks_pregnant: missed (24) [130 is outside 1 to 42] raw='130' | next_visit_date: '2026-10-31' != '2026-12-15'
+hi-asha-08,asha_anc_visit,heldout,0.006,0,0,5,2,0,3,0,0,3,woman_name: missed (शीतल सिंह) | village: missed (खेड़ा) | weeks_pregnant: missed (8) [48 is outside 1 to 42] raw='48'
+hi-asha-09,asha_anc_visit,heldout,0.005,0,0,7,5,0,2,0,0,2,woman_name: missed (वैशाली मिश्रा) | village: missed (सरैया)
+hi-sir-07,sir_enumeration,heldout,0.001,0,0,7,3,0,4,0,0,4,elector_name: missed (विजय सिसोदिया) | relative_name: missed (बलवंत सिसोदिया) | house_number: missed (23) | area: missed (कसबा)
+hi-sir-08,sir_enumeration,heldout,0.001,0,0,7,4,0,3,0,0,3,elector_name: missed (पूजा कश्यप) | relative_name: missed (सुमन कश्यप) | area: missed (जुनवानी)
+hi-sir-09,sir_enumeration,heldout,0.001,0,0,8,3,0,5,0,0,5,elector_name: missed (दीपक बघेल) | relative_name: missed (नामदेव बघेल) | house_number: missed (9) | area: missed (भोरी) | epic_number: missed (KLM1112223)
+hi-tkt-07,service_ticket,heldout,0.005,0,0,7,3,0,4,0,0,4,customer_name: missed (प्रकाश लोधी) | village: missed (जैतपुर) | problem: missed (पानी की मोटर गरम हो जाती है) | under_warranty: missed (False)
+hi-tkt-08,service_ticket,heldout,0.004,0,0,6,2,1,3,0,0,4,customer_name: missed (अशोक बांगड़) | village: missed (पारसौली) | problem: missed (ट्रैक्टर स्टार्ट नहीं हो रहा) | visit_date: '2026-11-02' != '2026-11-30'
+hi-tkt-09,service_ticket,heldout,0.005,0,0,7,3,0,4,0,0,4,customer_name: missed (रोहिणी काले) | village: missed (बारां) | problem: missed (स्प्रेयर का नोजल टूट गया है) | under_warranty: missed (True)

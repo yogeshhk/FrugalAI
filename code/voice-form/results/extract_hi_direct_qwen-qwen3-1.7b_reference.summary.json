@@ -7,7 +7,8 @@
     "condition": "reference",
     "transcripts": null,
     "date": "2026-10-26",
-    "host": "Windows 10, 10 cores, 17 GB RAM"
+    "host": "Windows 10, 10 cores, 17 GB RAM",
+    "note": "tune block restored from results/round2_tune_log.txt after a heldout-only run overwrote this run's files on 2026-10-26; per-utterance tune lines are in extract_hi_direct_qwen-qwen3-1.7b_reference.tune_from_log.csv (first three errors per utterance only)"
   },
   "summary": {
     "tune": {
@@ -19,14 +20,23 @@
       "all_correct_utterances": 10,
       "mean_seconds": 53.14
     },
-    "all": {
-      "utterances": 18,
-      "field_accuracy": 0.919,
-      "to_fix_per_utterance": 0.83,
-      "spurious": 5,
+    "heldout": {
+      "utterances": 9,
+      "field_accuracy": 0.95,
+      "to_fix_per_utterance": 0.44,
+      "spurious": 1,
       "uncertain": 0,
-      "all_correct_utterances": 10,
-      "mean_seconds": 53.14
+      "all_correct_utterances": 5,
+      "mean_seconds": 10.17
+    },
+    "all": {
+      "utterances": 27,
+      "field_accuracy": 0.929,
+      "to_fix_per_utterance": 0.7,
+      "spurious": 6,
+      "uncertain": 0,
+      "all_correct_utterances": 15,
+      "mean_seconds": 38.82
     }
   }
 }

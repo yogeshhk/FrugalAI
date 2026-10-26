@@ -1,19 +1,10 @@
 id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
-hi-asha-01,asha_anc_visit,tune,47.276,450,349,6,6,0,0,0,0,0,
-hi-asha-02,asha_anc_visit,tune,69.378,472,383,7,7,0,0,0,0,0,
-hi-asha-03,asha_anc_visit,tune,71.264,461,369,7,7,0,0,0,0,0,
-hi-asha-04,asha_anc_visit,tune,49.23,445,284,6,6,0,0,0,0,0,
-hi-asha-05,asha_anc_visit,tune,65.613,459,368,7,7,0,0,1,0,1,weight_kg: spurious 60.0
-hi-asha-06,asha_anc_visit,tune,66.624,467,375,7,7,0,0,0,0,0,
-hi-sir-01,sir_enumeration,tune,54.538,391,292,7,7,0,0,0,0,0,
-hi-sir-02,sir_enumeration,tune,68.699,407,345,8,8,0,0,0,0,0,
-hi-sir-03,sir_enumeration,tune,62.64,400,313,7,7,0,0,0,0,0,
-hi-sir-04,sir_enumeration,tune,59.612,386,289,7,7,0,0,0,0,0,
-hi-sir-05,sir_enumeration,tune,64.247,404,340,8,8,0,0,0,0,0,
-hi-sir-06,sir_enumeration,tune,59.66,401,337,7,7,0,0,0,0,0,
-hi-tkt-01,service_ticket,tune,57.196,360,277,7,7,0,0,0,0,0,
-hi-tkt-02,service_ticket,tune,56.181,366,301,7,6,1,0,0,0,1,urgency: 'high' != 'low'
-hi-tkt-03,service_ticket,tune,53.603,356,286,6,6,0,0,0,0,0,
-hi-tkt-04,service_ticket,tune,49.29,361,280,7,6,0,1,0,0,1,visit_date: missed (2026-12-03) [not a date] raw='12-Dec'
-hi-tkt-05,service_ticket,tune,29.229,352,232,6,6,0,0,0,0,0,
-hi-tkt-06,service_ticket,tune,39.108,360,285,7,7,0,0,0,0,0,
+hi-asha-07,asha_anc_visit,heldout,61.292,452,326,6,6,0,0,0,0,0,
+hi-asha-08,asha_anc_visit,heldout,55.732,437,331,5,5,0,0,0,0,0,
+hi-asha-09,asha_anc_visit,heldout,50.889,475,343,7,5,0,2,0,0,2,woman_name: missed (वैशाली मिश्रा) ['Vaishali Mishra' was not found in what was said] raw='Vaishali Mishra' | village: missed (सरैया) ['Saray' was not found in what was said] raw='Saray'
+hi-sir-07,sir_enumeration,heldout,45.182,392,293,7,7,0,0,0,0,0,
+hi-sir-08,sir_enumeration,heldout,55.682,395,329,7,7,0,0,0,0,0,
+hi-sir-09,sir_enumeration,heldout,75.06,405,335,8,7,0,1,0,0,1,relative_name: missed (नामदेव बघेल) ['नमदेव बघेल' was not found in what was said] raw='नमदेव बघेल'
+hi-tkt-07,service_ticket,heldout,66.121,355,283,7,7,0,0,0,0,0,
+hi-tkt-08,service_ticket,heldout,57.275,355,308,6,6,0,0,0,0,0,
+hi-tkt-09,service_ticket,heldout,47.935,356,276,7,6,1,0,0,0,1,urgency: 'high' != 'low'

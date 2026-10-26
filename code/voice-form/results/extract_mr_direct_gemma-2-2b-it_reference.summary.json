@@ -7,7 +7,8 @@
     "condition": "reference",
     "transcripts": null,
     "date": "2026-10-26",
-    "host": "Windows 10, 10 cores, 17 GB RAM"
+    "host": "Windows 10, 10 cores, 17 GB RAM",
+    "note": "tune block restored from results/round2_tune_log.txt after a heldout-only run overwrote this run's files on 2026-10-26; per-utterance tune lines are in extract_mr_direct_gemma-2-2b-it_reference.tune_from_log.csv (first three errors per utterance only)"
   },
   "summary": {
     "tune": {
@@ -19,14 +20,23 @@
       "all_correct_utterances": 13,
       "mean_seconds": 49.48
     },
-    "all": {
-      "utterances": 18,
-      "field_accuracy": 0.936,
-      "to_fix_per_utterance": 0.44,
-      "spurious": 0,
+    "heldout": {
+      "utterances": 9,
+      "field_accuracy": 0.902,
+      "to_fix_per_utterance": 0.78,
+      "spurious": 1,
       "uncertain": 0,
-      "all_correct_utterances": 13,
-      "mean_seconds": 49.48
+      "all_correct_utterances": 5,
+      "mean_seconds": 47.79
+    },
+    "all": {
+      "utterances": 27,
+      "field_accuracy": 0.925,
+      "to_fix_per_utterance": 0.56,
+      "spurious": 1,
+      "uncertain": 0,
+      "all_correct_utterances": 18,
+      "mean_seconds": 48.91
     }
   }
 }

@@ -1,0 +1,19 @@
+id,set,correct,gold,to_fix,seconds,first_three_errors_ascii_only
+hi-asha-01,tune,6,6,0,50.7,
+hi-asha-02,tune,7,7,0,52.2,
+hi-asha-03,tune,1,7,6,147.5,woman_name: missed (???? ?????); age: missed (32); village: missed (????????)
+hi-asha-04,tune,6,6,0,52.4,
+hi-asha-05,tune,6,7,3,50.9,weight_kg: spurious 60.0; next_visit_date: spurious '2026-10-31'; remarks: missed (???? ??? ??? ?? ?? ?????)
+hi-asha-06,tune,7,7,1,53.9,ifa_tablets_given: spurious 3
+hi-sir-01,tune,7,7,0,47.2,
+hi-sir-02,tune,8,8,0,44.9,
+hi-sir-03,tune,7,7,1,48.2,house_number: spurious '???? ?????'
+hi-sir-04,tune,7,7,0,47.2,
+hi-sir-05,tune,8,8,0,46.7,
+hi-sir-06,tune,7,7,1,49.8,house_number: spurious '9'
+hi-tkt-01,tune,6,7,1,46.1,problem: '??? ????? ???? ??' != '???? ?? ???? ???? ???? ?? ???'
+hi-tkt-02,tune,6,7,1,46.6,urgency: 'high' != 'low'
+hi-tkt-03,tune,6,6,0,39.3,
+hi-tkt-04,tune,7,7,0,40.5,
+hi-tkt-05,tune,5,6,1,49.9,product: missed (water_pump)
+hi-tkt-06,tune,7,7,0,42.7,

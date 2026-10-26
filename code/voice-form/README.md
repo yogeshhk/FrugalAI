@@ -100,37 +100,50 @@ LM Studio must be running with the model loaded. RAM per speech model is measure
 - Speech: word and character error rate after the same normalising on both sides, real-time factor, RAM.
 - The scripts were drafted by Claude and are synthetic; the recordings are the author's voice only.
 
-### Results so far: extraction on script text, tune set only
+### Results so far: extraction on script text (round 2)
 
-Every number below is on the **script text** (condition `reference`, a perfect ear), on the **tune set** (18 lines per
-language, the lines the prompts and rules were adjusted on, so they are optimistic). The held-out set, the free-speech
-cards and every number on real speech are **not run**. One run per row, on the main PC through LM Studio; "field
-accuracy" is the share of gold values the pipeline got right, "to fix" is what a worker would have to change per
-utterance (wrong, missed and invented values). The table is built from `results/extract_*_reference.summary.json`;
-the same files from before the fixes are in `results/v1_before_fixes/`.
+Every number below is on the **script text** (condition `reference`, a perfect ear). The free-speech cards and every
+number on real speech are **not run**. All rows are round 2: the code after the fixes (`llm.py` sends `/no_think` for
+Qwen model ids only), run on 2026-10-26 on the main PC through LM Studio, one run per row. "Tune" is 18 lines per
+language, the lines the prompts and rules were adjusted on, so those numbers are optimistic. "Held-out" is 9 lines per
+language, run once, not looked at while tuning; it is the fairer figure, but nine lines are few, so a difference of a
+few points between two rows is within noise. "Field accuracy" is the share of gold values the pipeline got right,
+"to fix" is what a worker would have to change per utterance (wrong, missed and invented values). The table is built
+from `results/extract_*_reference.summary.json` (`python -m voiceform report` writes `results/RESULTS.md`); the round-1
+files from before the fixes are in `results/v1_before_fixes/`.
 
-| Language | Route | Model | Field accuracy | To fix per utterance | Fully correct (of 18) | Mean seconds per line | Round |
-|----------|-------|-------|----------------|----------------------|-----------------------|-----------------------|-------|
-| Hindi | rules, no model | none | 0.468 | 3.78 | 0 | 0.0 | round 1 |
-| Hindi | direct | Qwen3 1.7B | 0.927 | 0.78 | 9 | 9.5 | round 1 |
-| Hindi | direct | Gemma 2 2B | 0.968 | 0.72 | 8 | 31.6 | round 1 |
-| Hindi | translate first | Qwen3 1.7B | 0.548 | 3.50 | 0 | 11.6 | round 1 |
-| Marathi | rules, no model | none | 0.480 | 3.72 | 0 | 0.0 | round 2 (summary same as round 1) |
-| Marathi | direct | Qwen3 1.7B | 0.848 | 1.17 | 8 | 10.1 | round 2 (round 1: 0.832, 1.72, 3 of 18) |
-| Marathi | direct | Gemma 2 2B | 0.928 | 0.50 | 12 | 34.7 | round 2 (round 1: 0.920, 0.89, 10 of 18) |
-| Marathi | translate first | Qwen3 1.7B | 0.504 | 3.83 | 0 | 11.1 | round 1 |
+| Language | Route | Model | Tune accuracy (18) | Held-out accuracy (9) | All 27 | To fix per utterance, held-out | Fully correct, held-out (of 9) | Seconds per line, held-out |
+|----------|-------|-------|--------------------|-----------------------|--------|--------------------------------|--------------------------------|----------------------------|
+| Hindi | rules, no model | none | 0.468 | 0.450 | 0.462 | 3.67 | 0 | 0.0 |
+| Hindi | direct | Qwen3 1.7B | 0.919 | 0.950 | 0.929 | 0.44 | 5 | 10.2 |
+| Hindi | direct | Gemma 2 2B | 0.984 | 0.933 | 0.967 | 0.44 | 6 | 57.2 |
+| Hindi | translate first | Qwen3 1.7B | 0.516 | not run | n/a | n/a | n/a | n/a |
+| Marathi | rules, no model | none | 0.480 | 0.443 | 0.468 | 3.78 | 0 | 0.0 |
+| Marathi | direct | Qwen3 1.7B | 0.872 | 0.918 | 0.887 | 0.89 | 4 | 9.7 |
+| Marathi | direct | Gemma 2 2B | 0.936 | 0.902 | 0.925 | 0.78 | 5 | 47.8 |
+| Marathi | translate first | Qwen3 1.7B | 0.496 | not run | n/a | n/a | n/a | n/a |
 
-How to read the rounds: **round 1** is the code before the fixes (kept in `results/v1_before_fixes/`). **Round 2** is
-the code after the fixes, and it is **partial**: only 3 of the 8 tune runs were repeated (the Marathi rules baseline and
-the two Marathi `direct` runs), none of the held-out runs. The five other rows are still round-1 results, so the Hindi
-rows and the Marathi `translate` row come from older code than the Marathi `direct` rows and are not strictly
-comparable with them. The round-2 re-run (`bash eval/run_extract_all.sh tune`, then `heldout`) needs LM Studio and is
-open; the choice of default model waits for it.
+What the table says:
+- Letting the model read the transcript directly (`direct`) is far ahead of the rules baseline in both languages. The
+  `translate first` route turns names and villages into English and scores about the same as rules alone on the tune
+  set, so it was not run on the held-out set.
+- Gemma 2 2B leads on the tune set by about six points in both languages. On the nine held-out lines Qwen3 1.7B is
+  level or slightly ahead; with so few lines that is not a real difference. Over all 27 lines Gemma leads by 3.8 points
+  in both languages.
+- Qwen3 1.7B was about five times faster per line on the held-out run (about 10 s against about 50 s).
+- Caveats: the PC was in use for other jobs (including LaTeX builds) during these runs, so seconds are indicative only
+  (the tune timings are noisier: one Hindi `translate` line took 1,613 s, probably a stall); the GPU offload setting was
+  not recorded; Gemma was loaded as Q5_K_M and Qwen as Q4_K_M, so the comparison is not like for like.
+- The per-utterance tune files of six runs were overwritten by the held-out run; the tune summaries were restored from
+  `results/round2_tune_log.txt` (the note is in each summary's `meta`) and the recovered lines are in
+  `results/*.tune_from_log.csv` (first three errors per line, ASCII only). A run over a subset of sets now writes to its
+  own file name.
 
-Confound to know about: until the change that made `llm.py` send `/no_think` for Qwen model ids only, the switch was
-appended to every prompt, Gemma included. All rows above were produced before that change, so the Gemma rows carry the
-extra text in their prompts. It is not known whether it changed Gemma's answers; the next round will show. Gemma was
-about three times slower per line than Qwen on this machine; the GPU offload setting was not recorded for these runs.
+Default model: **Qwen3 1.7B** (`qwen/qwen3-1.7b`), chosen by the author on 2026-10-26. The earlier rule "the faster model
+if within 3 points, else the more accurate" would have picked Gemma 2 2B (3.8 points ahead over all 27 lines in both
+languages); the author chose Qwen for speed, since it was about five times faster per line and level with Gemma on the
+nine held-out lines per language. Gemma 2 2B stays available with `--model gemma-2-2b-it`. Revisit the choice once
+there are results on real speech.
 
 ## Limits and safety
 - One speaker (the author) and synthetic lines: the numbers say nothing about other accents, dialects or real field

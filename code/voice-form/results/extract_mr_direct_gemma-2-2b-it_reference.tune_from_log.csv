@@ -1,0 +1,19 @@
+id,set,correct,gold,to_fix,seconds,first_three_errors_ascii_only
+mr-asha-01,tune,5,6,1,55.4,village: missed (?????) ['Wadgaon' was not found in what was said] raw='Wadgaon'
+mr-asha-02,tune,7,7,0,51.0,
+mr-asha-03,tune,7,7,0,39.4,
+mr-asha-04,tune,7,7,0,37.5,
+mr-asha-05,tune,7,7,0,54.9,
+mr-asha-06,tune,7,7,0,49.1,
+mr-sir-01,tune,7,7,0,50.8,
+mr-sir-02,tune,7,8,1,41.7,area: missed (??????) ['Wadgaon' was not found in what was said] raw='Wadgaon'
+mr-sir-03,tune,7,7,0,51.2,
+mr-sir-04,tune,4,7,3,40.8,elector_name: missed (???? ??????) ['Meena Chavan' was not found in what was said] raw='Meena Chavan'; relative_name: missed (??? ??????) ['Lata Chavan' was not found in what was said] raw='Lata Chavan'; area: missed (???????) ['Ganeshapeth' was not found in what was said] raw='Ganeshapeth'
+mr-sir-05,tune,8,8,0,48.6,
+mr-sir-06,tune,7,7,0,66.2,
+mr-tkt-01,tune,7,7,0,55.3,
+mr-tkt-02,tune,7,7,0,54.9,
+mr-tkt-03,tune,6,6,0,44.6,
+mr-tkt-04,tune,5,7,2,47.8,product: 'water_pump' != 'sprayer'; visit_date: missed (2026-11-01) raw='null'
+mr-tkt-05,tune,5,6,1,44.8,"product: missed (water_pump) [not one of: water_pump, solar_light, tractor, sprayer] raw='motor'"
+mr-tkt-06,tune,7,7,0,56.5,

@@ -21,7 +21,7 @@ OUTBOX_DIR = ROOT / "outbox"            # where the sinks write (local files onl
 
 LLM_URL = os.environ.get("VOICEFORM_LLM_URL", shared.LLM_URL)
 LLM_MODELS = [shared.CHAT_MODEL, "gemma-2-2b-it"]
-DEFAULT_LLM = LLM_MODELS[0]
+DEFAULT_LLM = LLM_MODELS[0]             # Qwen3 1.7B, the author's choice of 2026-10-26 (README, "Default model")
 
 # Speech-to-text backends. "langs" is what the model was trained or fine-tuned for.
 ASR_MODELS = {

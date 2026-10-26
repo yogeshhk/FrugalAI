@@ -1,0 +1,19 @@
+id,set,correct,gold,to_fix,seconds,first_three_errors_ascii_only
+mr-asha-01,tune,6,6,0,25.8,
+mr-asha-02,tune,6,7,1,23.6,weeks_pregnant: missed (16) [20 was not found in what was said] raw=20
+mr-asha-03,tune,7,7,0,166.0,
+mr-asha-04,tune,6,7,1,91.1,next_visit_date: missed (2026-11-01)
+mr-asha-05,tune,6,7,2,35.8,"next_visit_date: spurious '2026-10-31'; remarks: missed (??????? ???? ??? ??? ?????) [only the field's own name was given, not a value] raw='????'"
+mr-asha-06,tune,7,7,0,25.6,
+mr-sir-01,tune,5,7,2,19.5,"relation: missed (father) ['husband' was not found in what was said] raw='???'; gender: missed (male) [not one of: female, male, third_gender] raw='????????'"
+mr-sir-02,tune,7,8,1,17.3,elector_name: missed (?????? ????)
+mr-sir-03,tune,7,7,1,16.9,house_number: spurious 'ABC 1 2 3 4 5 6 7'
+mr-sir-04,tune,7,7,0,15.5,
+mr-sir-05,tune,4,8,4,13.8,elector_name: missed (????? ?????); relative_name: missed (????? ?????); relation: missed (father)
+mr-sir-06,tune,7,7,1,15.7,house_number: spurious '8 7 6 5 4 3'
+mr-tkt-01,tune,7,7,0,15.4,
+mr-tkt-02,tune,6,7,1,13.9,problem: '??? ????' != '???? ???? ?????? ??? ????'
+mr-tkt-03,tune,3,6,3,8.8,customer_name: missed (???? ?????); problem: missed (?????????? ???? ?????); visit_date: missed (2026-11-20)
+mr-tkt-04,tune,7,7,0,20.0,
+mr-tkt-05,tune,5,6,1,14.3,"village: missed (??????) [only the field's own name was given, not a value] raw='???'"
+mr-tkt-06,tune,6,7,1,14.9,"customer_name: missed (????? ????) [only the field's own name was given, not a value] raw='??????'"
