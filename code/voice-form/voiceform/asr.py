@@ -121,10 +121,15 @@ class IndicConformerASR(ASRBackend):
         spec = config.ASR_MODELS[name]
         self.name, self.langs, self.decoder = name, tuple(spec["langs"]), decoder
         config.go_offline()
-        from transformers import AutoModel
+        import importlib.util
 
         source = config.model_source(name, spec["repo"])
-        self.model = AutoModel.from_pretrained(source, trust_remote_code=True)
+        # The model's own from_pretrained calls snapshot_download, which rejects a local Windows path,
+        # so build it from the downloaded folder directly (same code, no network).
+        mod_spec = importlib.util.spec_from_file_location("indic_model_onnx", f"{source}/model_onnx.py")
+        mod = importlib.util.module_from_spec(mod_spec)
+        mod_spec.loader.exec_module(mod)
+        self.model = mod.IndicASRModel(mod.IndicASRConfig(ts_folder=source))
 
     def _run(self, wav, lang):
         import torch

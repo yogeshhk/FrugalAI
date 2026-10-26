@@ -12,6 +12,7 @@ from . import config
 
 HF_PATTERNS = ["*.json", "*.txt", "*.model", "*.py", "*.onnx", "*.tiktoken", "*.yaml", "vocab*", "merges*",
                "*.vocab", "*.pt"]
+ASSET_DIR_REPOS = {"ai4bharat/indic-conformer-600m-multilingual"}
 
 
 def _weights_patterns(repo: str) -> List[str]:
@@ -29,7 +30,10 @@ def fetch_hf(repo: str, local_name: str) -> str:
     from huggingface_hub import snapshot_download
 
     target = config.MODELS_DIR / local_name
-    return snapshot_download(repo, allow_patterns=HF_PATTERNS + _weights_patterns(repo), local_dir=str(target))
+    patterns = HF_PATTERNS + _weights_patterns(repo)
+    if repo in ASSET_DIR_REPOS:
+        patterns = patterns + ["assets/*"]  # ONNX encoder weights are extensionless files, plus preprocessor.ts
+    return snapshot_download(repo, allow_patterns=patterns, local_dir=str(target))
 
 
 def fetch_vosk(url: str, dest_parent) -> str:
