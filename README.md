@@ -29,7 +29,6 @@ local. See [docs/landscape.md](docs/landscape.md) for what has actually been rep
 | [_scripts/](_scripts/) | Repo tools: the AWESOME.md checker and a relative-link checker | working, tested |
 | [GETTING_STARTED.md](GETTING_STARTED.md) | How to run what exists, step by step, and the checks | written |
 | [docs/internship-ideas.md](docs/internship-ideas.md) | Project ideas that could be floated to students | plan only |
-| [docs/campaign/](docs/campaign/) | Medium stories and LinkedIn posts, one per project | published; posts scheduled |
 | [AWESOME.md](AWESOME.md) | Curated list of frugal AI efforts by platform (old laptop, Raspberry Pi, phone, microcontroller, browser) | open for entries |
 
 ## What runs where

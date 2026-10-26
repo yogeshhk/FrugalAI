@@ -6,27 +6,27 @@
     "model": "gemma-2-2b-it",
     "condition": "reference",
     "transcripts": null,
-    "date": "2026-10-24",
+    "date": "2026-10-26",
     "host": "Windows 10, 10 cores, 17 GB RAM"
   },
   "summary": {
     "tune": {
       "utterances": 18,
-      "field_accuracy": 0.968,
-      "to_fix_per_utterance": 0.72,
-      "spurious": 9,
-      "uncertain": 17,
-      "all_correct_utterances": 8,
-      "mean_seconds": 31.59
+      "field_accuracy": 0.984,
+      "to_fix_per_utterance": 0.17,
+      "spurious": 1,
+      "uncertain": 0,
+      "all_correct_utterances": 15,
+      "mean_seconds": 56.85
     },
     "all": {
       "utterances": 18,
-      "field_accuracy": 0.968,
-      "to_fix_per_utterance": 0.72,
-      "spurious": 9,
-      "uncertain": 17,
-      "all_correct_utterances": 8,
-      "mean_seconds": 31.59
+      "field_accuracy": 0.984,
+      "to_fix_per_utterance": 0.17,
+      "spurious": 1,
+      "uncertain": 0,
+      "all_correct_utterances": 15,
+      "mean_seconds": 56.85
     }
   }
 }

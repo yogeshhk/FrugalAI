@@ -278,6 +278,53 @@ model page `ai4bharat/indictrans2-indic-en-dist-200M`. Seen 2026-10-24 through s
 metadata. Used for: a distilled Indic-to-English translation model of about 211M parameters under the MIT licence,
 gated download. Its CPU speed was not checked; it is listed in voice-form as an idea, not used.
 
+<a id="s40"></a>
+## S40. Hugging Face model cards: the two language models used by voice-form
+Publisher: Hugging Face model pages `Qwen/Qwen3-1.7B` and `google/gemma-2-2b-it`. Read 2026-10-26 (page text
+through a fetch tool, not the full card). Used for: Qwen3-1.7B licence apache-2.0, 1.7B parameters (1.4B
+non-embedding), context 32,768, a hard thinking switch (`enable_thinking`) and soft switches `/think` and `/no_think`
+that the card says work only while thinking is on, and "100+ languages and dialects" with Marathi and Hindi not named.
+Gemma 2 2B instruction-tuned: licence tag "gemma" (the Gemma terms of use, not read here), gated (accept the
+conditions to get the files), 2.6B parameters in the release collection text while the metadata shows about 3B (the
+page does not reconcile them), no context length stated on the card, and English as the only language claimed. So
+Gemma's Marathi and Hindi results in voice-form are an observation on this task, not a claim the model card makes.
+The files in LM Studio on the main PC differ from the table in the voice-form README: `gemma-2-2b-it` is Q5_K_M there
+(README says Q4_K_M), and its maximum context is reported as 8192 by the LM Studio server.
+
+<a id="s41"></a>
+## S41. llama.cpp repository page
+Publisher: ggml-org on GitHub. URL: https://github.com/ggml-org/llama.cpp. Read 2026-10-26. Used for: MIT licence,
+the plain C/C++ no-dependency design, x86 and Arm CPU support, 1.5-bit to 8-bit quantisation. The page does not
+mention Raspberry Pi and does not state offline use.
+
+<a id="s42"></a>
+## S42. TensorFlow Lite for Microcontrollers repository page
+Publisher: TensorFlow on GitHub. URL: https://github.com/tensorflow/tflite-micro. Read 2026-10-26. Used for:
+Apache-2.0 licence, the aim of running models on microcontrollers with limited memory ("tens to hundreds of
+kilobytes"), the Tier-1 architectures, and Arduino and ESP32 ports living in separate community repositories.
+
+<a id="s43"></a>
+## S43. wllama repository page
+Publisher: ngxson on GitHub (community project). URL: https://github.com/ngxson/wllama. Read 2026-10-26. Used for:
+MIT licence, WebAssembly SIMD inference in the browser with no backend or GPU, GGUF models, the 2 GB file limit and
+the demo link.
+
+<a id="s44"></a>
+## S44. Arm: ERNIE-4.5-0.3B-PT Q4_K_M GGUF for llama.cpp on Raspberry Pi 5
+Publisher: Arm. URL:
+https://developer.arm.com/ai/models/hugging-face/Arm/ernie-4-5-0-3b-pt-q4-k-m-llamacpp-raspberrypi5/ernie-4.5-0.3b-pt-q4_k_m-gguf.
+Read 2026-10-26. Used for: the Raspberry Pi 5 (4-core, 8 GB) CPU test, file size 229.5 MB, Apache-2.0 for the
+original and Arm builds, and Arm's reported 43.32 tokens/s against a 14.09 baseline and 515 MB peak memory. Vendor
+figures, not re-measured; Arm calls it a reference implementation. The page does not state offline use. Not listed
+in AWESOME.md: the Arm site returns HTTP 403 to the link checker, so the entry could not pass `--links`; candidate
+for the Raspberry Pi section if a checkable mirror is found.
+
+<a id="s45"></a>
+## S45. Hugging Face model card: Qwen3-1.7B
+Publisher: Qwen team on Hugging Face. URL: https://huggingface.co/Qwen/Qwen3-1.7B. Read again 2026-10-26 (see also
+S40). Used for: Apache-2.0 licence, 1.7B parameters (1.4B non-embedding), no gating notice shown, "100+ languages and
+dialects", and local runners listed (Ollama, LM Studio, llama.cpp).
+
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":
   https://www.ey.com/en_in/insights/ai/agentic-ai-india/small-language-models

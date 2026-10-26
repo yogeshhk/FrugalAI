@@ -1,6 +1,6 @@
 id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
-mr-asha-01,asha_anc_visit,tune,0.002,0,0,6,4,0,2,1,0,3,woman_name: missed (सुनीता पवार) | village: missed (वडगाव) | next_visit_date: spurious '2026-10-31'
-mr-asha-02,asha_anc_visit,tune,0.004,0,0,7,4,1,2,0,0,3,woman_name: missed (रेखा जाधव) | village: missed (शिरूर) | weeks_pregnant: 9 != 16
+mr-asha-01,asha_anc_visit,tune,0.003,0,0,6,4,0,2,1,0,3,woman_name: missed (सुनीता पवार) | village: missed (वडगाव) | next_visit_date: spurious '2026-10-31'
+mr-asha-02,asha_anc_visit,tune,0.003,0,0,7,4,1,2,0,0,3,woman_name: missed (रेखा जाधव) | village: missed (शिरूर) | weeks_pregnant: 9 != 16
 mr-asha-03,asha_anc_visit,tune,0.003,0,0,7,4,0,3,0,0,3,woman_name: missed (मंगल शिंदे) | village: missed (पिंपळगाव) | weeks_pregnant: missed (36) [140 is outside 1 to 42] raw='140'
 mr-asha-04,asha_anc_visit,tune,0.002,0,0,7,4,0,3,0,0,3,woman_name: missed (प्रिया कांबळे) | village: missed (केडगाव) | weeks_pregnant: missed (12) [45 is outside 1 to 42] raw='45'
 mr-asha-05,asha_anc_visit,tune,0.002,0,0,7,3,0,4,1,0,5,woman_name: missed (सविता मोरे) | village: missed (नांदूर) | weeks_pregnant: missed (20) [110 is outside 1 to 42] raw='110' | next_visit_date: spurious '2026-10-31' | remarks: missed (पुढच्या वेळी पती घरी असतील)
@@ -15,5 +15,5 @@ mr-tkt-01,service_ticket,tune,0.003,0,0,7,3,0,4,0,0,4,customer_name: missed (ग
 mr-tkt-02,service_ticket,tune,0.003,0,0,7,3,0,4,0,0,4,customer_name: missed (सुरेखा गोरे) | village: missed (निरा) | problem: missed (सोलर दिवा रात्री बंद पडतो) | under_warranty: missed (False)
 mr-tkt-03,service_ticket,tune,0.002,0,0,6,2,1,3,0,0,4,customer_name: missed (बाळू धुमाळ) | village: missed (सोमेश्वर) | problem: missed (ट्रॅक्टरचा क्लच अडकतो) | visit_date: '2026-11-06' != '2026-11-20'
 mr-tkt-04,service_ticket,tune,0.002,0,0,7,3,0,4,0,0,4,customer_name: missed (संगीता ढोले) | village: missed (वेल्हे) | problem: missed (फवारणी पंप गळतो) | under_warranty: missed (True)
-mr-tkt-05,service_ticket,tune,0.003,0,0,6,3,0,3,0,0,3,customer_name: missed (हरी गावडे) | village: missed (मोरगाव) | problem: missed (मोटर खूप आवाज करते)
-mr-tkt-06,service_ticket,tune,0.003,0,0,7,3,0,4,0,0,4,customer_name: missed (वंदना खैरे) | village: missed (राजगुरूनगर) | problem: missed (सोलर लाइट चार्ज होत नाही) | under_warranty: missed (True)
+mr-tkt-05,service_ticket,tune,0.002,0,0,6,3,0,3,0,0,3,customer_name: missed (हरी गावडे) | village: missed (मोरगाव) | problem: missed (मोटर खूप आवाज करते)
+mr-tkt-06,service_ticket,tune,0.002,0,0,7,3,0,4,0,0,4,customer_name: missed (वंदना खैरे) | village: missed (राजगुरूनगर) | problem: missed (सोलर लाइट चार्ज होत नाही) | under_warranty: missed (True)

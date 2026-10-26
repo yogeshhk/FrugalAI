@@ -1,19 +1,19 @@
 id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
-hi-asha-01,asha_anc_visit,tune,8.721,478,322,6,6,0,0,0,0,0,
-hi-asha-02,asha_anc_visit,tune,11.328,506,446,7,7,0,0,0,0,0,
-hi-asha-03,asha_anc_visit,tune,9.585,494,362,7,7,0,0,0,0,0,
-hi-asha-04,asha_anc_visit,tune,10.026,465,390,6,6,0,0,1,0,1,remarks: spurious 'प्रिया कुमारी'
-hi-asha-05,asha_anc_visit,tune,11.019,494,435,7,7,0,0,0,1,0,
-hi-asha-06,asha_anc_visit,tune,10.809,490,405,7,7,0,0,0,1,0,
-hi-sir-01,sir_enumeration,tune,8.979,424,307,7,7,0,0,0,1,0,
-hi-sir-02,sir_enumeration,tune,9.323,435,349,8,8,0,0,0,1,0,
-hi-sir-03,sir_enumeration,tune,10.004,431,370,7,6,1,0,1,1,2,house_number: spurious 'कोटा खुर्द' | area: 'खुर्द' != 'कोटा खुर्द'
-hi-sir-04,sir_enumeration,tune,9.472,412,350,7,7,0,0,0,0,0,
-hi-sir-05,sir_enumeration,tune,9.774,428,342,8,8,0,0,0,1,0,
-hi-sir-06,sir_enumeration,tune,9.224,428,330,7,6,0,1,1,1,2,house_number: spurious '9' | epic_number: missed (MHT9876543) [does not match ^[A-Z]{3}[0-9]{7}$]
-hi-tkt-01,service_ticket,tune,9.165,395,323,7,6,1,0,0,2,1,problem: 'काम तुरंत करना है' != 'पानी की मोटर चालू नहीं हो रही'
-hi-tkt-02,service_ticket,tune,9.41,406,343,7,6,1,0,0,3,1,urgency: 'high' != 'low'
-hi-tkt-03,service_ticket,tune,7.374,376,242,6,5,0,1,0,0,1,customer_name: missed (बालू धुमाल)
-hi-tkt-04,service_ticket,tune,8.639,393,300,7,5,0,2,1,3,3,phone: missed (8999887766) [not a 10-digit mobile number] | urgency: spurious 'high' | visit_date: missed (2026-12-03) [not a date]
-hi-tkt-05,service_ticket,tune,9.565,368,341,6,4,2,0,0,0,2,customer_name: 'हरि' != 'हरि गावड़े' | village: 'गांव मोरगांव' != 'मोरगांव'
-hi-tkt-06,service_ticket,tune,8.704,385,309,7,7,0,0,1,0,1,urgency: spurious 'high'
+hi-asha-01,asha_anc_visit,tune,50.688,540,322,6,6,0,0,0,0,0,
+hi-asha-02,asha_anc_visit,tune,52.198,568,389,7,7,0,0,0,0,0,
+hi-asha-03,asha_anc_visit,tune,147.451,556,1200,7,1,0,6,0,0,6,woman_name: missed (मंजू शर्मा) | age: missed (32) | village: missed (बिलासपुर) | weeks_pregnant: missed (36) | weight_kg: missed (60) | next_visit_date: missed (2026-11-12)
+hi-asha-04,asha_anc_visit,tune,52.416,527,388,6,6,0,0,0,0,0,
+hi-asha-05,asha_anc_visit,tune,50.942,556,390,7,6,0,1,2,0,3,weight_kg: spurious 60.0 | next_visit_date: spurious '2026-10-31' | remarks: missed (अगली बार पति घर पर होंगे)
+hi-asha-06,asha_anc_visit,tune,53.909,552,407,7,7,0,0,1,0,1,ifa_tablets_given: spurious 3
+hi-sir-01,sir_enumeration,tune,47.167,486,324,7,7,0,0,0,0,0,
+hi-sir-02,sir_enumeration,tune,44.915,497,336,8,8,0,0,0,0,0,
+hi-sir-03,sir_enumeration,tune,48.153,493,375,7,7,0,0,1,0,1,house_number: spurious 'कोटा खुर्द'
+hi-sir-04,sir_enumeration,tune,47.182,474,350,7,7,0,0,0,0,0,
+hi-sir-05,sir_enumeration,tune,46.653,490,368,8,8,0,0,0,0,0,
+hi-sir-06,sir_enumeration,tune,49.79,490,383,7,7,0,0,1,0,1,house_number: spurious '9'
+hi-tkt-01,service_ticket,tune,46.113,457,325,7,6,1,0,0,0,1,problem: 'काम तुरंत करना है' != 'पानी की मोटर चालू नहीं हो रही'
+hi-tkt-02,service_ticket,tune,46.634,468,323,7,6,1,0,0,0,1,urgency: 'high' != 'low'
+hi-tkt-03,service_ticket,tune,39.293,438,283,6,6,0,0,0,0,0,
+hi-tkt-04,service_ticket,tune,40.495,455,303,7,7,0,0,0,0,0,
+hi-tkt-05,service_ticket,tune,49.871,430,367,6,5,0,1,0,0,1,product: missed (water_pump)
+hi-tkt-06,service_ticket,tune,42.711,447,309,7,7,0,0,0,0,0,

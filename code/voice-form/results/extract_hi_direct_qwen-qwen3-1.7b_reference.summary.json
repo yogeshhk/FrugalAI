@@ -6,27 +6,27 @@
     "model": "qwen/qwen3-1.7b",
     "condition": "reference",
     "transcripts": null,
-    "date": "2026-10-24",
+    "date": "2026-10-26",
     "host": "Windows 10, 10 cores, 17 GB RAM"
   },
   "summary": {
     "tune": {
       "utterances": 18,
-      "field_accuracy": 0.927,
-      "to_fix_per_utterance": 0.78,
+      "field_accuracy": 0.919,
+      "to_fix_per_utterance": 0.83,
       "spurious": 5,
-      "uncertain": 15,
-      "all_correct_utterances": 9,
-      "mean_seconds": 9.51
+      "uncertain": 0,
+      "all_correct_utterances": 10,
+      "mean_seconds": 53.14
     },
     "all": {
       "utterances": 18,
-      "field_accuracy": 0.927,
-      "to_fix_per_utterance": 0.78,
+      "field_accuracy": 0.919,
+      "to_fix_per_utterance": 0.83,
       "spurious": 5,
-      "uncertain": 15,
-      "all_correct_utterances": 9,
-      "mean_seconds": 9.51
+      "uncertain": 0,
+      "all_correct_utterances": 10,
+      "mean_seconds": 53.14
     }
   }
 }

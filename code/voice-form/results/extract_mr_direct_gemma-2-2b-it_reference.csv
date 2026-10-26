@@ -1,19 +1,19 @@
 id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
-mr-asha-01,asha_anc_visit,tune,46.291,479,367,6,5,0,1,0,0,1,village: missed (वडगाव) ['Wadgaon' was not found in what was said] raw='Wadgaon'
-mr-asha-02,asha_anc_visit,tune,39.247,480,378,7,7,0,0,0,0,0,
-mr-asha-03,asha_anc_visit,tune,39.292,478,362,7,7,0,0,0,0,0,
-mr-asha-04,asha_anc_visit,tune,37.772,459,340,7,7,0,0,0,0,0,
-mr-asha-05,asha_anc_visit,tune,39.31,463,351,7,7,0,0,0,0,0,
-mr-asha-06,asha_anc_visit,tune,40.207,472,374,7,7,0,0,0,0,0,
-mr-sir-01,sir_enumeration,tune,33.085,407,312,7,7,0,0,0,0,0,
-mr-sir-02,sir_enumeration,tune,35.896,421,344,8,7,0,1,0,0,1,area: missed (वाघोली) ['Wadgaon' was not found in what was said] raw='Wadgaon'
-mr-sir-03,sir_enumeration,tune,35.754,418,322,7,7,0,0,0,0,0,
-mr-sir-04,sir_enumeration,tune,30.618,397,279,7,4,0,3,0,0,3,elector_name: missed (मीना चव्हाण) ['Meena Chavan' was not found in what was said] raw='Meena Chavan' | relative_name: missed (लता चव्हाण) ['Lata Chavan' was not found in what was said] raw='Lata Chavan' | area: missed (गणेशपेठ) ['Ganeshapeth' was not found in what was said] raw='Ganeshapeth'
-mr-sir-05,sir_enumeration,tune,35.722,422,348,8,8,0,0,0,0,0,
-mr-sir-06,sir_enumeration,tune,33.855,415,317,7,7,0,0,0,0,0,
-mr-tkt-01,service_ticket,tune,30.606,390,280,7,7,0,0,0,0,0,
-mr-tkt-02,service_ticket,tune,30.956,377,275,7,7,0,0,0,0,0,
-mr-tkt-03,service_ticket,tune,29.226,381,293,6,5,0,1,0,0,1,visit_date: missed (2026-11-20) [not a date] raw='20 नव्हेंबर'
-mr-tkt-04,service_ticket,tune,27.321,381,260,7,5,1,1,0,0,2,product: 'water_pump' != 'sprayer' | visit_date: missed (2026-11-01) raw='null'
-mr-tkt-05,service_ticket,tune,27.773,369,268,6,5,0,1,0,0,1,"product: missed (water_pump) [not one of: water_pump, solar_light, tractor, sprayer] raw='motor'"
-mr-tkt-06,service_ticket,tune,32.211,392,315,7,7,0,0,0,0,0,
+mr-asha-01,asha_anc_visit,tune,55.446,475,369,6,5,0,1,0,0,1,village: missed (वडगाव) ['Wadgaon' was not found in what was said] raw='Wadgaon'
+mr-asha-02,asha_anc_visit,tune,50.954,476,380,7,7,0,0,0,0,0,
+mr-asha-03,asha_anc_visit,tune,39.424,474,382,7,7,0,0,0,0,0,
+mr-asha-04,asha_anc_visit,tune,37.49,455,340,7,7,0,0,0,0,0,
+mr-asha-05,asha_anc_visit,tune,54.89,459,361,7,7,0,0,0,0,0,
+mr-asha-06,asha_anc_visit,tune,49.144,468,362,7,7,0,0,0,0,0,
+mr-sir-01,sir_enumeration,tune,50.824,403,309,7,7,0,0,0,0,0,
+mr-sir-02,sir_enumeration,tune,41.676,417,341,8,7,0,1,0,0,1,area: missed (वाघोली) ['Wadgaon' was not found in what was said] raw='Wadgaon'
+mr-sir-03,sir_enumeration,tune,51.197,414,322,7,7,0,0,0,0,0,
+mr-sir-04,sir_enumeration,tune,40.811,393,279,7,4,0,3,0,0,3,elector_name: missed (मीना चव्हाण) ['Meena Chavan' was not found in what was said] raw='Meena Chavan' | relative_name: missed (लता चव्हाण) ['Lata Chavan' was not found in what was said] raw='Lata Chavan' | area: missed (गणेशपेठ) ['Ganeshapeth' was not found in what was said] raw='Ganeshapeth'
+mr-sir-05,sir_enumeration,tune,48.6,418,328,8,8,0,0,0,0,0,
+mr-sir-06,sir_enumeration,tune,66.209,411,317,7,7,0,0,0,0,0,
+mr-tkt-01,service_ticket,tune,55.283,386,280,7,7,0,0,0,0,0,
+mr-tkt-02,service_ticket,tune,54.938,373,267,7,7,0,0,0,0,0,
+mr-tkt-03,service_ticket,tune,44.586,377,247,6,6,0,0,0,0,0,
+mr-tkt-04,service_ticket,tune,47.781,377,280,7,5,1,1,0,0,2,product: 'water_pump' != 'sprayer' | visit_date: missed (2026-11-01) raw='null'
+mr-tkt-05,service_ticket,tune,44.84,365,254,6,5,0,1,0,0,1,"product: missed (water_pump) [not one of: water_pump, solar_light, tractor, sprayer] raw='motor'"
+mr-tkt-06,service_ticket,tune,56.48,388,315,7,7,0,0,0,0,0,

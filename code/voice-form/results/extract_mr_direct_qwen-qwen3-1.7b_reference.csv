@@ -1,19 +1,19 @@
 id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
-mr-asha-01,asha_anc_visit,tune,16.585,579,699,6,6,0,0,0,0,0,
-mr-asha-02,asha_anc_visit,tune,10.676,572,399,7,6,0,1,0,0,1,weeks_pregnant: missed (16) [20 was not found in what was said] raw=20
-mr-asha-03,asha_anc_visit,tune,10.557,565,388,7,7,0,0,0,0,0,
-mr-asha-04,asha_anc_visit,tune,9.095,539,325,7,6,0,1,0,0,1,next_visit_date: missed (2026-11-01)
-mr-asha-05,asha_anc_visit,tune,10.61,551,403,7,7,0,0,1,0,1,next_visit_date: spurious '2026-10-31'
-mr-asha-06,asha_anc_visit,tune,10.199,545,365,7,7,0,0,0,0,0,
-mr-sir-01,sir_enumeration,tune,9.596,488,344,7,5,0,2,0,0,2,"relation: missed (father) ['husband' was not found in what was said] raw='पती' | gender: missed (male) [not one of: female, male, third_gender] raw='मूल्यमान देखील'"
-mr-sir-02,sir_enumeration,tune,9.125,494,331,8,4,0,4,0,0,4,elector_name: missed (सुनंदा माने) | relative_name: missed (विलास माने) | relation: missed (husband) | house_number: missed (105)
-mr-sir-03,sir_enumeration,tune,10.039,492,369,7,6,0,1,0,0,1,elector_name: missed (अमोल भोसले)
-mr-sir-04,sir_enumeration,tune,8.69,469,293,7,7,0,0,0,0,0,
-mr-sir-05,sir_enumeration,tune,8.48,496,304,8,4,0,4,0,0,4,elector_name: missed (राहुल जगताप) | relative_name: missed (सुरेश जगताप) | relation: missed (father) | house_number: missed (48)
-mr-sir-06,sir_enumeration,tune,10.243,488,388,7,7,0,0,1,0,1,house_number: spurious '9'
-mr-tkt-01,service_ticket,tune,9.789,471,350,7,7,0,0,0,0,0,
-mr-tkt-02,service_ticket,tune,8.511,444,291,7,7,0,0,0,0,0,
-mr-tkt-03,service_ticket,tune,7.835,444,261,6,3,0,3,0,0,3,customer_name: missed (बाळू धुमाळ) | problem: missed (ट्रॅक्टरचा क्लच अडकतो) | visit_date: missed (2026-11-20)
-mr-tkt-04,service_ticket,tune,9.55,449,345,7,7,0,0,0,0,0,
-mr-tkt-05,service_ticket,tune,12.69,424,490,6,3,0,3,0,0,3,product: missed (water_pump) | problem: missed (मोटर खूप आवाज करते) | urgency: missed (high)
-mr-tkt-06,service_ticket,tune,9.113,468,315,7,7,0,0,0,0,0,
+mr-asha-01,asha_anc_visit,tune,25.771,579,539,6,6,0,0,0,0,0,
+mr-asha-02,asha_anc_visit,tune,23.568,572,386,7,6,0,1,0,0,1,weeks_pregnant: missed (16) [20 was not found in what was said] raw=20
+mr-asha-03,asha_anc_visit,tune,166.014,565,388,7,7,0,0,0,0,0,
+mr-asha-04,asha_anc_visit,tune,91.053,539,305,7,6,0,1,0,0,1,next_visit_date: missed (2026-11-01)
+mr-asha-05,asha_anc_visit,tune,35.833,551,321,7,6,0,1,1,0,2,"next_visit_date: spurious '2026-10-31' | remarks: missed (पुढच्या वेळी पती घरी असतील) [only the field's own name was given, not a value] raw='शेरा'"
+mr-asha-06,asha_anc_visit,tune,25.612,545,399,7,7,0,0,0,0,0,
+mr-sir-01,sir_enumeration,tune,19.462,488,331,7,5,0,2,0,0,2,"relation: missed (father) ['husband' was not found in what was said] raw='पती' | gender: missed (male) [not one of: female, male, third_gender] raw='मूल्यमान'"
+mr-sir-02,sir_enumeration,tune,17.31,494,354,8,7,0,1,0,0,1,elector_name: missed (सुनंदा माने)
+mr-sir-03,sir_enumeration,tune,16.863,492,379,7,7,0,0,1,0,1,house_number: spurious 'ABC 1 2 3 4 5 6 7'
+mr-sir-04,sir_enumeration,tune,15.538,469,292,7,7,0,0,0,0,0,
+mr-sir-05,sir_enumeration,tune,13.77,496,311,8,4,0,4,0,0,4,elector_name: missed (राहुल जगताप) | relative_name: missed (सुरेश जगताप) | relation: missed (father) | house_number: missed (48)
+mr-sir-06,sir_enumeration,tune,15.719,488,375,7,7,0,0,1,0,1,house_number: spurious '8 7 6 5 4 3'
+mr-tkt-01,service_ticket,tune,15.43,471,359,7,7,0,0,0,0,0,
+mr-tkt-02,service_ticket,tune,13.94,444,307,7,6,1,0,0,0,1,problem: 'घाई नाही' != 'सोलर दिवा रात्री बंद पडतो'
+mr-tkt-03,service_ticket,tune,8.795,444,258,6,3,0,3,0,0,3,customer_name: missed (बाळू धुमाळ) | problem: missed (ट्रॅक्टरचा क्लच अडकतो) | visit_date: missed (2026-11-20)
+mr-tkt-04,service_ticket,tune,19.985,449,344,7,7,0,0,0,0,0,
+mr-tkt-05,service_ticket,tune,14.318,424,277,6,5,0,1,0,0,1,"village: missed (मोरगाव) [only the field's own name was given, not a value] raw='गाव'"
+mr-tkt-06,service_ticket,tune,14.932,468,294,7,6,0,1,0,0,1,"customer_name: missed (वंदना खैरे) [only the field's own name was given, not a value] raw='ग्राहक'"

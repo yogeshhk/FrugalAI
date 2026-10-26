@@ -17,7 +17,7 @@ Root `TODO.md` has the round-2 re-run.
 
 ## Still to build
 - [ ] Streamlit app (needs `streamlit>=1.40`; env has 1.37): live fields, click a field to see its words, follow-ups, voice corrections, two engines side by side, offline counter, scoreboard tab.
-- [ ] Docs: `docs/sources.md` entries for every model and claim, an internship section, AWESOME.md entries (read first).
+- [ ] Docs: AWESOME.md entries (read each source first; the repo has 2 entries now).
 - [ ] Seminar deck: a fourth project part in the Frugal AI seminar, then `/upgrade-deck` on the seminar.
 
 ## Ideas for students (not planned)

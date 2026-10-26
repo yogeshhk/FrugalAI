@@ -53,26 +53,30 @@ No entries yet. Be the first: see [How to add an entry](#how-to-add-an-entry).
 Arduino, ESP32 and similar. Language models do not fit in kilobytes of RAM, so entries here are
 keyword spotting, sensor classification, small vision and similar models.
 
-No entries yet. Be the first: see [How to add an entry](#how-to-add-an-entry).
+- [TensorFlow Lite for Microcontrollers (tflite-micro)](https://github.com/tensorflow/tflite-micro) - Runs deep learning models on bare-metal systems, DSPs and microcontrollers with limited memory, with community ports for Arduino and ESP32.
+  Hardware: Arm Cortex-M, Xtensa, RISC-V and others; the page gives memory use as tens to hundreds of kilobytes and lists no specific board. Model: none bundled on the page; bring your own TensorFlow Lite model (licence depends on the model). Licence: Apache-2.0. Measured: not measured here. Verified: 2026-10-26.
 
 ## Browser and no-install
 
 Runs in a web browser on the CPU (for example WebAssembly), with no server and nothing to install.
 
-No entries yet. Be the first: see [How to add an entry](#how-to-add-an-entry).
+- [wllama](https://github.com/ngxson/wllama) - WebAssembly binding for llama.cpp that runs GGUF language models inside the browser with no backend and no GPU needed, with a live demo.
+  Hardware: any browser with WebAssembly SIMD, CPU only (optional WebGPU in V3.1 and later); a single model file is limited to 2 GB, larger ones must be split. Model: any GGUF model, Q4 to Q6 recommended (licence depends on the model). Licence: MIT. Measured: not measured here. Verified: 2026-10-26.
 
 ## Small models
 
 Open-weight models small enough for the platforms above, with the licence and the smallest hardware they
 were run on. Indian-language models are especially welcome.
 
-No entries yet. Be the first: see [How to add an entry](#how-to-add-an-entry).
+- [Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B) - A 1.7B-parameter open-weight chat model with a switchable thinking mode and a stated 100+ languages and dialects (Hindi and Marathi are not named on the card).
+  Hardware: the model card names none; in this repo it ran as Qwen3 1.7B Q4_K_M on a 10-core, 16 GB Windows PC (see the FrugalAI offline wiki Q&A entry). Model: Qwen3-1.7B (Apache-2.0), ungated download. Licence: Apache-2.0. Measured: not on the card; this repo measured it (see the wiki Q&A entry). Verified: 2026-10-26.
 
 ## Runtimes and tools
 
 Inference engines, quantisation tools, converters and harnesses that work on the platforms above.
 
-No entries yet. Be the first: see [How to add an entry](#how-to-add-an-entry).
+- [llama.cpp](https://github.com/ggml-org/llama.cpp) - C/C++ inference for language models with no dependencies, running on plain CPUs and using 1.5-bit to 8-bit quantisation to cut memory use.
+  Hardware: x86 CPUs (AVX, AVX2, AVX512) and Arm CPUs (NEON), with optional GPU backends that are not needed; the page does not mention Raspberry Pi. Model: any GGUF model (licence depends on the model). Licence: MIT. Measured: not measured here; see the FrugalAI wiki Q&A entry for a run that uses it. Verified: 2026-10-26.
 
 ## Applications by sector
 

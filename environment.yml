@@ -18,7 +18,6 @@ dependencies:
   - requests
   - scipy
   - scikit-learn      # quantum-wiki: English stop-word list
-  - matplotlib        # _scripts/make_campaign_diagrams.py
   - ffmpeg            # voice-form: decodes phone recordings
   - pip:
       - --extra-index-url https://download.pytorch.org/whl/cpu
