@@ -139,3 +139,8 @@ one live run answered correctly (2 model calls, 191 prompt tokens, 30 completion
 in-repo, no log of that run was kept). The 31-case model
 evaluation (`eval/cases.json`, `python -m wfagent eval`, needs LM Studio) has not been run; `results/results.csv` there holds a scripted-model run that
 only checks the plumbing and is not a model result. Print the graph with `python -m wfagent graph`.
+
+## Notes
+- `eval/intake_cases.json` was written by Claude and not reviewed; gold labels are only covered or new. The topic-drift threshold was set on the 24 first-version drafts (in-sample).
+- The workflow does the mechanical half of the skill; judgment and fact checking stay with the author or a stronger model, and every draft is marked unverified. The graph reads the
+  repository's rule files and loads the author's counter instead of copying them, so the two sources of rules cannot drift.

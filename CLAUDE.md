@@ -20,7 +20,7 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
 
 ## Layout
 `docs/` concepts, landscape, sources, safety, internship ideas. `code/` holds everything that runs: each project is a
-self-contained folder (code, data, tests, README, TODO): `code/wiki-rag/`, `code/quantum-wiki/`, `code/finetune-slm/`,
+self-contained folder (code, data, tests, README, and a TODO only while an action is open): `code/wiki-rag/`, `code/quantum-wiki/`, `code/finetune-slm/`,
 `code/workflow-agent/`; copy `code/_template/` for a new one. Shared pieces live in `code/common/`:
 `code/common/frugalai_common/` backend interface and benchmark runner, `code/common/benchmarks/` method and results,
 `code/common/devices/` per-device setup. `_scripts/` at the repo root holds the repo tools (AWESOME.md and link

@@ -89,7 +89,7 @@ Then follow [code/wiki-rag/](code/wiki-rag/) to ask questions of a notes folder,
 
 ## Adding new code or a project
 
-Each project is its own folder under `code/` with its own code, data, tests, README and TODO. To add something:
+Each project is its own folder under `code/` with its own code, data, tests and README, plus a TODO while an action is open. To add something:
 
 1. **A project** (an end-to-end job): copy [code/_template/](code/_template/) to
    `code/<short-name>/`, give it its own tests and README, and add a row for it to the

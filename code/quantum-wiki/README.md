@@ -131,3 +131,8 @@ code check does not catch because it only guards course codes and numbers, and M
 - "The syllabus does not say" for unanswerable questions comes from empty tool results or from the model; the model
   path can invent (see MATLAB above).
 - Built for this one document layout. A different PDF needs a new card builder.
+
+## Notes
+- The router is rules: every failure on a new question shape should become a test.
+- Docling downloads its models into `models/` (about 300 MB, git-ignored); the first parse needs network access.
+- The held-out set is no longer pristine; both question sets were drafted by Claude and not reviewed. The grounding check is tested offline but its effect on model answers is not measured.
