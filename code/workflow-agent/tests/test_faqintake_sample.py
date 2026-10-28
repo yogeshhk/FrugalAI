@@ -64,6 +64,15 @@ def test_semantic_search_finds_a_sample_entry(sample):
     assert top == "running_locally/gpu_is_required"
 
 
+def test_new_concept_without_drafting_makes_no_model_call(sample):
+    llm = FakeChat([])
+    ctx = Context(entries=sample, index=checks.SemanticIndex(sample, HashEmbeddings()), llm=llm,
+                  cc=None, thresholds={"cover": 0.95, "partial": 0.9}, use_regex=False, draft=False)
+    out = run_intake(ctx, "Why should answers from a small model on a laptop be kept short?")
+    assert out["decision"] == "new" and not out.get("draft_md")
+    assert out["plan"][0]["status"] == "absent" and out["cost"].get("llm_calls", 0) == 0
+
+
 def test_new_concept_runs_end_to_end_on_the_sample(sample):
     good = {"title": "Why keep a small model's answers short?",
             "question": "Short answers finish sooner on a slow machine, which surprises people who expect long ones. " * 1,

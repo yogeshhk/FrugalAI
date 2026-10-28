@@ -24,8 +24,9 @@ targets sub-$50 hardware. Source: [S2](sources.md#s2).
 ### Modi script transliteration
 MoScNet and the MoDeTrans dataset (2,043 Modi images with Devanagari transliterations) from IIT Roorkee
 researchers; the paper reports a distilled student 163 times smaller than its teacher. Source:
-[S4](sources.md#s4). Press coverage says the model and dataset were released on Hugging Face; check the
-repository itself before relying on that (to verify).
+[S4](sources.md#s4). The dataset is on Hugging Face as `historyHulk/MoDeTrans`, with a synthetic companion
+`SynthMoDe` ([S56](sources.md#s56)). A MoScNet model repository was not found, so do not plan on reusing the model;
+check the dataset card for its licence before use.
 
 ### Energy and token-cost context
 - The IEA reports data centres used around 415 TWh in 2024, about 1.5% of world electricity, and projects

@@ -17,6 +17,30 @@ def test_question_rules_are_fixed_and_ordered():
     assert [q["id"] for q in got] == ["b", "a", "d"]                 # first of each kind, in the fixed kind order, lookup left out
 
 
+def test_demo_questions_are_the_five_chosen():
+    assert len(D.DEMO_QUESTIONS) == 5 and len(set(D.DEMO_QUESTIONS)) == 5
+    assert all(q.endswith("?") for q in D.DEMO_QUESTIONS)
+
+
+def test_rag_score_sums_the_structure_rows_only():
+    rows = [{"system": "struct", "kind": "all", "n": "80", "accuracy": "0.688"},
+            {"system": "struct", "kind": "all", "n": "30", "accuracy": "0.633"},
+            {"system": "agent", "kind": "all", "n": "80", "accuracy": "0.975"},
+            {"system": "struct", "kind": "status", "n": "8", "accuracy": "1.0"}]
+    s = D.rag_score(rows)
+    assert "67%" in s and "110" in s
+    assert D.rag_score([{"system": "agent", "kind": "all", "n": "80", "accuracy": "0.975"}]) is None
+
+
+def test_faq_score_line_is_plain_and_has_no_dash():
+    assert "20" in D.FAQ_SCORE and "91%" in D.FAQ_SCORE
+    assert "—" not in D.FAQ_SCORE and "–" not in D.FAQ_SCORE
+
+
+def test_clean_answer_drops_bold_and_extra_space():
+    assert D.clean_answer("The title is **Quantum**.  \n[p. 30]") == "The title is Quantum. [p. 30]"
+
+
 def test_marathi_rule_takes_first_two_per_group():
     tests = [{"id": "r%d" % i, "group": "reworded"} for i in range(4)] + [{"id": "c1", "group": "control"}]
     got = D.marathi_questions(tests)

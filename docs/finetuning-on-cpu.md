@@ -23,7 +23,7 @@ memory for gradients and optimiser state, which is what makes CPU training possi
 | SmolLM2 | 135M, 360M, 1.7B | Hugging Face's small models, built for devices; 135M is used in the project |
 | Qwen2.5 | 0.5B, 1.5B | open weights, multilingual; check the licence of the size you use |
 | Llama 3.2 | 1B | Meta's small model; the licence has conditions, read it |
-| Phi-3-mini and Phi-4-mini | about 3.8B | at the upper limit for a CPU; needs plenty of RAM, to verify |
+| Phi-3-mini and Phi-4-mini | about 3.8B | Phi-4-mini is 3.8B and MIT-licensed [S46](sources.md#s46); at the upper limit for a CPU, needs plenty of RAM (measure it) |
 | DistilGPT-2, GPT-Neo-125M | 82M, 125M | tiny; fine for learning the workflow, weak for real tasks |
 
 Memory rule of thumb (to verify on your machine): full-precision training needs the weights plus gradients and
@@ -35,9 +35,9 @@ project script records it.
 | Tool | Status found on 2026-10-20 |
 |------|----------------------------|
 | Hugging Face Transformers + PEFT | the route used in the project; works on CPU in plain PyTorch |
-| bitsandbytes | has a CPU backend for Linux and Windows x86-64 [S31](sources.md#s31); whether 4-bit (QLoRA) training works on it was not confirmed |
-| Unsloth | per its requirements page, CPU is for chat and data recipes only; training needs an NVIDIA or Intel GPU [S28](sources.md#s28). The claim of a native CPU training backend was not supported |
-| llama.cpp `finetune` | the old tool was removed in July 2024 [S29](sources.md#s29); a newer `llama-finetune` is described as work in progress and FP32 only. LoRA training there is to verify |
+| bitsandbytes | has CPU wheels for Linux and Windows x86-64 (AVX2) [S31](sources.md#s31); its install guide gives no CPU feature table, so whether 4-bit (QLoRA) training works on it was not confirmed |
+| Unsloth | per its requirements page, CPU is for chat and data recipes only; training needs an NVIDIA, AMD, Intel or Apple device [S28](sources.md#s28). The claim of a native CPU training backend was not supported |
+| llama.cpp `finetune` | the old tool was removed in July 2024 [S29](sources.md#s29); the current `llama-finetune` README calls finetuning "technically functional" for FP32 models but "very much WIP", and does not mention LoRA. LoRA training there is to verify |
 | MLX | built for Apple silicon, with a Linux CPU package [S30](sources.md#s30). No Windows install was documented, so it is not a Windows option as far as found |
 
 ## Settings that matter on a CPU
@@ -73,7 +73,9 @@ models (2026-10-20, main PC, CPU, float32):
 - On this CPU, bfloat16 inference was about 12 minutes per question (no native bf16 support), while float32 took a
   few seconds. Use float32 on a CPU and make sure the memory is free (the 1B model needs about 4 GB).
 - The Google repositories for Gemma 3 are gated; the Unsloth mirrors are not, and carry the same Gemma licence
-  (see [S32](sources.md#s32)). The Gemma terms of use apply to anything derived from the weights (to verify).
+  (see [S32](sources.md#s32)). The Gemma terms define Model Derivatives to include models made from its weights and
+  require passing on the terms and use restrictions when you distribute one (section 1.1(e) and 3.1, read
+  2026-10-28; also [S32](sources.md#s32)). Outputs alone are not derivatives. Read the terms before sharing the adapter.
 - The test design matters: a closed-book model cannot be tested on chapters it never saw. Test with new wordings of
   facts it was trained on, plus a control group of withheld chapters.
 

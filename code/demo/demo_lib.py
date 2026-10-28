@@ -17,7 +17,7 @@ from typing import Dict, List, Optional
 
 HERE = Path(__file__).resolve().parent
 CODE = HERE.parent
-for sub in ("common", "quantum-wiki", "finetune-slm"):          # the sibling projects, as in GETTING_STARTED.md
+for sub in ("common", "quantum-wiki", "finetune-slm", "workflow-agent"):          # the sibling projects, as in GETTING_STARTED.md
     p = str(CODE / sub)
     if p not in sys.path:
         sys.path.insert(0, p)
@@ -135,6 +135,38 @@ def marathi_questions(tests: List[dict], per_group: int = 2) -> List[dict]:
     for g in MARATHI_GROUPS:
         out += [q for q in tests if q["group"] == g][:per_group]
     return out
+
+
+# ------------------------------------------------------------------ the minimal demo: base model against base + RAG
+# Picked by the author on 2026-10-28 after a trial run (ANALYSIS.md section 8), as clear illustrations, not a random sample.
+DEMO_QUESTIONS = (
+    "For how many lectures should sensing be taught within QT 01?",
+    "What is the pass mark for QT 03?",
+    "What is the title of QT 08?",
+    "Which course is called Quantum Optics?",
+    "What are the credits of QT 04?",
+)
+
+
+def rag_score(rows: List[dict]) -> Optional[str]:
+    """One plain sentence from the rows of answers_summary.csv, or None when there is no structure-aware run."""
+    mine = [r for r in rows if r.get("system") == "struct" and r.get("kind") == "all"]
+    n = sum(int(r["n"]) for r in mine)
+    if not n:
+        return None
+    right = sum(round(float(r["accuracy"]) * int(r["n"])) for r in mine)
+    return ("Base + RAG answered %d%% of %d syllabus questions correctly (one run, one machine). "
+            "These five questions were picked as clear examples." % (round(100 * right / n), n))
+
+
+# From code/workflow-agent/README.md (author's private FAQ notes, 32 test cases written by Claude, one run).
+FAQ_SCORE = ("On 32 test questions about the author's own FAQ notes, the right entry came first for all 20 reworded ones, "
+             "and covered against new was right 91% of the time (one run; the cut-off was tuned on half the cases).")
+
+
+def clean_answer(text: str) -> str:
+    """Plain text for the page: no markdown bold, one space between words, line breaks kept as spaces."""
+    return re.sub(r"\s+", " ", text.replace("**", "")).strip()
 
 
 # ------------------------------------------------------------------ Marathi: recorded answers and scoring

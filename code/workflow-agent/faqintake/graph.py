@@ -51,6 +51,7 @@ class Context:
     use_regex: bool = True
     exemplar_mode: str = "neutral"           # "neutral": a fixed unrelated example; "nearest": the closest FAQ entry
     max_repairs: int = MAX_REPAIRS
+    draft: bool = True                       # False: a new concept goes straight to the plan, no model call
 
 
 # ------------------------------------------------------------------ the plan (from the skill's fixed order)
@@ -204,7 +205,7 @@ def build_graph(ctx: Context):
     for n in ("regex_check", "semantic_check", "theme_check"):       # fan out
         g.add_edge("normalise", n)
     g.add_edge(["regex_check", "semantic_check", "theme_check"], "decide")   # join: wait for all three
-    g.add_conditional_edges("decide", route, {"covered": "covered", "partial": "partial", "new": "draft_flow"})
+    g.add_conditional_edges("decide", route, {"covered": "covered", "partial": "partial", "new": "draft_flow" if ctx.draft else "plan"})
     for n in ("covered", "partial", "draft_flow"):
         g.add_edge(n, "plan")
     g.add_edge("plan", "render")

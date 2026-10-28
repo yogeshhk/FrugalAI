@@ -27,9 +27,11 @@ A token costs three things, and each can be measured separately:
   ([S10](sources.md#s10)). These are cloud-scale figures and say nothing about a Raspberry Pi or an old
   laptop.
 
-Whether energy scales "almost linearly" with tokens, as a video talk claims, is not confirmed (see
-[landscape.md](landscape.md)). Testing it on a local device is a good first experiment for this repo: run the
-same model with different output lengths and read the power meter.
+Whether energy scales "almost linearly" with tokens, as a video talk claims, is partly supported: one A100 study
+found energy linear in output tokens (about 1.72 J per generated token) with input length mattering little, while a
+2026 paper argues the relation is non-linear across lengths on H100 GPUs ([S54](sources.md#s54), seen through search
+summaries only). Neither covers a CPU, a Raspberry Pi or an old laptop. Testing it on a local device is a good first
+experiment for this repo: run the same model with different output lengths and read the power meter.
 
 ## Design practices
 
@@ -65,8 +67,9 @@ the video talk are repeated here.
   "linear scaling in sequence length" and 5x higher inference throughput than Transformers on its setup
   ([S17](sources.md#s17)). Small CPU devices are not covered by that claim.
 - Sub-byte quantisation: storing weights in fewer than 8 bits. This repo uses 4-bit GGUF files (see
-  [concepts.md](concepts.md#quantisation)). Anything lower than 4 bits is not yet read from a source here
-  (to verify).
+  [concepts.md](concepts.md#quantisation)). Below 4 bits, llama.cpp has 2-bit and 3-bit types
+  (Q2_K, Q3_K, IQ2, IQ3) and BitNet b1.58 uses ternary weights of about 1.58 bits trained that way from the start
+  ([S55](sources.md#s55), seen through search summaries only). The quality loss at these levels is not measured here.
 - Speculative decoding: a small draft model proposes tokens and the large model checks them in parallel,
   giving identical outputs. The authors report a 2x to 3x speedup on T5-XXL against the standard T5X
   implementation ([S15](sources.md#s15)). Speed on that model is not a result for local small models.

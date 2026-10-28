@@ -107,8 +107,8 @@
 - id: hi-tkt-03
   form: service_ticket
   set: tune
-  text: ट्रैक्टर का क्लच अटकता है. ग्राहक बालू धुमाल, गांव सोमपुर, मोबाइल नौ एक सात दो शून्य शून्य तीन चार पांच छह. बीस नवंबर को आइए.
-  gold: {customer_name: बालू धुमाल, village: सोमपुर, phone: "9172003456", product: tractor, problem: ट्रैक्टर का क्लच अटकता है, visit_date: "2026-11-20"}
+  text: ट्रैक्टर का क्लच अटकता है. ग्राहक बालकिशन धाकड़, गांव सोमपुर, मोबाइल नौ एक सात दो शून्य शून्य तीन चार पांच छह. बीस नवंबर को आइए.
+  gold: {customer_name: बालकिशन धाकड़, village: सोमपुर, phone: "9172003456", product: tractor, problem: ट्रैक्टर का क्लच अटकता है, visit_date: "2026-11-20"}
 - id: hi-tkt-04
   form: service_ticket
   set: tune
@@ -117,8 +117,8 @@
 - id: hi-tkt-05
   form: service_ticket
   set: tune
-  text: नाम हरि गावड़े. गांव मोरगांव. मोबाइल नौ चार शून्य चार शून्य चार शून्य चार एक एक. मोटर बहुत आवाज़ करती है. तुरंत आइए.
-  gold: {customer_name: हरि गावड़े, village: मोरगांव, phone: "9404040411", product: water_pump, problem: मोटर बहुत आवाज़ करती है, urgency: high}
+  text: नाम हरि गुर्जर. गांव मोरवा. मोबाइल नौ चार शून्य चार शून्य चार शून्य चार एक एक. मोटर बहुत आवाज़ करती है. तुरंत आइए.
+  gold: {customer_name: हरि गुर्जर, village: मोरवा, phone: "9404040411", product: water_pump, problem: मोटर बहुत आवाज़ करती है, urgency: high}
 - id: hi-tkt-06
   form: service_ticket
   set: tune
@@ -132,13 +132,13 @@
 - id: hi-tkt-08
   form: service_ticket
   set: heldout
-  text: ट्रैक्टर स्टार्ट नहीं हो रहा. ग्राहक अशोक बांगड़, गांव पारसौली, मोबाइल आठ सात आठ सात आठ सात एक दो एक दो. तीस नवंबर को आइए.
-  gold: {customer_name: अशोक बांगड़, village: पारसौली, phone: "8787871212", product: tractor, problem: ट्रैक्टर स्टार्ट नहीं हो रहा, visit_date: "2026-11-30"}
+  text: ट्रैक्टर स्टार्ट नहीं हो रहा. ग्राहक अशोक कुशवाहा, गांव पारसौली, मोबाइल आठ सात आठ सात आठ सात एक दो एक दो. तीस नवंबर को आइए.
+  gold: {customer_name: अशोक कुशवाहा, village: पारसौली, phone: "8787871212", product: tractor, problem: ट्रैक्टर स्टार्ट नहीं हो रहा, visit_date: "2026-11-30"}
 - id: hi-tkt-09
   form: service_ticket
   set: heldout
-  text: नाम रोहिणी काले, गांव बारां, मोबाइल नौ नौ शून्य शून्य एक एक दो दो तीन तीन. स्प्रेयर का नोजल टूट गया है. जल्दी नहीं है. वारंटी में है.
-  gold: {customer_name: रोहिणी काले, village: बारां, phone: "9900112233", product: sprayer, problem: स्प्रेयर का नोजल टूट गया है, urgency: low, under_warranty: true}
+  text: नाम रोहिणी दुबे, गांव बारां, मोबाइल नौ नौ शून्य शून्य एक एक दो दो तीन तीन. स्प्रेयर का नोजल टूट गया है. जल्दी नहीं है. वारंटी में है.
+  gold: {customer_name: रोहिणी दुबे, village: बारां, phone: "9900112233", product: sprayer, problem: स्प्रेयर का नोजल टूट गया है, urgency: low, under_warranty: true}
 
 # Free speech: read the facts, then say them in your own words, in any order, as you would in the field.
 # No reference transcript, so only field accuracy is scored. Never looked at while tuning.
@@ -165,10 +165,10 @@
 - id: hi-free-05
   form: service_ticket
   set: free
-  facts: ग्राहक नितिन कोकाटे, गांव इंदौरा, मोबाइल 9822001122, पानी की मोटर, फ्यूज बार बार उड़ता है, तुरंत
-  gold: {customer_name: नितिन कोकाटे, village: इंदौरा, phone: "9822001122", product: water_pump, problem: फ्यूज बार बार उड़ता है, urgency: high}
+  facts: ग्राहक नितिन चौरसिया, गांव इंदौरा, मोबाइल 9822001122, पानी की मोटर, फ्यूज बार बार उड़ता है, तुरंत
+  gold: {customer_name: नितिन चौरसिया, village: इंदौरा, phone: "9822001122", product: water_pump, problem: फ्यूज बार बार उड़ता है, urgency: high}
 - id: hi-free-06
   form: service_ticket
   set: free
-  facts: ग्राहक सुजाता पाल, गांव वाई, मोबाइल 7720554433, सोलर लाइट, बैटरी जल्दी खत्म होती है, वारंटी है
-  gold: {customer_name: सुजाता पाल, village: वाई, phone: "7720554433", product: solar_light, problem: बैटरी जल्दी खत्म होती है, under_warranty: true}
+  facts: ग्राहक सुजाता पाल, गांव भिंड, मोबाइल 7720554433, सोलर लाइट, बैटरी जल्दी खत्म होती है, वारंटी है
+  gold: {customer_name: सुजाता पाल, village: भिंड, phone: "7720554433", product: solar_light, problem: बैटरी जल्दी खत्म होती है, under_warranty: true}

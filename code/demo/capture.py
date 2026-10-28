@@ -2,16 +2,18 @@
 
     python capture.py <out_dir> [name ...]        names from SHOTS below; none means all
 
-The demo page must be running (streamlit run app.py) with LM Studio serving the three models. Each shot opens the
-page with query parameters that pick the section and the fixed question, waits until the answers are on screen,
-then saves a PNG. Marathi shots use hide=1 (questions and measured table only), see TODO.md.
+The demo page must be running (streamlit run app.py) with LM Studio serving Qwen3 1.7B and nomic-embed-text. Each shot
+opens the page with ?q=<number> (one of the five fixed questions), waits until both answers and the score line are on
+screen, then saves a PNG of the content area. The earlier three-section version is in _backup/.
 """
 
 import base64
 import json
 import subprocess
 import sys
+import tempfile
 import time
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -20,21 +22,19 @@ import websocket  # websocket-client
 EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 BASE = "http://localhost:8501/"
 PORT = 9333
-WIDTH, HEIGHT = 1600, 1250
+WIDTH, HEIGHT = 1500, 900
 
-# name -> (query string, text that appears when the answers are done)
-SHOTS = {
-    "frugal_demo_doc_status": ("?s=0&q=0", "Structure-aware agent", "Measured on 110"),
-    "frugal_demo_doc_list": ("?s=0&q=1", "Structure-aware agent", "Measured on 110"),
-    "frugal_demo_doc_subtopics": ("?s=0&q=2", "Structure-aware agent", "Measured on 110"),
-    "frugal_demo_doc_numbers": ("?s=0&q=3", "Structure-aware agent", "Measured on 110"),
-    "frugal_demo_doc_cross": ("?s=0&q=4", "Structure-aware agent", "Measured on 110"),
-    "frugal_demo_doc_unanswerable": ("?s=0&q=5", "Structure-aware agent", "Measured on 110"),
-    "frugal_demo_marathi_reworded": ("?s=1&m=0&hide=1", "Base model, no help", "Measured on 52"),
-    "frugal_demo_marathi_raw": ("?s=1&m=2&hide=1", "Base model, no help", "Measured on 52"),
-    "frugal_demo_marathi_control": ("?s=1&m=4&hide=1", "Base model, no help", "Measured on 52"),
-    "frugal_demo_router": ("?s=2&r=0", "Intent:", "Measured on 150"),
-}
+SHOTS = {"frugal_rag_q%d" % (i + 1): "?q=%d&bare=1" % i for i in range(5)}      # run with app.py
+
+# run with app_faq.py (the author's real QCNP notes, so the pictures show real FAQ names: the author accepted that on 2026-10-28)
+FAQ_QUESTIONS = (
+    "Does a quantum computer try every answer at once?",
+    "Can entanglement be used to send a message faster than light?",
+    "Will quantum computers break all encryption soon?",
+    "What is a surface code?",
+    "Why is the no-cloning theorem important?",
+)
+SHOTS.update({"frugal_faq_q%d" % (i + 1): "?bare=1&q=" + urllib.parse.quote(q) for i, q in enumerate(FAQ_QUESTIONS)})
 
 
 class Page:
@@ -60,41 +60,32 @@ class Page:
             if msg.get("id") == self.n:
                 return msg.get("result", {})
 
-    def text(self) -> str:
-        r = self.call("Runtime.evaluate", expression="document.body.innerText", returnByValue=True)
-        return r.get("result", {}).get("value", "") or ""
-
-    def height(self) -> int:
-        r = self.call("Runtime.evaluate", returnByValue=True,
-                      expression="Math.max(document.querySelector('.block-container').getBoundingClientRect().bottom, "
-                                 "document.querySelector('[data-testid=stSidebarContent]').scrollHeight * 0 + 900)")
-        return int(r.get("result", {}).get("value", HEIGHT))
+    def value(self, expression):
+        return self.call("Runtime.evaluate", expression=expression, returnByValue=True).get("result", {}).get("value")
 
 
-def shoot(page: Page, name: str, query: str, done_text: str, tail_text: str, out: Path, timeout: int = 240) -> Path:
+def shoot(page: Page, name: str, query: str, out: Path, timeout: int = 240) -> Path:
+    page.call("Emulation.setDeviceMetricsOverride", width=WIDTH, height=HEIGHT, deviceScaleFactor=1, mobile=False)  # full width before layout
     page.call("Page.navigate", url=BASE + query)
     t0 = time.time()
     while time.time() - t0 < timeout:
         time.sleep(1.5)
-        txt = page.text()
+        txt = page.value("document.body.innerText") or ""
         if "Running" in txt and "Stop" in txt:
             continue
-        if done_text in txt and tail_text in txt:
+        if ("Base model + RAG" in txt and "answered" in txt) or ("Where it already appears" in txt and "one run" in txt):
             break
     else:
-        raise RuntimeError("%s: the page never showed %r" % (name, tail_text))
-    if "s=0" not in query:                          # the Marathi and router pages end with a results table: wait for it
-        for _ in range(20):
-            if page.call("Runtime.evaluate", expression="document.querySelectorAll('table').length", returnByValue=True)["result"]["value"]:
-                break
-            time.sleep(1)
-    time.sleep(2.0)
-    h = min(page.height() + 40, 2600)
-    page.call("Emulation.setDeviceMetricsOverride", width=WIDTH, height=h, deviceScaleFactor=1, mobile=False)
+        raise RuntimeError("%s: the page never showed both answers" % name)
+    time.sleep(1.5)
+    r = json.loads(page.value("JSON.stringify({b: document.querySelector('.block-container').getBoundingClientRect(), "
+                              "q: document.querySelector('.q').getBoundingClientRect(), "
+                              "n: document.querySelector('.note').getBoundingClientRect()})"))
+    page.call("Emulation.setDeviceMetricsOverride", width=WIDTH, height=int(r["n"]["bottom"]) + 80, deviceScaleFactor=1, mobile=False)
     time.sleep(1.0)
-    # Content area only (no sidebar, no page title): x 370 to 1560, from y 270 down, so the text stays readable on a slide.
+    top = max(r["q"]["top"] - 20, 0)
     data = page.call("Page.captureScreenshot", format="png",
-                     clip={"x": 370, "y": 270, "width": 1190, "height": h - 270 - 30, "scale": 1})["data"]
+                     clip={"x": r["b"]["x"], "y": top, "width": r["b"]["width"], "height": r["n"]["bottom"] - top + 25, "scale": 1})["data"]
     path = out / (name + ".png")
     path.write_bytes(base64.b64decode(data))
     return path
@@ -104,15 +95,14 @@ def main(argv):
     out = Path(argv[0])
     out.mkdir(parents=True, exist_ok=True)
     names = argv[1:] or list(SHOTS)
-    profile = Path(__import__("tempfile").mkdtemp(prefix="edge_demo_"))
+    profile = Path(tempfile.mkdtemp(prefix="edge_demo_"))
     proc = subprocess.Popen([EDGE, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--remote-debugging-port=%d" % PORT,
                              "--user-data-dir=" + str(profile), "--window-size=%d,%d" % (WIDTH, HEIGHT), "about:blank"],
                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
         page = Page(PORT)
         for name in names:
-            q, done, tail = SHOTS[name]
-            p = shoot(page, name, q, done, tail, out)
+            p = shoot(page, name, SHOTS[name], out)
             print("saved %s (%d bytes)" % (p, p.stat().st_size), flush=True)
     finally:
         proc.terminate()

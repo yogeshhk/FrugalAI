@@ -55,6 +55,18 @@ python -m qwiki eval --systems agent,struct,naive --sets dev,heldout     # resum
 python -m pytest code/quantum-wiki/tests -q                              # from the repo root; offline
 ```
 
+`qwiki` imports `frugalai_common` from `code/common/`. The `frugalai` environment installs that package in editable
+mode, but that environment has not been built; in the `genai` environment the package is not installed, so put it on
+the path first. From `code/quantum-wiki/` in PowerShell:
+
+```powershell
+$env:PYTHONPATH = "..\common"
+conda run -n genai python -m qwiki ask "Which courses are optional?"
+```
+
+Without it, `python -m qwiki` stops with `ModuleNotFoundError: No module named 'frugalai_common'`. The tests do not
+need this (`code/conftest.py` adds the path), and the demo adds it itself.
+
 The PDF is referenced, not copied. Set `QWIKI_PDF` to use another copy. On Windows without symlink rights Docling's
 default model download fails (WinError 1314); the project downloads into its own `models/` folder instead.
 

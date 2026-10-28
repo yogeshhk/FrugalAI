@@ -225,7 +225,7 @@ Synthetic lines: every name and number is made up. Speak naturally, at field pac
 
 **hi-tkt-03** (service_ticket, tune)
 
-ट्रैक्टर का क्लच अटकता है. ग्राहक बालू धुमाल, गांव सोमपुर, मोबाइल नौ एक सात दो शून्य शून्य तीन चार पांच छह. बीस नवंबर को आइए.
+ट्रैक्टर का क्लच अटकता है. ग्राहक बालकिशन धाकड़, गांव सोमपुर, मोबाइल नौ एक सात दो शून्य शून्य तीन चार पांच छह. बीस नवंबर को आइए.
 
 **hi-tkt-04** (service_ticket, tune)
 
@@ -233,7 +233,7 @@ Synthetic lines: every name and number is made up. Speak naturally, at field pac
 
 **hi-tkt-05** (service_ticket, tune)
 
-नाम हरि गावड़े. गांव मोरगांव. मोबाइल नौ चार शून्य चार शून्य चार शून्य चार एक एक. मोटर बहुत आवाज़ करती है. तुरंत आइए.
+नाम हरि गुर्जर. गांव मोरवा. मोबाइल नौ चार शून्य चार शून्य चार शून्य चार एक एक. मोटर बहुत आवाज़ करती है. तुरंत आइए.
 
 **hi-tkt-06** (service_ticket, tune)
 
@@ -245,11 +245,11 @@ Synthetic lines: every name and number is made up. Speak naturally, at field pac
 
 **hi-tkt-08** (service_ticket, heldout + noisy)
 
-ट्रैक्टर स्टार्ट नहीं हो रहा. ग्राहक अशोक बांगड़, गांव पारसौली, मोबाइल आठ सात आठ सात आठ सात एक दो एक दो. तीस नवंबर को आइए.
+ट्रैक्टर स्टार्ट नहीं हो रहा. ग्राहक अशोक कुशवाहा, गांव पारसौली, मोबाइल आठ सात आठ सात आठ सात एक दो एक दो. तीस नवंबर को आइए.
 
 **hi-tkt-09** (service_ticket, heldout + noisy)
 
-नाम रोहिणी काले, गांव बारां, मोबाइल नौ नौ शून्य शून्य एक एक दो दो तीन तीन. स्प्रेयर का नोजल टूट गया है. जल्दी नहीं है. वारंटी में है.
+नाम रोहिणी दुबे, गांव बारां, मोबाइल नौ नौ शून्य शून्य एक एक दो दो तीन तीन. स्प्रेयर का नोजल टूट गया है. जल्दी नहीं है. वारंटी में है.
 
 **hi-free-01** (asha_anc_visit, free speech, clean only). Say these facts in your own words, in any order:
 
@@ -269,8 +269,8 @@ Synthetic lines: every name and number is made up. Speak naturally, at field pac
 
 **hi-free-05** (service_ticket, free speech, clean only). Say these facts in your own words, in any order:
 
-ग्राहक नितिन कोकाटे, गांव इंदौरा, मोबाइल 9822001122, पानी की मोटर, फ्यूज बार बार उड़ता है, तुरंत
+ग्राहक नितिन चौरसिया, गांव इंदौरा, मोबाइल 9822001122, पानी की मोटर, फ्यूज बार बार उड़ता है, तुरंत
 
 **hi-free-06** (service_ticket, free speech, clean only). Say these facts in your own words, in any order:
 
-ग्राहक सुजाता पाल, गांव वाई, मोबाइल 7720554433, सोलर लाइट, बैटरी जल्दी खत्म होती है, वारंटी है
+ग्राहक सुजाता पाल, गांव भिंड, मोबाइल 7720554433, सोलर लाइट, बैटरी जल्दी खत्म होती है, वारंटी है

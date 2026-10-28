@@ -194,16 +194,19 @@ Secondary; other commentators dispute the underlying assumptions.
 <a id="s28"></a>
 ## S28. Unsloth documentation: requirements
 Publisher: Unsloth. URL: https://www.unsloth.ai/docs/get-started/fine-tuning-for-beginners/unsloth-requirements.
-Seen 2026-10-20 through a search summary only; the page itself was not opened. Used for: Unsloth running without a
-GPU only for chat and data recipes, and training needing an NVIDIA (or Intel) GPU. Translated pages disagree, so
-re-read the English page before relying on it.
+Seen 2026-10-20 through a search summary; opened and read 2026-10-28. Used for: Unsloth running without a GPU
+only for chat and data recipes ("Unsloth still works without a GPU, for Chat + Data Recipes"), and training working
+on NVIDIA, AMD, Intel and Apple (MLX) devices, so not on a CPU-only machine.
 
 <a id="s29"></a>
 ## S29. llama.cpp pull request 8669: remove the finetune examples
-Publisher: ggml-org/llama.cpp on GitHub. URL: https://github.com/ggml-org/llama.cpp/pull/8669. Seen 2026-10-20
-through a search summary of a mirror only. Used for: the old `finetune` tool being removed in July 2024. A
-later `examples/training` README (seen only on a mirror) calls `llama-finetune` work in progress, FP32 only.
-Whether current llama.cpp can train LoRA adapters is to verify.
+Publisher: ggml-org/llama.cpp on GitHub. URL: https://github.com/ggml-org/llama.cpp/pull/8669. Opened 2026-10-28:
+merged 25 July 2024, removing `finetune` and `train-text-from-scratch` because they "are no longer working and
+require too much efforts to maintain". The current `examples/training` README
+(https://github.com/ggml-org/llama.cpp/blob/master/examples/training/README.md, opened 2026-10-28) says finetuning
+is "technically functional (for FP32 models and limited hardware setups) but the code is very much WIP", names a
+CPU build (no extra backends) and reports a 1B model working with 24 GB of memory. That README does not mention
+LoRA, so whether current llama.cpp can train LoRA adapters is still to verify.
 
 <a id="s30"></a>
 ## S30. MLX: an array framework for Apple silicon
@@ -215,7 +218,9 @@ silicon, with a Linux CPU package; no Windows install is documented in what was 
 ## S31. Hugging Face Transformers documentation: bitsandbytes
 Publisher: Hugging Face. URL: https://huggingface.co/docs/transformers/quantization/bitsandbytes. Seen 2026-10-20
 through a search summary only. Used for: a CPU backend existing for Linux x86-64, Linux aarch64 and Windows
-x86-64. Which features (for example 4-bit NF4) work on that CPU backend was not confirmed.
+x86-64. The bitsandbytes installation guide (https://huggingface.co/docs/bitsandbytes/main/en/installation, opened
+2026-10-28) lists CPU wheels for Windows x86-64 (AVX2 minimum) but, unlike the CUDA section, has no feature table
+for the CPU. Which features (for example 4-bit NF4 training) work on the CPU backend is still not confirmed.
 
 <a id="s32"></a>
 ## S32. Hugging Face model metadata: Gemma 3 270M and 1B
@@ -223,7 +228,11 @@ Publisher: Hugging Face (public API, `https://huggingface.co/api/models/<id>`). 
 `google/gemma-3-270m`, `google/gemma-3-270m-it`, `google/gemma-3-1b-it` and the `unsloth/` mirrors of the same
 models. Used for: the Google repositories being gated (manual approval), the Unsloth mirrors being ungated, all
 carrying the Gemma licence tag, and the parameter counts (about 268 million and about 1.0 billion). The licence
-text itself was not read; the Gemma terms of use apply to any model derived from these weights (to verify).
+text itself was not read on that date. On 2026-10-28 the Gemma Terms of Use (https://ai.google.dev/gemma/terms)
+were read: section 1.1(e) defines Model Derivatives to include modifications to Gemma and models created by
+transfer of its weights, parameters or outputs (Outputs alone are excluded), and section 3.1 requires passing on
+the agreement and the use restrictions when distributing Gemma or a Model Derivative. The terms say Gemma 4 is
+under a separate licence. This is a reading, not legal advice.
 
 <a id="s33"></a>
 ## S33. LM Studio documentation: structured output
@@ -244,7 +253,10 @@ Publisher: Sarvam AI. URL: https://www.sarvam.ai/products/edge. Read 2026-10-24.
 (Saaras speech recognition 294 MB, Mayura translation 334 MB, Bulbul text-to-speech 60 MB, "under 1GB" in total;
 Saaras and Mayura for 22 Indian languages, Bulbul for 11), target chips, and access only through "Contact Us" and a
 commercial partnership. The page does not say the Edge models are open source and lists no languages by name, so
-Marathi support on device is not confirmed. Bulbul is a text-to-speech model (a voice), not speech recognition.
+Marathi support on device is not confirmed. The Sarvam Edge blog post (https://www.sarvam.ai/blogs/sarvam-edge, read
+2026-10-28) gives 10 Indian languages for recognition and speech synthesis and 11 languages (10 Indian plus English)
+for translation, without naming them, and says nothing on licence or weights; that differs from the 22 and 11 above, so
+the two pages disagree and neither names Marathi. Bulbul is a text-to-speech model (a voice), not speech recognition.
 
 <a id="s36"></a>
 ## S36. Sarvam documentation: models overview, and the 30B and 105B release
@@ -325,7 +337,91 @@ Publisher: Qwen team on Hugging Face. URL: https://huggingface.co/Qwen/Qwen3-1.7
 S40). Used for: Apache-2.0 licence, 1.7B parameters (1.4B non-embedding), no gating notice shown, "100+ languages and
 dialects", and local runners listed (Ollama, LM Studio, llama.cpp).
 
+<a id="s46"></a>
+## S46. Hugging Face model card: Phi-4-mini-instruct
+Publisher: Microsoft on Hugging Face. URL: https://huggingface.co/microsoft/Phi-4-mini-instruct. Read 2026-10-28.
+Used for: "3.8B parameters" and the MIT licence.
+
+<a id="s47"></a>
+## S47. FLORES-200 repository and README
+Publisher: Meta (facebookresearch/flores on GitHub). URLs: https://github.com/facebookresearch/flores and
+https://github.com/facebookresearch/flores/blob/main/flores200/README.md. Read 2026-10-28. Used for: the repository
+listing FLORES-200 as CC-BY-SA 4.0, the language list including Marathi (`mar_Deva`) and Hindi (`hin_Deva`), 3,001
+sentences in total split into dev, devtest and a hidden test set (the README gives no per-split counts), and a
+notice that the repository is no longer updated and newer versions sit with the Open Language Data Initiative.
+
+<a id="s48"></a>
+## S48. Common Voice on the Mozilla Data Collective
+Publisher: Mozilla Data Collective. URL: https://datacollective.mozillafoundation.org/datasets/cmn2cxubn01ebo107piypnoix
+(Marathi 25.0). Seen 2026-10-28 through search summaries of the dataset pages. Used for: Marathi and Hindi Scripted
+Speech listed as CC0-1.0 with ASR as the task; the Marathi datasheet giving 27.71 hours recorded (18.94 validated,
+105 speakers) and barring re-hosting and any attempt to identify speakers. The Hindi hours were not seen; open the
+Hindi datasheet before relying on a figure.
+
+<a id="s49"></a>
+## S49. Case Western Reserve University Bearing Data Center
+Publisher: Case Western Reserve University. URL: https://engineering.case.edu/bearingdatacenter/download-data-file.
+Read 2026-10-28. Used for: samples at 12,000 and 48,000 per second (48 kHz for drive-end experiments), and the page
+stating no licence, terms of use or citation requirement (only a university copyright footer and links to a legal
+notice that was not read). Fault diameters and loads are not on this page.
+
+<a id="s50"></a>
+## S50. PlantVillage on TensorFlow Datasets, and the Mendeley copy
+Publisher: TensorFlow Datasets and Mendeley Data. URLs: https://www.tensorflow.org/datasets/catalog/plant_village
+and https://data.mendeley.com/datasets/tywbtsjrjv/1. Read 2026-10-28. Used for: 54,303 images in 38 classes
+(827.82 MiB download), the TFDS copy being an unaugmented republication with the background class removed, the TFDS
+page giving no data licence, and the linked Mendeley record being CC0 1.0 (a 61,486-image, 39-class upload titled as
+data for a 9-layer CNN paper, so it is a copy and not the original). Original paper: Hughes and Salathe,
+arXiv 1511.08060.
+
+<a id="s51"></a>
+## S51. MODI-HChar on Mendeley Data
+Publisher: Mendeley Data. URL: https://data.mendeley.com/datasets/pk2zrt58pp. Read 2026-10-28. Used for: 57 classes
+(10 numerals, 12 vowels, 35 consonants), the licence label CC BY 4.0, and the usage text beside it saying no
+redistribution and research use only, with credit to Deshmukh, Patil and Kolhe (2015). The two statements conflict;
+follow the stricter one.
+
+<a id="s52"></a>
+## S52. Wikimedia dumps legal page
+Publisher: Wikimedia Foundation. URL: https://dumps.wikimedia.org/legal.html. Read 2026-10-28. Used for: dump text
+being available under the GFDL and CC BY-SA 4.0, some text under CC BY-SA only, some authors adding other licences,
+and the Wikimedia Terms of Use controlling over the page.
+
+<a id="s53"></a>
+## S53. NEU surface defect database (NEU-DET), secondary sources
+Publisher: various mirrors. Seen 2026-10-28 through search summaries only; the IEEE DataPort page for it returned
+HTTP 404 on one URL and shows a licence field of 0 elsewhere, and a Hugging Face mirror lists the upstream licence as
+"other (research use)". Used for: 1,800 grayscale 200x200 images in 6 classes with bounding boxes (class names differ
+between sources). The original database terms were not found.
+
+<a id="s54"></a>
+## S54. Energy versus output length in LLM inference
+Publishers: arXiv. URLs: https://arxiv.org/pdf/2512.01644 (a systematic characterisation of LLM inference on GPUs)
+and https://arxiv.org/abs/2602.05695 (SweetSpot, ICPE 2026). Seen 2026-10-28 through search summaries only; neither
+paper was opened. Used for: one A100 study reporting energy linear in output tokens (R squared 0.999, about 1.72 J per
+generated token) with input length having little effect, and the second paper arguing the relation is non-linear
+across lengths on H100 GPUs (models 1B to 9B, TensorRT-LLM). Neither covers a CPU, a Raspberry Pi or an old laptop.
+
+<a id="s55"></a>
+## S55. Sub-4-bit quantisation: llama.cpp types and BitNet b1.58
+Publishers: ggml-org (llama.cpp) and Microsoft Research. URLs: https://github.com/ggml-org/llama.cpp (quantize tool)
+and https://huggingface.co/papers/2402.17764 (BitNet b1.58). Seen 2026-10-28 through search summaries only. Used for:
+llama.cpp offering 2-bit and 3-bit families (Q2_K, Q3_K, IQ2, IQ3, with figures of roughly 2 to 3.7 bits per weight
+that vary by model and tool) and BitNet b1.58 using ternary weights (about 1.58 bits) trained that way from the
+start, not converted from a full-precision model.
+
+<a id="s56"></a>
+## S56. MoScNet paper and the MoDeTrans dataset
+Publisher: arXiv and Hugging Face. URLs: https://arxiv.org/abs/2503.13060 and https://huggingface.co/datasets/historyHulk/MoDeTrans.
+Seen 2026-10-28 through search summaries only. Used for: the paper (Kausadikar, Kale, Susladkar, Mittal; cs.CV,
+March 2025) with a distilled student 163 times smaller than its teacher, the MoDeTrans dataset (2,043 Modi images
+with Devanagari transliterations) existing on Hugging Face with a companion synthetic set SynthMoDe, and a
+government listing giving an MIT licence (not checked on the Hugging Face card). A MoScNet model repository was not
+found.
+
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":
   https://www.ey.com/en_in/insights/ai/agentic-ai-india/small-language-models
-- Frugal AI Hub white paper and research pages: https://frugalai.org/research/ (to verify before use)
+- Frugal AI Hub research page: https://frugalai.org/research/ (opened 2026-10-28). It lists general research areas
+  (pruning, quantisation, distillation, edge AI) and offers a "Frugal AI White Paper" behind a form, with no title,
+  author or date shown, so nothing is claimed from it.

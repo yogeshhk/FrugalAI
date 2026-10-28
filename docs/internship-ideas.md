@@ -19,13 +19,13 @@ Rules for every project:
 | # | Project | Track | Level | Data | Licence or access status |
 |---|---------|-------|-------|------|--------------------------|
 | 1 | Quantisation versus quality | Language | easy | IndicXNLI | non-commercial research (card), see note |
-| 2 | Marathi and Hindi small-model leaderboard | Language | medium | FLORES-200, IndicXNLI | CC BY-SA 4.0; coverage to verify |
-| 3 | Offline Marathi or Hindi RAG assistant | Language | medium | Wikipedia dump, own question set | to verify |
-| 4 | Offline speech recognition on CPU | Language | medium | Common Voice | access moved in Oct 2025; to verify |
-| 5 | Bearing fault diagnosis with tiny models | Mechanical | easy | CWRU bearing data | no terms stated; to verify |
-| 6 | Surface-defect inspection on CPU | Vision | medium | MVTec AD or NEU-DET | MVTec AD is CC BY-NC-SA 4.0 |
-| 7 | Plant-leaf disease, frozen encoder plus probe | Vision | easy | PlantVillage (TFDS) | not stated; to verify |
-| 8 | Modi script recognition | Vision | hard | MODI-HChar | research only, no redistribution |
+| 2 | Marathi and Hindi small-model leaderboard | Language | medium | FLORES-200, IndicXNLI | CC BY-SA 4.0 (FLORES); Marathi and Hindi are in it [S47](sources.md#s47) |
+| 3 | Offline Marathi or Hindi RAG assistant | Language | medium | Wikipedia dump, own question set | dump text is CC BY-SA 4.0 and GFDL [S52](sources.md#s52) |
+| 4 | Offline speech recognition on CPU | Language | medium | Common Voice | CC0-1.0 on the Mozilla Data Collective; no re-hosting [S48](sources.md#s48) |
+| 5 | Bearing fault diagnosis with tiny models | Mechanical | easy | CWRU bearing data | no terms stated on the page [S49](sources.md#s49); ask the maintainers |
+| 6 | Surface-defect inspection on CPU | Vision | medium | MVTec AD or NEU-DET | MVTec AD is CC BY-NC-SA 4.0; NEU-DET terms not found [S53](sources.md#s53) |
+| 7 | Plant-leaf disease, frozen encoder plus probe | Vision | easy | PlantVillage (TFDS) | TFDS gives no data licence; a Mendeley copy is CC0 [S50](sources.md#s50) |
+| 8 | Modi script recognition | Vision | hard | MODI-HChar | research only, no redistribution [S51](sources.md#s51) |
 | 9 | Token-frugal prompts | Method | easy | none new | not applicable |
 | 10 | Energy per task | Method | medium | none new | needs a power meter |
 | 11 | Model cascade for frugal answers | Method | medium | reuse #1 or #2 | follows that data |
@@ -44,13 +44,16 @@ Rules for every project:
 - Question: which model under about 4B parameters is usable for Marathi and Hindi, and for which job?
 - Method: translation (chrF or BLEU with sacreBLEU) and inference accuracy, for each candidate model, with
   tokens per second and RAM next to the quality score.
-- Data: FLORES-200 is CC BY-SA 4.0 per the [FLORES repo](https://github.com/facebookresearch/flores); confirm
-  that Marathi and Hindi are in it and the sentence counts (to verify). IndicXNLI as in project 1.
+- Data: FLORES-200 is CC BY-SA 4.0 per the [FLORES repo](https://github.com/facebookresearch/flores), and its
+  language list includes Marathi (`mar_Deva`) and Hindi (`hin_Deva`) [S47](sources.md#s47). It has 3,001 sentences,
+  split into dev, devtest and a hidden test set, so only dev and devtest can be scored locally. The repository is
+  no longer updated; newer versions are with the Open Language Data Initiative. IndicXNLI as in project 1.
 - Risks: small models are weak in Indian languages (a stated risk in `docs/assessment.md`); report failures too.
 
 ### 3. Offline Marathi or Hindi RAG assistant
 - Builds on `wiki-rag`. Choose a non-health corpus first, such as a Wikipedia subset
-  (the licence is CC BY-SA, to verify) or a public government scheme document set.
+  (dump text is CC BY-SA 4.0 and GFDL, with some text CC BY-SA only [S52](sources.md#s52); keep attribution and
+  share-alike for anything the student publishes) or a public government scheme document set.
 - The student writes a question set of about 200 items with expected source passages, then measures
   retrieval hit rate and answer correctness with and without the small model.
 - Deliverable: a recipe, the evaluation set (licence stated), and a failure-case list.
@@ -61,7 +64,9 @@ Rules for every project:
 - Method: word error rate, real-time factor and peak RAM per model size, with one of the common CPU runtimes
   (to verify which one to use: whisper.cpp or faster-whisper).
 - Data: Common Voice is, as of October 2025, distributed only through the Mozilla Data Collective; the Hugging
-  Face dataset page for version 17.0 says it is empty. Licence and Marathi and Hindi hours are to verify.
+  Face dataset page for version 17.0 says it is empty. The Data Collective lists Marathi and Hindi Scripted
+  Speech as CC0-1.0; the Marathi datasheet (25.0) gives 27.71 hours recorded, 18.94 validated, 105 speakers, and
+  bars re-hosting and speaker identification [S48](sources.md#s48). The Hindi hours were not seen (to verify).
   Community Marathi Whisper-small fine-tunes exist with Apache-2.0 model cards, for example
   [vittai23/whisper-small-marathi](https://huggingface.co/vittai23/whisper-small-marathi); read each card first.
 - Deliverable: a table of word error rate against speed against RAM, and a recommendation per device.
@@ -81,9 +86,10 @@ Rules for every project:
 - A mechanical-engineering fit. Compare hand-made features (RMS, kurtosis, FFT peaks) with a tiny classifier
   against a small 1D convolutional net, on accuracy, parameters and latency per window. No GPU needed.
 - Data: the [CWRU Bearing Data Center](https://engineering.case.edu/bearingdatacenter/download-data-file)
-  offers Matlab files for normal, drive-end and fan-end faults. The page states no licence or terms of use
-  (to verify; ask the maintainers if unclear). Details in secondary sources (to verify): fault diameters from
-  7 to 40 mils, loads of 0 to 3 hp, sampling at 12 kHz and 48 kHz.
+  offers Matlab files for normal, drive-end and fan-end faults, sampled at 12 kHz (all) and 48 kHz (drive end
+  experiments). The page states no licence, terms of use or citation requirement, only a university copyright
+  footer [S49](sources.md#s49); ask the maintainers before the student publishes anything. Fault diameters from
+  7 to 40 mils and loads of 0 to 3 hp come from secondary sources (to verify).
 - Watch for leakage: windows from one recording must not appear in both train and test.
 
 ### 6. Surface-defect inspection on CPU
@@ -91,21 +97,25 @@ Rules for every project:
   milliseconds per image on the Dell.
 - Data: [MVTec AD](https://www.mvtec.com/company/research/datasets/mvtec-ad) is CC BY-NC-SA 4.0 (non-commercial,
   share-alike), with over 5,000 images in 15 categories. NEU-DET (1,800 grayscale images in 6 steel-defect
-  classes, per secondary sources) is on IEEE DataPort, DOI 10.21227/j84r-f770; access may need a subscription
-  and the terms say research use (to verify).
+  classes, per secondary sources) is on IEEE DataPort, DOI 10.21227/j84r-f770; downloads need a subscription
+  and a mirror lists the upstream licence as "other (research use)". The original terms were not found, so treat
+  it as research only and do not redistribute (to verify) [S53](sources.md#s53).
 - Fits the "frozen encoder plus small head" idea at the end of this file.
 
 ### 7. Plant-leaf disease, frozen encoder plus probe
 - Small, quick start: a frozen encoder with a linear head on PlantVillage, accuracy against encoder size and
   speed. Also test on a few real field photos the student takes, since lab images tend to flatter (to verify).
 - Data: [PlantVillage on TFDS](https://www.tensorflow.org/datasets/catalog/plant_village): 54,303 images,
-  38 classes, 827.82 MiB. The TFDS page gives no dataset licence; check the original source (to verify).
+  38 classes, 827.82 MiB. The TFDS page gives no dataset licence, and its copy is a republication with the
+  background class removed. A Mendeley record it links to is CC0 1.0 but is a 61,486-image, 39-class upload for
+  another paper, so it is a copy, not the original [S50](sources.md#s50). Cite Hughes and Salathe
+  ([arXiv 1511.08060](https://arxiv.org/abs/1511.08060)) and say which copy was used.
 
 ### 8. Modi script recognition
 - Already in `ROADMAP.md` under "Later". A classical baseline and a tiny CNN, compared on accuracy and speed.
 - Data: MODI-HChar on [Mendeley Data](https://data.mendeley.com/datasets/pk2zrt58pp) (57 classes, per the
-  listing). The terms are research use only and no redistribution (to verify on the page), so the data can
-  never be added to this repo. The MoScNet paper is [arXiv 2503.13060](https://arxiv.org/abs/2503.13060); I
+  listing). The page labels it CC BY 4.0 but its usage text says research use only and no redistribution
+  [S51](sources.md#s51); follow the stricter text, so the data can never be added to this repo. The MoScNet paper is [arXiv 2503.13060](https://arxiv.org/abs/2503.13060); I
   found no code or weights, so do not plan on reusing it.
 
 ### 9. Token-frugal prompts
@@ -127,8 +137,9 @@ Projects 1, 5 and 9. They need no restricted data, run on this laptop, reuse the
 CSV and a short recipe. Project 5 suits mechanical-engineering students; 1 and 9 suit anyone with Python.
 
 ## Open for this folder
-- [ ] Check every "to verify" licence or access note above against the dataset's own page before a project
-      is offered to a student.
+- [ ] Licence notes were checked against dataset pages on 2026-10-28. Still open before a project is offered:
+      NEU-DET original terms (6), CWRU terms from the maintainers (5), Hindi Common Voice hours (4), and the
+      CWRU fault diameters and loads (5).
 - [ ] Decide where downloaded data goes (for example `data/` inside each recipe) and add the folder to
       `.gitignore` before the first project starts.
 - [ ] Write a one-page brief per chosen project: goal, first-week task, deliverable, and how it is marked.
