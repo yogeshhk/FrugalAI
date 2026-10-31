@@ -1,6 +1,6 @@
 [
- {"id": "h01", "kind": "status", "q": "Can a student skip QT 02?", "items": ["mandatory|compulsory|cannot|can not|no"], "codes": ["QT 02"], "pages": [14, 18]},
- {"id": "h02", "kind": "status", "q": "Is it compulsory to study Quantum Optics?", "items": ["optional|additional|not mandatory|not compulsory|no"], "codes": ["QT 11"], "pages": [14, 36]},
+ {"id": "h01", "kind": "status", "q": "Can a student skip QT 02?", "items": ["mandatory|compulsory|cannot|can not"], "codes": ["QT 02"], "pages": [14, 18]},
+ {"id": "h02", "kind": "status", "q": "Is it compulsory to study Quantum Optics?", "items": ["optional|additional|not mandatory|not compulsory"], "codes": ["QT 11"], "pages": [14, 36]},
  {"id": "h03", "kind": "status", "q": "Of QT 05 to QT 08, which ones do I have to pick?", "items": ["at least one"], "codes": ["QT 05", "QT 06", "QT 07", "QT 08"], "pages": [14, 24]},
  {"id": "h04", "kind": "list", "q": "Name the electives.", "items": [], "codes": ["QT 09", "QT 10", "QT 11"], "exact_codes": true, "pages": [14]},
  {"id": "h05", "kind": "list", "q": "What must every student complete regardless of choices?", "items": [], "codes": ["QT 01", "QT 02"], "exact_codes": true, "pages": [14]},
@@ -12,7 +12,7 @@
  {"id": "h12", "kind": "subtopics", "q": "Which crystal growth techniques are mentioned for quantum materials?", "items": ["molecular beam epitaxy", "chemical vapor deposition|MOVPE", "pulsed laser deposition"], "codes": ["QT 08"], "threshold": 0.67, "pages": [30]},
  {"id": "h13", "kind": "subtopics", "q": "What lab work involves a vector network analyser?", "items": ["transmission", "standing wave", "S-parameters"], "codes": ["QT 04"], "threshold": 0.67, "pages": [22]},
  {"id": "h14", "kind": "numbers", "q": "For how many lectures should sensing be taught within QT 01?", "items": ["8-10|8 to 10|8 - 10"], "codes": ["QT 01"], "pages": [17]},
- {"id": "h15", "kind": "numbers", "q": "What is the time allocation for the computer science block in the engineering foundations course?", "items": ["15"], "codes": ["QT 09"], "pages": [32]},
+ {"id": "h15", "kind": "numbers", "q": "What is the time allocation for the computer science block in the engineering foundations course?", "items": ["15 hours|15 hrs|15-hour"], "codes": ["QT 09"], "pages": [32]},
  {"id": "h16", "kind": "cross", "q": "Where does Grover's algorithm appear?", "items": [], "codes": ["QT 05"], "exact_codes": true, "pages": [24]},
  {"id": "h17", "kind": "cross", "q": "Which courses talk about the Fermi-Dirac distribution?", "items": [], "codes": ["QT 02", "QT 10"], "exact_codes": true, "pages": [19, 34]},
  {"id": "h18", "kind": "cross", "q": "Which courses include the Lindblad master equation?", "items": [], "codes": ["QT 11"], "exact_codes": true, "pages": [36]},

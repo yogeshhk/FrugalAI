@@ -77,7 +77,7 @@ That is a legitimate, teachable result and it matches the repo's own pre-registe
   better. Supported on the measured numbers (plain search 0.40, structure retrieval 0.69, agent 0.975 on the tuned set).
   Weaknesses:
   - 0.975 is on the questions the router was tuned on. The held-out 0.933 is after one round of repairs, so it is not
-    blind, and the naive baseline was never run on the held-out set. The footer mixes sets.
+    blind. The naive baseline was run on the held-out set on 2026-10-31 (0.40). The footer mixes sets.
   - The "agent" is mostly plain code: about 64% of its answers use no model. The honest and frugal message is "do not
     use a model where code is enough", not "RAG plus a model".
   - **The "spread over many places" screenshot does not show that.** For "Where does Grover's algorithm appear?" the agent

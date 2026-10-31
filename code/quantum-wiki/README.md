@@ -1,6 +1,6 @@
 # Project: quantum wiki on the AICTE Minor curriculum
 
-> Status: built: yes | measured: yes (one run, one machine) | reviewed-by-author: no (both question sets were drafted by Claude)
+> Status: built: yes | measured: yes (one run, one machine) | reviewed-by-author: yes, 2026-10-31 (both question sets were drafted by Claude)
 > | needs LM Studio: yes for `ask`, `retrieval` and `eval` (chat and embedding models); `parse`, `cards` and the tests do not
 
 Ask questions of the AICTE "Model Curriculum for Minor Degree for UG Degree Course in Quantum Technologies" (the
@@ -102,8 +102,8 @@ Answers, share of questions answered correctly (80 tuned, 30 held-out):
 
 | System | Tuned set | Held-out set | Model calls per question | Tokens per question | Seconds per question |
 |--------|-----------|--------------|--------------------------|---------------------|----------------------|
-| Naive RAG (page windows, dense, Qwen3 1.7B) | 0.40 | not run | 1.0 | 865 | 4.4 |
-| Structure RAG (cards chunks, dense, Qwen3 1.7B) | 0.69 | 0.63 | 1.0 | 587 | 3.8 |
+| Naive RAG (page windows, dense, Qwen3 1.7B) | 0.40 | 0.40 | 1.0 | 865 | 4.4 |
+| Structure RAG (cards chunks, dense, Qwen3 1.7B) | 0.69 | 0.60 | 1.0 | 587 | 3.8 |
 | Agent (cards, tools, model only where needed) | 0.975 | 0.93 | 0.36 | 185 | 1.3 |
 
 By kind on the tuned set (correct of n, naive / structure RAG / agent): status 4 / 7 / 8 of 8, list 3 / 3 / 7 of 7,
@@ -128,13 +128,15 @@ code check does not catch because it only guards course codes and numbers, and M
   (`route(gate=True)` keeps it for study). Several routing rules were also too narrow. I then fixed the routing
   using those failures, so the held-out set is no longer pristine: 0.93 is the result after one round of repairs,
   not a blind test. A third set, written by someone else, would be the next step.
-- The naive baseline was not run on the held-out set (the run was stopped to free the machine); the tuned-set
-  comparison is complete.
+- Answer keys were checked against the parsed syllabus on 2026-10-31 and seven keys that matched too loosely (a bare
+  `no`, a bare `6` or `15`) were tightened; the saved answers were re-scored, which moved structure RAG on the
+  held-out set from 0.63 to 0.60. The naive baseline was completed on the held-out set the same day (0.40); its
+  first 19 answers date from 2026-10-20 and the last 11 from 2026-10-31.
 - One run, one model (Qwen3 1.7B, thinking off), one machine. Docling reported using the small GPU (cuda:0) during
   parsing; LM Studio's own GPU-offload setting was not checked for the chat and embedding runs. Timings were taken
   while other programs were using the CPU, so they are rough.
-- Questions were written by Claude from the PDF text, with gold answers from the same text. The author should review
-  the gold files.
+- Questions were written by Claude from the PDF text, with gold answers from the same text. The author reviewed and
+  signed off both sets on 2026-10-31.
 
 ## Limits
 
