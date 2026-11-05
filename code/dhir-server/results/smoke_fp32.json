@@ -1,0 +1,45 @@
+{
+  "device": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+  "ram_gb": 15.7,
+  "dtype": "fp32",
+  "load_s": 12.7,
+  "rss_after_load_gb": 7.65,
+  "date": "2026-11-05",
+  "runs": [
+    {
+      "prompt": "hindi",
+      "prompt_tokens": 15,
+      "completion_tokens": 7,
+      "ttft_s": 1.09,
+      "decode_tokens_per_s": 3.44,
+      "text": "भारत की राजधानी नई दिल्ली है।"
+    },
+    {
+      "prompt": "marathi",
+      "prompt_tokens": 20,
+      "completion_tokens": 8,
+      "ttft_s": 2.09,
+      "decode_tokens_per_s": 6.79,
+      "text": "महाराष्ट्राची राजधानी मुंबई आहे."
+    },
+    {
+      "prompt": "english",
+      "prompt_tokens": 13,
+      "completion_tokens": 30,
+      "ttft_s": 0.85,
+      "decode_tokens_per_s": 2.98,
+      "text": "A Nash equilibrium is a state in a strategic game where no player can improve their payoff by unilaterally changing their strategy, assuming others keep their strategies unchanged."
+    },
+    {
+      "prompt": "long",
+      "prompt_tokens": 23,
+      "completion_tokens": 100,
+      "ttft_s": 1.04,
+      "decode_tokens_per_s": 2.9,
+      "text": "The Prisoner's Dilemma matters for small businesses because it highlights how strategic decisions can lead to suboptimal outcomes, such as missed opportunities or increased costs when competitors or customers act in their own self-interest. Understanding this dynamic helps businesses anticipate rivalry, pricing, and market positioning, enabling them to develop more robust strategies rather than relying on reactive or short-term tactics. Misunderstanding the dilemma may result in poor resource allocation, reduced competitiveness, or failure to capitalize on collaborative opportunities with partners or suppliers. Ultimately, recognizing the dilemma"
+    }
+  ],
+  "rss_peak_gb": 8.38,
+  "template_plain": "<bos><|system|>S<|end_of_turn|><|user|>U<|end_of_turn|><|assistant|><|nothink|>",
+  "template_tools": "<bos><|system|><|tool_declare|><tools>[{\"type\": \"function\", \"function\": {\"name\": \"f\", \"parameters\": {\"type\": \"object\", \"properties\": {}}}}]</tools><|end_of_turn|><|user|>U<|end_of_turn|><|assistant|><|nothink|>"
+}
