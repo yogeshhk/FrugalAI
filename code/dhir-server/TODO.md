@@ -2,9 +2,7 @@
 
 Open actions only. Run the server first (README, "Run it"); the model folder is `C:\Users\yoges\Downloads\dhir-2b`.
 
-- [ ] Answer check on Dhir: `rag_check.py --url http://localhost:1235/v1 --model dhir-2b --tag dhir-2b` (about 15 to 20 minutes; send output to a file, not through a pipe, so progress is visible). The first attempt was stopped unfinished.
-- [ ] Same check on Qwen3 1.7B for a fair comparison: start LM Studio, `rag_check.py --url http://localhost:1234/v1 --model qwen/qwen3-1.7b --tag qwen3-1.7b --no-think`, then stop LM Studio again.
-- [ ] Try Dhir in the other projects, one at a time: voice-form (`eval-extract` with `VOICEFORM_LLM_URL` and `--model dhir-2b`, Marathi and Hindi tune set first), workflow-agent (`wfagent ask`, then its eval; check that the tool-call format works), finetune-slm baseline, and the quantum-wiki and demo apps (check embeddings pass through to LM Studio).
-- [ ] Move the speed and memory figures to the benchmark runner (`python -m frugalai_common.bench`) so they join `code/common/benchmarks/results`.
-- [ ] Ask ZenteiQ (research@zenteiq.ai) for an official GGUF or a llama.cpp tokenizer entry; the author sends it.
-- [ ] Update the repo `README.md`, `TODO.md` and `docs/` to mention Dhir only after the answer check has numbers.
+- [ ] Wait for a reply from ZenteiQ (GGUF or tokenizer rule; email sent 2026-11-06). If a GGUF appears, test it in LM Studio and drop the server's reason to exist.
+- [ ] Longer trials, only if wanted: the workflow-agent eval, the finetune-slm Dhir row and the quantum-wiki eval (each has only had a small check). The voice-form run is parked in `code/voice-form/TODO.md`.
+- [ ] Re-run the benchmark with 3 repeats (`--repeats 3`, a different `--device` label such as `main-pc-cpu-r3`) if the figure is to be quoted; the stored run has one repeat.
+- [ ] Improve the answer check scoring: add "not specified" style phrases to the refusal list, and test more than 8 unanswerable questions.

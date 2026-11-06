@@ -21,7 +21,7 @@ from typing import Callable, List, Optional
 
 from .base import Backend
 from .lmstudio import LMStudioBackend
-from .metrics import PeakRam, host_info
+from .metrics import PeakRam, host_info, pid_listening_on
 from .ollama import OllamaBackend
 
 PROMPTS = [
@@ -49,8 +49,11 @@ def run_benchmark(
     repeats: int = 3,
     max_tokens: int = 128,
     log: Callable[[str], None] = print,
+    ram_pid: Optional[int] = None,
 ) -> List[dict]:
-    """Return one row per generation. The warm-up generation is not recorded."""
+    """Return one row per generation. The warm-up generation is not recorded.
+
+    ram_pid: measure this process (and children) for peak RAM, for servers that are not named ollama or llama."""
     prompts = prompts or PROMPTS
     host = host_info()
     rows: List[dict] = []
@@ -60,7 +63,7 @@ def run_benchmark(
 
     for p_idx, prompt in enumerate(prompts):
         for rep in range(repeats):
-            with PeakRam() as ram:
+            with PeakRam(pid=ram_pid) as ram:
                 res = backend.generate(model, prompt, max_tokens=max_tokens)
             row = {
                 "date": date.today().isoformat(),
@@ -132,6 +135,9 @@ def main(argv: Optional[List[str]] = None) -> int:
     ap.add_argument("--repeats", type=int, default=3)
     ap.add_argument("--max-tokens", type=int, default=128)
     ap.add_argument("--url", default=None, help="override the backend URL")
+    ap.add_argument("--ram-port", type=int, default=None,
+                    help="measure peak RAM of the process listening on this port (for example 1235 for the Dhir "
+                         "server) instead of matching ollama or llama process names")
     # default output folder: code/common/benchmarks/results (this file is code/common/frugalai_common/bench.py)
     ap.add_argument("--out-dir", default=str(Path(__file__).resolve().parents[1] / "benchmarks" / "results"))
     ap.add_argument("--force", action="store_true",
@@ -154,8 +160,15 @@ def main(argv: Optional[List[str]] = None) -> int:
         print("ERROR: model %r not found. Available: %s" % (args.model, ", ".join(models) or "none"))
         return 2
 
+    ram_pid = None
+    if args.ram_port is not None:
+        ram_pid = pid_listening_on(args.ram_port)
+        if ram_pid is None:
+            print("ERROR: no process found listening on port %d (or access denied)." % args.ram_port)
+            return 2
+
     rows = run_benchmark(backend, args.model, args.device, args.quantisation,
-                         repeats=args.repeats, max_tokens=args.max_tokens)
+                         repeats=args.repeats, max_tokens=args.max_tokens, ram_pid=ram_pid)
     out = write_csv(rows, target)
     print("summary:", summarise(rows))
     print("wrote:", out)

@@ -1,0 +1,774 @@
+[
+ {
+  "q": "How often is the gas cylinder booked?",
+  "kind": "lexical",
+  "expected": "45",
+  "answer": "The gas cylinder is booked every 45 days. [home.md]",
+  "sources": [
+   "home.md",
+   "people.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "How frequently must I order cooking fuel?",
+  "kind": "paraphrase",
+  "expected": "45",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When is the society maintenance paid?",
+  "kind": "lexical",
+  "expected": "10th",
+  "answer": "The society maintenance is paid on the 10th of each month. [home.md]",
+  "sources": [
+   "home.md",
+   "finance.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "By which day of the month must the building dues be cleared?",
+  "kind": "paraphrase",
+  "expected": "10th",
+  "answer": "The building dues must be cleared by the last Saturday of the month.  \n[home.md]",
+  "sources": [
+   "people.md",
+   "home.md",
+   "kitchen.md"
+  ],
+  "correct": false,
+  "refused": false
+ },
+ {
+  "q": "Where is the wifi router password stored?",
+  "kind": "lexical",
+  "expected": "blue diary",
+  "answer": "The wifi router password is stored in the blue diary. [home.md]",
+  "sources": [
+   "home.md",
+   "devices.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "In what place do I look for the internet login secret?",
+  "kind": "paraphrase",
+  "expected": "blue diary",
+  "answer": "I could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "Who services the geyser?",
+  "kind": "lexical",
+  "expected": "Kulkarni",
+  "answer": "Mr Kulkarni [notes.md]",
+  "sources": [
+   "home.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "Which person looks after the water heater each year?",
+  "kind": "paraphrase",
+  "expected": "Kulkarni",
+  "answer": "The note that discusses the water heater maintenance is not provided. I could not find it in the notes. [home.md]",
+  "sources": [
+   "garden.md",
+   "study.md",
+   "home.md"
+  ],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "How much water does the tulsi plant get?",
+  "kind": "lexical",
+  "expected": "half a mug",
+  "answer": "The tulsi plant gets half a mug of water every morning.  \nNote: [garden.md]",
+  "sources": [
+   "garden.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "What quantity of liquid goes to the holy basil daily?",
+  "kind": "paraphrase",
+  "expected": "half a mug",
+  "answer": "Could not find the answer in the notes. [study.md]",
+  "sources": [
+   "study.md"
+  ],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When is the rose bush pruned?",
+  "kind": "lexical",
+  "expected": "February",
+  "answer": "The rose bush is pruned in February. [garden.md]",
+  "sources": [
+   "garden.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "In which month do I cut back the flower shrub?",
+  "kind": "paraphrase",
+  "expected": "February",
+  "answer": "Could not find the answer in the notes. \n\n[people.md]",
+  "sources": [
+   "people.md",
+   "home.md",
+   "kitchen.md"
+  ],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When is the compost bin turned?",
+  "kind": "lexical",
+  "expected": "Sunday",
+  "answer": "The compost bin is turned every Sunday. [garden.md]",
+  "sources": [
+   "garden.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "On which day of the week do I stir the kitchen waste heap?",
+  "kind": "paraphrase",
+  "expected": "Sunday",
+  "answer": "The note mentions that ghee is made on the first Saturday of every month. Since stirring the kitchen waste heap is implied to be done on a similar schedule, the answer is likely Saturday.\n\n[kiitchen.md]",
+  "sources": [
+   "kitchen.md"
+  ],
+  "correct": false,
+  "refused": false
+ },
+ {
+  "q": "What is the neem oil spray ratio?",
+  "kind": "lexical",
+  "expected": "5 ml",
+  "answer": "The neem oil spray ratio is 5 ml per litre of water. [garden.md]",
+  "sources": [
+   "garden.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "How much natural pesticide goes into each litre?",
+  "kind": "paraphrase",
+  "expected": "5 ml",
+  "answer": "The note that contains the answer is [garden.md]. The answer is 5 ml. \n\n[gaarden.md]  \n5 ml",
+  "sources": [
+   "study.md",
+   "garden.md",
+   "home.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "How long does idli batter ferment in winter?",
+  "kind": "lexical",
+  "expected": "12 hours",
+  "answer": "The answer is 12 hours. [kitchen.md]",
+  "sources": [
+   "kitchen.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "How many hours should the rice and lentil mix rest when it is cold?",
+  "kind": "paraphrase",
+  "expected": "12 hours",
+  "answer": "Could not find the answer in the notes. [kitchen.md]",
+  "sources": [
+   "kitchen.md"
+  ],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "How many whistles for toor dal?",
+  "kind": "lexical",
+  "expected": "4 whistles",
+  "answer": "The answer is 4. [kitchen.md]",
+  "sources": [
+   "kitchen.md"
+  ],
+  "correct": false,
+  "refused": false
+ },
+ {
+  "q": "For how long, counted in cooker sounds, should the pigeon pea lentils cook?",
+  "kind": "paraphrase",
+  "expected": "4 whistles",
+  "answer": "Could not find the answer in the notes. [Kitchen.md]",
+  "sources": [
+   "kitchen.md"
+  ],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "Which compartment holds the hing?",
+  "kind": "lexical",
+  "expected": "smallest",
+  "answer": "The hing is in the smallest compartment. [kitchen.md]",
+  "sources": [
+   "kitchen.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "Where in the masala container is the asafoetida?",
+  "kind": "paraphrase",
+  "expected": "smallest",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When is ghee made?",
+  "kind": "lexical",
+  "expected": "first Saturday",
+  "answer": "The note [kitchen.md] Kitchen states that ghee is made on the first Saturday of every month.  \nAnswer: The first Saturday of every month. [kitchen.md]",
+  "sources": [
+   "kitchen.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "On which day do I clarify butter?",
+  "kind": "paraphrase",
+  "expected": "first Saturday",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When is the health insurance premium due?",
+  "kind": "lexical",
+  "expected": "15 March",
+  "answer": "The health insurance premium is due on 15 March. [finance.md]",
+  "sources": [
+   "finance.md",
+   "travel.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "By what date must I pay the medical cover renewal?",
+  "kind": "paraphrase",
+  "expected": "15 March",
+  "answer": "Could not find the answer in the notes. [travel.md]",
+  "sources": [
+   "travel.md"
+  ],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When is the credit card bill paid?",
+  "kind": "lexical",
+  "expected": "22nd",
+  "answer": "The credit card bill is paid by the 22nd. [finance.md]",
+  "sources": [
+   "finance.md",
+   "home.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "By which day do I clear the plastic money dues?",
+  "kind": "paraphrase",
+  "expected": "22nd",
+  "answer": "Could not find the answer in the notes. [No Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When are the advance tax instalments due?",
+  "kind": "lexical",
+  "expected": "June, September, December",
+  "answer": "The advance tax instalments are due in June, September, December and March. [finance.md]",
+  "sources": [
+   "finance.md",
+   "travel.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "In which months do I pay tax during the year in parts?",
+  "kind": "paraphrase",
+  "expected": "June, September, December",
+  "answer": "June, September, December, March [income-tax.md]",
+  "sources": [
+   "finance.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "When does the recurring deposit mature?",
+  "kind": "lexical",
+  "expected": "October 2027",
+  "answer": "The recurring deposit matures in October 2027. [finance.md]",
+  "sources": [
+   "finance.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "When will my monthly savings plan at the bank end?",
+  "kind": "paraphrase",
+  "expected": "October 2027",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "At what time does the Pune to Delhi train leave?",
+  "kind": "lexical",
+  "expected": "16:35",
+  "answer": "The Pune to Delhi train leaves at 16:35.  \nAnswer: 16:35 [travel.md]",
+  "sources": [
+   "travel.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "When does my rail journey to the capital begin?",
+  "kind": "paraphrase",
+  "expected": "16:35",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When is passport renewal due?",
+  "kind": "lexical",
+  "expected": "12 August 2028",
+  "answer": "Passport renewal is due on 12 August 2028. [travel.md]",
+  "sources": [
+   "travel.md",
+   "finance.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "By which date must my travel document be extended?",
+  "kind": "paraphrase",
+  "expected": "12 August 2028",
+  "answer": "Passport renewal is due before 12 August 2028.  \nAnswer: 12 August 2028 [travel.md]",
+  "sources": [
+   "travel.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "For how many nights is the Jaipur hotel booked?",
+  "kind": "lexical",
+  "expected": "3 nights",
+  "answer": "The Jaipur hotel is booked for 3 nights. [travel.md]",
+  "sources": [
+   "travel.md",
+   "people.md",
+   "home.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "How long is my stay in the pink city?",
+  "kind": "paraphrase",
+  "expected": "3 nights",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "What is the check-in luggage limit?",
+  "kind": "lexical",
+  "expected": "20 kg",
+  "answer": "The check-in luggage limit is 20 kg. [travel.md]",
+  "sources": [
+   "travel.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "How heavy can my suitcase be at the airline counter?",
+  "kind": "paraphrase",
+  "expected": "20 kg",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When does the thesis chapter draft go to the guide?",
+  "kind": "lexical",
+  "expected": "30 November",
+  "answer": "The thesis chapter draft goes to the guide by 30 November. [study.md]",
+  "sources": [
+   "study.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "What is the deadline for sending my dissertation section to the supervisor?",
+  "kind": "paraphrase",
+  "expected": "30 November",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When are library books returned?",
+  "kind": "lexical",
+  "expected": "second Friday",
+  "answer": "Library books are returned every second Friday. [study.md]",
+  "sources": [
+   "study.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "On which day of the fortnight do I give back borrowed volumes?",
+  "kind": "paraphrase",
+  "expected": "second Friday",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "Where does the reading group meet?",
+  "kind": "lexical",
+  "expected": "room 204",
+  "answer": "Room 204 [reading group]",
+  "sources": [
+   "study.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "Which place hosts the book discussion circle?",
+  "kind": "paraphrase",
+  "expected": "room 204",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "How long are flashcards reviewed?",
+  "kind": "lexical",
+  "expected": "20 minutes",
+  "answer": "The note [study.md] Study states that \"Flashcards are reviewed for 20 minutes after dinner.\"  \n\nAnswer: 20 minutes [study.md]",
+  "sources": [
+   "study.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "For how many minutes do I go through memory cards at night?",
+  "kind": "paraphrase",
+  "expected": "20 minutes",
+  "answer": "The note that contains the answer is [study.md]. The answer is 20 minutes. \n\n[study.md] 20",
+  "sources": [
+   "study.md",
+   "devices.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "How much RAM does the old laptop have?",
+  "kind": "lexical",
+  "expected": "8 GB",
+  "answer": "The old laptop has 8 GB of RAM. [devices.md]",
+  "sources": [
+   "devices.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "What is the memory capacity of my ageing notebook computer?",
+  "kind": "paraphrase",
+  "expected": "8 GB",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When does the phone backup run?",
+  "kind": "lexical",
+  "expected": "2 am",
+  "answer": "The phone backup runs every night at 2 am on wifi. [devices.md]",
+  "sources": [
+   "devices.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "At what hour is the mobile data copied automatically?",
+  "kind": "paraphrase",
+  "expected": "2 am",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "What is the printer toner model?",
+  "kind": "lexical",
+  "expected": "TN-2420",
+  "answer": "Printer toner model: [devices.md]",
+  "sources": [
+   "devices.md"
+  ],
+  "correct": false,
+  "refused": false
+ },
+ {
+  "q": "Which cartridge code do I buy for the office printer?",
+  "kind": "paraphrase",
+  "expected": "TN-2420",
+  "answer": "The note mentions the printer toner model is TN-2420. The cartridge code for this model is TN-2420.  \n\nAnswer: [devices.md]",
+  "sources": [
+   "devices.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "Where is the external hard disk kept?",
+  "kind": "lexical",
+  "expected": "steel cupboard",
+  "answer": "The external hard disk is kept in the steel cupboard. [devices.md]",
+  "sources": [
+   "devices.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "In which storage place is the spare drive?",
+  "kind": "paraphrase",
+  "expected": "steel cupboard",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "What date is Sunita's birthday?",
+  "kind": "lexical",
+  "expected": "9 September",
+  "answer": "Sunita's birthday is on 9 September. [people.md]",
+  "sources": [
+   "people.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "When does the annual celebration of Sunita's day of birth fall?",
+  "kind": "paraphrase",
+  "expected": "9 September",
+  "answer": "The annual celebration of Sunita's day of birth falls on 9 September.  \n\nAnswer: 9 September  \nNote: [people.md]",
+  "sources": [
+   "people.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "What is the plumber's name?",
+  "kind": "lexical",
+  "expected": "Raju",
+  "answer": "Plumber's name is Raju. [people.md]",
+  "sources": [
+   "people.md",
+   "travel.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "Who do I call for leaking taps?",
+  "kind": "paraphrase",
+  "expected": "Raju",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "Where is the anniversary dinner booked?",
+  "kind": "lexical",
+  "expected": "Spice Garden",
+  "answer": "The anniversary dinner is booked at Spice Garden. [people.md]",
+  "sources": [
+   "people.md",
+   "study.md",
+   "home.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "Which restaurant will host our wedding-day meal?",
+  "kind": "paraphrase",
+  "expected": "Spice Garden",
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "When is the school parent meeting?",
+  "kind": "lexical",
+  "expected": "last Saturday",
+  "answer": "The school parent meeting is on the last Saturday of the month. [people.md]",
+  "sources": [
+   "people.md"
+  ],
+  "correct": true,
+  "refused": false
+ },
+ {
+  "q": "Which weekend day do I visit the teachers each month?",
+  "kind": "paraphrase",
+  "expected": "last Saturday",
+  "answer": "Could not find the answer in the notes. [home.md]",
+  "sources": [
+   "home.md",
+   "people.md",
+   "kitchen.md"
+  ],
+  "correct": false,
+  "refused": true
+ },
+ {
+  "q": "What is the phone number of the gas cylinder dealer?",
+  "kind": "unanswerable",
+  "expected": null,
+  "answer": "Could not find the answer in the notes. [home.md]",
+  "sources": [
+   "home.md",
+   "devices.md"
+  ],
+  "refused": true
+ },
+ {
+  "q": "What is the wifi router password?",
+  "kind": "unanswerable",
+  "expected": null,
+  "answer": "The wifi router password is stored in the blue diary. [home.md]",
+  "sources": [
+   "home.md",
+   "devices.md"
+  ],
+  "refused": false
+ },
+ {
+  "q": "Who won the cricket match yesterday?",
+  "kind": "unanswerable",
+  "expected": null,
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "refused": true
+ },
+ {
+  "q": "What is the balance in my savings account?",
+  "kind": "unanswerable",
+  "expected": null,
+  "answer": "Could not find the answer in the notes. [No Matching Notes]",
+  "sources": [],
+  "refused": true
+ },
+ {
+  "q": "How many whistles for chana dal?",
+  "kind": "unanswerable",
+  "expected": null,
+  "answer": "The answer is 4. [pressurecook.md]",
+  "sources": [
+   "kitchen.md"
+  ],
+  "refused": false
+ },
+ {
+  "q": "What time does the Mumbai train leave?",
+  "kind": "unanswerable",
+  "expected": null,
+  "answer": "Could not find the answer in the notes. [travel.md]",
+  "sources": [
+   "travel.md"
+  ],
+  "refused": true
+ },
+ {
+  "q": "In which room is the cooking class held?",
+  "kind": "unanswerable",
+  "expected": null,
+  "answer": "Could not find the answer in the notes. [study.md]",
+  "sources": [
+   "study.md"
+  ],
+  "refused": true
+ },
+ {
+  "q": "What is the name of the electrician?",
+  "kind": "unanswerable",
+  "expected": null,
+  "answer": "Could not find the answer in the notes. [people.md]",
+  "sources": [
+   "people.md",
+   "travel.md"
+  ],
+  "refused": true
+ }
+]

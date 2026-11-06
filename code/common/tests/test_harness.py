@@ -195,3 +195,26 @@ class TestMetrics:
         with PeakRam(hints=("zz-no-such-process-zz",), interval_s=0.05) as ram:
             pass
         assert ram.peak_mb is None
+
+    def test_peak_ram_by_pid_measures_that_process(self):
+        import os
+
+        with PeakRam(pid=os.getpid(), interval_s=0.05) as ram:
+            pass
+        assert ram.peak_mb is not None and ram.peak_mb > 0
+
+    def test_peak_ram_by_pid_none_when_process_missing(self):
+        with PeakRam(pid=2**30, interval_s=0.05) as ram:
+            pass
+        assert ram.peak_mb is None
+
+    def test_pid_listening_on_finds_own_socket(self):
+        import os
+        import socket
+
+        from frugalai_common.metrics import pid_listening_on
+
+        with socket.socket() as s:
+            s.bind(("127.0.0.1", 0))
+            s.listen(1)
+            assert pid_listening_on(s.getsockname()[1]) == os.getpid()

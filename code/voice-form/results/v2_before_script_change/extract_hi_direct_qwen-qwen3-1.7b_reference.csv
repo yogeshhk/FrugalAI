@@ -1,0 +1,10 @@
+id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
+hi-asha-07,asha_anc_visit,heldout,12.765,538,270,6,5,0,1,0,0,1,woman_name: missed (कविता राठौर)
+hi-asha-08,asha_anc_visit,heldout,9.797,515,377,5,5,0,0,0,0,0,
+hi-asha-09,asha_anc_visit,heldout,10.685,564,356,7,7,0,0,0,0,0,
+hi-sir-07,sir_enumeration,heldout,11.747,478,319,7,7,0,0,0,0,0,
+hi-sir-08,sir_enumeration,heldout,8.921,476,294,7,7,0,0,1,0,1,house_number: spurious '8'
+hi-sir-09,sir_enumeration,heldout,9.189,499,347,8,8,0,0,0,0,0,
+hi-tkt-07,service_ticket,heldout,9.689,446,312,7,6,0,1,0,0,1,urgency: missed (high) ['low' was not found in what was said] raw='low'
+hi-tkt-08,service_ticket,heldout,9.302,444,359,6,6,0,0,0,0,0,
+hi-tkt-09,service_ticket,heldout,9.408,449,340,7,6,1,0,0,0,1,urgency: 'high' != 'low'

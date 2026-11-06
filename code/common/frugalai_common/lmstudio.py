@@ -12,8 +12,11 @@ from typing import Iterable, List, Optional
 import requests
 
 from .base import Backend, GenResult
+from .config import LLM_URL
 
-DEFAULT_URL = "http://localhost:1234/v1"
+# Follows FRUGALAI_LLM_URL (default http://localhost:1234/v1), so one variable repoints every project that
+# builds LMStudioBackend() without a URL, for example to the Dhir server on port 1235.
+DEFAULT_URL = LLM_URL
 
 
 class LMStudioBackend(Backend):

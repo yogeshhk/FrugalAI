@@ -63,6 +63,17 @@ def host_info() -> dict:
     }
 
 
+def pid_listening_on(port: int) -> Optional[int]:
+    """Process id of the process listening on a local TCP port, or None if none is found or access is denied."""
+    try:
+        for conn in psutil.net_connections(kind="tcp"):
+            if conn.status == psutil.CONN_LISTEN and conn.laddr and conn.laddr.port == port:
+                return conn.pid
+    except (psutil.AccessDenied, OSError):
+        return None
+    return None
+
+
 class PeakRam:
     """Context manager: peak resident memory of runtime processes while a block runs.
 
@@ -71,14 +82,25 @@ class PeakRam:
     and the caller should say so instead of reporting zero.
     """
 
-    def __init__(self, hints: Iterable[str] = DEFAULT_HINTS, interval_s: float = 0.2):
+    def __init__(self, hints: Iterable[str] = DEFAULT_HINTS, interval_s: float = 0.2, pid: Optional[int] = None):
         self.hints = tuple(h.lower() for h in hints)
+        self.pid = pid  # if set, measure only this process (and its children) instead of matching names
         self.interval_s = interval_s
         self.peak_mb: Optional[float] = None
         self._stop = threading.Event()
         self._thread: Optional[threading.Thread] = None
 
+    def _sample_pid(self) -> Optional[float]:
+        try:
+            root = psutil.Process(self.pid)
+            procs = [root] + root.children(recursive=True)
+            return sum(p.memory_info().rss for p in procs) / 1e6
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            return None
+
     def _sample(self) -> Optional[float]:
+        if self.pid is not None:
+            return self._sample_pid()
         total = 0
         found = False
         for proc in psutil.process_iter(["name", "memory_info"]):

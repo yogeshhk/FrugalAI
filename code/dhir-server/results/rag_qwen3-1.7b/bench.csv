@@ -1,0 +1,7 @@
+stage,mode,kind,n,hit_at_1,hit_at_k,mrr,answer_correct,refused,retrieval_ms,generation_s,date
+retrieval,bm25,lexical,32,1.0,1.0,1.0,,,,,2026-11-06
+retrieval,bm25,paraphrase,32,0.219,0.344,0.276,,,,,2026-11-06
+retrieval,bm25,all,64,0.609,0.672,0.638,,,0.03,,2026-11-06
+answer,bm25,lexical,32,,,,0.938,,0.064,3.292,2026-11-06
+answer,bm25,paraphrase,32,,,,0.188,,0.058,3.492,2026-11-06
+answer,bm25,unanswerable,8,,,,,0.75,0.046,2.555,2026-11-06

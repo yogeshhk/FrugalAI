@@ -130,3 +130,10 @@ class TestOsLabel:
         monkeypatch.setattr(metrics.platform, "system", lambda: "Linux")
         monkeypatch.setattr(metrics.platform, "platform", lambda: "Linux-6.1-x86_64")
         assert metrics.os_label() == "Linux-6.1-x86_64"
+
+
+class TestDefaultUrl:
+    def test_backend_default_follows_shared_config(self):
+        from frugalai_common.lmstudio import LMStudioBackend
+
+        assert LMStudioBackend().base_url == config.LLM_URL.rstrip("/")

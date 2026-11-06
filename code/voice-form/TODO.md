@@ -10,5 +10,8 @@ Packages 1 to 3 built (schemas, speech backends and harness, extraction with che
   (file names `<id>_clean.<ext>`, `<id>_noisy.<ext>`).
 - [ ] Accept the terms at https://huggingface.co/ai4bharat/indic-conformer-600m-multilingual, then `python -m voiceform download --only indicconformer`.
 
+## Parked
+- [ ] Dhir 2B as a third model in the script-text extraction: start `code/dhir-server` (`python -m dhirserver --port 1235`), then with `VOICEFORM_LLM_URL=http://localhost:1235/v1` run `python -m voiceform eval-extract --lang mr --route direct --model dhir-2b --set tune heldout` and the same for `hi` (about 10 s to 20 s per line on CPU). Do it after the re-run above, in the same round, so the held-out lines are run once with the final code. One small `fill` check already worked on 2026-11-06; the woman's name came back transliterated into English and was rejected by the evidence check, so expect "to fix" to be driven by names.
+
 ## After the recordings
 - [ ] Run the evaluations in `README.md` (ASR and extraction, held-out and free-speech sets), then make the Marathi go or no-go call.
