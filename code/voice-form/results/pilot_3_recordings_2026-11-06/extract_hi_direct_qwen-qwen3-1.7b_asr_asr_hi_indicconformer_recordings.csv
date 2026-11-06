@@ -1,0 +1,4 @@
+id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
+hi-asha-01,asha_anc_visit,tune,10.461,546,395,6,5,0,1,0,0,1,weeks_pregnant: missed (28) [12 was not found in what was said] raw='12'
+hi-asha-02,asha_anc_visit,tune,10.889,570,434,7,7,0,0,0,0,0,
+hi-asha-03,asha_anc_visit,tune,9.713,558,373,7,6,0,1,0,0,1,next_visit_date: missed (2026-11-12) [not a date] raw='12 नवं्बर'

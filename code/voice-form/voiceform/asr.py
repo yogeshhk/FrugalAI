@@ -93,8 +93,31 @@ class WhisperASR(ASRBackend):
 
         torch.set_num_threads(max(1, torch.get_num_threads()))
         source = config.model_source(name, self.repo)
-        self.processor = WhisperProcessor.from_pretrained(source)
+        # Some community fine-tunes ship without tokenizer files, or with an old generation config that has no
+        # language table. Every multilingual Whisper size uses the same vocabulary and language tokens, so those
+        # two pieces are borrowed from the local whisper-base folder (checked against the model's vocab size).
+        base = config.model_source("whisper-base", config.ASR_MODELS["whisper-base"]["repo"])
+        try:
+            self.processor = WhisperProcessor.from_pretrained(source)
+        except (TypeError, OSError, ValueError):
+            from transformers import WhisperFeatureExtractor, WhisperTokenizer
+
+            self.processor = WhisperProcessor(WhisperFeatureExtractor.from_pretrained(source),
+                                              WhisperTokenizer.from_pretrained(base))
+            borrowed = True
+        else:
+            borrowed = False
         self.model = WhisperForConditionalGeneration.from_pretrained(source).to(device).eval()
+        if borrowed and len(self.processor.tokenizer) != self.model.config.vocab_size:
+            raise RuntimeError(f"{name}: tokenizer has {len(self.processor.tokenizer)} tokens but the model expects "
+                               f"{self.model.config.vocab_size}; do not borrow the whisper-base tokenizer for it")
+        gen = self.model.generation_config
+        if not getattr(gen, "lang_to_id", None):
+            from transformers import GenerationConfig
+
+            base_gen = GenerationConfig.from_pretrained(base)
+            for key in ("lang_to_id", "task_to_id", "is_multilingual"):
+                setattr(gen, key, getattr(base_gen, key))
         self.device = device
 
     def _run(self, wav, lang):
@@ -105,13 +128,8 @@ class WhisperASR(ASRBackend):
         for i in range(0, max(len(wav), 1), chunk):
             feats = self.processor(wav[i:i + chunk], sampling_rate=SR, return_tensors="pt").input_features
             with torch.no_grad():
-                try:
-                    ids = self.model.generate(feats.to(self.device), language=WHISPER_LANG[lang], task="transcribe",
-                                              max_new_tokens=220)
-                except (ValueError, TypeError):
-                    # Older fine-tunes ship without language tokens in their generation config.
-                    prompt = self.processor.get_decoder_prompt_ids(language=WHISPER_LANG[lang], task="transcribe")
-                    ids = self.model.generate(feats.to(self.device), forced_decoder_ids=prompt, max_new_tokens=220)
+                ids = self.model.generate(feats.to(self.device), language=WHISPER_LANG[lang], task="transcribe",
+                                          max_new_tokens=220)
             texts.append(self.processor.batch_decode(ids, skip_special_tokens=True)[0])
         return " ".join(texts)
 

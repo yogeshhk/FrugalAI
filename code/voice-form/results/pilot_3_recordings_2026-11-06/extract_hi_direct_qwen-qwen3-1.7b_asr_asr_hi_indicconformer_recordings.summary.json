@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "run": "extract_hi_direct_qwen-qwen3-1.7b_asr_asr_hi_indicconformer_recordings",
+    "lang": "hi",
+    "route": "direct",
+    "model": "qwen/qwen3-1.7b",
+    "condition": "asr",
+    "transcripts": "asr_hi_indicconformer_recordings",
+    "date": "2026-11-06",
+    "host": "Windows 10, 10 cores, 17 GB RAM"
+  },
+  "summary": {
+    "tune": {
+      "utterances": 3,
+      "field_accuracy": 0.9,
+      "to_fix_per_utterance": 0.67,
+      "spurious": 0,
+      "uncertain": 0,
+      "all_correct_utterances": 1,
+      "mean_seconds": 10.35
+    },
+    "all": {
+      "utterances": 3,
+      "field_accuracy": 0.9,
+      "to_fix_per_utterance": 0.67,
+      "spurious": 0,
+      "uncertain": 0,
+      "all_correct_utterances": 1,
+      "mean_seconds": 10.35
+    }
+  }
+}

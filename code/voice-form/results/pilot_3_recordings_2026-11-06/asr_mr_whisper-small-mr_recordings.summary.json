@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "run": "asr_mr_whisper-small-mr_recordings",
+    "lang": "mr",
+    "backend": "whisper-small-mr",
+    "condition": "recordings",
+    "date": "2026-11-06",
+    "ram_after_load_mb": 1021,
+    "ram_peak_while_transcribing_mb": 2071,
+    "host": "Windows 10, 10 cores, 17 GB RAM",
+    "note": ""
+  },
+  "summary": {
+    "tune": {
+      "utterances": 3,
+      "wer": 0.751,
+      "cer": 0.549,
+      "rtf": 0.619
+    },
+    "all": {
+      "utterances": 3,
+      "wer": 0.751,
+      "cer": 0.549,
+      "rtf": 0.619
+    }
+  }
+}

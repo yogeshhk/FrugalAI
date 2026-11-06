@@ -2,7 +2,7 @@
 
 Open actions only. Run the server first (README, "Run it"); the model folder is `C:\Users\yoges\Downloads\dhir-2b`.
 
-- [ ] Wait for a reply from ZenteiQ (GGUF or tokenizer rule; email sent 2026-11-06). If a GGUF appears, test it in LM Studio and drop the server's reason to exist.
-- [ ] Longer trials, only if wanted: the workflow-agent eval, the finetune-slm Dhir row and the quantum-wiki eval (each has only had a small check). The voice-form run is parked in `code/voice-form/TODO.md`.
-- [ ] Re-run the benchmark with 3 repeats (`--repeats 3`, a different `--device` label such as `main-pc-cpu-r3`) if the figure is to be quoted; the stored run has one repeat.
+- [ ] GGUF: ZenteiQ replied on 2026-11-06 that a GGUF build goes on AIKosh that day (after IndiaAI approval), and that more quantised versions and a detailed technical report follow on Hugging Face within a week (after the festive break). The author downloads the GGUF (AIKosh needs a login). Then: load it in LM Studio, check the answers match the Transformers server on a few prompts (tokenisation is the risk), run `python -m frugalai_common.bench` with `--repeats 3` and `rag_check.py` against LM Studio, and compare with the stored Transformers numbers in the README. If it holds up, make LM Studio the main route and keep this server as a fallback.
+- [ ] When the Hugging Face release appears (about 2026-11-13): read the technical report, then add the model card and report to `docs/sources.md` before quoting anything from them.
+- [ ] Longer trials, only if wanted: the workflow-agent eval, the finetune-slm Dhir row and the quantum-wiki eval (each has only had a small check). The voice-form run is parked in `code/voice-form/TODO.md`; a GGUF would also remove its speed problem.
 - [ ] Improve the answer check scoring: add "not specified" style phrases to the refusal list, and test more than 8 unanswerable questions.

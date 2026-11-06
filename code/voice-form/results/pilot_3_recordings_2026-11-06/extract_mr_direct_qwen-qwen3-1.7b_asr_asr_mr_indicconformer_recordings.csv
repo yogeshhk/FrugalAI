@@ -1,0 +1,4 @@
+id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
+mr-asha-01,asha_anc_visit,tune,14.342,572,602,6,5,1,0,0,0,1,bp: '120/82' != '120/80'
+mr-asha-02,asha_anc_visit,tune,10.137,572,398,7,6,0,1,0,0,1,weeks_pregnant: missed (16) [20 was not found in what was said] raw=20
+mr-asha-03,asha_anc_visit,tune,10.717,565,423,7,7,0,0,0,0,0,
