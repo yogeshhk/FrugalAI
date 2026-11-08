@@ -1,5 +1,7 @@
 # TODO (voice-form): speak a form in Marathi or Hindi
 
+Parked to 2027 (author, 2026-11-08); nothing here is needed for the Dec 12 talk.
+
 Packages 1 to 3 built (schemas, speech backends and harness, extraction with checks); offline tests pass; extraction measured on script text only
 (table in `README.md`; `results/RESULTS.md` is written by `python -m voiceform report` once the evaluation is complete). Nothing measured on real speech yet.
 
