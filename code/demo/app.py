@@ -18,6 +18,10 @@ D.install_guard()
 QW = D.CODE / "quantum-wiki"
 
 st.set_page_config(page_title="Base model and RAG", layout="wide")
+_bad = D.bind_problem(st.get_option("server.address"))
+if _bad:
+    st.error(_bad)
+    st.stop()
 st.markdown(
     """<style>
 #MainMenu, header, footer { visibility: hidden; }

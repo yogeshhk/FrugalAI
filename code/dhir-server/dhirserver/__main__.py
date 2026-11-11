@@ -1,8 +1,9 @@
 """Start the server:  conda run -n genai python -m dhirserver --model-dir <folder> --port 1235"""
 
 import argparse
+import os
 
-from .model import default_model_dir
+from .model import code_fingerprint, default_model_dir
 
 
 def main():
@@ -16,10 +17,20 @@ def main():
         default="http://localhost:1234/v1",
         help="LM Studio URL for embeddings and other models; use 'none' to serve Dhir alone",
     )
+    ap.add_argument(
+        "--code-sha256",
+        default=os.environ.get("DHIR_CODE_SHA256", ""),
+        help="fingerprint of the model folder's .py files (or DHIR_CODE_SHA256); if set and different, the server stops",
+    )
     args = ap.parse_args()
     upstream = None if args.upstream.lower() == "none" else args.upstream
     if not args.model_dir:
         raise SystemExit("Pass --model-dir or set DHIR_MODEL_DIR")
+    fingerprint = code_fingerprint(args.model_dir)
+    print("model code fingerprint: %s  (read the .py files in the folder, then pass this as --code-sha256)" % fingerprint)
+    if args.code_sha256 and args.code_sha256 != fingerprint:
+        raise SystemExit("model code changed: expected %s, found %s. Read the new code before starting."
+                         % (args.code_sha256, fingerprint))
 
     import uvicorn
 

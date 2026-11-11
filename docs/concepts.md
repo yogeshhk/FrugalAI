@@ -1,6 +1,6 @@
 # Concepts
 
-Short definitions used across the repo. Each term links to the sources entry that supports it.
+Short definitions used across the repo. Terms with a figure or a quotation link to the sources entry that supports it.
 
 ## Frugal AI
 Getting the most useful outcome from the least compute, money, energy and data. The Frugal AI Hub glossary
@@ -14,15 +14,14 @@ not assumed here.
 
 ## Quantisation
 Storing model weights in fewer bits (for example 4-bit instead of 16-bit) to cut memory and speed up CPU
-inference, at some cost in quality. GGUF is the file format used by llama.cpp, Ollama and LM Studio.
+inference, at some cost in quality. GGUF is the file format used by llama.cpp, Ollama and LM Studio (to verify).
 Typical names such as `Q4_K_M` describe the scheme. How much quality is lost depends on the model and task,
 so this repo measures it per recipe and does not assume it.
 
 ## Knowledge distillation
 Training a small "student" model to imitate a larger "teacher". Example from the literature: MoScNet, which
-transliterates Modi script to Devanagari; the authors report a student about 163 times smaller in parameters
-than its teacher that outperforms it ([S4](sources.md#s4)). That is the authors' claim on their dataset, not
-a general rule.
+transliterates Modi script to Devanagari; the authors claim a 163-fold reduction in parameters
+([S4](sources.md#s4)). That is the authors' claim on their dataset, not a general rule.
 
 ## Pruning
 Removing weights or structures that contribute little, to shrink a model. Mentioned for completeness; not a
@@ -68,6 +67,6 @@ Running where the data is, without needing the internet at run time. The point i
 resilience, not only speed.
 
 ## Runtimes used here
-- Ollama and LM Studio: local servers that run GGUF models (both are built on llama.cpp-style runtimes).
+- Ollama and LM Studio: local servers that run GGUF models (both are built on llama.cpp-style runtimes; to verify).
 - llama.cpp: the underlying CPU inference engine.
-- Others to evaluate later: ONNX Runtime, LiteRT (the successor to TensorFlow Lite) for phones.
+- Others to evaluate later: ONNX Runtime, LiteRT (the successor to TensorFlow Lite; to verify) for phones.

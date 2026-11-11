@@ -15,6 +15,23 @@ from .toolcalls import strip_control
 MODEL_ID = "dhir-2b"
 
 
+def code_fingerprint(model_dir: str) -> str:
+    """SHA-256 over the names and bytes of every .py file in the model folder, in sorted order.
+
+    The folder's own Python (modeling_dhir.py) runs when the server starts, so note this value after reading that code
+    and pass it back with --code-sha256 on later runs; a changed file then stops the server before it loads.
+    """
+    import hashlib
+    from pathlib import Path
+
+    root = Path(model_dir)
+    digest = hashlib.sha256()
+    for path in sorted(root.rglob("*.py")):
+        digest.update(path.relative_to(root).as_posix().encode("utf-8") + b"\0")
+        digest.update(path.read_bytes() + b"\0")
+    return digest.hexdigest()
+
+
 @dataclass
 class Piece:
     """One streamed fragment, or the final summary (done=True) with counts."""
@@ -79,16 +96,23 @@ class DhirModel:
                     self.n_tokens += int(value.numel())
                 super().put(value)
 
-        streamer = CountingStreamer(self.tokenizer, skip_prompt=True, skip_special_tokens=False)
+        streamer = CountingStreamer(self.tokenizer, skip_prompt=True, skip_special_tokens=False, timeout=600)
         gen_kwargs = dict(input_ids=input_ids, max_new_tokens=max_tokens, streamer=streamer)
         if temperature and temperature > 0:
             gen_kwargs.update(do_sample=True, temperature=float(temperature))
         else:
             gen_kwargs.update(do_sample=False)
 
+        errors = []
+
         def run():
-            with self._lock, torch.inference_mode():
-                self.model.generate(**gen_kwargs)
+            try:
+                with self._lock, torch.inference_mode():
+                    self.model.generate(**gen_kwargs)
+            except Exception as exc:   # a failed generation must end the stream, or the request would wait for ever
+                errors.append(exc)
+            finally:
+                streamer.end()
 
         thread = threading.Thread(target=run, daemon=True)
         thread.start()
@@ -97,6 +121,8 @@ class DhirModel:
             if clean:
                 yield Piece(text=clean)
         thread.join()
+        if errors:
+            raise errors[0]
         yield Piece(done=True, prompt_tokens=prompt_tokens, completion_tokens=streamer.n_tokens)
 
 

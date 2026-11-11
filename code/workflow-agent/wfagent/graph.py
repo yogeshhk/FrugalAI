@@ -91,7 +91,10 @@ def reply_problems(reply: str, facts: str, message: str) -> List[str]:
     problems = []
     if not reply.strip():
         problems.append("empty reply")
-    allowed = set(K.numbers_in(facts)) | set(K.numbers_in(message))
+    # Only numbers the tool returned are allowed. A number the user typed does not count: a reply that agrees with a
+    # wrong number in the question ("Is wheat 9999 rupees?") is exactly what this check must catch. When the tool found
+    # nothing (NOT_FOUND, which has no digits), any number in the reply is therefore rejected too.
+    allowed = set(K.numbers_in(facts))
     invented = [n for n in K.numbers_in(reply) if n not in allowed]
     if invented:
         problems.append("invented number " + ", ".join(sorted(set(invented))))

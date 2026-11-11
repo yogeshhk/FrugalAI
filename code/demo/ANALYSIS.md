@@ -145,7 +145,7 @@ Decisions (author, 2026-10-28), which override the items below where they differ
 
 ## 8. Trial: Base against Base + RAG (2026-10-28, one run, Qwen3 1.7B, structure-aware retrieval)
 
-Ten questions run twice: the model alone, and the same model with the retrieved course chunks. Gold from `eval/`.
+Nine questions run twice (answers not saved): the model alone, and the same model with the retrieved course chunks. Gold from `eval/`.
 
 | Question | Base model alone | Base + RAG | Use in demo |
 |----------|------------------|------------------|-------------|
@@ -162,4 +162,4 @@ Ten questions run twice: the model alone, and the same model with the retrieved 
 Reading: the demo works well on questions about facts only this document holds. It must not use "Can a student skip
 QT 02?": the model misreads the table group and answers wrongly. The earlier headline screenshot compared plain search
 with the agent, which does answer it correctly because code, not the model, reads the table. Examples chosen after
-seeing answers must be captioned as illustrations, next to the measured 69% for Base + RAG across 110 questions.
+seeing answers must be captioned as illustrations, next to the measured 66% for Base + RAG across 110 questions.

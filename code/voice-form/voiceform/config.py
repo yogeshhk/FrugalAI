@@ -30,6 +30,7 @@ ASR_MODELS = {
         "path": MODELS_DIR / "vosk-model-small-hi-0.22",
         "url": "https://alphacephei.com/vosk/models/vosk-model-small-hi-0.22.zip",
         "licence": "Apache-2.0",
+        "sha256": "TO_PIN",   # the zip is not on disk; the first download prints the computed value to check and paste here
     },
     "whisper-base": {
         "kind": "whisper", "langs": ["hi", "mr"], "repo": "openai/whisper-base", "licence": "Apache-2.0",

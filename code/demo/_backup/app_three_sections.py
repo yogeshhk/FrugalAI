@@ -7,6 +7,7 @@ connection that is not to this machine and shows the count, so it doubles as the
 """
 
 import csv
+import html
 import json
 import time
 from pathlib import Path
@@ -135,7 +136,7 @@ def section_document():
         r = res[key]
         with col:
             st.markdown("#### " + title)
-            st.markdown('<div class="ans">%s</div>' % r["answer"].replace("\n", "<br>"), unsafe_allow_html=True)
+            st.markdown('<div class="ans">%s</div>' % html.escape(r["answer"]).replace("\n", "<br>"), unsafe_allow_html=True)
             pages = ", ".join(str(p) for p in r.get("pages", [])) or "none"
             st.markdown('<div class="meta">%s %s pages: %s | model calls: %d | %.1f s</div>' % (
                 badge("no model used" if not r.get("used_llm") else "model read the evidence", "ok" if not r.get("used_llm") else "live"),
@@ -193,7 +194,7 @@ def section_marathi():
             if hide:
                 st.markdown('<div class="ans meta">(answer hidden for slides)</div>', unsafe_allow_html=True)
             else:
-                st.markdown('<div class="ans">%s</div>' % r["answer"], unsafe_allow_html=True)
+                st.markdown('<div class="ans">%s</div>' % html.escape(r["answer"]), unsafe_allow_html=True)
             st.markdown('<div class="meta">%s %s %s | %.1f s | %s tokens | Devanagari %.0f%%</div>' % (
                 badge(tag, kind), verdict, "", r.get("seconds", 0), r.get("new_tokens", "?"), 100 * D.devanagari_share(r["answer"])),
                 unsafe_allow_html=True)

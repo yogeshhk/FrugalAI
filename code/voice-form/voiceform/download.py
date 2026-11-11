@@ -11,7 +11,8 @@ from typing import Iterable, List, Optional
 from . import config
 
 HF_PATTERNS = ["*.json", "*.txt", "*.model", "*.onnx", "*.tiktoken", "*.yaml", "vocab*", "merges*",
-               "*.vocab", "*.pt"]
+               "*.vocab"]
+MAX_ZIP_BYTES = 500 * 1024 * 1024   # refuse a Vosk archive that unpacks to more than this
 # The one repo whose own Python (model_onnx.py) is run; every other repo downloads data and weights only.
 # The file is hash-checked before it runs (config.verify_code_hash).
 ASSET_DIR_REPOS = {"ai4bharat/indic-conformer-600m-multilingual"}
@@ -24,6 +25,7 @@ def _weights_patterns(repo: str, revision: Optional[str] = None) -> List[str]:
     names = [s.rfilename for s in HfApi().model_info(repo, revision=revision).siblings]
     if any(n.endswith(".safetensors") for n in names):
         return ["*.safetensors"]
+    print("[warn] %s: only pickle weights (.bin) are published; loading them can run code from the file" % repo)
     return ["*.bin"]
 
 
@@ -44,13 +46,24 @@ def fetch_hf(repo: str, local_name: str, revision: str) -> str:
     return snapshot_download(repo, revision=revision, allow_patterns=patterns, local_dir=str(target))
 
 
-def fetch_vosk(url: str, dest_parent) -> str:
+def fetch_vosk(url: str, dest_parent, sha256: str = "TO_PIN") -> str:
+    """Download a Vosk zip, check its SHA-256 and size, then unpack it. Nothing is written if a check fails."""
+    import hashlib
+
     import requests
 
     dest_parent.mkdir(parents=True, exist_ok=True)
     resp = requests.get(url, timeout=600)
     resp.raise_for_status()
+    actual = hashlib.sha256(resp.content).hexdigest()
+    if not sha256 or sha256 == "TO_PIN":
+        raise ValueError("no pinned SHA-256 for %s; it came to %s. Check that against the vendor, then set it in "
+                         "config.py" % (url, actual))
+    if actual != sha256:
+        raise ValueError("checksum mismatch for %s: expected %s, got %s" % (url, sha256, actual))
     with zipfile.ZipFile(io.BytesIO(resp.content)) as zf:
+        if sum(i.file_size for i in zf.infolist()) > MAX_ZIP_BYTES:
+            raise ValueError("%s unpacks to more than %d MB; refusing" % (url, MAX_ZIP_BYTES // (1024 * 1024)))
         zf.extractall(dest_parent)
     return str(dest_parent)
 
@@ -65,7 +78,7 @@ def run(only: Optional[Iterable[str]] = None, with_tts: bool = True) -> None:
                 if spec["path"].exists():
                     print(f"[ok]   {name}: already at {spec['path']}")
                     continue
-                fetch_vosk(spec["url"], config.MODELS_DIR)
+                fetch_vosk(spec["url"], config.MODELS_DIR, spec.get("sha256", "TO_PIN"))
             else:
                 fetch_hf(spec["repo"], local_name=name, revision=spec.get("revision", ""))
             print(f"[ok]   {name}")

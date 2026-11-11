@@ -20,6 +20,15 @@ def test_all_forms_load():
     assert ASHA.data_entry_only
 
 
+def test_form_ids_and_field_names_must_be_plain():
+    for bad_id in ("../x", "Bad Id", "", None, 'a"b'):
+        with pytest.raises(ValueError):
+            parse_form({"id": bad_id, "fields": []})
+    with pytest.raises(ValueError):
+        parse_form({"id": "ok", "fields": [{"name": 'na"me', "type": "text"}]})
+    assert parse_form({"id": "ok_1", "fields": [{"name": "village", "type": "text"}]}).id == "ok_1"
+
+
 def test_bad_form_is_rejected():
     with pytest.raises(ValueError):
         parse_form({"id": "x", "fields": [{"name": "a", "type": "colour"}]})

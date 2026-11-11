@@ -11,9 +11,12 @@ SR = 16000
 
 def load(path, sr: int = SR) -> np.ndarray:
     """Decode any audio file (wav, m4a, mp3, ogg, webm) to mono float32 at `sr` Hz, through ffmpeg."""
+    p = Path(path)
+    if not p.is_file():   # a URL or a protocol string would make ffmpeg open a network connection the guard cannot see
+        raise ValueError("not a local file: %s" % path)
     if not shutil.which("ffmpeg"):
         raise RuntimeError("ffmpeg is not on PATH; it is needed to read audio files")
-    cmd = ["ffmpeg", "-nostdin", "-v", "error", "-i", str(path), "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"]
+    cmd = ["ffmpeg", "-nostdin", "-v", "error", "-i", str(p.resolve()), "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"]
     out = subprocess.run(cmd, capture_output=True, check=True).stdout
     return np.frombuffer(out, dtype=np.float32).copy()
 

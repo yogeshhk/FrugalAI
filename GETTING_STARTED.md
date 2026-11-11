@@ -8,6 +8,9 @@ How to run what exists and how to add a project. Concepts and sources stay in [d
 | [code/workflow-agent/](code/workflow-agent/) | Project: LangGraph concept-intake workflow on the QCNP FAQ notes, and a small helpline demo |
 | [code/finetune-slm/](code/finetune-slm/) | Project: LoRA fine-tuning on a CPU: a 135M intent router, and a Marathi question-answering study |
 | [code/wiki-rag/](code/wiki-rag/) | Project: offline Q&A over a folder of notes (hand-built BM25). Self-contained: code, sample data, tests, README |
+| [code/voice-form/](code/voice-form/) | Project: spoken Marathi or Hindi to a confirmed form record, offline, with speech models and a small local language model |
+| [code/dhir-server/](code/dhir-server/) | Project: a local OpenAI-style server for the Indian model Dhir 2B, which LM Studio cannot load |
+| [code/demo/](code/demo/) | The offline live demo page for the Frugal AI talk: base model against base model + RAG |
 | [code/common/](code/common/) | Shared by every project: `frugalai_common/` (backend interface for Ollama and LM Studio, metrics, benchmark command), [benchmarks/](code/common/benchmarks/) (method and CSV results), [devices/](code/common/devices/) (setup notes per device) |
 | [code/_template/](code/_template/) | Starting point for a new project folder |
 | [_scripts/](_scripts/) | Repo tools: `check_awesome.py` (format check for `AWESOME.md`) and `check_links.py` (relative Markdown links) |
@@ -23,6 +26,8 @@ conda env create -f environment.yml
 conda activate frugalai
 ```
 
+Note: this environment file has not been built or tested yet.
+
 Everything that talks to a model needs a local server first. Start **LM Studio** (Developer tab, local server on
 port 1234) or **Ollama** (port 11434), and load one small model, for example Qwen3 1.7B at Q4_K_M.
 
@@ -30,7 +35,7 @@ port 1234) or **Ollama** (port 11434), and load one small model, for example Qwe
 5 prompts x 3 repeats and writes a CSV to `code/common/benchmarks/results/`:
 
 ```bash
-# first make the shared library importable.  PowerShell: $env:PYTHONPATH = "common"   bash: export PYTHONPATH=common
+# first make the shared library importable.  PowerShell: $env:PYTHONPATH = "code/common"   bash: export PYTHONPATH=code/common
 python -m frugalai_common.bench --backend lmstudio --model <model id> --device <label> --quantisation Q4_K_M
 ```
 
@@ -52,7 +57,7 @@ print(result.text, result.decode_tokens_per_s)
 folder; `sample_wiki` is a made-up example vault, so point it at your own folder of `.md` files when ready:
 
 ```bash
-cd wiki-rag
+cd code/wiki-rag
 python -m wikirag index sample_wiki
 python -m wikirag search sample_wiki "mango watering" -k 2          # retrieval only, no model needed
 python -m wikirag ask sample_wiki "Which coach and seat is my train ticket for?" --model qwen/qwen3-1.7b --no-think

@@ -9,8 +9,8 @@ not confirm are listed at the end and are not repeated elsewhere in the repo as 
 Built by the Saving Voices Project with IIIT Dharwad for the Soliga community in southern India. It used
 five hours of voice data and runs on low-powered hardware, with Raspberry Pi running Linux named in the
 article. The models can run offline for long periods. Voice data stayed on community devices and community
-ownership was prioritised. The article notes the word error rate is slightly high, and that the project
-targets sub-$50 hardware. Source: [S2](sources.md#s2).
+ownership was prioritised. The article notes the word error rate is slightly high.
+Source: [S2](sources.md#s2).
 
 ### Indian startups described as frugal
 - Adalat AI (legal services) and Sarvam (voice AI) are described as taking a frugal approach in [S2](sources.md#s2).
@@ -22,10 +22,9 @@ targets sub-$50 hardware. Source: [S2](sources.md#s2).
   Indian ecosystem, not of what runs on a Raspberry Pi.
 
 ### Modi script transliteration
-MoScNet and the MoDeTrans dataset (2,043 Modi images with Devanagari transliterations) from IIT Roorkee
-researchers; the paper reports a distilled student 163 times smaller than its teacher. Source:
-[S4](sources.md#s4). The dataset is on Hugging Face as `historyHulk/MoDeTrans`, with a synthetic companion
-`SynthMoDe` ([S56](sources.md#s56)). A MoScNet model repository was not found, so do not plan on reusing the model;
+MoScNet and the MoDeTrans dataset (2,043 Modi images with Devanagari transliterations); the paper reports a
+163-fold reduction in parameters. Source:
+[S4](sources.md#s4). The dataset is on Hugging Face as `historyHulk/MoDeTrans`. A MoScNet model repository was not found, so do not plan on reusing the model;
 check the dataset card for its licence before use.
 
 ### Energy and token-cost context
@@ -35,7 +34,8 @@ check the dataset card for its licence before use.
   Report year 2025. Source: [S5](sources.md#s5).
 - A Gartner forecast, as reported by Network World on 7 July 2026, gives global data centre electricity of
   565 TWh in 2026, up 26% from 447 TWh in 2025, and AI-optimized servers at 175 TWh in 2026, up 84.2% from
-  95 TWh. It also reports 133 GW global data centre power demand in 2026. This is a forecast from an
+  95 TWh. It also reports about 133 GW global data centre power demand in 2026 (a search snippet of the press release said
+132 GW, so this figure is not confirmed). This is a forecast from an
   analyst firm, read through a trade-press article; the Gartner press release itself returned an access
   error and was not read. Source: [S7](sources.md#s7).
 - LBNL's 2024 US report (19 December 2024) gives a scenario range of US data centre demand out to 2028; the
@@ -80,7 +80,7 @@ check the dataset card for its licence before use.
   a broader AI ecosystem" and does not present them as a replacement ([S25](sources.md#s25)).
 - Diabetic retinopathy screening: Google's model, with Aravind Eye Hospital as a foundational research
   partner, had supported more than 600,000 screenings by October 2024. Partners aim for 6 million
-  AI-supported screenings over 10 years at no cost to patients and were seeking local regulatory approvals.
+  AI-supported screenings over 10 years.
   It is an imaging model, not a language model ([S26](sources.md#s26)).
 - The Economic Survey 2023-24 puts India's need at about 7.85 million non-farm jobs a year until 2030, an
   official estimate whose assumptions others dispute ([S27](sources.md#s27)).

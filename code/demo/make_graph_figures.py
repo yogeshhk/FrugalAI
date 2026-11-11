@@ -17,6 +17,7 @@ from pathlib import Path
 import demo_lib as D                                    # puts the sibling projects on sys.path
 
 os.environ.setdefault("FAQINTAKE_QCNP", str(D.CODE.parents[1] / "Publications" / "Books" / "QCNP"))
+os.environ.setdefault("FAQINTAKE_RUN_CONCEPT_CHECK", "1")   # the author's own concept_check.py in that folder, opted in here
 
 LABELS = {
     "normalise": "Clean the question",

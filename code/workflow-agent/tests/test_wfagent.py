@@ -28,6 +28,13 @@ def test_check_rejects_invented_numbers_and_empty_replies():
     assert reply_problems("", facts, "x")
 
 
+def test_check_does_not_accept_a_number_only_because_the_user_typed_it():
+    facts = "wheat at Pune: 2450 rupees per quintal (sample data)"
+    assert reply_problems("Yes, 9999 rupees.", facts, "Is wheat at Pune 9999 rupees?")
+    assert reply_problems("wheat at Pune: 2450 rupees", facts, "price of wheat in pune") == []
+    assert reply_problems("It is 500 rupees.", K.NOT_FOUND + ": no price for that crop and place", "wheat price 500?")
+
+
 def test_every_case_is_routed_correctly_by_the_rules():
     for case in load_cases():
         assert K.rule_intent(case["message"]) == case["intent"], case["id"]

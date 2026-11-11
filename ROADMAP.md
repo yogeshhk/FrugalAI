@@ -1,5 +1,8 @@
 # Roadmap
 
+Status 2026-11: all milestones below are parked to 2027; no device other than the main PC has been measured, and the
+M3 assistant stub was set aside.
+
 Scope rule: software and deployment, not chip design or hardware acceleration. Use an existing runtime
 (llama.cpp, Ollama, LM Studio, ONNX Runtime, LiteRT) and measure it.
 

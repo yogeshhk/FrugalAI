@@ -1,7 +1,7 @@
 """Helpers for the offline demo page: the connection guard, LM Studio calls, the fixed question lists and the recorded Marathi answers.
 
-Nothing here needs Streamlit, so the tests run without it. Everything is local: the guard refuses any connection that
-is not to this machine and counts both kinds.
+Nothing here needs Streamlit, so the tests run without it. Everything is local: the guard refuses any TCP or UDP
+connection and any name lookup, made from this Python process, that is not to this machine, and counts both kinds.
 """
 
 import json
@@ -55,6 +55,23 @@ def _is_local(address) -> bool:
     return host in _LOCAL or host.startswith("127.")
 
 
+def _is_ip_literal(host: str) -> bool:
+    import ipaddress
+
+    try:
+        ipaddress.ip_address(str(host).split("%")[0])
+        return True
+    except ValueError:
+        return False
+
+
+def bind_problem(address) -> str:
+    """Empty string when the Streamlit server is bound to this machine only, else the message to show."""
+    return "" if str(address or "") in ("localhost", "127.0.0.1", "::1") else (
+        "This page must be served on localhost only. Start it from code/demo (streamlit run app.py) "
+        "or pass --server.address localhost.")
+
+
 def install_guard(guard: Guard = GUARD) -> Guard:
     """Refuse every connect() to another machine for the rest of the process. Safe to call twice."""
     with _lock:
@@ -78,7 +95,23 @@ def install_guard(guard: Guard = GUARD) -> Guard:
         def connect_ex(sock, address):
             return original_ex(sock, address) if check(address) else 111
 
+        original_sendto, original_getaddrinfo = socket.socket.sendto, socket.getaddrinfo
+
+        def sendto(sock, data, *args):
+            address = args[-1] if args else None   # sendto(data, address) or sendto(data, flags, address)
+            if address is not None and not check(address):
+                raise Blocked("offline guard: blocked a datagram to %s" % (address,))
+            return original_sendto(sock, data, *args)
+
+        def getaddrinfo(host, *args, **kwargs):
+            name = host.decode("ascii", "replace") if isinstance(host, bytes) else host
+            if name and not _is_ip_literal(name) and not _is_local(name):   # a name lookup; literals are checked at connect
+                guard.blocked.append((str(name), None))
+                raise socket.gaierror("offline guard: blocked a name lookup for %s" % name)
+            return original_getaddrinfo(host, *args, **kwargs)
+
         socket.socket.connect, socket.socket.connect_ex = connect, connect_ex
+        socket.socket.sendto, socket.getaddrinfo = sendto, getaddrinfo
         guard.active = True
     return guard
 

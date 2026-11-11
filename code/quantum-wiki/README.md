@@ -84,7 +84,7 @@ default model download fails (WinError 1314); the project downloads into its own
   They need OCR and are not used yet.
 - OCR is off for the main PDF because it has a text layer. Parse time was 35 s for 23 pages on this PC.
 
-## Measured (2026-10-20, main PC, CPU path; one run)
+## Measured (2026-10-20, main PC; GPU offload setting not recorded; one run)
 
 Retrieval, page hit means a retrieved chunk is on a gold page (72 answerable tuned questions, 24 held-out):
 
@@ -124,7 +124,7 @@ code check does not catch because it only guards course codes and numbers, and M
 - The router and tools were tuned on the 80 tuned questions, so 0.975 is optimistic. The 30 held-out questions were
   written afterwards with different wording. They exposed two real problems. A vocabulary answerability gate that
   refused any question using a word the syllabus never contains falsely refused about half of the answerable
-  held-out questions (first look: tools-only accuracy 0.37 against 0.68 tuned), so the gate is off by default
+  held-out questions (first look; accuracy figures pending: earlier run, no file kept), so the gate is off by default
   (`route(gate=True)` keeps it for study). Several routing rules were also too narrow. I then fixed the routing
   using those failures, so the held-out set is no longer pristine: 0.93 is the result after one round of repairs,
   not a blind test. A third set, written by someone else, would be the next step.
@@ -148,5 +148,5 @@ code check does not catch because it only guards course codes and numbers, and M
 
 ## Notes
 - The router is rules: every failure on a new question shape should become a test.
-- Docling downloads its models into `models/` (about 300 MB, git-ignored); the first parse needs network access.
-- The held-out set is no longer pristine; both question sets were drafted by Claude and not reviewed. The grounding check is tested offline but its effect on model answers is not measured.
+- Docling downloads its models into `models/` (about 530 MB, git-ignored); the first parse needs network access.
+- The held-out set is no longer pristine; both question sets were drafted by Claude and reviewed by the author (2026-10-31). The grounding check is tested offline but its effect on model answers is not measured.

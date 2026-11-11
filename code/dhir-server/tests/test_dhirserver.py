@@ -5,8 +5,18 @@ import json
 from fastapi.testclient import TestClient
 
 from dhirserver.app import create_app
-from dhirserver.model import Piece
+from dhirserver.model import Piece, code_fingerprint
 from dhirserver.toolcalls import split_tool_calls, strip_control
+
+
+def test_code_fingerprint_changes_only_when_a_python_file_changes(tmp_path):
+    (tmp_path / "modeling_dhir.py").write_text("x = 1\n", encoding="utf-8")
+    (tmp_path / "config.json").write_text("{}", encoding="utf-8")
+    first = code_fingerprint(str(tmp_path))
+    (tmp_path / "config.json").write_text('{"a": 1}', encoding="utf-8")      # not Python: no change
+    assert code_fingerprint(str(tmp_path)) == first
+    (tmp_path / "modeling_dhir.py").write_text("x = 2\n", encoding="utf-8")  # Python changed
+    assert code_fingerprint(str(tmp_path)) != first
 
 
 class FakeModel:
@@ -42,6 +52,35 @@ def test_broken_tool_call_stays_as_text():
 def test_models_endpoint():
     client = TestClient(create_app(FakeModel("x")))
     assert client.get("/v1/models").json()["data"][0]["id"] == "dhir-2b"
+
+
+class BrokenModel:
+    def stream_chat(self, messages, tools=None, max_tokens=256, temperature=0.2):
+        raise RuntimeError("out of memory")
+        yield  # makes this a generator, like the real model
+
+
+def test_failed_generation_gives_a_500_not_a_hang():
+    client = TestClient(create_app(BrokenModel()))
+    resp = client.post("/v1/chat/completions", json={"messages": [{"role": "user", "content": "hi"}]})
+    assert resp.status_code == 500 and "generation failed" in resp.json()["error"]["message"]
+    assert client.get("/health").status_code == 200
+
+
+def test_max_tokens_is_capped_and_never_below_one():
+    model = FakeModel("x")
+    client = TestClient(create_app(model))
+    client.post("/v1/chat/completions", json={"messages": [{"role": "user", "content": "hi"}], "max_tokens": 10**9})
+    assert model.seen["max_tokens"] == 2048
+    client.post("/v1/chat/completions", json={"messages": [{"role": "user", "content": "hi"}], "max_tokens": -1})
+    assert model.seen["max_tokens"] == 1
+
+
+def test_a_foreign_host_header_is_refused():
+    client = TestClient(create_app(FakeModel("x")))
+    assert client.get("/health", headers={"host": "evil.example"}).status_code == 400
+    assert client.get("/health", headers={"host": "localhost:8000"}).status_code == 200
+    assert client.get("/health").status_code == 200
 
 
 def test_chat_non_stream_has_usage():

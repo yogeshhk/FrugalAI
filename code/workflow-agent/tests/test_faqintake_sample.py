@@ -54,6 +54,21 @@ def test_a_private_folder_is_used_when_it_exists(monkeypatch, tmp_path):
         importlib.reload(config)
 
 
+def test_the_regex_counter_runs_only_when_asked_for(monkeypatch, tmp_path):
+    (tmp_path / "faqs" / "t").mkdir(parents=True)
+    (tmp_path / "docs").mkdir()
+    (tmp_path / "docs" / "concept_check.py").write_text("raise SystemExit('must not run')\n", encoding="utf-8")
+    monkeypatch.setenv("FAQINTAKE_QCNP", str(tmp_path))
+    try:
+        monkeypatch.delenv("FAQINTAKE_RUN_CONCEPT_CHECK", raising=False)
+        assert importlib.reload(config).CONCEPT_CHECK is None            # a private folder alone does not run its script
+        monkeypatch.setenv("FAQINTAKE_RUN_CONCEPT_CHECK", "1")
+        assert importlib.reload(config).CONCEPT_CHECK == tmp_path / "docs" / "concept_check.py"
+    finally:
+        monkeypatch.undo()
+        importlib.reload(config)
+
+
 def test_regex_counter_is_skipped_without_the_private_folder():
     assert checks.load_concept_check(None) is None
 

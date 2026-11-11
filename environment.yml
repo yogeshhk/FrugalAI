@@ -2,7 +2,10 @@
 # relative to where you run the command):
 #   conda env create -f environment.yml
 #   conda activate frugalai
-# Tests run offline and need no model server. Python 3.11 is the version this file is tested on.
+# Tests run offline and need no model server. This file has not been built yet; every measurement in the repo was
+# made in another environment (conda env genai) on Python 3.10. The versions below were read from that environment
+# on 2026-11-11 and have not been checked on Python 3.11; torch is the CPU build, which the genai environment
+# does not have (it holds the CUDA build 2.7.1+cu118).
 # Optional, not installed here: llama-cpp-python, only if you want to load the Marathi GGUF from Python
 # (finetune-slm README). LM Studio can load that file instead.
 name: frugalai
@@ -11,29 +14,34 @@ channels:
 dependencies:
   - python=3.11
   - pip
-  - pytest
-  - numpy
-  - psutil
-  - pyyaml
-  - requests
-  - scipy
-  - scikit-learn      # quantum-wiki: English stop-word list
-  - ffmpeg            # voice-form: decodes phone recordings
+  - pytest=9.0.2
+  - numpy=1.26.4
+  - psutil=5.9.5
+  - pyyaml=6.0.2
+  - requests=2.32.5
+  - scipy=1.15.3
+  - scikit-learn=1.7.2   # quantum-wiki: English stop-word list
+  - ffmpeg               # voice-form: decodes phone recordings
   - pip:
+      - --index-url https://pypi.org/simple
       - --extra-index-url https://download.pytorch.org/whl/cpu
-      - torch
-      - transformers
-      - peft                      # finetune-slm: LoRA
-      - rank-bm25                 # finetune-slm: retrieval baseline
-      - langgraph                 # workflow-agent
-      - langchain-core
-      - langchain-openai          # quantum-wiki, faqintake: chat model pointed at LM Studio
-      - langchain-community       # quantum-wiki: BM25 retriever
-      - langchain-text-splitters  # quantum-wiki: chunking
-      - pydantic
-      - pymupdf                   # quantum-wiki: page text
-      - docling                   # quantum-wiki: PDF parsing (large; only the parse step needs it)
-      - huggingface-hub           # voice-form: model download
-      - onnxruntime               # voice-form: IndicConformer
-      - vosk                      # voice-form: small offline speech model runtime
-      - -e ./code/common          # frugalai_common, importable from every project
+      - torch==2.7.1+cpu             # the local version tag means it can only come from the PyTorch CPU index
+      - transformers==4.57.3
+      - peft==0.18.0                 # finetune-slm: LoRA
+      - rank-bm25==0.2.2             # finetune-slm: retrieval baseline
+      - langgraph==1.0.4             # workflow-agent
+      - langchain-core==1.6.10
+      - langchain-openai==1.1.6      # quantum-wiki, faqintake: chat model pointed at LM Studio
+      - langchain-community==0.4.1   # quantum-wiki: BM25 retriever
+      - langchain-text-splitters==1.1.0  # quantum-wiki: chunking
+      - pydantic==2.12.5
+      - pymupdf==1.27.2.3            # quantum-wiki: page text
+      - docling==2.53.0              # quantum-wiki: PDF parsing (large; only the parse step needs it)
+      - huggingface-hub==0.35.1      # voice-form: model download
+      - onnxruntime==1.22.0          # voice-form: IndicConformer
+      - vosk==0.3.45                 # voice-form: small offline speech model runtime
+      - streamlit==1.60.0            # demo
+      - fastapi==0.116.1             # dhir-server
+      - uvicorn==0.54.0              # dhir-server
+      - websocket-client==1.6.1      # demo: capture.py
+      - -e ./code/common             # frugalai_common, importable from every project

@@ -145,6 +145,16 @@ class TestRouter:
         with pytest.raises((ValueError, SyntaxError)):
             safe_eval(bad)
 
+    @pytest.mark.parametrize("bad", ["((((9^99)^99)^99)^99)^99", "(10.0^100)^100", "*".join(["(9^99)"] * 14)])
+    def test_safe_eval_refuses_huge_numbers_quickly(self, bad):
+        start = time.perf_counter()
+        with pytest.raises(ValueError):
+            safe_eval(bad)
+        assert time.perf_counter() - start < 1.0
+
+    def test_safe_eval_still_does_ordinary_powers(self):
+        assert safe_eval("2^10") == 1024 and safe_eval("(2^10)*(2^10)") == 1048576
+
 
 class TestPrompt:
     def test_think_blocks_are_removed(self):

@@ -14,8 +14,11 @@ import requests
 from fastapi import Body, FastAPI
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel
+from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from .toolcalls import split_tool_calls
+
+MAX_TOKENS_LIMIT = 2048   # the most new tokens one request may ask for
 
 
 class ChatRequest(BaseModel):
@@ -65,6 +68,9 @@ def create_app(model: Any, model_id: str = "dhir-2b", upstream: Optional[str] = 
     listing and chat requests for any other model id are passed through to it, so a project can point one URL at
     this server and still use LM Studio's embedding model and its other chat models."""
     app = FastAPI(title="dhir-server")
+    # Only answer requests addressed to this machine. This stops a web page from reaching the server through DNS
+    # rebinding (a hostile name that resolves to 127.0.0.1); "testserver" is the name Starlette's test client uses.
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1", "testserver"])
     up = upstream.rstrip("/") if upstream else None
     state = {"skip_until": 0.0}
 
@@ -104,7 +110,7 @@ def create_app(model: Any, model_id: str = "dhir-2b", upstream: Optional[str] = 
 
     def _dhir_chat(req: ChatRequest):
         messages = with_schema_hint(_normalise(req.messages), req.response_format)
-        max_tokens = req.max_tokens or 256
+        max_tokens = max(1, min(int(req.max_tokens or 256), MAX_TOKENS_LIMIT))   # one bad client cannot ask for a huge run
         temperature = 0.2 if req.temperature is None else req.temperature
         created = int(time.time())
         cid = "chatcmpl-" + uuid.uuid4().hex[:16]
@@ -112,11 +118,14 @@ def create_app(model: Any, model_id: str = "dhir-2b", upstream: Optional[str] = 
         if req.tools or not req.stream:
             # Tool calls must be parsed from the whole reply, so collect it first.
             text, final = [], None
-            for piece in model.stream_chat(messages, req.tools, max_tokens, temperature):
-                if piece.done:
-                    final = piece
-                else:
-                    text.append(piece.text)
+            try:
+                for piece in model.stream_chat(messages, req.tools, max_tokens, temperature):
+                    if piece.done:
+                        final = piece
+                    else:
+                        text.append(piece.text)
+            except Exception as exc:
+                return JSONResponse({"error": {"message": "generation failed: %s" % exc}}, status_code=500)
             content, calls = split_tool_calls("".join(text))
             usage = {
                 "prompt_tokens": final.prompt_tokens,

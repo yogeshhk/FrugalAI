@@ -52,6 +52,9 @@ python -m ftslm eval        # four systems; the Qwen3 row needs LM Studio servin
 python -m pytest code/finetune-slm/tests -v     # from the repo root; offline
 ```
 
+The package sets `HF_HUB_OFFLINE=1`, so models load only from the local cache. For the one command that downloads a
+model the first time, set `HF_HUB_OFFLINE=0` and `TRANSFORMERS_OFFLINE=0` (for example `set HF_HUB_OFFLINE=0` on Windows).
+
 Training is forced onto the CPU (`ftslm/__init__.py` hides the GPU). The thread count defaults to the physical
 core count.
 
@@ -121,7 +124,7 @@ facts. The study is built to say which happened.
 | Training data | done (`python -m mrsj data`) |
 | LoRA training on Gemma 3 1B | done (2026-10-21): 3 epochs; the epoch 3 adapter is the final one, see "Training" below |
 | Three-system evaluation | done on the epoch 3 adapter (2026-10-21), see "Results" below |
-| Merge and GGUF export | done: `python -m mrsj merge`, then llama.cpp's converter; the epoch 3 GGUF loads and answers (see TODO) |
+| Merge and GGUF export | done: `python -m mrsj merge`, then llama.cpp's converter; the epoch 3 GGUF loads and answers |
 
 ### The gate
 
@@ -163,12 +166,11 @@ honesty", while the book's first principle is "do no harm". Those invented answe
 ### Training and what went wrong
 
 LoRA (rank 16, all attention and MLP projections, 13.0 million trainable parameters, 1.29% of the model) in plain
-PyTorch on the CPU, float32, 10 threads. Measured on the stopped run: about 4 seconds per example, so about 22 minutes
-per epoch of 326 examples; mean loss fell from 3.74 (first 40 examples) to 3.23 (240 examples). (Not reproduced
-in-repo: the log of this stopped run was not kept; only the completed second run is in `adapters/marathi_1b/train_log.json`.)
+PyTorch on the CPU, float32, 10 threads. Speed and loss on the stopped run are pending (the log of that run was not kept;
+only the completed second run is in `adapters/marathi_1b/train_log.json`).
 
 The run was stopped by Claude Code at example 240 of epoch 1 because the machine was critically low on memory: the
-process peaked at 6.8 GB resident while free memory was only about 2 GB (other programs were using the rest). Checkpoints were then only written at
+process used a large share of memory (figure pending, not recorded) while free memory was low (other programs were using the rest). Checkpoints were then only written at
 epoch ends, so nothing was saved, and Claude Code's rule is not to restart such a job unasked. The trainer now saves
 every 40 examples, resumes mid-epoch, and refuses to start unless 8 GB is free.
 
@@ -216,7 +218,7 @@ What it shows:
   Marathi answer is the goal and the facts come from elsewhere, that matters; for correctness on this book it does not.
 
 Verdict for this book: use retrieval for facts. Fine-tuning on 18,000 words is mostly memorisation of the training
-pairs and a change of answer style, and it costs a two-hour training run to get there. A combination (a tuned model
+pairs and a change of answer style, and it costs a training run of about one hour of compute (two hours of wall time with a standby) to get there. A combination (a tuned model
 reading retrieved passages) was not tested and is the obvious next experiment.
 
 Limits of this result: 20, 20 and 12 questions per group; one seed; mechanical key matching (a person

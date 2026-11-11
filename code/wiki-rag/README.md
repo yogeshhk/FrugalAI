@@ -1,6 +1,6 @@
 # Recipe: offline wiki Q&A
 
-> Status: built: yes | measured: retrieval yes, answer scoring with a model not run | reviewed-by-author: no (the question sets were drafted by Claude)
+> Status: built: yes | measured: retrieval yes, answer scoring run once, from `code/dhir-server/` (see its README) | reviewed-by-author: no (the question sets were drafted by Claude)
 > | needs LM Studio: only for `ask`, embeddings and answer scoring; `index`, `search`, `eval` and the tests need none
 
 Ask questions of a folder of markdown notes (an Obsidian or Logseq vault, or any folder of `.md` files)
@@ -54,9 +54,9 @@ the GPU.
 | Check | Result |
 |-------|--------|
 | Retrieval, 10 sample questions, BM25 only | hit@1 = 1.00, hit@3 = 1.00 (`results/sample_retrieval.csv`, recomputed 2026-10-25) |
-| Retrieval, same questions, BM25 + nomic embeddings | hit@1 = 1.00, hit@3 = 1.00 (not reproduced in-repo: no results file; needs LM Studio to rerun) |
+| Retrieval, same questions, BM25 + nomic embeddings | pending (earlier run, no results file kept; needs LM Studio to rerun) |
 | Retrieval time per question | under 1 ms (BM25, 6 small notes; the slowest of the 10 questions took 0.39 ms, `results/sample_retrieval.csv`) |
-| Grounded answers checked by hand | 2 of 2 correct; off-topic question correctly answered "not found" (not reproduced in-repo: done by hand, nothing was saved) |
+| Grounded answers checked by hand | pending (an earlier hand check; nothing was saved, so no count is given) |
 | Dell and Raspberry Pi | not measured yet |
 
 The sample wiki is small, made up and easy, so these numbers show the pipeline works. They do not show

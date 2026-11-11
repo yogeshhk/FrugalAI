@@ -21,13 +21,13 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
 ## Layout
 `docs/` concepts, landscape, sources, safety, internship ideas. `code/` holds everything that runs: each project is a
 self-contained folder (code, data, tests, README, and a TODO only while an action is open): `code/wiki-rag/`, `code/quantum-wiki/`, `code/finetune-slm/`,
-`code/workflow-agent/`, `code/dhir-server/` (local server for Dhir 2B, which LM Studio cannot load); copy `code/_template/` for a new one. Shared pieces live in `code/common/`:
+`code/workflow-agent/`, `code/voice-form/` (speech to form), `code/demo/` (the offline talk demo), `code/dhir-server/` (local server for Dhir 2B, which LM Studio cannot load); copy `code/_template/` for a new one. Shared pieces live in `code/common/`:
 `code/common/frugalai_common/` backend interface and benchmark runner, `code/common/benchmarks/` method and results,
 `code/common/devices/` per-device setup. `_scripts/` at the repo root holds the repo tools (AWESOME.md and link
 checkers). Run all tests with `python -m pytest code -q` and the link check with `python _scripts/check_links.py`.
 
 ## Caveats that stay (not in TODO)
-- The question and case sets were drafted by Claude and not reviewed by the author.
+- The question and case sets of `finetune-slm`, `wiki-rag`, `workflow-agent` and `voice-form` were drafted by Claude and not reviewed by the author. The `quantum-wiki` sets (and so the demo's questions) were drafted by Claude and reviewed by the author on 2026-10-31.
 - No benchmark number exists for the old Dell, a Raspberry Pi or a power meter. Figures tagged "to verify" or "not confirmed" in `docs/` are unverified.
 - The legal position for clinical decision-support software in India has not been checked (`docs/safety.md`).
 - Keep TODO files terse: open actions only, no dated logs and no done lists; results live in each project's README.

@@ -55,7 +55,9 @@ Plan only; nothing here is measured yet. Background in [token_frugality.md](../.
   energy tracks tokens on that device.
 
 ## Known limits
-- The `os` column of the four committed CSVs reads `Windows-10-10.0.26300-SP0`, because Python reports Windows 11 as
+- The Dhir 2B CSV (2026-11-06) is one repeat of the five prompts through the dhir-server HTTP API, not three repeats;
+  its backend column reads `lmstudio` because the same client class was used.
+- The `os` column of the four committed 2026-10-19 CSVs reads `Windows-10-10.0.26300-SP0`, because Python reports Windows 11 as
   Windows 10 (the kernel version stays 10.0). Build 26300 is Windows 11 (builds from 22000 up are). New runs write
   `Windows-11-...` through `frugalai_common.metrics.os_label()`; the committed files are left as they were produced.
 - The Ollama backend has never been run against a live server; its timing path (`timing_source = server`) is tested

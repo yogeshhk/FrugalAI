@@ -14,6 +14,7 @@ ARITH = re.compile(r"^[\d\s.+\-*/()%^]+$")
 DATE_OR_ID = re.compile(r"^\d+([-/.])\d+(\1\d+)+$")
 PREFIXES =("what is ", "what's ", "calculate ", "compute ", "how much is ")
 MAX_EXPONENT = 100
+MAX_BITS = 4000   # an integer result may not grow past about 1,200 digits, so nested powers cannot hang the process
 
 _BIN = {
     ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul, ast.Div: operator.truediv,
@@ -41,12 +42,21 @@ def safe_eval(expr: str) -> float:
             left, right = ev(node.left), ev(node.right)
             if isinstance(node.op, ast.Pow) and abs(right) > MAX_EXPONENT:
                 raise ValueError("exponent too large")
+            both_int = isinstance(left, int) and isinstance(right, int)
+            # Check the size before computing, so a huge integer is never built.
+            if both_int and isinstance(node.op, ast.Pow) and left.bit_length() * abs(right) > MAX_BITS:
+                raise ValueError("number too large")
+            if both_int and isinstance(node.op, ast.Mult) and left.bit_length() + right.bit_length() > MAX_BITS:
+                raise ValueError("number too large")
             return _BIN[type(node.op)](left, right)
         if isinstance(node, ast.UnaryOp) and type(node.op) in _UNARY:
             return _UNARY[type(node.op)](ev(node.operand))
         raise ValueError("unsupported expression")
 
-    return ev(tree)
+    try:
+        return ev(tree)
+    except (OverflowError, RecursionError, MemoryError) as exc:
+        raise ValueError("cannot compute") from exc
 
 
 def route(question: str) -> Route:

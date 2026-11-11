@@ -1,6 +1,6 @@
 # Project: voice to form (Marathi, Hindi)
 
-> Status: built: yes | measured: extraction on script text only (round 2 partial), nothing on real speech | reviewed-by-author: no
+> Status: built: yes | measured: extraction on script text only (round 2 partial), a 3-recording pilot on real speech (too few to report as accuracy) | reviewed-by-author: no
 > (the scripts were drafted by Claude) | needs LM Studio: yes for extraction runs and `fill`; the tests do not
 
 A field worker speaks in Marathi or Hindi; a small offline pipeline fills a form, shows where each value came from,
@@ -46,7 +46,7 @@ A new form is a new YAML file: fields with a type (`text`, `int`, `float`, `date
 | Speech, Hindi and Marathi | [openai/whisper-base](https://huggingface.co/openai/whisper-base) | 74M parameters | Apache-2.0 | downloaded |
 | Speech, Marathi | [vittai23/whisper-small-marathi](https://huggingface.co/vittai23/whisper-small-marathi) | 244M parameters | Apache-2.0 (card) | downloaded; a community fine-tune with few downloads, card not yet checked in detail |
 | Speech, Hindi | [vasista22/whisper-hindi-small](https://huggingface.co/vasista22/whisper-hindi-small) | 244M parameters | Apache-2.0 (card) | downloaded |
-| Speech, 22 languages | [ai4bharat/indic-conformer-600m-multilingual](https://huggingface.co/ai4bharat/indic-conformer-600m-multilingual) | 600M parameters | MIT | gated: accept the terms on the model page, then `python -m voiceform download --only indicconformer` (about 2.6 GB, 398 files in `assets/`; loads on CPU in about 30 s and runs in the PC's Python only, not in LM Studio; no accuracy number yet) |
+| Speech, 22 languages | [ai4bharat/indic-conformer-600m-multilingual](https://huggingface.co/ai4bharat/indic-conformer-600m-multilingual) | 600M parameters | MIT | gated: accept the terms on the model page, then `python -m voiceform download --only indicconformer` (about 2.6 GB, 398 files in `assets/`; loads on CPU (load time pending) and runs in the PC's Python only, not in LM Studio; no accuracy number yet) |
 | Language | Qwen3 1.7B (Q4_K_M) and Gemma 2 2B (Q5_K_M as loaded on 2026-10-26; earlier runs may have used Q4_K_M, not recorded) in LM Studio | 1.4 GB ([Ollama page](https://ollama.com/library/qwen3)) and about 1.7 GB (to verify) | Apache-2.0; Gemma terms ([S40](../../docs/sources.md#s40)); Gemma's card claims English only | already in LM Studio |
 | Smoke-test voice only | facebook/mms-tts-mar, facebook/mms-tts-hin | 36M parameters each (to verify) | CC BY-NC 4.0 | downloaded; audio never committed, never reported as accuracy |
 
@@ -68,7 +68,7 @@ for speaking, not for listening. It is a slot to fill if the weights become avai
 | `voiceform/netguard.py` | blocks and counts any connection that is not to this machine |
 | `voiceform/pipeline.py` | speech or text to an unconfirmed record, inside the guard |
 | `voiceform/sinks.py` | form JSON, SQLite, CRM record, API payload; refuses an unconfirmed record |
-| `voiceform/evaluate.py` | speech and extraction evaluation; `report` writes `results/RESULTS.md` (not committed yet: it is written when the evaluation is complete) |
+| `voiceform/evaluate.py` | speech and extraction evaluation; `report` writes `results/RESULTS.md` |
 | `voiceform/recording.py`, `smoke.py` | recording sheet and importer; machine-voice smoke audio |
 | `eval/scripts/mr.yaml`, `hi.yaml` | 33 lines per language: 18 tune, 9 held-out, 6 free-speech cards, with gold values |
 | `eval/RECORDING.md` | the sheet to read from when recording |
@@ -99,6 +99,11 @@ LM Studio must be running with the model loaded. RAM per speech model is measure
 - "To fix per utterance" counts what a worker would have to change: wrong, missed and invented values.
 - Speech: word and character error rate after the same normalising on both sides, real-time factor, RAM.
 - The scripts were drafted by Claude and are synthetic; the recordings are the author's voice only.
+
+### Pilot on real speech
+
+A 3-recording pilot (one speaker, 2026-11-06) is in `results/pilot_3_recordings_2026-11-06/`; three recordings are too
+few to report as accuracy.
 
 ### Results so far: extraction on script text (round 2)
 
@@ -135,7 +140,7 @@ What the table says:
   (the tune timings are noisier: one Hindi `translate` line took 1,613 s, probably a stall); the GPU offload setting was
   not recorded; Gemma was loaded as Q5_K_M and Qwen as Q4_K_M, so the comparison is not like for like.
 - The per-utterance tune files of six runs were overwritten by the held-out run; the tune summaries were restored from
-  `results/round2_tune_log.txt` (the note is in each summary's `meta`) and the recovered lines are in
+  `results/round2_tune_log.txt` (the log is kept locally and is not in the repository; the note is in each summary's `meta`) and the recovered lines are in
   `results/*.tune_from_log.csv` (first three errors per line, ASCII only). A run over a subset of sets now writes to its
   own file name.
 

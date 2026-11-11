@@ -212,7 +212,8 @@ LoRA, so whether current llama.cpp can train LoRA adapters is still to verify.
 ## S30. MLX: an array framework for Apple silicon
 Publisher: Apple machine learning research (ml-explore). URL: https://github.com/ml-explore/mlx and
 https://pypi.org/project/mlx/. Seen 2026-10-20 through search summaries only. Used for: MLX targeting Apple
-silicon, with a Linux CPU package; no Windows install is documented in what was seen.
+silicon, with a Linux CPU package; no Windows install is documented in what was seen. Not used in the docs any
+more (claim removed 2026-11-11, because it was never read in full).
 
 <a id="s31"></a>
 ## S31. Hugging Face Transformers documentation: bitsandbytes
@@ -288,7 +289,8 @@ which also recommends a newer Indic-Transcribe model), and `facebook/mms-tts-mar
 Authors: Gala, Chitale and others (AI4Bharat). arXiv:2305.16307. URL: https://arxiv.org/abs/2305.16307 and the
 model page `ai4bharat/indictrans2-indic-en-dist-200M`. Seen 2026-10-24 through search summaries and the Hugging Face
 metadata. Used for: a distilled Indic-to-English translation model of about 211M parameters under the MIT licence,
-gated download. Its CPU speed was not checked; it is listed in voice-form as an idea, not used.
+gated download. Its CPU speed was not checked; it is listed in voice-form as an idea, not used. The size and
+licence figures are no longer stated in the docs (removed 2026-11-11, never read in full).
 
 <a id="s40"></a>
 ## S40. Hugging Face model cards: the two language models used by voice-form
@@ -300,8 +302,11 @@ Gemma 2 2B instruction-tuned: licence tag "gemma" (the Gemma terms of use, not r
 conditions to get the files), 2.6B parameters in the release collection text while the metadata shows about 3B (the
 page does not reconcile them), no context length stated on the card, and English as the only language claimed. So
 Gemma's Marathi and Hindi results in voice-form are an observation on this task, not a claim the model card makes.
-The files in LM Studio on the main PC differ from the table in the voice-form README: `gemma-2-2b-it` is Q5_K_M there
-(README says Q4_K_M), and its maximum context is reported as 8192 by the LM Studio server.
+The file in LM Studio on the main PC, `gemma-2-2b-it`, is Q5_K_M (confirmed by the author in LM Studio, 2026-11-11),
+and its maximum context is reported as 8192 by the LM Studio server. The two 2026-10-19 benchmark CSVs for Gemma
+(`code/common/benchmarks/results/*gemma-2-2b-it*_2026-10-19.csv`) carry `Q4_K_M` in their quantisation column; that
+column is a label typed on the command line, not read from the file, so it is wrong for Gemma. The raw CSVs are left
+unedited; the speeds in them are unaffected.
 
 <a id="s41"></a>
 ## S41. llama.cpp repository page
@@ -392,7 +397,8 @@ and the Wikimedia Terms of Use controlling over the page.
 Publisher: various mirrors. Seen 2026-10-28 through search summaries only; the IEEE DataPort page for it returned
 HTTP 404 on one URL and shows a licence field of 0 elsewhere, and a Hugging Face mirror lists the upstream licence as
 "other (research use)". Used for: 1,800 grayscale 200x200 images in 6 classes with bounding boxes (class names differ
-between sources). The original database terms were not found.
+between sources). The original database terms were not found. The size, DOI and licence details are no longer
+stated in the docs (removed 2026-11-11, never read in full).
 
 <a id="s54"></a>
 ## S54. Energy versus output length in LLM inference
@@ -417,7 +423,26 @@ Seen 2026-10-28 through search summaries only. Used for: the paper (Kausadikar, 
 March 2025) with a distilled student 163 times smaller than its teacher, the MoDeTrans dataset (2,043 Modi images
 with Devanagari transliterations) existing on Hugging Face with a companion synthetic set SynthMoDe, and a
 government listing giving an MIT licence (not checked on the Hugging Face card). A MoScNet model repository was not
-found.
+found. The SynthMoDe clause is no longer stated in `docs/landscape.md` (removed 2026-11-11, never read in full).
+
+<a id="s57"></a>
+## S57. Ollama: Qwen3 library page
+Publisher: Ollama. URL: https://ollama.com/library/qwen3. Not yet read (added 2026-11-11 so the claim in
+`docs/internship-ideas.md` has an entry). Used for: the stated download sizes of the Qwen3 0.6B, 1.7B and 4B tags
+(523 MB, 1.4 GB, 2.5 GB). The read date is to be filled in by the author.
+
+<a id="s58"></a>
+## S58. IndicXNLI dataset card and paper
+Publisher: Hugging Face and arXiv. URLs: https://huggingface.co/datasets/Divyanshu/indicxnli and
+https://arxiv.org/abs/2204.08776. Not yet read (added 2026-11-11). Used for: the Marathi (`mr`) split sizes (392,702
+train, 5,010 test, 2,490 dev rows per language) and the licence conflict (card CC BY-NC 4.0, page tag cc0-1.0), in
+`docs/internship-ideas.md`. The read date is to be filled in by the author.
+
+<a id="s59"></a>
+## S59. Common Voice on Hugging Face
+Publisher: Hugging Face. URL: the Hugging Face dataset page for Common Voice 17.0 (exact address to be added when
+the author reads it). Not yet read (added 2026-11-11). Used for: the statement that the version 17.0 dataset page is empty, and that Common Voice is
+distributed through the Mozilla Data Collective ([S48](#s48)). The read date is to be filled in by the author.
 
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":

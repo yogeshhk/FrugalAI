@@ -16,7 +16,10 @@ _env = os.environ.get("FAQINTAKE_QCNP", "").strip()
 QCNP = Path(_env) if _env else None
 USING_PRIVATE = bool(QCNP and (QCNP / "faqs").is_dir())
 FAQS = QCNP / "faqs" if USING_PRIVATE else SAMPLE_FAQS
-CONCEPT_CHECK = (QCNP / "docs" / "concept_check.py") if USING_PRIVATE else None   # the author's regex counter; loaded, never copied
+# The author's regex counter is a Python file that runs when loaded, so it is opt-in: a private folder alone does not
+# run it. Set FAQINTAKE_RUN_CONCEPT_CHECK=1 to say you have read docs/concept_check.py and want it used.
+RUN_CONCEPT_CHECK = os.environ.get("FAQINTAKE_RUN_CONCEPT_CHECK", "") == "1"
+CONCEPT_CHECK = (QCNP / "docs" / "concept_check.py") if (USING_PRIVATE and RUN_CONCEPT_CHECK) else None   # loaded, never copied
 
 DRAFTS = ROOT / "drafts"
 CACHE = ROOT / "cache"

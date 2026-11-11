@@ -16,8 +16,13 @@ import demo_lib as D
 
 D.install_guard()
 os.environ.setdefault("FAQINTAKE_QCNP", str(D.CODE.parents[1] / "Publications" / "Books" / "QCNP"))
+os.environ.setdefault("FAQINTAKE_RUN_CONCEPT_CHECK", "1")   # the author's own concept_check.py in that folder, opted in here
 
 st.set_page_config(page_title="Is it already covered?", layout="wide")
+_bad = D.bind_problem(st.get_option("server.address"))
+if _bad:
+    st.error(_bad)
+    st.stop()
 st.markdown(
     """<style>
 #MainMenu, header, footer { visibility: hidden; }

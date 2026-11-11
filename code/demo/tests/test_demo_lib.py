@@ -9,6 +9,12 @@ import pytest
 import demo_lib as D
 
 
+def test_pages_refuse_to_run_unless_bound_to_this_machine():
+    assert D.bind_problem("localhost") == "" and D.bind_problem("127.0.0.1") == ""
+    assert D.bind_problem(None) != "" and D.bind_problem("") != ""
+    assert D.bind_problem("0.0.0.0") != ""
+
+
 def test_question_rules_are_fixed_and_ordered():
     heldout = [{"id": "a", "kind": "cross", "q": "q1"}, {"id": "b", "kind": "status", "q": "q2"},
                {"id": "c", "kind": "status", "q": "q3"}, {"id": "d", "kind": "unanswerable", "q": "q4"},
@@ -24,17 +30,17 @@ def test_demo_questions_are_the_five_chosen():
 
 def test_rag_score_sums_the_structure_rows_only():
     rows = [{"system": "struct", "kind": "all", "n": "80", "accuracy": "0.688"},
-            {"system": "struct", "kind": "all", "n": "30", "accuracy": "0.633"},
+            {"system": "struct", "kind": "all", "n": "30", "accuracy": "0.6"},
             {"system": "agent", "kind": "all", "n": "80", "accuracy": "0.975"},
             {"system": "struct", "kind": "status", "n": "8", "accuracy": "1.0"}]
     s = D.rag_score(rows)
-    assert "67%" in s and "110" in s
+    assert "66%" in s and "110" in s
     assert D.rag_score([{"system": "agent", "kind": "all", "n": "80", "accuracy": "0.975"}]) is None
 
 
 def test_faq_score_line_is_plain_and_has_no_dash():
     assert "20" in D.FAQ_SCORE and "91%" in D.FAQ_SCORE
-    assert "—" not in D.FAQ_SCORE and "–" not in D.FAQ_SCORE
+    assert chr(0x2014) not in D.FAQ_SCORE and chr(0x2013) not in D.FAQ_SCORE   # no em dash, no en dash
 
 
 def test_clean_answer_drops_bold_and_extra_space():
@@ -76,7 +82,7 @@ def test_model_status_all_false_when_server_down(monkeypatch):
 
 def test_guard_blocks_other_hosts_and_counts_local():
     g = D.Guard()
-    original = (socket.socket.connect, socket.socket.connect_ex)
+    original = (socket.socket.connect, socket.socket.connect_ex, socket.socket.sendto, socket.getaddrinfo)
     try:
         D.install_guard(g)
         s = socket.socket()
@@ -84,6 +90,14 @@ def test_guard_blocks_other_hosts_and_counts_local():
             s.connect(("93.184.216.34", 80))                      # an internet address: refused before any packet is sent
         assert s.connect_ex(("93.184.216.34", 80)) == 111
         assert g.blocked and g.blocked[0][0] == "93.184.216.34"
+        with pytest.raises(socket.gaierror):
+            socket.getaddrinfo("example.org", 80)                 # a name lookup for another host is refused
+        assert ("example.org", None) in g.blocked
+        udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        with pytest.raises(D.Blocked):
+            udp.sendto(b"x", ("93.184.216.34", 53))               # so is a UDP datagram
+        udp.close()
+        assert socket.getaddrinfo("localhost", 80)                # this machine still resolves
         server = socket.socket()
         server.bind(("127.0.0.1", 0))
         server.listen(1)
@@ -95,4 +109,4 @@ def test_guard_blocks_other_hosts_and_counts_local():
         server.close()
         s.close()
     finally:
-        socket.socket.connect, socket.socket.connect_ex = original
+        socket.socket.connect, socket.socket.connect_ex, socket.socket.sendto, socket.getaddrinfo = original

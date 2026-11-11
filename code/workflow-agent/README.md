@@ -50,12 +50,14 @@ pass, which also tests the linter (private entries: not reproducible from this r
 By default `faqintake` reads `sample_faqs/`: five invented, generic entries (about running small models) in the same
 format as the real ones, written for this demo, not copies of anything. Set `FAQINTAKE_QCNP` to a folder that holds
 `faqs/` (and, optionally, `docs/concept_check.py`, the author's regex counter) to use your own notes instead; if the
-variable is unset or points at a missing folder, the sample is used.
+variable is unset or points at a missing folder, the sample is used. That script runs as Python when it is loaded, so
+it is opt-in: also set `FAQINTAKE_RUN_CONCEPT_CHECK=1` once you have read `docs/concept_check.py`. The demo scripts in
+`code/demo/` set both for the author's own folder.
 
 | What | Sample (default) | Your own folder (`FAQINTAKE_QCNP`) |
 |------|------------------|------------------------------------|
 | `intake`, `lint` | works | works |
-| Regex check (the author's counter) | skipped, no `concept_check.py` | used if the file is there |
+| Regex check (the author's counter) | skipped, no `concept_check.py` | used if the file is there and `FAQINTAKE_RUN_CONCEPT_CHECK=1` is set |
 | `eval` (theme, duplicates, drafting) | refused: 5 entries cannot be evaluated | works if `eval/intake_cases.json` matches your entries |
 | Offline tests | `test_faqintake_sample.py` runs | the 16 tests in `test_faqintake.py` run too |
 
@@ -135,8 +137,7 @@ evaluated yet. The first-version results are kept in `results/drafts_leave_one_o
 `python -m wfagent ask "What is the price of onion in Nashik?"` routes a farmer's message through a LangGraph graph
 (classify, extract, tool, compose, check, retry, fallback). The tools read small made-up tables
 (`wfagent/knowledge.py`), and a code check rejects any number the tool did not return. Ten offline tests pass, and
-one live run answered correctly (2 model calls, 191 prompt tokens, 30 completion tokens, 7.6 s; not reproduced
-in-repo, no log of that run was kept). The 31-case model
+one live run answered correctly (call counts, tokens and time pending: earlier run, no log of it was kept). The 31-case model
 evaluation (`eval/cases.json`, `python -m wfagent eval`, needs LM Studio) has not been run; `results/results.csv` there holds a scripted-model run that
 only checks the plumbing and is not a model result. Print the graph with `python -m wfagent graph`.
 

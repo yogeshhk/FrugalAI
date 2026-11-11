@@ -27,5 +27,15 @@ not replace a clinician, and is not deployed in the field until the steps below 
 - Run a pilot with a partner organisation, with informed consent and a way to report problems.
 
 ## What this repository does today
-Only documentation. The earlier ASHA-assistant stub (plan and evaluation format) was set aside and is not being
-worked on. No health content has been written and no model has been evaluated for it.
+Documentation, plus one health-related data-entry form. The earlier ASHA-assistant stub (plan and evaluation
+format) was set aside and is not being worked on. No health guidance has been written, and no model has been
+evaluated for giving health advice.
+
+The one health-related item is the simplified antenatal home-visit form in `code/voice-form/forms/asha_anc_visit.yaml`
+(synthetic data only, not an official form). It is **data entry only**: the app records what the worker says and
+saves it only after a person confirms. It gives no advice, no diagnosis and no dosing, and it does not judge
+danger signs. Two small language models (Qwen3 1.7B and Gemma 2 2B) were scored on how well they fill the form fields
+from spoken Marathi and Hindi, which measures field capture, not health content. The form carries a
+`data_entry_only: true` flag, but no code enforces it; the rule holds because the form contains no advice logic.
+Any change that adds advice, danger-sign checks or guidance to it falls under the rules above and needs the
+review in rule 7 first.

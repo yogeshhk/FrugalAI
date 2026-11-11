@@ -1,5 +1,6 @@
 """Form definitions: one YAML file per form in forms/. A new form needs a YAML file, not new code."""
 
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -9,6 +10,7 @@ import yaml
 from . import config
 
 TYPES = {"text", "int", "float", "date", "enum", "bool", "phone", "bp", "pattern"}
+_NAME = re.compile(r"^[a-z][a-z0-9_]{0,63}$")
 
 
 @dataclass
@@ -51,9 +53,17 @@ class FormSpec:
         return self.titles.get(lang) or self.title
 
 
+def _check_name(kind: str, value) -> None:
+    """Form ids and field names become SQL table and column names and a folder name, so they stay plain."""
+    if not isinstance(value, str) or not _NAME.match(value):
+        raise ValueError(f"{kind} {value!r} must be lower-case letters, digits and underscores, starting with a letter")
+
+
 def parse_form(data: dict) -> FormSpec:
+    _check_name("form id", data.get("id"))
     fields = []
     for raw in data.get("fields", []):
+        _check_name("field name", raw.get("name"))
         ftype = raw.get("type")
         if ftype not in TYPES:
             raise ValueError(f"form {data.get('id')}: field {raw.get('name')} has unknown type {ftype!r}")

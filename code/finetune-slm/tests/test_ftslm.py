@@ -8,6 +8,14 @@ from ftslm.metrics import accuracy, confusion, macro_f1, parse_label
 from ftslm.model import instruction_prompt, pick_examples, short_prompt
 
 
+def test_packages_default_to_offline_hub():
+    import os
+
+    import mrsj  # noqa: F401  (importing sets the defaults)
+
+    assert os.environ["HF_HUB_OFFLINE"] == "1" and os.environ["TRANSFORMERS_OFFLINE"] == "1"
+
+
 def test_dataset_is_deterministic_and_balanced():
     a, b = D.build_all(), D.build_all()
     assert a == b

@@ -7,8 +7,7 @@ measured, not assumed.
 Status of this page: a design checklist plus a measurement plan. This repo has measured no energy figure
 yet. The only numbers stated here are ones a cited source states, with their scope. Ideas taken from a
 video talk (speaker and channel unknown) are written as "the claim that ..." and are not evidence. The
-claims that could not be verified are listed in [landscape.md](landscape.md#not-confirmed-do-not-state-as-fact)
-and in [TODO.md](../TODO.md) (under "Status", caveats).
+claims that could not be verified are listed in [landscape.md](landscape.md#not-confirmed-do-not-state-as-fact).
 
 ## What a token costs
 
@@ -30,7 +29,7 @@ A token costs three things, and each can be measured separately:
 Whether energy scales "almost linearly" with tokens, as a video talk claims, is partly supported: one A100 study
 found energy linear in output tokens (about 1.72 J per generated token) with input length mattering little, while a
 2026 paper argues the relation is non-linear across lengths on H100 GPUs ([S54](sources.md#s54), seen through search
-summaries only). Neither covers a CPU, a Raspberry Pi or an old laptop. Testing it on a local device is a good first
+summaries only, to verify). Neither covers a CPU, a Raspberry Pi or an old laptop. Testing it on a local device is a good first
 experiment for this repo: run the same model with different output lengths and read the power meter.
 
 ## Design practices
@@ -54,8 +53,7 @@ the video talk are repeated here.
    ordinary engineering, with nothing to cite; record the cap in the recipe.
 5. Networks of small specialised models. Use a small model, or a non-LLM component, per step instead of one
    large model for everything. One study finds that multi-purpose generative models cost "orders of
-   magnitude more" energy per 1,000 inferences than task-specific systems, even at the same parameter
-   count ([S9](sources.md#s9)). That is for its benchmark tasks; it does not prove the same on every job.
+   magnitude more" energy per 1,000 inferences than task-specific systems ([S9](sources.md#s9)). That is for its benchmark tasks; it does not prove the same on every job.
 6. Reuse a frozen encoder with a small trained head for classification. See "Frozen encoder plus small
    head" in [concepts.md](concepts.md#frozen-encoder-plus-small-head-probe).
 
@@ -69,7 +67,7 @@ the video talk are repeated here.
 - Sub-byte quantisation: storing weights in fewer than 8 bits. This repo uses 4-bit GGUF files (see
   [concepts.md](concepts.md#quantisation)). Below 4 bits, llama.cpp has 2-bit and 3-bit types
   (Q2_K, Q3_K, IQ2, IQ3) and BitNet b1.58 uses ternary weights of about 1.58 bits trained that way from the start
-  ([S55](sources.md#s55), seen through search summaries only). The quality loss at these levels is not measured here.
+  ([S55](sources.md#s55), seen through search summaries only, to verify). The quality loss at these levels is not measured here.
 - Speculative decoding: a small draft model proposes tokens and the large model checks them in parallel,
   giving identical outputs. The authors report a 2x to 3x speedup on T5-XXL against the standard T5X
   implementation ([S15](sources.md#s15)). Speed on that model is not a result for local small models.
@@ -90,8 +88,7 @@ the video talk are repeated here.
 For this repo's target devices (CPU-only laptop, Raspberry Pi), a wall or USB meter is the most direct
 method, with CodeCarbon as a cross-check on laptops that expose RAPL. Both are planned, not done.
 
-"Intelligence per watt" is a proposed metric: task accuracy per unit of power, with accuracy taken as the win
-rate of a local model against frontier models. The authors evaluate over 20 local models and 8 accelerators
+"Intelligence per watt" is a proposed metric: task accuracy per unit of power. The authors evaluate over 20 local models and 8 accelerators
 and report a 5.3x gain from 2023 to 2025 ([S11](sources.md#s11)). Their definition of accuracy is specific to
 their study; this repo would define its own per recipe (quality score on the evaluation set per watt or per
 joule).

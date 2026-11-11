@@ -41,6 +41,32 @@ def test_guard_blocks_the_internet_and_allows_this_machine():
     socket.socket.connect  # restored after the block: a later test can still use the network
 
 
+def test_guard_also_blocks_name_lookups_and_udp_and_can_be_nested():
+    real = (socket.socket.connect, socket.socket.connect_ex, socket.socket.sendto, socket.getaddrinfo)
+    with netguard.offline() as outer:
+        with netguard.offline() as inner:
+            with pytest.raises(socket.gaierror):
+                socket.getaddrinfo("example.org", 80)
+            udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            with pytest.raises(netguard.Blocked):
+                udp.sendto(b"x", ("93.184.216.34", 53))
+            udp.close()
+            assert socket.getaddrinfo("localhost", 80)
+        # the inner block ended; the outer guard must still be active, and both counted the attempts
+        with pytest.raises(socket.gaierror):
+            socket.getaddrinfo("example.com", 80)
+        assert ("example.org", None) in inner.blocked and ("example.org", None) in outer.blocked
+        assert ("example.com", None) in outer.blocked and ("example.com", None) not in inner.blocked
+    assert (socket.socket.connect, socket.socket.connect_ex, socket.socket.sendto, socket.getaddrinfo) == real
+
+
+def test_audio_load_refuses_anything_but_a_local_file():
+    with pytest.raises(ValueError, match="not a local file"):
+        audio.load("http://example.org/a.wav")
+    with pytest.raises(ValueError, match="not a local file"):
+        audio.load("tcp://93.184.216.34:80")
+
+
 def test_pipeline_from_audio_is_offline_and_unconfirmed():
     turn = pipeline.run(TICKET, "mr", wav=np.zeros(16000, dtype=np.float32), asr=FakeASR([SAID]),
                         llm=FakeLLM([_ticket_reply()]), today=TODAY)
@@ -109,6 +135,46 @@ def test_downloads_are_pinned_and_do_not_fetch_python_by_default():
     for bad in ("", "TO_PIN"):
         with pytest.raises(ValueError):
             download.fetch_hf("some/repo", "x", bad)
+
+
+def _fake_zip(files):
+    import io
+    import zipfile
+
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as zf:
+        for name, data in files.items():
+            zf.writestr(name, data)
+    return buf.getvalue()
+
+
+def test_vosk_download_checks_hash_and_size(tmp_path, monkeypatch):
+    import hashlib
+
+    import requests
+
+    from voiceform import download
+
+    blob = _fake_zip({"m/a.txt": b"hello"})
+
+    class Resp:
+        content = blob
+
+        def raise_for_status(self):
+            pass
+
+    monkeypatch.setattr(requests, "get", lambda url, timeout=0: Resp())
+    good = hashlib.sha256(blob).hexdigest()
+    download.fetch_vosk("http://x/m.zip", tmp_path / "ok", good)
+    assert (tmp_path / "ok" / "m" / "a.txt").read_bytes() == b"hello"
+    with pytest.raises(ValueError, match="checksum mismatch"):
+        download.fetch_vosk("http://x/m.zip", tmp_path / "bad", "0" * 64)
+    with pytest.raises(ValueError, match="no pinned SHA-256"):
+        download.fetch_vosk("http://x/m.zip", tmp_path / "unpinned", "TO_PIN")
+    assert not (tmp_path / "bad" / "m").exists() and not (tmp_path / "unpinned" / "m").exists()
+    monkeypatch.setattr(download, "MAX_ZIP_BYTES", 3)
+    with pytest.raises(ValueError, match="unpacks to more than"):
+        download.fetch_vosk("http://x/m.zip", tmp_path / "big", good)
 
 
 def test_downloaded_code_runs_only_if_its_hash_matches(tmp_path, monkeypatch):

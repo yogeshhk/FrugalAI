@@ -38,7 +38,7 @@ project script records it.
 | bitsandbytes | has CPU wheels for Linux and Windows x86-64 (AVX2) [S31](sources.md#s31); its install guide gives no CPU feature table, so whether 4-bit (QLoRA) training works on it was not confirmed |
 | Unsloth | per its requirements page, CPU is for chat and data recipes only; training needs an NVIDIA, AMD, Intel or Apple device [S28](sources.md#s28). The claim of a native CPU training backend was not supported |
 | llama.cpp `finetune` | the old tool was removed in July 2024 [S29](sources.md#s29); the current `llama-finetune` README calls finetuning "technically functional" for FP32 models but "very much WIP", and does not mention LoRA. LoRA training there is to verify |
-| MLX | built for Apple silicon, with a Linux CPU package [S30](sources.md#s30). No Windows install was documented, so it is not a Windows option as far as found |
+| MLX | built for Apple silicon; not checked as an option for this Windows PC |
 
 ## Settings that matter on a CPU
 
@@ -70,8 +70,9 @@ models (2026-10-20, main PC, CPU, float32):
 - The 270M model writes fluent Marathi but cannot read a passage and answer from it, so training on the book could
   not fix that. The 1B model reads well and passes. Its closed-book answers are fluent but invented, for example a
   first principle of "truth and honesty" that the book never states. That is the baseline training has to beat.
-- On this CPU, bfloat16 inference was about 12 minutes per question (no native bf16 support), while float32 took a
-  few seconds. Use float32 on a CPU and make sure the memory is free (the 1B model needs about 4 GB).
+- On this CPU, bfloat16 inference was far slower than float32 in one unrecorded trial (no native bf16 support;
+  timing pending), while float32 took a few seconds. Use float32 on a CPU and make sure the memory is free (memory
+  need pending).
 - The Google repositories for Gemma 3 are gated; the Unsloth mirrors are not, and carry the same Gemma licence
   (see [S32](sources.md#s32)). The Gemma terms define Model Derivatives to include models made from its weights and
   require passing on the terms and use restrictions when you distribute one (section 1.1(e) and 3.1, read
@@ -82,7 +83,8 @@ models (2026-10-20, main PC, CPU, float32):
 ## What the project shows
 
 See [code/finetune-slm/README.md](../code/finetune-slm/README.md) for the task, the data, the commands and the measured
-results. It compares four systems on the same held-out messages: the base model with an instruction, the base
-model with worked examples, the fine-tuned model, and Qwen3 1.7B prompted through LM Studio. The point is the
+results. It compares three systems on the same held-out messages: the base model with an instruction, the base
+model with worked examples, and the fine-tuned model. A fourth row, Qwen3 1.7B prompted through LM Studio, is
+written but was not run. The point is the
 cost per answer as well as the accuracy: prompt tokens per message, seconds per message, and the one-off
 training cost.
