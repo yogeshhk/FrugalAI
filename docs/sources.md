@@ -53,7 +53,8 @@ https://www.networkworld.com/article/4193996/gartner-data-center-electricity-con
 Read 2026-10-19. Used for: the Gartner forecast of 565 TWh (2026, up 26% from 447 TWh), AI-optimized servers
 175 TWh (up 84.2% from 95 TWh), 133 GW global, about 204 TWh US. Secondary (trade press about an analyst
 firm's forecast). The Gartner press release (gartner.com, 10 June 2026) returned HTTP 403 and was not read.
-A search snippet put the global figure at 132 GW in the press release, so the GW figure is uncertain.
+A search snippet put the global figure at 132 GW in the press release, so the GW figure is uncertain. These
+figures are no longer stated in the docs (removed 2026-11-11, because only the news article was read).
 
 <a id="s8"></a>
 ## S8. Measuring the environmental impact of delivering AI at Google Scale
@@ -174,7 +175,7 @@ Publisher: Storyboard18, 16 March 2026, reporting the white paper "Advancing Ind
 the Office of the Principal Scientific Adviser to the Government of India (13 March 2026). URL:
 https://www.storyboard18.com/digital/indias-ai-strategy-backs-smaller-language-models-alongside-frontier-systems-says-policy-white-paper-92303.htm.
 Read 2026-10-19. Used for: small language models described as "complementary components within a broader AI
-ecosystem". Secondary: the white paper itself was not read.
+ecosystem". Secondary: the white paper itself was not read. Not used in the docs any more (claim removed 2026-11-11).
 
 <a id="s26"></a>
 ## S26. Google: How AI is making eyesight-saving care more accessible in resource-constrained settings
@@ -189,7 +190,8 @@ research partner, more than 600,000 screenings to date, and the aim of 6 million
 Publisher: Down To Earth, 22 July 2024, reporting the Economic Survey 2023-24. URL:
 https://www.downtoearth.org.in/amp/story/economy/economic-survey-2024-785-million-non-farm-jobs-needed-for-rising-workforce-annually.
 Read 2026-10-19. Used for: the official estimate of about 7.85 million non-farm jobs a year until 2030.
-Secondary; other commentators dispute the underlying assumptions.
+Secondary; other commentators dispute the underlying assumptions. Not used in the docs any more (claim removed
+2026-11-11).
 
 <a id="s28"></a>
 ## S28. Unsloth documentation: requirements
@@ -221,7 +223,8 @@ Publisher: Hugging Face. URL: https://huggingface.co/docs/transformers/quantizat
 through a search summary only. Used for: a CPU backend existing for Linux x86-64, Linux aarch64 and Windows
 x86-64. The bitsandbytes installation guide (https://huggingface.co/docs/bitsandbytes/main/en/installation, opened
 2026-10-28) lists CPU wheels for Windows x86-64 (AVX2 minimum) but, unlike the CUDA section, has no feature table
-for the CPU. Which features (for example 4-bit NF4 training) work on the CPU backend is still not confirmed.
+for the CPU. Which features (for example 4-bit NF4 training) work on the CPU backend is still not confirmed. The
+CPU-wheel claim is no longer stated in the docs (removed 2026-11-11, never read in full).
 
 <a id="s32"></a>
 ## S32. Hugging Face model metadata: Gemma 3 270M and 1B
@@ -361,7 +364,8 @@ Publisher: Mozilla Data Collective. URL: https://datacollective.mozillafoundatio
 (Marathi 25.0). Seen 2026-10-28 through search summaries of the dataset pages. Used for: Marathi and Hindi Scripted
 Speech listed as CC0-1.0 with ASR as the task; the Marathi datasheet giving 27.71 hours recorded (18.94 validated,
 105 speakers) and barring re-hosting and any attempt to identify speakers. The Hindi hours were not seen; open the
-Hindi datasheet before relying on a figure.
+Hindi datasheet before relying on a figure. The licence, hours and re-hosting figures are no longer stated in the
+docs (removed 2026-11-11, never read in full).
 
 <a id="s49"></a>
 ## S49. Case Western Reserve University Bearing Data Center
@@ -406,7 +410,8 @@ Publishers: arXiv. URLs: https://arxiv.org/pdf/2512.01644 (a systematic characte
 and https://arxiv.org/abs/2602.05695 (SweetSpot, ICPE 2026). Seen 2026-10-28 through search summaries only; neither
 paper was opened. Used for: one A100 study reporting energy linear in output tokens (R squared 0.999, about 1.72 J per
 generated token) with input length having little effect, and the second paper arguing the relation is non-linear
-across lengths on H100 GPUs (models 1B to 9B, TensorRT-LLM). Neither covers a CPU, a Raspberry Pi or an old laptop.
+across lengths on H100 GPUs (models 1B to 9B, TensorRT-LLM). Neither covers a CPU, a Raspberry Pi or an old laptop. These figures are no longer
+stated in the docs (removed 2026-11-11, never read in full).
 
 <a id="s55"></a>
 ## S55. Sub-4-bit quantisation: llama.cpp types and BitNet b1.58
@@ -414,7 +419,8 @@ Publishers: ggml-org (llama.cpp) and Microsoft Research. URLs: https://github.co
 and https://huggingface.co/papers/2402.17764 (BitNet b1.58). Seen 2026-10-28 through search summaries only. Used for:
 llama.cpp offering 2-bit and 3-bit families (Q2_K, Q3_K, IQ2, IQ3, with figures of roughly 2 to 3.7 bits per weight
 that vary by model and tool) and BitNet b1.58 using ternary weights (about 1.58 bits) trained that way from the
-start, not converted from a full-precision model.
+start, not converted from a full-precision model. These claims are no longer stated in the docs (removed 2026-11-11,
+never read in full).
 
 <a id="s56"></a>
 ## S56. MoScNet paper and the MoDeTrans dataset
@@ -425,25 +431,6 @@ with Devanagari transliterations) existing on Hugging Face with a companion synt
 government listing giving an MIT licence (not checked on the Hugging Face card). A MoScNet model repository was not
 found. The SynthMoDe clause is no longer stated in `docs/landscape.md` (removed 2026-11-11, never read in full).
 This entry is the same paper as [S4](#s4); the docs cite S4, and no doc cites S56 any more.
-
-<a id="s57"></a>
-## S57. Ollama: Qwen3 library page
-Publisher: Ollama. URL: https://ollama.com/library/qwen3. Not yet read (added 2026-11-11 so the claim in
-`docs/internship-ideas.md` has an entry). Used for: the stated download sizes of the Qwen3 0.6B, 1.7B and 4B tags
-(523 MB, 1.4 GB, 2.5 GB). The read date is to be filled in by the author.
-
-<a id="s58"></a>
-## S58. IndicXNLI dataset card and paper
-Publisher: Hugging Face and arXiv. URLs: https://huggingface.co/datasets/Divyanshu/indicxnli and
-https://arxiv.org/abs/2204.08776. Not yet read (added 2026-11-11). Used for: the Marathi (`mr`) split sizes (392,702
-train, 5,010 test, 2,490 dev rows per language) and the licence conflict (card CC BY-NC 4.0, page tag cc0-1.0), in
-`docs/internship-ideas.md`. The read date is to be filled in by the author.
-
-<a id="s59"></a>
-## S59. Common Voice on Hugging Face
-Publisher: Hugging Face. URL: the Hugging Face dataset page for Common Voice 17.0 (exact address to be added when
-the author reads it). Not yet read (added 2026-11-11). Used for: the statement that the version 17.0 dataset page is empty, and that Common Voice is
-distributed through the Mozilla Data Collective ([S48](#s48)). The read date is to be filled in by the author.
 
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":

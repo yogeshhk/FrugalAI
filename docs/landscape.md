@@ -32,12 +32,6 @@ check the dataset card for its licence before use.
   around 945 TWh by 2030 (more than double); its Base Case reaches about 1,200 TWh in 2035, with a 2035
   range of 700 to 1,700 TWh across cases. The US had 45% of global data centre consumption in 2024.
   Report year 2025. Source: [S5](sources.md#s5).
-- A Gartner forecast, as reported by Network World on 7 July 2026, gives global data centre electricity of
-  565 TWh in 2026, up 26% from 447 TWh in 2025, and AI-optimized servers at 175 TWh in 2026, up 84.2% from
-  95 TWh. It also reports about 133 GW global data centre power demand in 2026 (a search snippet of the press release said
-132 GW, so this figure is not confirmed). This is a forecast from an
-  analyst firm, read through a trade-press article; the Gartner press release itself returned an access
-  error and was not read. Source: [S7](sources.md#s7).
 - LBNL's 2024 US report (19 December 2024) gives a scenario range of US data centre demand out to 2028; the
   catalogue page read does not state the figures, so none are repeated here. Source: [S6](sources.md#s6).
 - Per-prompt measurement exists at cloud scale: median Gemini Apps text prompt 0.24 Wh within a full-stack
@@ -75,15 +69,10 @@ check the dataset card for its licence before use.
   be shaped by "smaller, efficient models", that nearly 95 per cent of AI work worldwide is handled by small
   models, and that India is building 12 models of 50 to 120 billion parameters. The 95 per cent is his
   statement, not a measurement ([S24](sources.md#s24)).
-- The Office of the Principal Scientific Adviser's white paper "Advancing Indigenous Foundation Models"
-  (13 March 2026), as reported by Storyboard18, calls small language models "complementary components within
-  a broader AI ecosystem" and does not present them as a replacement ([S25](sources.md#s25)).
 - Diabetic retinopathy screening: Google's model, with Aravind Eye Hospital as a foundational research
   partner, had supported more than 600,000 screenings by October 2024. Partners aim for 6 million
   AI-supported screenings over 10 years.
   It is an imaging model, not a language model ([S26](sources.md#s26)).
-- The Economic Survey 2023-24 puts India's need at about 7.85 million non-farm jobs a year until 2030, an
-  official estimate whose assumptions others dispute ([S27](sources.md#s27)).
 
 ## Gaps this repo can fill
 1. Published frugal AI material is mostly narrative. Few sources give repeatable per-device measurements
@@ -108,8 +97,7 @@ check the dataset card for its licence before use.
 - The Ministral-3-3B vision model details and Hailo-8 pairing mentioned in the original notes.
 
 Claims from a video talk (speaker and channel unknown); none verified as the talk states them:
-- US data centre demand of 41 GW in 2026. Not found; the Network World article read ([S7](sources.md#s7))
-  gives a US figure of about 204 TWh instead, and no US GW figure.
+- US data centre demand of 41 GW in 2026. Not found.
 - System prompts cut to roughly 60 to 120 tokens by YAML or JSON structure.
 - Output tokens cut by nearly 90% by constrained decision formats, with better accuracy.
 - Energy per task cut by over 90% by token-frugal designs versus traditional agents.
@@ -117,5 +105,3 @@ Claims from a video talk (speaker and channel unknown); none verified as the tal
 - Inference having overtaken training as the main operational carbon source. A search found this repeated
   in preprints, traced to secondary estimates ("up to 90%" of lifecycle energy), not to a primary
   measurement; do not state it as fact.
-- The figures 565 TWh, 175 TWh and the 26% and 84% growth are matched by the Gartner forecast in [S7](sources.md#s7),
-  but only as a forecast read through a news article. They are not measured consumption.

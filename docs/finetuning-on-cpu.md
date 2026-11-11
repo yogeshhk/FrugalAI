@@ -35,7 +35,7 @@ project script records it.
 | Tool | Status found on 2026-10-20 |
 |------|----------------------------|
 | Hugging Face Transformers + PEFT | the route used in the project; works on CPU in plain PyTorch |
-| bitsandbytes | has CPU wheels for Linux and Windows x86-64 (AVX2) [S31](sources.md#s31); its install guide gives no CPU feature table, so whether 4-bit (QLoRA) training works on it was not confirmed |
+| bitsandbytes | not checked as a CPU training option here; whether 4-bit (QLoRA) training works on a CPU was not confirmed |
 | Unsloth | per its requirements page, CPU is for chat and data recipes only; training needs an NVIDIA, AMD, Intel or Apple device [S28](sources.md#s28). The claim of a native CPU training backend was not supported |
 | llama.cpp `finetune` | the old tool was removed in July 2024 [S29](sources.md#s29); the current `llama-finetune` README calls finetuning "technically functional" for FP32 models but "very much WIP", and does not mention LoRA. LoRA training there is to verify |
 | MLX | built for Apple silicon; not checked as an option for this Windows PC |

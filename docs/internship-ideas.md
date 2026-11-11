@@ -6,9 +6,8 @@ Plan only. Nothing below has been started, and no number below is a measurement.
 
 Each project is sized for one student, one laptop and no cloud. The first test machine is the main PC
 (Windows, 10 cores, 16 GB, CPU only by default; a GeForce MX570 with 2 GB can help a little). The target
-machine is the old Dell (CPU only) and, later, a Raspberry Pi 5. Model sizes for reference, from the
-[Ollama Qwen3 page](https://ollama.com/library/qwen3): 0.6B is 523 MB, 1.7B is 1.4 GB, 4B is 2.5 GB (to verify,
-[S57](sources.md#s57)).
+machine is the old Dell (CPU only) and, later, a Raspberry Pi 5. Check the model sizes on the
+[Ollama Qwen3 page](https://ollama.com/library/qwen3) before planning RAM.
 
 Rules for every project:
 - Offline at run time. Measure with `common` and write the CSV to `code/common/benchmarks/results/`.
@@ -22,7 +21,7 @@ Rules for every project:
 | 1 | Quantisation versus quality | Language | easy | IndicXNLI | non-commercial research (card), see note |
 | 2 | Marathi and Hindi small-model leaderboard | Language | medium | FLORES-200, IndicXNLI | CC BY-SA 4.0 (FLORES); Marathi and Hindi are in it [S47](sources.md#s47) |
 | 3 | Offline Marathi or Hindi RAG assistant | Language | medium | Wikipedia dump, own question set | dump text is CC BY-SA 4.0 and GFDL [S52](sources.md#s52) |
-| 4 | Offline speech recognition on CPU | Language | medium | Common Voice | CC0-1.0 on the Mozilla Data Collective; no re-hosting (to verify) [S48](sources.md#s48) |
+| 4 | Offline speech recognition on CPU | Language | medium | Common Voice | licence and terms to check before use |
 | 5 | Bearing fault diagnosis with tiny models | Mechanical | easy | CWRU bearing data | no terms stated on the page [S49](sources.md#s49); ask the maintainers |
 | 6 | Surface-defect inspection on CPU | Vision | medium | MVTec AD or NEU-DET | MVTec AD is CC BY-NC-SA 4.0; NEU-DET terms not found [S53](sources.md#s53) |
 | 7 | Plant-leaf disease, frozen encoder plus probe | Vision | easy | PlantVillage (TFDS) | TFDS gives no data licence; a Mendeley copy is CC0 [S50](sources.md#s50) |
@@ -36,9 +35,8 @@ Rules for every project:
 - Method: Qwen3 0.6B, 1.7B and 4B and Gemma 2 2B at three or four quantisation levels. Same prompts, same
   test items. Record decode tokens per second, peak RAM and accuracy on a fixed sample (for example 500
   Marathi test items). Reuse the harness; add an accuracy column with a scoring script.
-- Data: [IndicXNLI](https://huggingface.co/datasets/Divyanshu/indicxnli) has Marathi (`mr`), with 392,702 train,
-  5,010 test and 2,490 dev rows per language. The dataset card says CC BY-NC 4.0, non-commercial research
-  only, while the page tag says cc0-1.0 (to verify, [S58](sources.md#s58)). Treat the card as binding. Paper: [arXiv 2204.08776](https://arxiv.org/abs/2204.08776).
+- Data: [IndicXNLI](https://huggingface.co/datasets/Divyanshu/indicxnli) has Marathi (`mr`). Check its size and licence on
+  the dataset card before use (the card and the page tag may disagree; treat the card as binding). Paper: [arXiv 2204.08776](https://arxiv.org/abs/2204.08776).
 - Deliverable: a recipe folder, a results CSV, a chart, and a one-page "what to pick on a 4 GB machine" note.
 
 ### 2. Marathi and Hindi small-model leaderboard
@@ -64,10 +62,8 @@ Rules for every project:
 - Question: how fast and accurate is Whisper (tiny, base, small) on this laptop for Marathi and Hindi?
 - Method: word error rate, real-time factor and peak RAM per model size, with one of the common CPU runtimes
   (to verify which one to use: whisper.cpp or faster-whisper).
-- Data: Common Voice is, as of October 2025, distributed only through the Mozilla Data Collective; the Hugging
-  Face dataset page for version 17.0 says it is empty (to verify, [S59](sources.md#s59)). The Data Collective lists Marathi and Hindi Scripted
-  Speech as CC0-1.0; the Marathi datasheet (25.0) gives 27.71 hours recorded, 18.94 validated, 105 speakers, and
-  bars re-hosting and speaker identification (to verify) [S48](sources.md#s48). The Hindi hours were not seen (to verify).
+- Data: Common Voice has Marathi and Hindi. Check where the current version is distributed, its licence and the hours
+  available for each language before planning, and check the terms on re-hosting and on identifying speakers.
   Community Marathi Whisper-small fine-tunes exist with Apache-2.0 model cards, for example
   [vittai23/whisper-small-marathi](https://huggingface.co/vittai23/whisper-small-marathi); read each card first.
 - Deliverable: a table of word error rate against speed against RAM, and a recommendation per device.
