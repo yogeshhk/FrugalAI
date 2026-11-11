@@ -119,7 +119,8 @@ copies that entry's subject instead of the notes: notes about QAOA depth produce
 arithmetic, and notes about quantum annealers produced one about NP-complete problems. That also explains the
 invented numbers. A fixed example on an unrelated, non-quantum topic (the engine-size question in
 `faqintake/draft.py`) is written, switched on by default and covered by an offline test, but it has not been
-evaluated yet. The first-version results are kept in `results/drafts_leave_one_out.jsonl` for comparison.
+evaluated yet. The first-version results are kept locally in `results/drafts_leave_one_out.jsonl` for comparison; the draft texts imitate
+the private entries, so the file is not published (the scores are in `results/drafts_summary.csv`).
 
 ## Limits
 
@@ -138,8 +139,8 @@ evaluated yet. The first-version results are kept in `results/drafts_leave_one_o
 (classify, extract, tool, compose, check, retry, fallback). The tools read small made-up tables
 (`wfagent/knowledge.py`), and a code check rejects any number the tool did not return. Ten offline tests pass, and
 one live run answered correctly (call counts, tokens and time pending: earlier run, no log of it was kept). The 31-case model
-evaluation (`eval/cases.json`, `python -m wfagent eval`, needs LM Studio) has not been run; `results/results.csv` there holds a scripted-model run that
-only checks the plumbing and is not a model result. Print the graph with `python -m wfagent graph`.
+evaluation (`eval/cases.json`, `python -m wfagent eval`, needs LM Studio) has not been run; `results/results_scripted_plumbing.csv` holds a scripted-model run
+that only checks the plumbing and is not a model result (a real run writes `results/results.csv`). Print the graph with `python -m wfagent graph`.
 
 ## Notes
 - `eval/intake_cases.json` was written by Claude and not reviewed; gold labels are only covered or new. The topic-drift threshold was set on the 24 first-version drafts (in-sample).

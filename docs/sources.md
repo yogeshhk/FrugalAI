@@ -28,7 +28,7 @@ treat figures as the authors' claims.
 Authors: Kausadikar, Kale, Susladkar, Mittal. arXiv:2503.13060 (v1 17 March 2025, v2 25 March 2025). URL:
 https://arxiv.org/abs/2503.13060v2. Used for: dataset size, 163x parameter reduction claim, direct
 Modi-to-Devanagari transliteration. The paper was listed as under submission; press releases from the
-institution are not independent verification.
+institution are not independent verification. Not yet read in full (read date to be added by the author).
 
 <a id="s5"></a>
 ## S5. IEA: Energy and AI, Executive summary
@@ -424,6 +424,7 @@ March 2025) with a distilled student 163 times smaller than its teacher, the MoD
 with Devanagari transliterations) existing on Hugging Face with a companion synthetic set SynthMoDe, and a
 government listing giving an MIT licence (not checked on the Hugging Face card). A MoScNet model repository was not
 found. The SynthMoDe clause is no longer stated in `docs/landscape.md` (removed 2026-11-11, never read in full).
+This entry is the same paper as [S4](#s4); the docs cite S4, and no doc cites S56 any more.
 
 <a id="s57"></a>
 ## S57. Ollama: Qwen3 library page

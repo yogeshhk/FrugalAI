@@ -6,6 +6,20 @@ from qwiki import config
 from qwiki.scoring import codes_in, is_refusal, item_found, norm, score_question, summarise
 
 
+def test_docling_models_are_not_downloaded_unless_allowed(tmp_path, monkeypatch):
+    import pytest
+
+    from qwiki.parse import ensure_models
+
+    monkeypatch.delenv("QWIKI_ALLOW_DOWNLOAD", raising=False)
+    with pytest.raises(RuntimeError, match="QWIKI_ALLOW_DOWNLOAD=1"):
+        ensure_models(tmp_path / "docling")
+    done = tmp_path / "present"
+    done.mkdir()
+    (done / ".complete").write_text("ok", encoding="utf-8")
+    assert ensure_models(done) == done        # models already there: nothing to download, no flag needed
+
+
 def test_codes_are_normalised():
     assert codes_in("QT 1 and qt-06, QT06 and QT 11.") == {"QT 01", "QT 06", "QT 11"}
     assert codes_in("no codes here") == set()

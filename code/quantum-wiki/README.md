@@ -148,5 +148,5 @@ code check does not catch because it only guards course codes and numbers, and M
 
 ## Notes
 - The router is rules: every failure on a new question shape should become a test.
-- Docling downloads its models into `models/` (about 530 MB, git-ignored); the first parse needs network access.
+- Docling downloads its models into `models/` (about 530 MB, git-ignored); the first parse needs network access, so it stops unless you set `QWIKI_ALLOW_DOWNLOAD=1` for that one run (the model files are not pinned to a revision).
 - The held-out set is no longer pristine; both question sets were drafted by Claude and reviewed by the author (2026-10-31). The grounding check is tested offline but its effect on model answers is not measured.

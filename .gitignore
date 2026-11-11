@@ -44,6 +44,9 @@ code/voice-form/eval/audio/
 code/voice-form/eval/smoke_audio/
 code/voice-form/outbox/
 code/voice-form/results/*_log.txt
+# workflow-agent: model-written drafts that imitate the author's private QCNP FAQ entries (they can come close to the
+# real text), so they stay local; the scores are published in results/drafts_summary.csv
+code/workflow-agent/results/drafts_leave_one_out*.jsonl
 
 # Local scratch
 scratch/

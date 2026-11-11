@@ -30,7 +30,7 @@ Want your own effort here? See [How to add an entry](#how-to-add-an-entry).
 An ordinary PC with 8 to 16 GB of RAM and no discrete GPU. Integrated graphics are fine.
 
 - [AIOOLL](https://github.com/yogeshhk/AIOOLL) - Full-stack AI workflows on a CPU-only Linux laptop: classical ML, deep learning, RAG, agents, computer vision and local LLM inference, with tests and Streamlit UIs.
-  Hardware: Intel i3-8130U, 8 GB RAM, SSD, Xubuntu, as the repo reports. Model: Ollama models such as gemma2:2b and qwen2:1.5b (see each model card for its licence). Licence: MIT. Measured: yes, about 8 tokens/s for Gemma2 2B as the repo reports; not re-measured here. Verified: 2026-10-19.
+  Hardware: Intel i3-8130U, 8 GB RAM, SSD, Xubuntu, as the repo reports. Model: Ollama models such as gemma2:2b (Gemma terms of use) and qwen2:1.5b (licence to verify). Licence: MIT. Measured: yes, about 8 tokens/s for Gemma2 2B as the repo reports, with no method stated there; not re-measured here. Verified: 2026-10-19.
 - [FrugalAI offline wiki Q&A](code/wiki-rag/) - Ask questions of a folder of markdown notes: BM25 retrieval in pure Python, optional embeddings, and a small local model that answers only from the retrieved notes.
   Hardware: a 10-core, 16 GB Windows PC with GPU offload turned off in LM Studio; the old Dell and a Raspberry Pi are not measured yet. Model: Qwen3 1.7B Q4_K_M (Apache-2.0) and Gemma 2 2B Q5_K_M (Gemma terms of use), served by LM Studio (free); the Ollama path is untested. Licence: MIT. Measured: yes, CPU-only decode medians (n=15, one model loaded at a time) of 20.3 tokens/s for Qwen3 1.7B (thinking mode on) and 10.9 for Gemma 2 2B, from the shared benchmark command, not from this recipe itself. Verified: 2026-11-11.
 
@@ -61,7 +61,7 @@ keyword spotting, sensor classification, small vision and similar models.
 Runs in a web browser on the CPU (for example WebAssembly), with no server and nothing to install.
 
 - [wllama](https://github.com/ngxson/wllama) - WebAssembly binding for llama.cpp that runs GGUF language models inside the browser with no backend and no GPU needed, with a live demo.
-  Hardware: any browser with WebAssembly SIMD, CPU only (optional WebGPU in V3.1 and later); a single model file is limited to 2 GB, larger ones must be split. Model: any GGUF model, Q4 to Q6 recommended (licence depends on the model). Licence: MIT. Measured: not measured here. Verified: 2026-10-26.
+  Hardware: any browser with WebAssembly SIMD, CPU only; a single model file is limited to 2 GB, larger ones must be split. Model: any GGUF model (licence depends on the model). Licence: MIT. Measured: not measured here. Verified: 2026-10-26.
 
 ## Small models
 

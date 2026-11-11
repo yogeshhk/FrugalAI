@@ -5,6 +5,7 @@ parsed/tables.json (every table as rows of cells with its page number).
 """
 
 import json
+import os
 import time
 from pathlib import Path
 from typing import List, Tuple
@@ -22,10 +23,14 @@ def ensure_models(folder: Path = config.ROOT / "models" / "docling", log=print) 
     On Windows without symlink rights, Docling's default download into the Hugging Face cache fails with
     WinError 1314. A folder download needs no symlinks. The folder is git-ignored.
     """
-    from docling.utils.model_downloader import download_models
-
     marker = folder / ".complete"
     if not marker.exists():
+        # Offline first: fetching about 530 MB of model files from the internet is something to choose, not a side effect.
+        if os.environ.get("QWIKI_ALLOW_DOWNLOAD", "") != "1":
+            raise RuntimeError(f"the Docling models are missing from {folder}. Downloading them needs the internet and "
+                               "about 530 MB; set QWIKI_ALLOW_DOWNLOAD=1 for this one run to allow it.")
+        from docling.utils.model_downloader import download_models
+
         log(f"downloading Docling models into {folder} (one time) ...")
         download_models(output_dir=folder, progress=False, with_layout=True, with_tableformer=True,
                         with_code_formula=False, with_picture_classifier=False, with_easyocr=False)
