@@ -142,6 +142,7 @@ class IndicConformerASR(ASRBackend):
         import importlib.util
 
         source = config.model_source(name, spec["repo"])
+        config.verify_code_hash(name, source, "model_onnx.py")  # downloaded code runs only if it is the reviewed file
         # The model's own from_pretrained calls snapshot_download, which rejects a local Windows path,
         # so build it from the downloaded folder directly (same code, no network).
         mod_spec = importlib.util.spec_from_file_location("indic_model_onnx", f"{source}/model_onnx.py")

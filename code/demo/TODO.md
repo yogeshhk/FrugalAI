@@ -6,7 +6,7 @@ Screenshots: `python capture.py <out_dir>` with the page running (bare view, fiv
 Decided: Marathi fine-tune and router are out of the demo; the five questions were picked by the author after a trial (ANALYSIS.md section 8); `workflow-agent` and `voice-form` left out; AIOOLL not used.
 
 ## Open
-None. The demo is ready for the talk: question sets signed off by the author and scores re-checked on 2026-10-31.
+None. The demo is ready for the talk: question sets signed off by the author and scores re-checked.
 
 ## Parked (not part of the Dec 12 talk)
 - Second page `app_faq.py` (is a concept already in my FAQs, and where else does it appear): needs LM Studio serving nomic-embed only; run `conda run -n genai streamlit run app_faq.py`. It reads the real QCNP folder; the author agreed that real FAQ entry names appear in the five `frugal_faq_q*` pictures in the deck. `make_graph_figures.py` redraws the workflow and path pictures (needs LM Studio with nomic-embed and Qwen3 1.7B; `--reuse` redraws from the saved run).

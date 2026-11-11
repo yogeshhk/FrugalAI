@@ -95,3 +95,31 @@ def test_audio_round_trip(tmp_path):
     assert len(back) == 8000 and np.max(np.abs(back - tone)) < 1e-3
     noisy = audio.add_noise(tone, 10)
     assert noisy.shape == tone.shape and not np.allclose(noisy, tone)
+
+
+def test_downloads_are_pinned_and_do_not_fetch_python_by_default():
+    from voiceform import download
+
+    assert "*.py" not in download.HF_PATTERNS
+    for name, spec in config.ASR_MODELS.items():
+        if "repo" in spec:
+            assert len(spec.get("revision", "")) == 40, f"{name} has no pinned 40-character revision"
+    assert set(config.TTS_REVISIONS) == set(config.TTS_MODELS)
+    assert all(len(v) == 40 for v in config.TTS_REVISIONS.values())
+    for bad in ("", "TO_PIN"):
+        with pytest.raises(ValueError):
+            download.fetch_hf("some/repo", "x", bad)
+
+
+def test_downloaded_code_runs_only_if_its_hash_matches(tmp_path, monkeypatch):
+    import hashlib
+
+    good = b"print('reviewed')\n"
+    (tmp_path / "model_onnx.py").write_bytes(good)
+    monkeypatch.setattr(config, "CODE_SHA256", {"m": {"model_onnx.py": hashlib.sha256(good).hexdigest()}})
+    config.verify_code_hash("m", str(tmp_path), "model_onnx.py")  # matches: no error
+    (tmp_path / "model_onnx.py").write_bytes(b"print('changed upstream')\n")
+    with pytest.raises(RuntimeError, match="refusing to run"):
+        config.verify_code_hash("m", str(tmp_path), "model_onnx.py")
+    with pytest.raises(RuntimeError, match="no reviewed SHA-256"):
+        config.verify_code_hash("unknown", str(tmp_path), "model_onnx.py")

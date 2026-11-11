@@ -33,22 +33,33 @@ ASR_MODELS = {
     },
     "whisper-base": {
         "kind": "whisper", "langs": ["hi", "mr"], "repo": "openai/whisper-base", "licence": "Apache-2.0",
+        "revision": "e37978b90ca9030d5170a5c07aadb050351a65bb",
     },
     "whisper-small-mr": {
         "kind": "whisper", "langs": ["mr"], "repo": "vittai23/whisper-small-marathi", "licence": "Apache-2.0",
+        "revision": "120caf0fc5b42644bb41055277b17b86d8811a1f",
     },
     "whisper-small-hi": {
         "kind": "whisper", "langs": ["hi"], "repo": "vasista22/whisper-hindi-small", "licence": "Apache-2.0",
+        "revision": "fb4a24afc20c42906deed31c3689e4be31da41fe",
     },
     "indicconformer": {
         "kind": "indicconformer", "langs": ["hi", "mr"],
         "repo": "ai4bharat/indic-conformer-600m-multilingual", "licence": "MIT (gated, auto-approved)",
+        "revision": "2a77d305038dfc502fd9464e7d028b90381976cb",
     },
 }
 
 # Machine voices used only to make smoke-test audio. CC BY-NC 4.0: never committed, never used for a reported
 # accuracy number, never shipped in the demo.
 TTS_MODELS = {"mr": "facebook/mms-tts-mar", "hi": "facebook/mms-tts-hin"}
+TTS_REVISIONS = {"mr": "7af4a6db1df2eb20042d24cc7c180a492df1cc13", "hi": "1d83b223ec78e30b944f7d96bd117eb3d7023303"}
+
+# Downloaded Python is run only if its SHA-256 matches. The model's own model_onnx.py is the one file of
+# downloaded code that is executed; a changed upstream file is refused until the author reviews it and updates this.
+CODE_SHA256 = {
+    "indicconformer": {"model_onnx.py": "700f1897493f68fc522ce73dd7f91aa39b28fc20285d3d635e92de241b3910ae"},
+}
 
 LANG_NAMES = {"mr": "Marathi", "hi": "Hindi", "en": "English"}
 
@@ -59,6 +70,19 @@ def model_source(name: str, repo: str) -> str:
     if not (local / "config.json").exists():
         raise FileNotFoundError(f"{local} is missing ({repo}); run: python -m voiceform download --only {name}")
     return str(local)
+
+
+def verify_code_hash(name: str, folder: str, filename: str) -> None:
+    """Refuse to run a downloaded Python file whose SHA-256 is not the reviewed one."""
+    import hashlib
+
+    expected = CODE_SHA256.get(name, {}).get(filename)
+    if not expected:
+        raise RuntimeError(f"no reviewed SHA-256 recorded for {name}/{filename}; refusing to run it")
+    actual = hashlib.sha256((Path(folder) / filename).read_bytes()).hexdigest()
+    if actual != expected:
+        raise RuntimeError(f"{name}/{filename} has SHA-256 {actual}, expected {expected}; refusing to run it. "
+                           "Review the file, then update CODE_SHA256 in config.py.")
 
 
 def go_offline() -> None:

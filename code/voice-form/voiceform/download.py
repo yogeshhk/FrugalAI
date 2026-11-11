@@ -10,30 +10,38 @@ from typing import Iterable, List, Optional
 
 from . import config
 
-HF_PATTERNS = ["*.json", "*.txt", "*.model", "*.py", "*.onnx", "*.tiktoken", "*.yaml", "vocab*", "merges*",
+HF_PATTERNS = ["*.json", "*.txt", "*.model", "*.onnx", "*.tiktoken", "*.yaml", "vocab*", "merges*",
                "*.vocab", "*.pt"]
+# The one repo whose own Python (model_onnx.py) is run; every other repo downloads data and weights only.
+# The file is hash-checked before it runs (config.verify_code_hash).
 ASSET_DIR_REPOS = {"ai4bharat/indic-conformer-600m-multilingual"}
 
 
-def _weights_patterns(repo: str) -> List[str]:
+def _weights_patterns(repo: str, revision: Optional[str] = None) -> List[str]:
     """Prefer safetensors; fall back to the PyTorch .bin only when a repo has no safetensors."""
     from huggingface_hub import HfApi
 
-    names = [s.rfilename for s in HfApi().model_info(repo).siblings]
+    names = [s.rfilename for s in HfApi().model_info(repo, revision=revision).siblings]
     if any(n.endswith(".safetensors") for n in names):
         return ["*.safetensors"]
     return ["*.bin"]
 
 
-def fetch_hf(repo: str, local_name: str) -> str:
-    """Into models/<local_name> as plain files (no shared cache, no symlinks). The loaders read only from models/."""
+def fetch_hf(repo: str, local_name: str, revision: str) -> str:
+    """Into models/<local_name> as plain files (no shared cache, no symlinks). The loaders read only from models/.
+
+    `revision` is a pinned commit hash; an empty or unpinned value is refused so that a changed upstream repo
+    can never be pulled in silently.
+    """
     from huggingface_hub import snapshot_download
 
+    if not revision or revision == "TO_PIN":
+        raise ValueError(f"{repo}: no pinned revision; set a commit hash in config.py before downloading")
     target = config.MODELS_DIR / local_name
-    patterns = HF_PATTERNS + _weights_patterns(repo)
+    patterns = HF_PATTERNS + _weights_patterns(repo, revision)
     if repo in ASSET_DIR_REPOS:
-        patterns = patterns + ["assets/*"]  # ONNX encoder weights are extensionless files, plus preprocessor.ts
-    return snapshot_download(repo, allow_patterns=patterns, local_dir=str(target))
+        patterns = patterns + ["*.py", "assets/*"]  # model_onnx.py (hash-checked) and the extensionless ONNX encoder weights
+    return snapshot_download(repo, revision=revision, allow_patterns=patterns, local_dir=str(target))
 
 
 def fetch_vosk(url: str, dest_parent) -> str:
@@ -59,14 +67,14 @@ def run(only: Optional[Iterable[str]] = None, with_tts: bool = True) -> None:
                     continue
                 fetch_vosk(spec["url"], config.MODELS_DIR)
             else:
-                fetch_hf(spec["repo"], local_name=name)
+                fetch_hf(spec["repo"], local_name=name, revision=spec.get("revision", ""))
             print(f"[ok]   {name}")
         except Exception as exc:  # report and continue: one gated or missing model must not stop the rest
             print(f"[fail] {name}: {type(exc).__name__}: {str(exc)[:200]}")
     if "tts" in wanted:
         for lang, repo in config.TTS_MODELS.items():
             try:
-                fetch_hf(repo, local_name=f"tts-{lang}")
+                fetch_hf(repo, local_name=f"tts-{lang}", revision=config.TTS_REVISIONS.get(lang, ""))
                 print(f"[ok]   tts-{lang} ({repo}, CC BY-NC 4.0, smoke audio only)")
             except Exception as exc:
                 print(f"[fail] tts-{lang}: {type(exc).__name__}: {str(exc)[:200]}")
