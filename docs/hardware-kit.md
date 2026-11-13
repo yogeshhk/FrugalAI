@@ -172,8 +172,8 @@ Health ideas follow `docs/safety.md`: decision support only, never diagnosis.
 
 ## Starting a vision project: the recipe
 
-A project is a self-contained folder under `code/`, copied from `code/_template/`. Suggested folder names, not yet
-created: `code/gesture-switch/` and `code/people-counter/`. Each recipe records the same things so results compare:
+A project is a self-contained folder under `code/`, copied from `code/_template/`. `code/gesture-switch/` exists as a
+stub; `code/people-counter/` is not yet created. Each recipe records the same things so results compare:
 
 1. **Question.** One sentence: what does the unit decide, for whom.
 2. **Device.** Named device, power source, camera, resolution and thread count.
@@ -212,4 +212,5 @@ All are candidates; none is chosen until benchmarked.
 - Open bag-b and tell me what it holds.
 - Locate the light sensor, thermistor and micro servo listed on the sheet.
 - Gesture switch first, people counter first, or both in parallel.
-- Whether to create `code/gesture-switch/` and `code/people-counter/` from the template.
+- Whether to create `code/people-counter/` from the template.
+- Pi 5 for language models and a power meter: see `upgrade-report.md`.
