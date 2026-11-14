@@ -4,13 +4,7 @@ Active: the upgrade plan in `docs/upgrade-report.md` (positioning docs done; nex
 
 Tests: `python -m pytest code -q` (all pass; some skip because they need private data that is not set on this machine). Python: conda env `genai` (the `frugalai` env from `environment.yml` was never built). LM Studio is stopped on purpose; start it only when a task needs it.
 
-- [ ] After the Dec 12 talk: revisit the power meter, then the Pi 5 (after the first Pi 3 row), and the phone-as-screen pattern (`docs/upgrade-report.md`).
-- [ ] Sahaj Jeevan (based on Leo Babauta) licence is unconfirmed. Old commits hold short book fragments (about 3% of the book) in two Marathi answer files; rewrite history only if a rights holder asks.
-- [ ] Pi 3 or Pi 5 buying: tick-off list in `docs/pi-checklist.md`; the three items below hold the plan and links.
+- [ ] After the Dec 12 talk: revisit the power meter and the phone-as-screen pattern (`docs/upgrade-report.md`).
+- [ ] Pi 3 buying: tick-off list in `docs/pi-checklist.md`; the two items below hold the plan.
 - [ ] The Pi 3 is found, in a black case with the base off (`docs/images/frugalai-rpi3_with_cover.jpg`; SoC marking consistent with a Pi 3 Model B). Free the board from the shell without force, photograph it top-down and from the underside, read the revision text, and check whether a microSD card is in the slot. Steps in `docs/pi-checklist.md`.
 - [ ] Buy only what `docs/hardware-kit.md` ("What is missing") still lists: microSD card reader (confirm owned) and a heatsink if one fits the case window; the case already exposes the CSI port. Camera is optional (USB webcam works; a CSI Camera Module 3 should also fit, to verify). The CanaKit 2.5A power supply, micro-USB, HDMI and Ethernet cables are already in the kit.
-- [ ] Pi 5 set: only for the later upgrade, no longer a fallback. Pi 5 (4 GB or 8 GB, decide), official 27 W USB-C power supply, case with CSI access and Active Cooler (check they fit together, to verify), microSD A2 32 to 64 GB, micro-HDMI to HDMI cable (the kit HDMI cable is full size), and for a CSI camera a 22-pin to 15-pin camera cable. Prices are not confirmed; open the pages in a browser, because Robu and Zbotic block automated fetches.
-  - Check the seller on the official list first: https://www.raspberrypi.com/resellers/ (Robu and Robocraze are on it; ThinkRobotics and Zbotic were not found on it).
-  - Robu, official boards and accessories: https://robu.in/product-category/microcontroller-development-board/raspberry-pi-microcontroller-development-board/official-boards-and-accessories/
-  - Robocraze, Raspberry Pi: https://robocraze.com/collections/raspberry-pi ; Pi 5 starter kits: https://robocraze.com/products/official-raspberry-pi-5-8gb-starter-kit (shown Rs 27,024 incl. GST, sold out) and https://robocraze.com/products/official-raspberry-pi-5-4gb-starter-kit (shown Rs 18,571 incl. GST, sold out). The kit contents were not readable on either page; confirm them before paying.
-  - Pi 5 camera cable (22-pin to 15-pin), not on the approved list, to verify: https://www.thingbits.in/products/raspberry-pi-5-camera-cable-22-pin-to-15-pin
