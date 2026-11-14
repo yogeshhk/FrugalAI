@@ -51,7 +51,7 @@ From `code/gesture-switch/`:
   `python -m gesture_switch.camera_probe`, or `--index 1 --seconds 3 --csv probe.csv` for one camera with a log.
   Run it on the laptop and again on the Pi. It needs OpenCV; on the Pi use the system or pip OpenCV that the recipe names.
 
-Nothing else runs yet.
+- Live loop: `python -m gesture_switch.run --classifier zoo` (needs `FRUGALAI_HAND_MODELS`; `--classifier skin` is the baseline). Add `--seconds 300 --log-csv <file.csv> --device <label>` to log speed figures (frames per second, median and 95th percentile classifier time, camera size delivered, memory, and on a Pi the temperature and throttle flag). The logger is tested with fake frames only; it has not run on a real camera yet.
 
 ## Evaluation
 Pending. Plan: a baseline (a simple colour or contour rule), then the pre-trained model, on a gesture set recorded by

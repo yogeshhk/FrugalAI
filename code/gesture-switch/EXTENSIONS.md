@@ -7,10 +7,10 @@ a named device), never save a camera frame, and keep it offline. See `../../CONT
 
 Size: small is an evening, medium is a weekend, large is a few weekends.
 
-## Camera speed logger (small, needed first)
-- What: `run.py` has no frames-per-second or latency log, and `frugalai_common.bench` counts LLM tokens, so it cannot do it.
-- Add: a `--log-csv` option writing frames, median and 95th percentile time per frame, fps, camera size delivered.
-- Needs: any machine with a webcam. Test with the fake frame source in `tests/test_run.py`.
+## Run the speed logger on real hardware (small, needed first)
+- What: `run.py --log-csv` exists and is tested with fake frames, but has never run on a real camera or a Pi.
+- Do: run it on a laptop webcam and on a Pi (see `PI_RECIPE.md`, "Measure it"), at least three runs each, and fix anything that breaks.
+- Needs: any machine with a webcam; a Pi for the second half.
 - Done when: a CSV appears in `../common/benchmarks/results/` and the README table is filled from it.
 
 ## Raspberry Pi 3 deployment (medium)

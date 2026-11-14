@@ -20,18 +20,19 @@ Updated 2026-11-14. Read this first in a new session. Open actions live in `TODO
 - Talk demo: moved to `TeachingDataScience/Code/frugal/demo/` beside the deck. It finds this repo through `FRUGALAI_REPO` (default: the FrugalAI folder next to it). Its 13 tests pass from the new place.
 - For forks: `PI_RECIPE.md` (Raspberry Pi 3 deployment, untested on a Pi) and an `EXTENSIONS.md` in each project. Each project also has an `environment.yml` (conda) and a `requirements.txt` (pip), with versions read from the `genai` environment.
 - Redundant files removed: the quantum-wiki `_backup` folders, the voice-form `_backup` folder, the duplicate Marathi GGUF in `finetune-slm/models` (same SHA-256 as LM Studio's copy) and the cached Gemma 3 270M model.
-- Checks after these changes: `python -m pytest code -q` gave 333 passed, 16 skipped (fewer tests than before: the Dhir server tests were removed with the code and the demo tests moved); link check 0 broken in 76 files.
+- Speed logger for gesture-switch: `python -m gesture_switch.run --seconds 300 --log-csv <file> --device <label>` appends one row (frames per second, median and 95th percentile classifier time, camera size delivered, peak memory, and on a Pi the temperature and throttle flag). Tested with fake frames and a fake clock only; it has not run on a real camera or a Pi. Frames are still never saved.
+- Deck repo: the footer "Ref: FrugalAI code/demo" was removed from `LaTeX/ai_frugal_demo.tex` (author's choice) and its comment now names `Code/frugal/demo`. The deck has not been recompiled since.
+- Checks after these changes: `python -m pytest code -q` gave 340 passed, 16 skipped (the Dhir server tests were removed with the code and the demo tests moved, then 7 logger tests were added); link check 0 broken in 76 files.
 
 ## Waiting for the author
-- Deck repo: `LaTeX/ai_frugal_demo.tex` still says "FrugalAI code/demo" in a comment and in the slide footer "Ref: FrugalAI code/demo". Not changed, because the footer is visible slide text.
-- Laptop proof of gesture-switch with a real hand and the Logitech webcam; then the Pi 3 (flash, deploy, measure) following `PI_RECIPE.md`.
-- The camera speed logger does not exist yet (`frugalai_common.bench` counts LLM tokens, not frames). `PI_RECIPE.md` names it as the first job.
+- Recompile the Frugal AI deck (with the footer change) and, per the repo rules, copy the refreshed Presentation and CheatSheet to `GDrive\ToPrint\Talks` and `Publications/Presentations`. Not done: compiling is a batch decision.
+- Laptop proof of gesture-switch with a real hand and the Logitech webcam, run with the speed logger on (it turns the webcam on, so it needs you there); then the Pi 3 (flash, deploy, measure) following `PI_RECIPE.md`.
 - Shared UI shell and the `app_faq.py` page: need the author's design call (see `docs/upgrade-report.md`, "Decisions waiting for the author").
 - Review and commit in both repos (git is the author's). Files from this session are not committed.
 
 ## Deliberately not done
 - No conda environment was built from the new files; each says in its header that it is unverified until someone builds it. Per-project files use Python 3.10 (what the tests ran on), while the root `environment.yml` still says 3.11, which was never checked.
-- E: mirror: not checked this session (drive not connected, cannot verify). A sync of `D:\Yogesh` may mirror the removal of `D:\Yogesh\models` there.
+- E: mirror: cannot verify, drive not connected (neither `GOLD` nor `GREY` was mounted on 2026-11-14). The mirror is a manual FreeFileSync run; the next one will remove `models` and `code/demo` from the copy, which is intended. Confirm the label `GOLD` before any destructive sync. LM Studio's models now live on C:, which no mirror covers: the downloaded ones can be fetched again, and the Marathi fine-tune GGUF can be rebuilt from the adapters in `code/finetune-slm/adapters/` (on D:, so mirrored) by the merge and convert steps in that README.
 - Pi 3 setup, parts to buy, power meter, Pi 5: need hands and orders.
 - Dhir 5B-A1.7B, ZenteiQ's technical report: open in `code/dhir-server/TODO.md`.
 

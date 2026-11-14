@@ -65,14 +65,19 @@ Exit check: one `probe_*.csv` per camera. If the unbranded camera never opens, s
 Exit check: gestures print on the Pi offline. No frame was written to disk (the loop does not save any; keep it that way).
 
 ## Measure it
-This is the one part the repo cannot do yet. `frugalai_common.bench` measures LLM tokens, not camera frames, so the
-vision loop has no speed logger. Doing this part is the best first contribution.
-- Add a `--log-csv <path>` option to `gesture_switch/run.py` that writes one row per run, using plain `time.perf_counter()` around the classifier call: frames, median and 95th percentile of the time per frame, frames per second, and the camera size actually delivered.
-- Also read, before and after a run of at least 5 minutes: CPU temperature (`vcgencmd measure_temp`), the throttle flag (`vcgencmd get_throttled`) and peak memory of the process (`/proc/<pid>/status`, `VmHWM`).
-- Name in the row: device label `raspberry-pi-3`, camera, resolution, model files, OpenCV version, and a note that it is CPU only. Follow the "Rules" in `../common/benchmarks/METHODOLOGY.md`: median and range over repeated runs, never a single run.
-- Put the CSV in `../common/benchmarks/results/` with the device, model and date in the filename. Do not edit the numbers.
-- Add a test for the new option with a fake frame source (see `tests/test_run.py` for how the loop is tested without a camera).
-Exit check: a CSV in `results/` and the README's "Measured resource use" filled from it.
+`frugalai_common.bench` measures LLM tokens, not camera frames, so the vision loop has its own logger in `run.py`
+(tested offline with fake frames and a fake clock; not yet run on a real camera or a Pi). Use at least 5 minutes so
+that throttling shows:
+```bash
+python3 -m gesture_switch.run --classifier zoo --camera 0 --seconds 300 \
+  --log-csv ../common/benchmarks/results/raspberry-pi-3_gesture-zoo_<date>.csv --device raspberry-pi-3
+```
+- Each run appends one row: date, device, OS, Python and OpenCV versions, classifier, camera index, the frame size the camera really delivered, frames, wall seconds, frames per second over the whole loop, median and 95th percentile of the classifier time per frame, peak memory, CPU temperature and the throttle flag before and after. Frames are never saved.
+- Repeat the run at least three times, with a rest in between, and keep every row. Report the median and the range, never one run (`../common/benchmarks/METHODOLOGY.md`). Use `--note` for anything unusual (a second webcam, a heat sink, WiFi on or off).
+- On a machine that is not a Pi the temperature and throttle columns stay empty; peak memory is empty on Windows.
+- Put the CSV in `../common/benchmarks/results/` with the device, classifier and date in the filename. Do not edit the numbers.
+- If the logger misbehaves on the Pi, fixing it is a welcome contribution; keep the tests in `tests/test_run.py` passing.
+Exit check: a CSV in `results/` with at least three rows and the README's "Measured resource use" filled from it.
 
 ## Switch something on
 1. Wire one LED through a resistor to a GPIO pin (the 40-pin header; check a pinout for your board). Write the pin number and a wiring sketch in the README.
