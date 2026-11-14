@@ -32,11 +32,9 @@ Updated 2026-11-14. Read this first in a new session. Open actions live in `TODO
 ## Deliberately not done
 - No conda environment was built from the new files; each says in its header that it is unverified until someone builds it. Per-project files use Python 3.10 (what the tests ran on), while the root `environment.yml` still says 3.11, which was never checked.
 - LM Studio's models now live on C:, which no mirror covers: the downloaded ones can be fetched again, and the Marathi fine-tune GGUF can be rebuilt from the adapters in `code/finetune-slm/adapters/` (on D:, so mirrored) by the merge and convert steps in that README.
-- Pi 3 setup, parts to buy, power meter, Pi 5: need hands and orders.
+- Pi 3 setup, parts to buy and the power meter: need hands and orders.
 - Dhir 5B-A1.7B, ZenteiQ's technical report: open in `code/dhir-server/TODO.md`.
 - Sahaj Jeevan (based on Leo Babauta's "The Effortless Life", described in `code/finetune-slm/README.md` as no-copyright; the licence statement is still to verify): the current tree carries none of the book text, because the raw passages, training pairs and model answers are git-ignored and only the questions and metrics are published. Old commits held short fragments (about 3 percent of the book) in two Marathi answer files; rewrite history only if a rights holder asks.
-- The per-project `environment.yml` build test was started on 2026-11-14 and stopped by the author (the conda solve was slow); nothing was left behind. Still unverified.
-
 ## Caveats about this log
 - Disk figures are from this laptop on 2026-11-14 and will drift.
 - `docs/upgrade-report.md` is a dated report and still mentions `code/demo/` and the removed `_backup` folders; it was left as written.

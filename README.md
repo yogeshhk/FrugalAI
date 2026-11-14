@@ -101,7 +101,6 @@ Numbers appear here only after they are measured and recorded under `code/common
 | Main PC, same, GPU-assisted | Gemma 2 2B (Q5_K_M) via LM Studio | 12.2 median (9.6 to 13.8, n=15) | 2.9 GB (engine only, 2944 MB) | 2026-10-19 | GeForce MX570 (2 GB) used by LM Studio, model only partly fits, so the gain over CPU is small |
 | Old Dell laptop (CPU only) | pending | pending | pending | pending | not measured, parked (see ROADMAP.md) |
 | Raspberry Pi 3 Model B (vision, owned) | pending | pending | pending | pending | gesture-switch not yet run on it; frames per second, latency and temperature are the planned columns |
-| Raspberry Pi 5 (language models, to buy) | pending | pending | pending | pending | not owned yet (see docs/upgrade-report.md) |
 
 ## Outlook
 

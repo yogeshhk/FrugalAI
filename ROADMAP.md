@@ -4,7 +4,7 @@ Status 2026-11: no device other than the main PC has been measured, and the M3 a
 language milestones stay parked to 2027. Active now: the positioning and catalogue work and the vision track on the
 owned Raspberry Pi 3 (`code/gesture-switch/PLAN.md`). The plan and hardware list are in `docs/upgrade-report.md`.
 
-Device ladder: the Pi 3 (owned) runs vision and sensor recipes, a Pi 5 (to buy) runs the language recipes, and a
+Device ladder: the Pi 3 (owned) runs vision and sensor recipes, the language recipes run on a laptop, and a
 laptop or an old phone's browser is the screen.
 
 Scope rule: software and deployment, not chip design or hardware acceleration. Use an existing runtime
@@ -20,8 +20,8 @@ Scope rule: software and deployment, not chip design or hardware acceleration. U
 - `gesture-switch` from laptop proof to the Pi (see its `PLAN.md`), then `people-counter` and `cold-chain-watch`.
 - Pi 3 rows in "What runs where": frames per second, latency, temperature, memory.
 
-## M2: Raspberry Pi 5
-- Device setup notes and the same recipe measured on the Pi, including power draw (with the electronics
+## M2: A second device and energy
+- Device setup notes and the same recipe measured on a second device, including power draw (with the electronics
   engineer).
 - First "what runs where" table with at least two devices.
 - Energy per task and tokens per task as measured columns (power meter first; plan in

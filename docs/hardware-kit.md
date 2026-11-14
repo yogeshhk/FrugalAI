@@ -97,7 +97,7 @@ The Pi 3 Model B is the only item here that can run a vision model. Everything e
 |---|---|---|---|
 | Laptop | Old Dell, CPU only | Train, export and quantize models. Work lives in `code/common/devices/old-dell.md`. | Train only |
 | Edge computer | Pi 3 Model B (have) | Runs the deployed model with a camera. 1 GB RAM forces small models and low resolution. | Yes, small models |
-| Edge computer, upgrade | Pi 4 or Pi 5 (buy later) | Same recipes, more headroom. Pi 5 has a supported AI accelerator route (to verify). | Yes, comfortable |
+| Edge computer, upgrade | Pi 4 (not planned) | Same recipes, more headroom. | Yes, comfortable |
 | Microcontroller | Blue Pill, Arduino (have) | Sensors, servos, relays. TinyML on sensor data, not images. | No |
 | Camera microcontroller | ESP32-CAM or similar (buy, optional) | Very low power, very small models, tiny images. | Yes, tiny |
 
@@ -132,7 +132,7 @@ Ordered by what unblocks the first camera project. Prices are not listed: check 
 | Nice | 0.96 inch I2C OLED display | Shows counts or status without a monitor. | Cheap, tiny, good for the people-counter. |
 | Nice | LEDs, buzzer, relay module, PIR sensor, push buttons | Physical output for gesture and counting recipes. | A starter electronics assortment covers it. |
 | Nice | One more small servo | Pan-tilt camera mount (two axes), or a pointer. | The kit has one SG90 and the extension cables. A pan-tilt mount needs two servos. |
-| Later | Pi 4 or Pi 5 with the right power supply | More headroom for heavier models. | Do not buy until the Pi 3 limits are measured. |
+| Later | Pi 4 with the right power supply | More headroom for heavier models. | Do not buy until the Pi 3 limits are measured. |
 | Later | ESP32-CAM | The microcontroller tier for vision. | Separate learning track, not needed first. |
 
 ## Packaging: how to put it in a box
@@ -245,4 +245,4 @@ All are candidates; none is chosen until benchmarked.
 - Locate the ambient light sensor listed on the sheet. Confirm that the SunFounder module is the thermistor and say what the black knob module is. The micro servo is found (SG90).
 - Gesture switch first, people counter first, or both in parallel.
 - Whether to create `code/people-counter/` from the template.
-- Pi 5 for language models and a power meter: see `upgrade-report.md`.
+- A power meter: see `upgrade-report.md`.

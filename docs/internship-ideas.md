@@ -6,7 +6,7 @@ Plan only. Nothing below has been started, and no number below is a measurement.
 
 Each project is sized for one student, one laptop and no cloud. The first test machine is the main PC
 (Windows, 10 cores, 16 GB, CPU only by default; a GeForce MX570 with 2 GB can help a little). The target
-machine is the old Dell (CPU only) and, later, a Raspberry Pi 5. Check the model sizes on the
+machine is the old Dell (CPU only); the Raspberry Pi 3 serves vision and sensor projects. Check the model sizes on the
 [Ollama Qwen3 page](https://ollama.com/library/qwen3) before planning RAM.
 
 Rules for every project:
