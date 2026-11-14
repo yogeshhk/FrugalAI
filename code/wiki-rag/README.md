@@ -109,3 +109,6 @@ Studio server while another job was using the CPU, so it is not a clean speed fi
 ```bash
 python -m pytest code/wiki-rag/tests -v     # from the repo root; fully offline
 ```
+
+## Set up and extend
+Environment: `environment.yml` here (conda, `frugalai-wiki-rag`; without conda, `requirements.txt`). Ideas for forks and contributors: `EXTENSIONS.md`.

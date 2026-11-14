@@ -21,6 +21,8 @@ Copy `code/_template/` (a runnable stub with one offline test), keep the recipe 
 
 For a new measurement of an existing model on your device, use the "New measurement" issue form.
 
+Looking for something to build? Every project in `code/` has an `EXTENSIONS.md` with ideas for forks, each with what it needs and how to tell it worked, and an `environment.yml` (conda) and `requirements.txt` (pip) so you can set up your own environment. If you have a Raspberry Pi and a USB webcam, `code/gesture-switch/PI_RECIPE.md` is a step-by-step deployment recipe whose results you can send back.
+
 ## 4. Fix or add documentation
 Every factual claim needs a source in `docs/sources.md`, or a "to verify" tag. Prefer primary sources
 (papers, official documentation, the project's own repository) over blogs and summaries.

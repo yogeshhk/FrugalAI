@@ -1,0 +1,8 @@
+# Pip route for code/dhir-server (only rag_check.py needs Python; the model itself runs in llama-server, see the README).
+# Run from this folder: pip install -r requirements.txt
+# The conda route (environment.yml) is the repo's preferred one; this file is for people without conda.
+# rag_check.py also imports wikirag from ../wiki-rag, which adds no third-party package.
+pytest==9.0.2
+requests==2.32.5
+psutil==5.9.5
+-e ../common

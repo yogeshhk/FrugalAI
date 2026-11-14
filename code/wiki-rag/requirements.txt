@@ -1,0 +1,6 @@
+# Pip route for code/wiki-rag. Run from this folder: pip install -r requirements.txt
+# The conda route (environment.yml) is the repo's preferred one; this file is for people without conda.
+# Retrieval is pure Python: no third-party package is needed to run it, only pytest for the tests.
+# Answers and embeddings need a model server (LM Studio or Ollama); see the README.
+pytest==9.0.2
+-e ../common

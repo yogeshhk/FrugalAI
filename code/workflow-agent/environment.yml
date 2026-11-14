@@ -1,0 +1,20 @@
+# Environment for code/workflow-agent. Create it FROM THIS FOLDER (the editable install path is relative):
+#   conda env create -f environment.yml && conda activate frugalai-workflow-agent
+# Or, without conda:  python -m venv .venv  and  pip install -r requirements.txt
+# Versions are those installed in the author's env genai (Python 3.10.19), read on 2026-11-14.
+# That env has not been rebuilt from this file yet, so treat it as unverified until someone does.
+# Real intake runs and the wfagent evaluation need LM Studio; the tests and --fake runs do not.
+name: frugalai-workflow-agent
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pytest=9.0.2
+  - requests=2.32.5
+  - pip:
+      - langchain-core==1.6.10
+      - langchain-openai==1.1.6
+      - pydantic==2.12.5
+      - langgraph==1.0.4
+      - -e ../common

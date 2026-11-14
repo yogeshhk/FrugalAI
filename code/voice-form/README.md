@@ -160,3 +160,6 @@ there are results on real speech.
 
 ## Tests
 `python -m pytest code/voice-form -q` from the repo root (offline; ffmpeg is needed for the audio round-trip test).
+
+## Set up and extend
+Environment: `environment.yml` here (conda, `frugalai-voice-form`, CPU torch, includes ffmpeg; without conda, `requirements.txt` and install ffmpeg yourself). Ideas for forks and contributors: `EXTENSIONS.md`.

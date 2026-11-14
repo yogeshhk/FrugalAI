@@ -21,7 +21,7 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
 ## Layout
 `docs/` concepts, landscape, sources, safety, internship ideas. `code/` holds everything that runs: each project is a
 self-contained folder (code, data, tests, README, and a TODO only while an action is open): `code/wiki-rag/`, `code/quantum-wiki/`, `code/finetune-slm/`,
-`code/workflow-agent/`, `code/voice-form/` (speech to form), `code/demo/` (the offline talk demo), `code/dhir-server/` (local server for Dhir 2B, which LM Studio cannot load); copy `code/_template/` for a new one. Shared pieces live in `code/common/`:
+`code/workflow-agent/`, `code/voice-form/` (speech to form), `code/dhir-server/` (Dhir 2B run with ZenteiQ's llama-server, which LM Studio cannot load: recipe, answer check, no server code); copy `code/_template/` for a new one. The offline talk demo is not here: it lives in `D:\Yogesh\GitHub\TeachingDataScience\Code\frugal\demo\` beside the deck, and finds these projects through `FRUGALAI_REPO` (default: this repo next to it). Shared pieces live in `code/common/`:
 `code/common/frugalai_common/` backend interface and benchmark runner, `code/common/benchmarks/` method and results,
 `code/common/devices/` per-device setup. `_scripts/` at the repo root holds the repo tools (AWESOME.md and link
 checkers). Run all tests with `python -m pytest code -q` and the link check with `python _scripts/check_links.py`.

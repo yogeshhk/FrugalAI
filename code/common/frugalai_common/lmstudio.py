@@ -15,7 +15,7 @@ from .base import Backend, GenResult
 from .config import LLM_URL
 
 # Follows FRUGALAI_LLM_URL (default http://localhost:1234/v1), so one variable repoints every project that
-# builds LMStudioBackend() without a URL, for example to the Dhir server on port 1235.
+# builds LMStudioBackend() without a URL, for example to a llama-server running Dhir on port 1236.
 DEFAULT_URL = LLM_URL
 
 

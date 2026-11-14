@@ -51,8 +51,8 @@ By default `faqintake` reads `sample_faqs/`: five invented, generic entries (abo
 format as the real ones, written for this demo, not copies of anything. Set `FAQINTAKE_QCNP` to a folder that holds
 `faqs/` (and, optionally, `docs/concept_check.py`, the author's regex counter) to use your own notes instead; if the
 variable is unset or points at a missing folder, the sample is used. That script runs as Python when it is loaded, so
-it is opt-in: also set `FAQINTAKE_RUN_CONCEPT_CHECK=1` once you have read `docs/concept_check.py`. The demo scripts in
-`code/demo/` set both for the author's own folder.
+it is opt-in: also set `FAQINTAKE_RUN_CONCEPT_CHECK=1` once you have read `docs/concept_check.py`. The talk demo scripts
+(`Code/frugal/demo` in the TeachingDataScience repo) set both for the author's own folder.
 
 | What | Sample (default) | Your own folder (`FAQINTAKE_QCNP`) |
 |------|------------------|------------------------------------|
@@ -146,3 +146,6 @@ that only checks the plumbing and is not a model result (a real run writes `resu
 - `eval/intake_cases.json` was written by Claude and not reviewed; gold labels are only covered or new. The topic-drift threshold was set on the 24 first-version drafts (in-sample).
 - The workflow does the mechanical half of the skill; judgment and fact checking stay with the author or a stronger model, and every draft is marked unverified. The graph reads the
   repository's rule files and loads the author's counter instead of copying them, so the two sources of rules cannot drift.
+
+## Set up and extend
+Environment: `environment.yml` here (conda, `frugalai-workflow-agent`; without conda, `requirements.txt`). Ideas for forks and contributors: `EXTENSIONS.md`.

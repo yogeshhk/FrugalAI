@@ -1,0 +1,16 @@
+# Pip route for code/quantum-wiki. Run from this folder: pip install -r requirements.txt
+# The conda route (environment.yml) is the repo's preferred one; this file is for people without conda.
+# docling is large and only the parse step needs it; delete that line if you only run the cards and answers.
+# Needs LM Studio serving a chat model and nomic-embed-text-v1.5 for ask, retrieval and eval.
+pytest==9.0.2
+numpy==1.26.4
+requests==2.32.5
+scikit-learn==1.7.2
+langchain-core==1.6.10
+langchain-openai==1.1.6
+pydantic==2.12.5
+langchain-community==0.4.1
+langchain-text-splitters==1.1.0
+pymupdf==1.27.2.3
+docling==2.53.0
+-e ../common

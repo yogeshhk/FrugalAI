@@ -1,0 +1,13 @@
+# Pip route for code/finetune-slm. Run from this folder: pip install -r requirements.txt
+# The conda route (environment.yml) is the repo's preferred one; this file is for people without conda.
+# LoRA training on the CPU. The first training run downloads SmolLM2-135M-Instruct (see the README).
+--index-url https://pypi.org/simple
+--extra-index-url https://download.pytorch.org/whl/cpu
+pytest==9.0.2
+numpy==1.26.4
+psutil==5.9.5
+torch==2.7.1+cpu
+transformers==4.57.3
+peft==0.18.0
+rank-bm25==0.2.2
+-e ../common

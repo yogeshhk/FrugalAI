@@ -1,0 +1,16 @@
+# Environment for code/wiki-rag. Create it FROM THIS FOLDER (the editable install path is relative):
+#   conda env create -f environment.yml && conda activate frugalai-wiki-rag
+# Or, without conda:  python -m venv .venv  and  pip install -r requirements.txt
+# Versions are those installed in the author's env genai (Python 3.10.19), read on 2026-11-14.
+# That env has not been rebuilt from this file yet, so treat it as unverified until someone does.
+# Retrieval is pure Python: no third-party package is needed to run it, only pytest for the tests.
+# Answers and embeddings need a model server (LM Studio or Ollama); see the README.
+name: frugalai-wiki-rag
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pytest=9.0.2
+  - pip:
+      - -e ../common

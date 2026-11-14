@@ -1,0 +1,7 @@
+# Pip route for code/gesture-switch. Run from this folder: pip install -r requirements.txt
+# The conda route (environment.yml) is the repo's preferred one; this file is for people without conda.
+# On a Raspberry Pi use the system packages instead (sudo apt install python3-opencv python3-numpy);
+# see PI_RECIPE.md. The hand models are not a pip package; see README.md (FRUGALAI_HAND_MODELS).
+pytest==9.0.2
+numpy==1.26.4
+opencv-python-headless==4.11.0.86

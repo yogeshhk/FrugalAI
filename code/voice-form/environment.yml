@@ -1,0 +1,29 @@
+# Environment for code/voice-form. Create it FROM THIS FOLDER (the editable install path is relative):
+#   conda env create -f environment.yml && conda activate frugalai-voice-form
+# Or, without conda:  python -m venv .venv  and  pip install -r requirements.txt
+# Versions are those installed in the author's env genai (Python 3.10.19), read on 2026-11-14.
+# That env has not been rebuilt from this file yet, so treat it as unverified until someone does.
+# Models are downloaded with: python -m voiceform download --only <name> (see the README).
+name: frugalai-voice-form
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pytest=9.0.2
+  - numpy=1.26.4
+  - scipy=1.15.3
+  - pyyaml=6.0.2
+  - requests=2.32.5
+  - psutil=5.9.5
+  - tqdm=4.67.1
+  - ffmpeg
+  - pip:
+      - --index-url https://pypi.org/simple
+      - --extra-index-url https://download.pytorch.org/whl/cpu
+      - torch==2.7.1+cpu
+      - transformers==4.57.3
+      - huggingface-hub==0.35.1
+      - onnxruntime==1.22.0
+      - vosk==0.3.45
+      - -e ../common

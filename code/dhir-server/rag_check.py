@@ -1,7 +1,7 @@
 """Answer-quality check of one chat model on the wiki-rag evaluation set (72 made-up questions, BM25 retrieval).
 
 Run from this folder, with the model's server already running:
-  conda run -n genai python rag_check.py --url http://localhost:1235/v1 --model dhir-2b --tag dhir-2b
+  conda run -n genai python rag_check.py --url http://localhost:1236/v1 --model dhir-2b --tag dhir-2b-q8
   conda run -n genai python rag_check.py --url http://localhost:1234/v1 --model qwen/qwen3-1.7b --tag qwen3-1.7b --no-think
 
 It reuses wiki-rag's own benchmark code and writes to results/rag_<tag>/ here, never to wiki-rag/results/.

@@ -1,0 +1,19 @@
+# Pip route for code/voice-form. Run from this folder: pip install -r requirements.txt
+# The conda route (environment.yml) is the repo's preferred one; this file is for people without conda.
+# Models are downloaded with: python -m voiceform download --only <name> (see the README).
+--index-url https://pypi.org/simple
+--extra-index-url https://download.pytorch.org/whl/cpu
+pytest==9.0.2
+numpy==1.26.4
+scipy==1.15.3
+pyyaml==6.0.2
+requests==2.32.5
+psutil==5.9.5
+tqdm==4.67.1
+torch==2.7.1+cpu
+transformers==4.57.3
+huggingface-hub==0.35.1
+onnxruntime==1.22.0
+vosk==0.3.45
+-e ../common
+# ffmpeg: install the program itself (conda, apt or the Windows build); it decodes phone recordings.

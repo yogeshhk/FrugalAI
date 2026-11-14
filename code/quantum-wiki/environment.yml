@@ -1,0 +1,26 @@
+# Environment for code/quantum-wiki. Create it FROM THIS FOLDER (the editable install path is relative):
+#   conda env create -f environment.yml && conda activate frugalai-quantum-wiki
+# Or, without conda:  python -m venv .venv  and  pip install -r requirements.txt
+# Versions are those installed in the author's env genai (Python 3.10.19), read on 2026-11-14.
+# That env has not been rebuilt from this file yet, so treat it as unverified until someone does.
+# docling is large and only the parse step needs it; delete that line if you only run the cards and answers.
+# Needs LM Studio serving a chat model and nomic-embed-text-v1.5 for ask, retrieval and eval.
+name: frugalai-quantum-wiki
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pytest=9.0.2
+  - numpy=1.26.4
+  - requests=2.32.5
+  - scikit-learn=1.7.2
+  - pip:
+      - langchain-core==1.6.10
+      - langchain-openai==1.1.6
+      - pydantic==2.12.5
+      - langchain-community==0.4.1
+      - langchain-text-splitters==1.1.0
+      - pymupdf==1.27.2.3
+      - docling==2.53.0
+      - -e ../common

@@ -136,8 +136,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     ap.add_argument("--max-tokens", type=int, default=128)
     ap.add_argument("--url", default=None, help="override the backend URL")
     ap.add_argument("--ram-port", type=int, default=None,
-                    help="measure peak RAM of the process listening on this port (for example 1235 for the Dhir "
-                         "server) instead of matching ollama or llama process names")
+                    help="measure peak RAM of the process listening on this port (for example 1236 for a "
+                         "llama-server running Dhir) instead of matching ollama or llama process names")
     # default output folder: code/common/benchmarks/results (this file is code/common/frugalai_common/bench.py)
     ap.add_argument("--out-dir", default=str(Path(__file__).resolve().parents[1] / "benchmarks" / "results"))
     ap.add_argument("--force", action="store_true",

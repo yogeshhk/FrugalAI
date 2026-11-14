@@ -54,8 +54,8 @@ helpers only).
 | [code/voice-form/](code/voice-form/) | Speak a form in Marathi or Hindi (ASHA visit, enumeration, service ticket); offline speech to text, plain-code numbers and dates, a small model that must quote its evidence, confirm before save | built; extraction measured on script text |
 | [code/workflow-agent/](code/workflow-agent/) | A LangGraph intake workflow with parallel checks, a draft sub-graph and a repair loop, plus a small helpline demo | built; first measurements |
 | [code/finetune-slm/](code/finetune-slm/) | LoRA fine-tuning of small models on a CPU: a 135M intent router and a Marathi question-answering study | built; measured, one seed |
-| [code/dhir-server/](code/dhir-server/) | A local OpenAI-style server for the Indian model Dhir 2B (ZenteiQ), which LM Studio cannot load | built; speed, memory and answer check measured |
-| [code/demo/](code/demo/) | The offline live demo page for the talk: base model against base model plus retrieval, with the measured score | built; ready for the talk |
+| [code/dhir-server/](code/dhir-server/) | How to run the Indian model Dhir 2B (ZenteiQ) from its GGUF file with llama-server, which LM Studio cannot load | recipe; speed, memory and answer check measured |
+| `Code/frugal/demo` in the TeachingDataScience repo | The offline live demo page for the talk: base model against base model plus retrieval, with the measured score. It sits beside the deck and shows the projects here | built; ready for the talk |
 
 ### Vision and sensors (proof of concept on a laptop, deployment on a Raspberry Pi)
 

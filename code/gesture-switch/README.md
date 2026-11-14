@@ -23,15 +23,24 @@ The camera is read through OpenCV, so the same capture code runs on the laptop
 for the first proof and on the Pi 3 afterwards, with no ribbon cable or camera-specific driver.
 
 ## Model and runtime
-Not chosen yet. Candidate: a pre-trained MediaPipe hand or gesture model. Record name, size, licence and runtime here
-once picked, and check the model card.
+Chosen by the author on 2026-11-14: the OpenCV Zoo MediaPipe palm detector and hand pose model as ONNX
+([S58](../../docs/sources.md#s58)), 3.9 MB and 4.1 MB, Apache 2.0 per the licence file shipped with each. They are run
+with OpenCV's DNN module on the CPU through the zoo's own small wrapper classes; the files are kept outside the repo
+(this laptop: `C:\Users\yoges\.cache\lm-studio\models\opencv-zoo-hand`, found through `FRUGALAI_HAND_MODELS`). Our own part is `gesture_switch/zoo.py`: plain
+geometry on the 21 landmarks that gives a label (open palm, fist, thumb up, thumb down, pointing up). Checked so far:
+the models load and return "unknown" on a blank and a noise frame, and the rules pass tests on synthetic landmarks.
+Not checked yet: any real hand in front of the webcam, accuracy, speed on the laptop or the Pi.
 
 ## What is in here
 | Path | Purpose |
 |---|---|
 | `gesture_switch/core.py` | Label-to-action table and the stable-label debounce (plain code, tested) |
 | `gesture_switch/camera_probe.py` | Finds the cameras and measures what each delivers, on any machine |
+| `gesture_switch/run.py` | Live loop: frame, label, debounce, action; frames are never written to disk. `--classifier skin` is a baseline (accuracy not measured); `--classifier zoo` uses the approved hand models |
+| `gesture_switch/zoo.py` | Loads the OpenCV Zoo ONNX models from `FRUGALAI_HAND_MODELS` and turns the landmarks into a gesture label |
 | `tests/` | Offline tests, no camera or model needed |
+| `PI_RECIPE.md` | Step-by-step recipe for anyone with a Raspberry Pi to deploy, measure and send results back (untested on a Pi) |
+| `EXTENSIONS.md` | Ideas for what to build next, for forks and contributors |
 | `PLAN.md` | The staged plan from laptop proof to inference on the Raspberry Pi |
 | `TODO.md` | Open actions |
 
@@ -57,3 +66,6 @@ safety system; see `../../docs/safety.md`.
 
 ## Tests
 `python -m pytest -q` from this folder. Offline, no camera.
+
+## Set up and extend
+Environment: `environment.yml` here (conda, `frugalai-gesture-switch`; without conda, `requirements.txt`; on a Raspberry Pi use the system packages named in `PI_RECIPE.md`). Ideas for forks and contributors: `EXTENSIONS.md`.

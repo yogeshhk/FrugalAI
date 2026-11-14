@@ -55,8 +55,11 @@ Plan only; nothing here is measured yet. Background in [token_frugality.md](../.
   energy tracks tokens on that device.
 
 ## Known limits
-- The Dhir 2B CSV (2026-11-06) is one repeat of the five prompts through the dhir-server HTTP API, not three repeats;
+- The Dhir 2B CSV (2026-11-06) is one repeat of the five prompts through the HTTP API of the former dhir-server wrapper (removed 2026-11-14), not three repeats;
   its backend column reads `lmstudio` because the same client class was used.
+- The two Dhir 2B GGUF CSVs (2026-11-14, Q4_K_M and Q8_0) are three repeats each, measured against `llama-server`
+  from ZenteiQ's `dhir-support` llama.cpp branch directly, not through the wrapper; their backend column also reads
+  `lmstudio` (same OpenAI-style client) and their model column carries the server alias (`dhir-2b-q4`, `dhir-2b-q8`).
 - The `os` column of the four committed 2026-10-19 CSVs reads `Windows-10-10.0.26300-SP0`, because Python reports Windows 11 as
   Windows 10 (the kernel version stays 10.0). Build 26300 is Windows 11 (builds from 22000 up are). New runs write
   `Windows-11-...` through `frugalai_common.metrics.os_label()`; the committed files are left as they were produced.

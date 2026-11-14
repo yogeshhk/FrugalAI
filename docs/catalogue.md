@@ -14,8 +14,8 @@ the [README](../README.md): use the lowest rung that solves the problem.
 | [voice-form](../code/voice-form/) | Speak a form in Marathi or Hindi, for ASHA workers and enumerators | Speech plus small model | Laptop | Laptop, larger Pi, phone | built; extraction measured on script text |
 | [workflow-agent](../code/workflow-agent/) | A helpline or FAQ intake workflow with checks and drafts | Small model agent | Laptop | Laptop | built; first measurements |
 | [finetune-slm](../code/finetune-slm/) | Train a small intent router and a Marathi study on a CPU, for students | Training recipe | Laptop | Laptop | built; measured, one seed |
-| [dhir-server](../code/dhir-server/) | Serve an Indian small model locally | Serving | Laptop | Laptop | built; measured |
-| [demo](../code/demo/) | The offline talk demo: model against model plus retrieval | Showcase | Laptop | Laptop | built; ready for the talk |
+| [dhir-server](../code/dhir-server/) | Run an Indian small model locally with llama-server | Serving recipe | Laptop | Laptop | recipe; measured |
+| demo (`Code/frugal/demo` in the TeachingDataScience repo) | The offline talk demo: model against model plus retrieval | Showcase | Laptop | Laptop | built; ready for the talk |
 | [gesture-switch](../code/gesture-switch/) | Non-verbal help or yes and no board, for people who cannot speak or type | Small vision | Laptop webcam | Raspberry Pi 3 | stub |
 
 ## Candidates (open for a student or a startup)

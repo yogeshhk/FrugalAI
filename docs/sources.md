@@ -432,6 +432,29 @@ government listing giving an MIT licence (not checked on the Hugging Face card).
 found. The SynthMoDe clause is no longer stated in `docs/landscape.md` (removed 2026-11-11, never read in full).
 This entry is the same paper as [S4](#s4); the docs cite S4, and no doc cites S56 any more.
 
+<a id="s57"></a>
+## S57. Hugging Face model card: Dhir-2B-GGUF
+Publisher: ZenteiQ AiTech Innovations on Hugging Face. URL: https://huggingface.co/zenteiq-ai/Dhir-2B-GGUF. Read
+2026-11-14 (the card's `README.md`, `LICENSE` and `NOTICE`, downloaded with the files). Used for: two builds,
+`Dhir-2B-Q4_K_M.gguf` (1.3 GB) and `Dhir-2B-Q8_0.gguf` (2.2 GB), with their SHA-256 values; Apache 2.0; a context
+length of 16,384 tokens; the instruction to build the `dhir-support` branch of
+`github.com/zenteiq-research/llama.cpp` until support is merged into llama.cpp; the CPU thread advice (`-t` set to the
+performance cores, `-tb` to all cores); the sampling settings it suggests; and a larger Dhir 5B-A1.7B GGUF being
+listed. The quality figures (perplexity within 3.4 percent of the original for Q4_K_M and 0.1 percent for Q8_0; the
+same next token 91 and 98 percent of the time) are ZenteiQ's own and were not reproduced here. The technical report
+is listed as forthcoming; it was not available to read.
+
+<a id="s58"></a>
+## S58. OpenCV Zoo MediaPipe palm detection and hand pose models (Hugging Face)
+Publisher: OpenCV (opencv on Hugging Face). URLs: https://huggingface.co/opencv/palm_detection_mediapipe and
+https://huggingface.co/opencv/handpose_estimation_mediapipe. Read 2026-11-14 (file lists with sizes through the Hub
+API, the `LICENSE` and `README.md` of each, downloaded with the files). Used for: the two ONNX files
+`palm_detection_mediapipe_2023feb.onnx` (3,905,734 bytes, SHA-256 78ff51c38496b7fc8b8ebdb6cc8c1abb02fa6c38427c6848254cdaba57fcce7c)
+and `handpose_estimation_mediapipe_2023feb.onnx` (4,099,621 bytes, SHA-256 db0898ae717b76b075d9bf563af315b29562e11f8df5027a1ef07b02bef6d81c);
+the Apache License 2.0 text shipped in each folder; that the models are TFLite MediaPipe models converted to ONNX; int8
+variants listed next to them. The licence of the original Google MediaPipe weights was not read, and no accuracy or
+speed figure is taken from these pages.
+
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":
   https://www.ey.com/en_in/insights/ai/agentic-ai-india/small-language-models

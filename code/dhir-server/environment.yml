@@ -1,0 +1,18 @@
+# Environment for code/dhir-server (only rag_check.py needs Python; the model itself runs in llama-server, see the README).
+# Create it FROM THIS FOLDER (the editable install path is relative):
+#   conda env create -f environment.yml && conda activate frugalai-dhir-server
+# Or, without conda:  python -m venv .venv  and  pip install -r requirements.txt
+# Versions are those installed in the author's env genai (Python 3.10.19), read on 2026-11-14.
+# That env has not been rebuilt from this file yet, so treat it as unverified until someone does.
+# rag_check.py also imports wikirag from ../wiki-rag, which adds no third-party package.
+name: frugalai-dhir-server
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pytest=9.0.2
+  - requests=2.32.5
+  - psutil=5.9.5
+  - pip:
+      - -e ../common

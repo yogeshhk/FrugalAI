@@ -1,0 +1,10 @@
+# Pip route for code/workflow-agent. Run from this folder: pip install -r requirements.txt
+# The conda route (environment.yml) is the repo's preferred one; this file is for people without conda.
+# Real intake runs and the wfagent evaluation need LM Studio; the tests and --fake runs do not.
+pytest==9.0.2
+requests==2.32.5
+langchain-core==1.6.10
+langchain-openai==1.1.6
+pydantic==2.12.5
+langgraph==1.0.4
+-e ../common

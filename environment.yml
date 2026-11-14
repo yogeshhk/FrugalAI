@@ -40,8 +40,4 @@ dependencies:
       - huggingface-hub==0.35.1      # voice-form: model download
       - onnxruntime==1.22.0          # voice-form: IndicConformer
       - vosk==0.3.45                 # voice-form: small offline speech model runtime
-      - streamlit==1.60.0            # demo
-      - fastapi==0.116.1             # dhir-server
-      - uvicorn==0.54.0              # dhir-server
-      - websocket-client==1.6.1      # demo: capture.py
       - -e ./code/common             # frugalai_common, importable from every project
