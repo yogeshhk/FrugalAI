@@ -47,7 +47,7 @@ Rules for every project:
   language list includes Marathi (`mar_Deva`) and Hindi (`hin_Deva`) [S47](sources.md#s47). It has 3,001 sentences,
   split into dev, devtest and a hidden test set, so only dev and devtest can be scored locally. The repository is
   no longer updated; newer versions are with the Open Language Data Initiative. IndicXNLI as in project 1.
-- Risks: small models are weak in Indian languages (a stated risk in `docs/assessment.md`); report failures too.
+- Risks: small models are weak in Indian languages (a stated risk in the README, "Outlook"); report failures too.
 
 ### 3. Offline Marathi or Hindi RAG assistant
 - Builds on `wiki-rag`. Choose a non-health corpus first, such as a Wikipedia subset
@@ -108,7 +108,7 @@ Rules for every project:
   ([arXiv 1511.08060](https://arxiv.org/abs/1511.08060)) and say which copy was used.
 
 ### 8. Modi script recognition
-- Already in `ROADMAP.md` under "Later". A classical baseline and a tiny CNN, compared on accuracy and speed.
+- Already in the README's "Roadmap" under "Later". A classical baseline and a tiny CNN, compared on accuracy and speed.
 - Data: MODI-HChar on [Mendeley Data](https://data.mendeley.com/datasets/pk2zrt58pp) (57 classes, per the
   listing). The page labels it CC BY 4.0 but its usage text says research use only and no redistribution
   [S51](sources.md#s51); follow the stricter text, so the data can never be added to this repo. The MoScNet paper is [arXiv 2503.13060](https://arxiv.org/abs/2503.13060); I

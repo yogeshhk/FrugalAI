@@ -40,7 +40,6 @@ Not checked yet: any real hand in front of the webcam, accuracy, speed on the la
 | `gesture_switch/zoo.py` | Loads the OpenCV Zoo ONNX models from `FRUGALAI_HAND_MODELS` and turns the landmarks into a gesture label |
 | `tests/` | Offline tests, no camera or model needed |
 | `PI_RECIPE.md` | Step-by-step recipe for anyone with a Raspberry Pi to deploy, measure and send results back (untested on a Pi) |
-| `EXTENSIONS.md` | Ideas for what to build next, for forks and contributors |
 | `PLAN.md` | The staged plan from laptop proof to inference on the Raspberry Pi |
 | `TODO.md` | Open actions |
 
@@ -68,4 +67,60 @@ safety system; see `../../docs/safety.md`.
 `python -m pytest -q` from this folder. Offline, no camera.
 
 ## Set up and extend
-Environment: `environment.yml` here (conda, `frugalai-gesture-switch`; without conda, `requirements.txt`; on a Raspberry Pi use the system packages named in `PI_RECIPE.md`). Ideas for forks and contributors: `EXTENSIONS.md`.
+Environment: `environment.yml` here (conda, `frugalai-gesture-switch`; without conda, `requirements.txt`; on a Raspberry Pi use the system packages named in `PI_RECIPE.md`). Ideas for forks: see "Ideas to extend" below.
+
+## Ideas to extend
+
+Ideas for anyone who forks this repo. Each one says what it needs and how you would know it worked. Pick one, open an
+issue so two people do not do the same, and send a pull request. The Raspberry Pi route has its own recipe:
+`PI_RECIPE.md`. Rules that apply to every idea: never invent a number (a figure exists only if a script produced it on
+a named device), never save a camera frame, and keep it offline. See `../../CONTRIBUTING.md`.
+
+Size: small is an evening, medium is a weekend, large is a few weekends.
+
+### Run the speed logger on real hardware (small, needed first)
+- What: `run.py --log-csv` exists and is tested with fake frames, but has never run on a real camera or a Pi.
+- Do: run it on a laptop webcam and on a Pi (see `PI_RECIPE.md`, "Measure it"), at least three runs each, and fix anything that breaks.
+- Needs: any machine with a webcam; a Pi for the second half.
+- Done when: a CSV appears in `../common/benchmarks/results/` and the README table is filled from it.
+
+### Raspberry Pi 3 deployment (medium)
+- Follow `PI_RECIPE.md` and send back the report, CSVs and any recipe fixes.
+- Needs: a Pi 3, a USB webcam, an SD card.
+
+### Raspberry Pi 4 or 5, or an old phone (medium)
+- Same code, a stronger device. Log a row with a different device label so the devices can be compared.
+- Needs: the device and a webcam; no code change expected, which is itself a result to report.
+
+### Real gesture set (small)
+- The label table in `core.py` is a stub drafted by Claude. Replace it with the actions a real user needs (yes, no, call, water) and keep the debounce.
+- Done when: the tests cover each action and the README lists them.
+
+### Evaluation set (medium)
+- Record short clips of the five gestures by more than one person, in more than one light, with consent, kept out of the repo. Write the scoring script and report per-gesture success and failure causes.
+- Compare with the skin-colour baseline in `run.py`.
+- Done when: a results file with per-gesture rows and a README table.
+
+### Other hand models (medium)
+- Try an alternative behind the same `classify(frame)` function and compare speed and accuracy on the same clips.
+  The shortlist of 2026-11-14 (the OpenCV Zoo ONNX pair was approved and is in use, source S58; the other two were
+  not downloaded, and every fact about them is from a search summary, to verify):
+
+  | Option | What it is | Runtime | Licence (to verify) | Notes |
+  |--------|-----------|---------|---------------------|-------|
+  | MediaPipe Gesture Recognizer (`gesture_recognizer.task`) | Hand detector, landmarks and a gesture classifier in one bundle (Closed_Fist, Open_Palm, Pointing_Up, Thumb_Down, Thumb_Up, Victory, ILoveYou) | MediaPipe Tasks | Code Apache 2.0; weights licence not found | A MediaPipe install on a 32-bit Pi 3 may be awkward |
+  | PINTO0309 `hand-gesture-recognition-using-onnx` | Full ONNX pipeline with small MLP gesture classifiers | ONNX Runtime | Apache 2.0, per file to check | Ready-made gesture step |
+
+  Read first: https://ai.google.dev/edge/mediapipe/solutions/vision/gesture_recognizer and
+  https://github.com/PINTO0309/hand-gesture-recognition-using-onnx.
+- Needs: licence of the weights read first, and an entry in `../../docs/sources.md`.
+
+### Output wiring (small)
+- LED, buzzer, a servo through an Arduino over USB serial, or a spoken phrase. Keep it behind an option so the laptop run still works.
+- Done when: a wiring sketch with pin numbers and a trial count with misses.
+
+### Left-handed and two-hand cases (medium)
+- Check that the rules in `zoo.py` hold for a left hand and for a hand held sideways; add landmark fixtures to the tests.
+
+### Power draw (small)
+- With a USB power meter, log idle and running watts on the Pi. This is a planned column in `../common/benchmarks/METHODOLOGY.md`.

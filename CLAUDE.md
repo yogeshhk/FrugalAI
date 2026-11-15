@@ -21,10 +21,14 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
 ## Layout
 `docs/` concepts, landscape, sources, safety, internship ideas. `code/` holds everything that runs: each project is a
 self-contained folder (code, data, tests, README, and a TODO only while an action is open): `code/wiki-rag/`, `code/quantum-wiki/`, `code/finetune-slm/`,
-`code/workflow-agent/`, `code/voice-form/` (speech to form), `code/dhir-server/` (Dhir 2B run with ZenteiQ's llama-server, which LM Studio cannot load: recipe, answer check, no server code); copy `code/_template/` for a new one. The offline talk demo is not here: it lives in `D:\Yogesh\GitHub\TeachingDataScience\Code\frugal\demo\` beside the deck, and finds these projects through `FRUGALAI_REPO` (default: this repo next to it). Shared pieces live in `code/common/`:
-`code/common/frugalai_common/` backend interface and benchmark runner, `code/common/benchmarks/` method and results,
+`code/workflow-agent/`, `code/voice-form/` (speech to form), `code/gesture-switch/` (camera and Pi 3, stub), `code/dhir-server/` (Dhir 2B run with ZenteiQ's llama-server, which LM Studio cannot load: recipe, answer check, no server code); copy `code/_template/` for a new one.
+Demo pages: one Streamlit `app.py` per project (voice-form, quantum-wiki, wiki-rag, workflow-agent, finetune-slm), not a
+multipage app, run with `conda run -n genai streamlit run app.py` from the project folder. Each calls
+`frugalai_common.demo` first (offline guard, machine panel). `_scripts/record_demo.py` records screenshots and an MP4 of
+a running page; the talk deck (TeachingDataScience `LaTeX/ai_frugal_demo.tex`) uses them. Shared pieces live in `code/common/`:
+`code/common/frugalai_common/` backend interface, benchmark runner and demo-page helpers, `code/common/benchmarks/` method and results,
 `code/common/devices/` per-device setup. `_scripts/` at the repo root holds the repo tools (AWESOME.md and link
-checkers). Run all tests with `python -m pytest code -q` and the link check with `python _scripts/check_links.py`.
+checkers, the demo recorder). Run all tests with `python -m pytest code -q` and the link check with `python _scripts/check_links.py`.
 
 ## Caveats that stay (not in TODO)
 - The question and case sets of `finetune-slm`, `wiki-rag`, `workflow-agent` and `voice-form` were drafted by Claude and not reviewed by the author. The `quantum-wiki` sets (and so the demo's questions) were drafted by Claude and reviewed by the author on 2026-10-31.

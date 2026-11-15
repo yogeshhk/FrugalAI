@@ -23,7 +23,7 @@ On the author's laptop only `Dhir-2B-Q8_0.gguf` is kept (closest to the bf16 ori
 | `rag_check.py` | the 72-question wiki-rag answer check for any OpenAI-style server, writes `results/rag_<tag>/` |
 | `results/` | the answer-check outputs (Dhir bf16, Q4_K_M, Q8_0 and Qwen3 1.7B) |
 | `environment.yml`, `requirements.txt` | what `rag_check.py` needs |
-| `EXTENSIONS.md`, `TODO.md` | ideas for forks, and the open actions |
+| `TODO.md` | the open actions |
 
 ## Build llama-server (once)
 Clone the `dhir-support` branch of `https://github.com/zenteiq-research/llama.cpp` (or download it as a zip) and build the two targets the card names. On Windows this was done from a "x64 Native Tools" prompt of Visual Studio (MSVC 19.50), with the CMake that ships with Visual Studio and Ninja:
@@ -99,4 +99,40 @@ On this laptop, Q8_0: it stays closest to the original model (the card puts it a
 - llama-server does not cap `max_tokens` and does not check host names; it listens on 127.0.0.1 only because of `--host`. Keep that flag.
 
 ## Set up and extend
-Environment: `environment.yml` here (conda, `frugalai-dhir-server`; without conda, `requirements.txt`). It is only for `rag_check.py`; the model runs in llama-server. Ideas for forks and contributors: `EXTENSIONS.md`.
+Environment: `environment.yml` here (conda, `frugalai-dhir-server`; without conda, `requirements.txt`). It is only for `rag_check.py`; the model runs in llama-server. Ideas for forks: see "Ideas to extend" below.
+
+## Ideas to extend
+
+Dhir 2B run from its GGUF file with ZenteiQ's `llama-server` (LM Studio cannot load it). Ideas for anyone who forks
+this repo. Pick one, open an issue so two people do not do the same, and send a pull request. Rules: never invent a
+number, name the device and quantisation, and read a model card before quoting it. See `../../CONTRIBUTING.md`.
+
+Size: small is an evening, medium is a weekend, large is a few weekends.
+
+### Raspberry Pi 5 or other ARM board (medium)
+- Build the `dhir-support` branch of llama.cpp on the board, load `Dhir-2B-Q4_K_M.gguf` and log a benchmark row with `python -m frugalai_common.bench --ram-port <port>`. The Pi 3 has 1 GB RAM and cannot hold the file.
+- Needs: the board. Report build problems; they are results.
+
+### Thread settings (small)
+- The card suggests `-t` equal to performance cores. Every run so far used `-t 8` on an i7-1255U. Try other values with the benchmark runner and report the best and the spread.
+
+### Dhir 5B-A1.7B (medium)
+- Listed on the card as stronger and faster than 2B on a CPU. Read its card, run `rag_check.py` and the benchmark, and add a row.
+
+### Q4 against Q8 on your device (small)
+- The author kept Q8_0 on one laptop. On your device compare both for speed, memory and the tool round trips described in the README.
+
+### Tool round trips in a client (small)
+- The README tip (wrap a plain-text tool result as JSON and leave the tools out of that turn) rests on a handful of trials. Put it in a small helper next to `frugalai_common.llm`, with tests, and measure it on more tools and prompts.
+
+### A thin server for safety limits (small)
+- llama-server has no `max_tokens` cap or host-name check. If you expose it beyond one machine, add them in a small proxy and say what you tested. The removed wrapper did this; it is in the Git history.
+
+### LM Studio support (small, wait for upstream)
+- When the Dhir architecture reaches mainline llama.cpp and an LM Studio runtime, retry loading the GGUF there and compare one probe with llama-server. Do not relabel the GGUF to force a load: the tokenisation would change.
+
+### More languages in the check (medium)
+- `rag_check.py` uses English questions from wiki-rag. Add Hindi and Marathi questions you wrote, with a native reader to review the answers.
+
+### Compare with other Indic small models (medium)
+- Same prompts and benchmark against another small multilingual model served the same way; report speed, memory and the check scores in one table.

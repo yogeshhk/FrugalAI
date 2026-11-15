@@ -40,6 +40,14 @@ and test. They now carry a name slot, and a test asserts zero overlap. All messa
 typo or lower-casing. This is a toy task chosen so the whole experiment fits in minutes. It shows the method,
 not that the approach is ready for real helpline traffic.
 
+## Demo page
+`conda run -n genai streamlit run app.py` from `code/finetune-slm/`; no LM Studio needed. Pick or type a message:
+SmolLM2 135M classifies it twice on the CPU, as downloaded (instruction and one example per intent) and with the LoRA
+adapter from `adapters/intent/`, with prompt size and time for each.
+
+![The downloaded model and the fine-tuned one on the same message](../../docs/images/frugal_tune_weather.png)
+*Image file: ../../docs/images/frugal_tune_weather.png*
+
 ## Run it
 
 From `code/finetune-slm/`, in the `frugalai` conda environment (`environment.yml` has torch, transformers and peft;
@@ -261,5 +269,39 @@ measured on it. Results are in `results/mr_summary.csv`. To evaluate a specific 
   `python -m mrsj merge --adapter adapters/marathi_1b/epoch_3 --out <folder>`, then run the converter on it.
 
 ## Set up and extend
-Environment: `environment.yml` here (conda, `frugalai-finetune-slm`, CPU torch; without conda, `requirements.txt`). Ideas for forks and contributors: `EXTENSIONS.md`.
+Environment: `environment.yml` here (conda, `frugalai-finetune-slm`, CPU torch; without conda, `requirements.txt`). Ideas for forks: see "Ideas to extend" below.
 - Before publishing tuned weights: verify Leo Babauta's own licence statement (the book is "No-Copyright" and based on his work) and Gemma's terms of use.
+
+## Ideas to extend
+
+Ideas for anyone who forks this repo. Pick one, open an issue so two people do not do the same, and send a pull
+request. Rules for every idea: never invent a number, report seeds and machine, and keep a test set that training
+never saw. See `../../CONTRIBUTING.md`.
+
+Size: small is an evening, medium is a weekend, large is a few weekends.
+
+### The Qwen3 comparison row (small)
+- Part 1 compares four systems, but the Qwen3 1.7B row was never run (it needs LM Studio). Run `python -m ftslm eval` with that model served and commit the result.
+
+### More seeds (small)
+- Results are from one seed on one machine. Repeat training and evaluation with several seeds and report the median and range.
+
+### A different narrow job (medium)
+- The intent router is a toy on made-up messages. Choose your own narrow job (route a support email, classify a form field), build the data from templates the way `ftslm/data.py` does, and keep a test set that does not overlap.
+- Done when: a leakage test passes and the four-system table is filled.
+
+### Marathi book question answering: finish the run (medium)
+- Part 2 passed the go or no-go gate for Gemma 3 1B and failed for 270M. Training was stopped and its speed and memory are listed as pending. Rerun with checkpoints and log the speed and memory.
+- The question set was drafted by Claude and is not reviewed by the author; a native reader reviewing it is a contribution in itself.
+
+### Another language or book (large)
+- Repeat the Marathi gate with a Hindi, Kannada or Tamil text you have the right to use. Report which base models pass the gate.
+
+### Run the training on a smaller machine (medium)
+- Time one epoch and measure peak memory on an old laptop. State the thread count.
+
+### Merge the adapter and export to GGUF (medium)
+- Merge the LoRA adapter, convert to GGUF, quantise, and load it in LM Studio or llama.cpp. Compare answers with the unmerged model.
+
+### Try QLoRA or a different rank (small)
+- Change rank and target modules in `train.py` and report trainable parameters, time and score, with the same data.

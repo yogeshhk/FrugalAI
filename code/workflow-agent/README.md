@@ -51,8 +51,8 @@ By default `faqintake` reads `sample_faqs/`: five invented, generic entries (abo
 format as the real ones, written for this demo, not copies of anything. Set `FAQINTAKE_QCNP` to a folder that holds
 `faqs/` (and, optionally, `docs/concept_check.py`, the author's regex counter) to use your own notes instead; if the
 variable is unset or points at a missing folder, the sample is used. That script runs as Python when it is loaded, so
-it is opt-in: also set `FAQINTAKE_RUN_CONCEPT_CHECK=1` once you have read `docs/concept_check.py`. The talk demo scripts
-(`Code/frugal/demo` in the TeachingDataScience repo) set both for the author's own folder.
+it is opt-in: also set `FAQINTAKE_RUN_CONCEPT_CHECK=1` once you have read `docs/concept_check.py`. The demo page
+(`app.py`) and `make_graph_figures.py` set both for the author's own folder when it sits next to this repo.
 
 | What | Sample (default) | Your own folder (`FAQINTAKE_QCNP`) |
 |------|------------------|------------------------------------|
@@ -64,6 +64,15 @@ it is opt-in: also set `FAQINTAKE_RUN_CONCEPT_CHECK=1` once you have read `docs/
 **Which results use private data:** every number in this README comes from the author's 36 private QCNP FAQ entries
 (and `eval/intake_cases.json`, which names them). They cannot be reproduced from this repo alone; the sample folder
 only lets you run the code. The files in `results/` were produced on the private entries.
+
+## Demo page
+`conda run -n genai streamlit run app.py` from `code/workflow-agent/`, with LM Studio serving Qwen3 1.7B and
+nomic-embed-text. Two tabs: "Helpline" (the `wfagent` workflow on sample data, every step marked code or model) and
+"Already covered?" (`faqintake` with drafting off). The page uses the QCNP folder next to this repo when it exists,
+else `sample_faqs/`. `make_graph_figures.py` draws the workflow pictures used in the talk.
+
+![A wrong price in the question is not repeated](../../docs/images/frugal_flow_trap.png)
+*Image file: ../../docs/images/frugal_flow_trap.png*
 
 ## Run it
 
@@ -148,4 +157,35 @@ that only checks the plumbing and is not a model result (a real run writes `resu
   repository's rule files and loads the author's counter instead of copying them, so the two sources of rules cannot drift.
 
 ## Set up and extend
-Environment: `environment.yml` here (conda, `frugalai-workflow-agent`; without conda, `requirements.txt`). Ideas for forks and contributors: `EXTENSIONS.md`.
+Environment: `environment.yml` here (conda, `frugalai-workflow-agent`; without conda, `requirements.txt`). Ideas for forks: see "Ideas to extend" below.
+
+## Ideas to extend
+
+Ideas for anyone who forks this repo. Pick one, open an issue so two people do not do the same, and send a pull
+request. Rules for every idea: plain code does the counting, searching, routing and checking; the model writes
+language only. Never invent a number. See `../../CONTRIBUTING.md`.
+
+Size: small is an evening, medium is a weekend, large is a few weekends.
+
+### Use `faqintake` on your own notes (small)
+- Point `FAQINTAKE_QCNP` at a folder with `faqs/`, run `intake` and `lint`, and report which house rules need to be made configurable.
+- Without your own notes the repo uses five sample FAQs.
+
+### Make the house rules a config file (medium)
+- The linter encodes the author's FAQ rules in code. Move them to a YAML file so another team can describe its own entry format without editing Python.
+- Done when: the sample folder and a second format both lint, with tests.
+
+### Run the `wfagent` model evaluation (small)
+- The 31-case evaluation of the farmer-helpline router was never run. Run it with a small model, commit the CSV and say which model and quantisation.
+
+### A new workflow in the same pattern (medium)
+- Build a third small graph (triage a support email, an expense claim check). Keep the checks and routing in code, a retry loop of at most two repairs, and a report file that says what the model did and what code did.
+
+### Compare orchestration styles (medium)
+- The same task as a plain script, as a LangGraph graph and as a single big prompt. Report calls, tokens and time on the same cases. This is the token-frugality question in `../../docs/token_frugality.md`.
+
+### A human approval step in the UI (small)
+- Today the author moves drafts by hand. Add a confirm or reject step that writes the draft to `faqs/` only after confirmation.
+
+### Hindi or Marathi entries (medium)
+- Run the draft step on Hindi or Marathi input and check that the dash removal and linter still hold.

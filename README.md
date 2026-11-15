@@ -55,7 +55,14 @@ helpers only).
 | [code/workflow-agent/](code/workflow-agent/) | A LangGraph intake workflow with parallel checks, a draft sub-graph and a repair loop, plus a small helpline demo | built; first measurements |
 | [code/finetune-slm/](code/finetune-slm/) | LoRA fine-tuning of small models on a CPU: a 135M intent router and a Marathi question-answering study | built; measured, one seed |
 | [code/dhir-server/](code/dhir-server/) | How to run the Indian model Dhir 2B (ZenteiQ) from its GGUF file with llama-server, which LM Studio cannot load | recipe; speed, memory and answer check measured |
-| `Code/frugal/demo` in the TeachingDataScience repo | The offline live demo page for the talk: base model against base model plus retrieval, with the measured score. It sits beside the deck and shows the projects here | built; ready for the talk |
+
+Each of the first five has a demo page, `app.py`, a small Streamlit page served on the laptop only. Every page shows the
+machine (CPU, RAM, the 2 GB MX570), the Wi-Fi state and a counter of blocked internet connections, so the demo can be
+run with the Wi-Fi off. Run it from the project folder with `conda run -n genai streamlit run app.py`; each project's
+README says which models LM Studio must serve. `_scripts/record_demo.py` records screenshots and a video of a running page.
+
+![The voice-form page: Marathi speech in, a checked form out](docs/images/frugal_voice_filled.png)
+*Image file: docs/images/frugal_voice_filled.png*
 
 ### Vision and sensors (proof of concept on a laptop, deployment on a Raspberry Pi)
 
@@ -75,19 +82,17 @@ and licence notes are in [docs/internship-ideas.md](docs/internship-ideas.md).
 | [code/common/benchmarks/](code/common/benchmarks/) | Method and measured results: what runs where | method written, result files |
 | [code/common/devices/](code/common/devices/) | Setup notes per device | Dell notes written, not yet measured |
 | [code/_template/](code/_template/) | Starting point for a new project folder | ready |
-| [_scripts/](_scripts/) | Repo tools: the AWESOME.md checker and a relative-link checker | working, tested |
+| [_scripts/](_scripts/) | Repo tools: the AWESOME.md checker, a relative-link checker and the demo recorder | working, tested |
 
 ### Documents
 
 | File | What it holds |
 |---|---|
-| [docs/](docs/) | Concepts, landscape, safety, assessment, sources |
+| [docs/](docs/) | Concepts, landscape, safety, sources |
 | [docs/catalogue.md](docs/catalogue.md) | Every project and candidate, by problem, rung and device |
 | [docs/hardware-kit.md](docs/hardware-kit.md) | The Raspberry Pi kit we own, what is missing, packaging |
-| [docs/upgrade-report.md](docs/upgrade-report.md) | The analysis and task plan behind this README |
-| [GETTING_STARTED.md](GETTING_STARTED.md) | How to run what exists, step by step, and the checks |
 | [AWESOME.md](AWESOME.md) | Curated list of frugal AI efforts by platform (old laptop, Raspberry Pi, phone, microcontroller, browser) |
-| [ROADMAP.md](ROADMAP.md) | Milestones |
+| [TODO.md](TODO.md) | Open actions |
 
 ## What runs where
 
@@ -99,7 +104,7 @@ Numbers appear here only after they are measured and recorded under `code/common
 | Main PC, same, CPU only | Gemma 2 2B (Q5_K_M) via LM Studio | 10.9 median (4.9 to 11.8, n=15) | 3.4 GB (engine only, 3379 MB) | 2026-10-19 | GPU offload off; only this model loaded; the 4.9 minimum is one slow run |
 | Main PC, same, GPU-assisted | Qwen3 1.7B (Q4_K_M) via LM Studio | 54.0 median (43.3 to 57.2, n=15) | 2.0 GB (engine only, 1958 MB) | 2026-10-19 | thinking mode on; GeForce MX570 (2 GB) used by LM Studio; only this model loaded |
 | Main PC, same, GPU-assisted | Gemma 2 2B (Q5_K_M) via LM Studio | 12.2 median (9.6 to 13.8, n=15) | 2.9 GB (engine only, 2944 MB) | 2026-10-19 | GeForce MX570 (2 GB) used by LM Studio, model only partly fits, so the gain over CPU is small |
-| Old Dell laptop (CPU only) | pending | pending | pending | pending | not measured, parked (see ROADMAP.md) |
+| Old Dell laptop (CPU only) | pending | pending | pending | pending | not measured, parked (see "Roadmap") |
 | Raspberry Pi 3 Model B (vision, owned) | pending | pending | pending | pending | gesture-switch not yet run on it; frames per second, latency and temperature are the planned columns |
 
 ## Outlook
@@ -110,8 +115,22 @@ job" stays, so the method and recipes should outlast them. That makes it a relat
 low-capital direction, with consulting and training as the first way to earn from it and a packaged device
 as a later option. The main risks are stale numbers, crowding by runtime vendors, the safety and legal
 side of health recipes, weak small-model quality in Indian languages, and one person's time. Nothing here
-has been tested with paying users yet. The reasoning, the risks and what would raise confidence are in
-[docs/assessment.md](docs/assessment.md).
+has been tested with paying users yet. What would raise confidence: measured rows from a second device and a
+power meter, and a recipe used by someone other than the author.
+
+## Roadmap
+
+Scope: software and deployment, not chip design. Use an existing runtime (llama.cpp, Ollama, LM Studio, ONNX Runtime,
+LiteRT) and measure it. Device ladder: the Pi 3 (owned) runs vision and sensor recipes; language recipes run on a
+laptop. Language milestones are parked to 2027, waiting for students and partners.
+- Vision on the Raspberry Pi 3: `gesture-switch` from laptop proof to the Pi, then a people counter and a
+  cold-chain temperature watch.
+- A second device and energy: the same recipe on a second device, with energy per task from a power meter.
+- An ASHA-worker assistant in Marathi, Hindi and English: safety framing and an evaluation set first; decision
+  support only.
+- A phone track: one recipe measured on a real Android phone.
+- Later: Modi script OCR, token-frugal prompts measured, frozen encoder plus small head classifiers
+  ([docs/internship-ideas.md](docs/internship-ideas.md)).
 
 For the cost side of a token (time, memory, energy), practices to try and how to measure energy per task,
 see [docs/token_frugality.md](docs/token_frugality.md). It is a checklist and a plan; this repo has measured
@@ -146,8 +165,23 @@ python _scripts/check_links.py        # relative links in the Markdown files
 
 Note: this environment file has not been built or tested yet; the tests and measurements so far ran in another environment (Python 3.10).
 
-Then follow [code/wiki-rag/](code/wiki-rag/) to ask questions of a notes folder, or
-[code/common/](code/common/) to benchmark a model on your own device.
+Everything that talks to a model needs a local server first: **LM Studio** (local server on port 1234) or
+**Ollama** (port 11434), with one small model loaded, for example Qwen3 1.7B at Q4_K_M. Then:
+
+```bash
+# benchmark a model on this device (one warm-up, then 5 prompts x 3 repeats; CSV to code/common/benchmarks/results/)
+# first make the shared library importable.  PowerShell: $env:PYTHONPATH = "code/common"   bash: export PYTHONPATH=code/common
+python -m frugalai_common.bench --backend lmstudio --model <model id> --device <label> --quantisation Q4_K_M
+
+# ask a folder of notes (sample_wiki is made up; index and search need no model)
+cd code/wiki-rag
+python -m wikirag index sample_wiki
+python -m wikirag ask sample_wiki "Which coach and seat is my train ticket for?" --model qwen/qwen3-1.7b --no-think
+```
+
+The method and columns of the benchmark are in
+[code/common/benchmarks/METHODOLOGY.md](code/common/benchmarks/METHODOLOGY.md). Each project's README has its full
+run steps, limits and measured numbers.
 
 ## Adding new code or a project
 
@@ -163,8 +197,6 @@ Each project is its own folder under `code/` with its own code, data, tests and 
 4. **A repo tool:** `_scripts/`. An evaluation set belongs inside the project that uses it.
 5. Run `python -m pytest code -q`, `python _scripts/check_links.py` and, if you touched `AWESOME.md`,
    `python _scripts/check_awesome.py`.
-
-How to run what already exists, step by step, is in [GETTING_STARTED.md](GETTING_STARTED.md).
 
 ## Contributing
 

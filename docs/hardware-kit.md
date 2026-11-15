@@ -245,4 +245,4 @@ All are candidates; none is chosen until benchmarked.
 - Locate the ambient light sensor listed on the sheet. Confirm that the SunFounder module is the thermistor and say what the black knob module is. The micro servo is found (SG90).
 - Gesture switch first, people counter first, or both in parallel.
 - Whether to create `code/people-counter/` from the template.
-- A power meter: see `upgrade-report.md`.
+- A power meter: first purchase after the Dec 12 talk (root `TODO.md`).

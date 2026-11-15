@@ -15,7 +15,7 @@ the [README](../README.md): use the lowest rung that solves the problem.
 | [workflow-agent](../code/workflow-agent/) | A helpline or FAQ intake workflow with checks and drafts | Small model agent | Laptop | Laptop | built; first measurements |
 | [finetune-slm](../code/finetune-slm/) | Train a small intent router and a Marathi study on a CPU, for students | Training recipe | Laptop | Laptop | built; measured, one seed |
 | [dhir-server](../code/dhir-server/) | Run an Indian small model locally with llama-server | Serving recipe | Laptop | Laptop | recipe; measured |
-| demo (`Code/frugal/demo` in the TeachingDataScience repo) | The offline talk demo: model against model plus retrieval | Showcase | Laptop | Laptop | built; ready for the talk |
+| demo pages (`app.py` in each language project) | The offline talk demo: one Streamlit page per project, recorded by `_scripts/record_demo.py` | Showcase | Laptop | Laptop | built; recorded |
 | [gesture-switch](../code/gesture-switch/) | Non-verbal help or yes and no board, for people who cannot speak or type | Small vision | Laptop webcam | Raspberry Pi 3 | stub |
 
 ## Candidates (open for a student or a startup)

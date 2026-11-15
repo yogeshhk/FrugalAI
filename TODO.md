@@ -1,10 +1,18 @@
 # TODO
 
-Active: the upgrade plan in `docs/upgrade-report.md` (positioning docs done; next are the env build, the shared UI shell and the gesture laptop proof, each after the author confirms). Language projects stay parked to 2027, waiting for students and professors to come forward (ideas to float: `docs/internship-ideas.md`). The language projects are built and measured. The only date is the Dec 12 talk; the offline demo (now in the TeachingDataScience repo, `Code/frugal/demo`) is ready for it. Parked for later: the `app_faq.py` page and the Marathi fine-tune rerun (`Code/frugal/demo/TODO.md` there), voice-form (`code/voice-form/TODO.md`) and the Dhir follow-ups (`code/dhir-server/TODO.md`; the GGUF route itself works and is measured).
+The only date is the Dec 12 talk; the demo pages (`code/<project>/app.py`) and their recordings are ready for it.
+Language projects stay parked to 2027, waiting for students and professors (ideas: `docs/internship-ideas.md`).
+Tests: `python -m pytest code -q`. Python: conda env `genai` (the `frugalai` env from `environment.yml` was never
+built; per-project files use Python 3.10, the root file still says 3.11, unchecked). LM Studio is started only when a
+task needs it.
 
-Tests: `python -m pytest code -q` (all pass; some skip because they need private data that is not set on this machine). Python: conda env `genai` (the `frugalai` env from `environment.yml` was never built). LM Studio is stopped on purpose; start it only when a task needs it.
-
-- [ ] After the Dec 12 talk: revisit the power meter and the phone-as-screen pattern (`docs/upgrade-report.md`).
-- [ ] Pi 3 buying: tick-off list in `docs/pi-checklist.md`; the two items below hold the plan.
-- [ ] The Pi 3 is found, in a black case with the base off (`docs/images/frugalai-rpi3_with_cover.jpg`; SoC marking consistent with a Pi 3 Model B). Free the board from the shell without force, photograph it top-down and from the underside, read the revision text, and check whether a microSD card is in the slot. Steps in `docs/pi-checklist.md`.
-- [ ] Buy only what `docs/hardware-kit.md` ("What is missing") still lists: microSD card reader (confirm owned) and a heatsink if one fits the case window; the case already exposes the CSI port. Camera is optional (USB webcam works; a CSI Camera Module 3 should also fit, to verify). The CanaKit 2.5A power supply, micro-USB, HDMI and Ethernet cables are already in the kit.
+- [ ] Before the talk: re-record the demo videos with the Wi-Fi switched off, so the side panel shows
+  "Wi-Fi: disconnected" (`_scripts/record_demo.py`, one command per page; the current ones were recorded with it on).
+- [ ] gesture-switch laptop proof with a real hand and the Logitech webcam, speed logger on (needs you at the camera);
+  then the Pi 3 following `code/gesture-switch/PI_RECIPE.md`.
+- [ ] Pi 3: free the board from its case without force, photograph both sides, read the revision text, check for a
+  microSD card (steps in `docs/pi-checklist.md`). Buy only what `docs/hardware-kit.md` ("What is missing") lists.
+- [ ] After the talk: power meter first, then a Pi 5 after the first Pi 3 row; revisit the phone-as-screen pattern
+  (the Pi or laptop serves the page on its own hotspot, an old phone's browser is the screen).
+- [ ] Popularity pass: `CITATION.cff`, a social preview image, repo topics and description, a good-first-issue list.
+- [ ] Build the `frugalai` conda env once, add the vision packages, run the suite there.
