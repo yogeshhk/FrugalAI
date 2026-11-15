@@ -93,7 +93,7 @@ if form.data_entry_only:
 state = st.session_state
 key = "%s:%s" % (form_id, lang)
 if state.get("key") != key:                       # a new form or language starts a new record
-    state.update(key=key, turn=None, saved=None, heard=None)
+    state.update(key=key, turn=None, saved=None, heard=None, followup=False)
 
 
 def run(wav=None, text=None, source=""):
@@ -104,7 +104,7 @@ def run(wav=None, text=None, source=""):
         turn = pipeline.run(form, lang, wav=wav, text=text, asr=asr, route="direct", llm=llm(),
                             previous=state.get("turn").record if state.get("turn") else None,
                             today=_dt.date.today())
-    state.update(turn=turn, saved=None, heard=source)
+    state.update(turn=turn, saved=None, heard=source, followup=state.get("turn") is not None)
 
 
 def from_bytes(data: bytes):
@@ -142,6 +142,13 @@ if turn is None:
     st.stop()
 
 rec = turn.record
+if state.get("followup"):
+    if turn.changed:
+        st.success("Added or changed: " + ", ".join(form.get(n).label_in("en") or n for n in turn.changed)
+                   + ". Everything else is kept as it was.")
+    else:
+        st.warning("Nothing new was picked up from that recording, so the form is unchanged. Say the field and its "
+                   "value, for example 'haemoglobin eleven'. Check what was heard below.")
 st.markdown('<div class="h">Heard (%s)</div><div class="a">%s</div>'
             % (html.escape(state.get("heard") or ""), html.escape(turn.transcript)), unsafe_allow_html=True)
 sid = (state.get("heard") or "").replace("sample ", "")
@@ -188,7 +195,7 @@ if c1.button("Confirm and save", type="primary", disabled=bool(state.get("saved"
     rec.confirmed = True
     state["saved"] = send(rec, form)
 if c2.button("Start a new record"):
-    state.update(turn=None, saved=None, heard=None)
+    state.update(turn=None, saved=None, heard=None, followup=False)
     st.rerun()
 if state.get("saved"):
     st.success("Saved on this laptop only: " + ", ".join("%s (%s)" % (k, Path(v).name) for k, v in state["saved"].items())

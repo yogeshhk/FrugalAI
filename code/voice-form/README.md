@@ -85,7 +85,7 @@ blocked-connection counter. Speech to text uses IndicConformer on the CPU.
 *Image file: ../../docs/images/frugal_voice_filled.png*
 
 ## Run it
-From `code/voice-form`, in the `frugalai` conda environment (`environment.yml`):
+From `code/voice-form`, in the `genai` conda environment (the one this project was built and tested in; `environment.yml` lists what it needs):
 ```
 python -m voiceform download                      # once, needs internet; nothing else does
 python -m voiceform fill --form service_ticket --lang mr --text "नाव हरी गावडे. गाव मोरगाव. ..."

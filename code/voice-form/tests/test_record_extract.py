@@ -15,6 +15,32 @@ TICKET = FORMS["service_ticket"]
 TEXT = "आज सुनीता पवार यांच्याकडे गृहभेट दिली. वय चोवीस वर्षे. गाव वडगाव. बीपी एकशे वीस बाय ऐंशी."
 
 
+def test_follow_up_bare_value_fills_the_one_missing_field_and_keeps_the_rest():
+    from voiceform import pipeline
+
+    empty = {n: {"value": None, "evidence": None} for n in ASHA.names}
+    first = {**empty, "age": {"value": 24, "evidence": "24"}, "village": {"value": "वडगाव", "evidence": "वडगाव"}}
+    t1 = pipeline.run(ASHA, "mr", text="वय 24. गाव वडगाव.", llm=FakeLLM([first]), today=TODAY)
+    rec = t1.record
+    for name in ("woman_name", "weeks_pregnant"):   # leave only the hb missing among the required ones
+        rec.fields[name] = coerce(ASHA.get(name), "सुनीता" if name == "woman_name" else 20, TODAY)
+    # the model returns nothing for "fill the form, 11"; plain code gives 11 to the hb only if it is the single gap
+    for f in ASHA.fields:
+        if f.name not in ("hb",) and rec.fields.get(f.name, None) is None or rec.fields[f.name].status == MISSING:
+            if f.name != "hb":
+                rec.fields[f.name] = coerce(f, {"phone": "9823456789", "bp": "120/80", "weight_kg": 50,
+                                                "ifa_tablets_given": 10, "next_visit_date": "2026-11-20",
+                                                "remarks": "ठीक"}.get(f.name), TODAY)
+    t2 = pipeline.run(ASHA, "mr", text="fill the form 11", llm=FakeLLM([empty]), previous=rec, today=TODAY)
+    assert t2.record.fields["hb"].value == 11.0 and t2.changed == ["hb"]
+    assert t2.record.fields["age"].value == 24 and t2.record.fields["village"].value == "वडगाव"
+
+
+def test_follow_up_prompt_names_the_empty_fields():
+    p = build_prompt(ASHA, "11", "mr", missing=["hb"])
+    assert "still empty: hb" in p
+
+
 def test_all_forms_load():
     assert set(FORMS) == {"asha_anc_visit", "sir_enumeration", "service_ticket"}
     assert ASHA.data_entry_only

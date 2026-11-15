@@ -10,7 +10,7 @@ from typing import Optional
 
 from . import netguard
 from .extract import fill
-from .record import Record, english_request, follow_up_questions, merge
+from .record import FILLED, UNCERTAIN, Record, english_request, follow_up_questions, merge
 from .schema import FormSpec
 
 
@@ -23,6 +23,7 @@ class Turn:
     timings: dict = field(default_factory=dict)
     blocked_connections: int = 0
     local_connections: int = 0
+    changed: list = field(default_factory=list)   # fields this recording added or changed (follow-ups only)
 
 
 def run(form: FormSpec, lang: str, wav=None, text: Optional[str] = None, asr=None, route: str = "direct",
@@ -37,10 +38,18 @@ def run(form: FormSpec, lang: str, wav=None, text: Optional[str] = None, asr=Non
             text = res.text
             timings.update({"asr_seconds": res.seconds, "audio_seconds": res.audio_seconds, "rtf": res.rtf,
                             "asr_backend": res.backend})
-        rec, info = fill(form, text, lang, route=route, llm=llm, today=today)
+        empty = None
+        if previous is not None:
+            empty = [f.name for f in form.fields
+                     if previous.fields.get(f.name) is None or previous.fields[f.name].status not in (FILLED, UNCERTAIN)]
+        rec, info = fill(form, text, lang, route=route, llm=llm, today=today, missing=empty)
         timings.update({f"extract_{k}": v for k, v in info.items()})
+    changed = []
     if previous is not None:
+        before = {n: v.value for n, v in previous.fields.items() if v.status in (FILLED, UNCERTAIN)}
         rec = merge(previous, rec)
+        after = {n: v.value for n, v in rec.fields.items() if v.status in (FILLED, UNCERTAIN)}
+        changed = [n for n in after if before.get(n) != after[n]]
     return Turn(record=rec, transcript=text, english=english_request(rec, form),
                 questions=follow_up_questions(rec, form), timings=timings,
-                blocked_connections=len(guard.blocked), local_connections=guard.local)
+                blocked_connections=len(guard.blocked), local_connections=guard.local, changed=changed)

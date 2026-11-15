@@ -14,7 +14,7 @@ import time
 from typing import Dict, Optional, Tuple
 
 from . import normalize as nz
-from .record import FILLED, UNCERTAIN, FieldValue, Record, coerce, evidence_ok, grounded, mentioned
+from .record import FILLED, UNCERTAIN, FieldValue, Record, coerce, evidence_ok, grounded, mentioned  # noqa: F401
 from .schema import FieldSpec, FormSpec
 
 ROUTES = ("rules", "direct", "translate")
@@ -49,14 +49,33 @@ def _type_hint(f: FieldSpec) -> str:
     return h
 
 
-def build_prompt(form: FormSpec, text: str, lang: str) -> str:
+def build_prompt(form: FormSpec, text: str, lang: str, missing: Optional[list] = None) -> str:
     lines = [f"Form: {form.title}", "Fields:"]
     for f in form.fields:
         alt = f.label_in(lang)
         alt = f" / {alt}" if alt and alt != f.label else ""
         lines.append(f"- {f.name}: {f.label}{alt} ({_type_hint(f)})")
+    if missing:
+        lines += ["", "This is a follow-up. These fields are still empty: " + ", ".join(missing) + ". "
+                  "A value said without its field name belongs to one of these empty fields, "
+                  "chosen by the kind of value. Ignore words like 'fill the form'."]
     lines += ["", "Text:", text]
     return "\n".join(lines)
+
+
+def _bare_value(form: FormSpec, text: str, missing: list, today) -> Dict[str, FieldValue]:
+    """Follow-up fallback in plain code: when exactly one field is still empty and the person only said its value
+    ('अकरा', '11', 'fill the form, 120 by 80'), that value goes to that field. Text fields are left to the model."""
+    if len(missing) != 1:
+        return {}
+    f = form.get(missing[0])
+    if f.type == "text":
+        return {}
+    fv = coerce(f, text if f.type in ("date", "enum", "bool", "bp", "phone", "pattern") else nz.normalize_text(text), today)
+    if fv.status != FILLED or not grounded(f, fv.value, text, today):
+        return {}
+    fv.evidence, fv.source = nz.normalize_text(text), "rules"
+    return {f.name: fv}
 
 
 def json_schema(form: FormSpec) -> dict:
@@ -197,7 +216,7 @@ def rules_extract(form: FormSpec, text: str, today=None) -> Dict[str, FieldValue
 
 
 def fill(form: FormSpec, text: str, lang: str, route: str = "direct", llm=None,
-         today: Optional[_dt.date] = None) -> Tuple[Record, dict]:
+         today: Optional[_dt.date] = None, missing: Optional[list] = None) -> Tuple[Record, dict]:
     """Transcript -> Record. Returns the record and timings (seconds, model calls, tokens)."""
     if route not in ROUTES:
         raise ValueError(f"route must be one of {ROUTES}")
@@ -217,13 +236,17 @@ def fill(form: FormSpec, text: str, lang: str, route: str = "direct", llm=None,
             info["english"] = read_text
         from .llm import parse_json
 
-        reply = parse_json(llm.chat(SYSTEM, build_prompt(form, read_text, lang), schema=json_schema(form)))
+        reply = parse_json(llm.chat(SYSTEM, build_prompt(form, read_text, lang, missing), schema=json_schema(form)))
         info["reply_parsed"] = reply is not None
         rec.fields = _from_reply(form, reply, read_text, today, source=llm.model, original=norm)
         code = rules_extract(form, text, today)
         for f in form.fields:
             if f.type in CODE_FIRST and code[f.name].status == FILLED:
                 rec.fields[f.name] = code[f.name]
+        if missing:
+            for name, fv in _bare_value(form, text, missing, today).items():
+                if rec.fields[name].status != FILLED:
+                    rec.fields[name] = fv
         after = llm.snapshot()
         info.update({k: round(after[k] - before[k], 2) for k in after})
     info["seconds"] = round(time.perf_counter() - t0, 3)
