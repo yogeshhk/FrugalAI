@@ -19,6 +19,19 @@ Photo: `docs/images/frugalai-rpi3_with_cover.jpg` (black case, base off). Fill i
 | Power | CanaKit 2.5 A supply, micro-USB |
 | OS and version | to fill in |
 
+## Pi 3 Model B against Pi 5
+Nothing here is measured. Pi 3 values: [S60](../../../docs/sources.md#s60), to verify on the board. Pi 5 values: the
+Raspberry Pi 5 product page, as used in the talk deck.
+
+| Item | Pi 3 Model B (the kit) | Pi 5 |
+|------|------------------------|------|
+| CPU | 4 cores, Arm Cortex-A53, 1.2 GHz (to verify) | 4 cores, Arm Cortex-A76, 2.4 GHz |
+| RAM | 1 GB (to verify) | 1, 2, 4, 8 or 16 GB |
+| Power | micro-USB, 2.5 A supply in the kit | USB-C, 5 V 5 A recommended |
+| Cooling | passive, may throttle (to verify) | active cooling recommended |
+| File size against RAM: Gemma 2 2B Q4_K_M (1.71 GB) | larger than 1 GB of RAM, cannot load | smaller than 4 GB and up; not tested |
+| File size against RAM: Dhir 2B Q4_K_M (1.3 GB) | larger than 1 GB of RAM, cannot load | smaller than 2 GB and up, RAM is shared with the OS; not tested |
+
 ## Limits that shape every recipe
 - 1 GB RAM: the Dhir 2B GGUF (about 1.3 GB at 4-bit) does not fit; expect models well under 1 GB, low image
   resolution and few frames per second. Frame rate stays "pending" until measured.

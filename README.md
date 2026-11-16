@@ -158,7 +158,7 @@ Why frugal AI suits India, with sources for what has been reported, is in [docs/
 
 ```bash
 conda env create -f environment.yml
-conda activate frugalai
+conda activate frugalai                   # on a fresh machine; the author's own env is genai
 python -m pytest code -q                  # all tests, offline, no model needed
 python _scripts/check_links.py        # relative links in the Markdown files
 ```

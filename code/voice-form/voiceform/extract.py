@@ -14,7 +14,7 @@ import time
 from typing import Dict, Optional, Tuple
 
 from . import normalize as nz
-from .record import FILLED, UNCERTAIN, FieldValue, Record, coerce, evidence_ok, grounded, mentioned  # noqa: F401
+from .record import FILLED, UNCERTAIN, FieldValue, Record, coerce, evidence_ok, grounded, mentioned
 from .schema import FieldSpec, FormSpec
 
 ROUTES = ("rules", "direct", "translate")

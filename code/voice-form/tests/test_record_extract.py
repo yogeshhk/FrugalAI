@@ -17,23 +17,17 @@ TEXT = "आज सुनीता पवार यांच्याकडे �
 
 def test_follow_up_bare_value_fills_the_one_missing_field_and_keeps_the_rest():
     from voiceform import pipeline
+    from voiceform.record import Record
 
-    empty = {n: {"value": None, "evidence": None} for n in ASHA.names}
-    first = {**empty, "age": {"value": 24, "evidence": "24"}, "village": {"value": "वडगाव", "evidence": "वडगाव"}}
-    t1 = pipeline.run(ASHA, "mr", text="वय 24. गाव वडगाव.", llm=FakeLLM([first]), today=TODAY)
-    rec = t1.record
-    for name in ("woman_name", "weeks_pregnant"):   # leave only the hb missing among the required ones
-        rec.fields[name] = coerce(ASHA.get(name), "सुनीता" if name == "woman_name" else 20, TODAY)
-    # the model returns nothing for "fill the form, 11"; plain code gives 11 to the hb only if it is the single gap
-    for f in ASHA.fields:
-        if f.name not in ("hb",) and rec.fields.get(f.name, None) is None or rec.fields[f.name].status == MISSING:
-            if f.name != "hb":
-                rec.fields[f.name] = coerce(f, {"phone": "9823456789", "bp": "120/80", "weight_kg": 50,
-                                                "ifa_tablets_given": 10, "next_visit_date": "2026-11-20",
-                                                "remarks": "ठीक"}.get(f.name), TODAY)
-    t2 = pipeline.run(ASHA, "mr", text="fill the form 11", llm=FakeLLM([empty]), previous=rec, today=TODAY)
-    assert t2.record.fields["hb"].value == 11.0 and t2.changed == ["hb"]
-    assert t2.record.fields["age"].value == 24 and t2.record.fields["village"].value == "वडगाव"
+    said = {"woman_name": "सुनीता", "age": 24, "village": "वडगाव", "phone": "9823456789", "weeks_pregnant": 20,
+            "bp": "120/80", "weight_kg": 50, "ifa_tablets_given": 10, "next_visit_date": "2026-11-20",
+            "remarks": "ठीक"}                                    # everything except hb
+    rec = Record(form_id=ASHA.id, lang="mr")
+    rec.fields = {n: coerce(ASHA.get(n), v, TODAY) for n, v in said.items()}
+    nothing = {n: {"value": None, "evidence": None} for n in ASHA.names}   # the model finds no field name to use
+    t = pipeline.run(ASHA, "mr", text="fill the form 11", llm=FakeLLM([nothing]), previous=rec, today=TODAY)
+    assert t.record.fields["hb"].value == 11.0 and t.changed == ["hb"]
+    assert t.record.fields["age"].value == 24 and t.record.fields["village"].value == "वडगाव"
 
 
 def test_follow_up_prompt_names_the_empty_fields():

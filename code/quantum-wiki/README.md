@@ -63,8 +63,7 @@ python -m qwiki eval --systems agent,struct,naive --sets dev,heldout     # resum
 python -m pytest code/quantum-wiki/tests -q                              # from the repo root; offline
 ```
 
-`qwiki` imports `frugalai_common` from `code/common/`. The `frugalai` environment installs that package in editable
-mode, but that environment has not been built; in the `genai` environment the package is not installed, so put it on
+`qwiki` imports `frugalai_common` from `code/common/`. In the `genai` environment the package is not installed, so put it on
 the path first. From `code/quantum-wiki/` in PowerShell:
 
 ```powershell

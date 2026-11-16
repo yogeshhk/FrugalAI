@@ -18,6 +18,22 @@ inference, at some cost in quality. GGUF is the file format used by llama.cpp, O
 Typical names such as `Q4_K_M` describe the scheme. How much quality is lost depends on the model and task,
 so this repo measures it per recipe and does not assume it.
 
+Reading a name ([S59](sources.md#s59)): `Q4` is about 4 bits per weight; `K` is the K-quant scheme (weights stored in
+blocks, each with its own scale); `S`, `M`, `L` are small, medium and large mixes (the more sensitive layers keep more
+bits as the letter grows); `IQ` is a newer family for 2 to 4 bits, with `XXS` and `XS` the smallest tiers. A name such as
+`Q6_K_L` may be a vendor label (to verify).
+
+Fewer bits means a smaller file, and CPU decoding is mostly limited by how fast the weights can be read from memory, so a
+smaller file is usually faster and lighter, with some loss of quality. Measured here: Dhir 2B on the i7-1255U ran at
+21.4 tokens per second as Q4_K_M and 16.1 as Q8_0 (`code/dhir-server/README.md`, 2026-11-14). Compare the same model only:
+across models, size is not the whole story.
+
+## BM25
+A keyword-scoring method for retrieval, the successor of TF-IDF. A note scores higher when it contains the question's
+words, rare words count for more than common ones, repeated words give a diminishing gain, and long notes are
+normalised. It matches words, not meaning: no embeddings, no cosine similarity, so it misses a reworded question.
+Here it is LangChain's `BM25Retriever` (`rank-bm25`), see `code/quantum-wiki/qwiki/retrieval.py`.
+
 ## Knowledge distillation
 Training a small "student" model to imitate a larger "teacher". Example from the literature: MoScNet, which
 transliterates Modi script to Devanagari; the authors claim a 163-fold reduction in parameters

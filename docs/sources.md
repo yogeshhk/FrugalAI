@@ -455,6 +455,21 @@ the Apache License 2.0 text shipped in each folder; that the models are TFLite M
 variants listed next to them. The licence of the original Google MediaPipe weights was not read, and no accuracy or
 speed figure is taken from these pages.
 
+<a id="s59"></a>
+## S59. GGUF quantisation names (llama.cpp quantize tool and guides)
+Publishers: ggml-org (llama.cpp quantize README) and community guides (for example Kaitchup, "Choosing a GGUF Model:
+K-Quants, I-Quants, and Legacy Formats"). Seen 2026-11-16 through search summaries only. Used for: the name pattern
+`Q<bits>_<method>_<size>` (Q4 is about 4 bits per weight; K is the K-quant block scheme; S, M and L are small, medium and
+large mixes of the same scheme; IQ is the I-quant family, with XXS and XS as smaller tiers). A name such as `Q6_K_L` was
+not found in llama.cpp itself and may be a vendor label: tagged "to verify". Bits-per-weight figures vary by model.
+
+<a id="s60"></a>
+## S60. Raspberry Pi 3 Model B product page and retailer datasheets
+Publisher: Raspberry Pi Ltd (https://www.raspberrypi.com/products/raspberry-pi-3-model-b/). Seen 2026-11-16 through
+search summaries only; the page text with the spec table was not read. Used for: the Model B being the earliest
+third-generation board, in production until at least January 2028; retailer listings giving a quad-core 1.2 GHz Broadcom
+BCM2837 (Arm Cortex-A53) and 1 GB of RAM (to verify against the board itself, see `code/common/devices/raspberry-pi-3.md`).
+
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":
   https://www.ey.com/en_in/insights/ai/agentic-ai-india/small-language-models

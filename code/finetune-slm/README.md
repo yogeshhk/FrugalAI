@@ -50,7 +50,7 @@ adapter from `adapters/intent/`, with prompt size and time for each.
 
 ## Run it
 
-From `code/finetune-slm/`, in the `frugalai` conda environment (`environment.yml` has torch, transformers and peft;
+From `code/finetune-slm/`, in the `genai` conda environment (`environment.yml` has torch, transformers and peft;
 the numbers below were measured on Python 3.10 in a different environment, see the Python line under "Measured: training"):
 
 ```bash

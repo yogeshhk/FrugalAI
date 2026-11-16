@@ -23,8 +23,8 @@ print(result.text, result.decode_tokens_per_s)
 
 ## Benchmark a model
 
-Start the server and load the model first, then from the repo root, in the `frugalai` conda environment (it installs
-this package in editable mode, so no `PYTHONPATH` is needed):
+Start the server and load the model first, then from the repo root, in the `genai` conda environment. The package is not
+installed there, so put it on the path first (PowerShell: `$env:PYTHONPATH = "code/common"`):
 
 ```bash
 python -m frugalai_common.bench --backend lmstudio --model <model id> --device <label> --quantisation Q4_K_M

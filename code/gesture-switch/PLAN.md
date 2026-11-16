@@ -103,5 +103,4 @@ one can be inserted without renumbering.
 - Whether to keep the unbranded webcam after the Pi test.
 
 ## Environment note
-The `frugalai` conda environment named in the repo rules does not exist on this laptop yet. Work so far used the
-`genai` environment for the tests. Create `frugalai` from `environment.yml` (and add OpenCV to it) before the laptop proof.
+The conda environment on this laptop is `genai`, and the tests use it. Check that OpenCV is in it before the laptop proof.

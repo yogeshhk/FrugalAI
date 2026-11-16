@@ -76,7 +76,7 @@ else `sample_faqs/`. `make_graph_figures.py` draws the workflow pictures used in
 
 ## Run it
 
-From `code/workflow-agent/`, in the `frugalai` conda environment. A real `intake` run or an `eval` needs LM Studio
+From `code/workflow-agent/`, in the `genai` conda environment. A real `intake` run or an `eval` needs LM Studio
 serving the embedding model nomic-embed-text-v1.5 (the duplicate and theme checks embed the text), and `intake`
 and the draft evaluation also need a chat model. `--fake` needs no server. The embedding results are cached in
 `cache/embeddings.json` (git-ignored), so an `eval` that has already run once needs no server for the same texts.

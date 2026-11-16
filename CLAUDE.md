@@ -11,7 +11,8 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
   low-tier journals, shopping links or AI-generated summaries as sources.
 - Health content: decision support only, never diagnosis. Follow `docs/safety.md`.
 - No em dashes in files. ASCII-safe console output.
-- Python via conda (`environment.yml`, env name `frugalai`). No pip or venv for the project env.
+- Python via conda: the author's env is `genai` (the one every measurement and test used); `environment.yml` (name
+  `frugalai`) is for a fresh machine only. No pip or venv for the project env.
 - Offline first. No feature may need a cloud call at runtime.
 - `AWESOME.md` entries must meet its criteria (free to use and open to all, downloadable model weights, no
   per-token charges, hardware stated) and keep the exact two-line shape. Run `python _scripts/check_awesome.py` after any edit.
