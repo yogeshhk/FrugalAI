@@ -470,6 +470,22 @@ search summaries only; the page text with the spec table was not read. Used for:
 third-generation board, in production until at least January 2028; retailer listings giving a quad-core 1.2 GHz Broadcom
 BCM2837 (Arm Cortex-A53) and 1 GB of RAM (to verify against the board itself, see `code/common/devices/raspberry-pi-3.md`).
 
+<a id="s61"></a>
+## S61. Sarvam on Hugging Face: what is open and small (check of 2026-11-17)
+Publisher: Sarvam AI. URLs: https://huggingface.co/sarvamai (page and the public API
+`https://huggingface.co/api/models?author=sarvamai`), https://huggingface.co/sarvamai/sarvam-1,
+https://huggingface.co/sarvamai/sarvam-translate and https://huggingface.co/bartowski/sarvam-1-GGUF. Read 2026-11-17.
+Used for: the organisation lists 15 models and none is named or tagged Edge, so the Edge models of
+[S35](sources.md#s35) have no public weights there. Official GGUF files exist only for the 24B, 30B and 105B models.
+`sarvam-1` is a text-completion model that must be fine-tuned (the card says it cannot be used as a chat or
+instruction model), its licence section reads "Sarvam non-commercial license", and its size is given as 2 billion
+parameters in the text and 3B in the file widget. Its GGUF files are community quantisations (bartowski lists 18, from
+IQ3_M at 1.17 GB to f16 at 5.05 GB, Q4_K_M at 1.55 GB) and the quantiser page states no licence of its own.
+`sarvam-translate` is built on Gemma3-4B-IT, translates English to and from Indian languages only, and shows the licence
+tag gpl-3.0. None of this makes a Sarvam small model fit the `AWESOME.md` criteria (free to use and open to all,
+downloadable weights): no Edge weights exist, and `sarvam-1` is non-commercial. Nothing was run, so no speed or
+quality figure is taken from these pages.
+
 ## Background reading, not yet used for claims
 - EY India, "The AIdea of India 2026: Small Language Models in India":
   https://www.ey.com/en_in/insights/ai/agentic-ai-india/small-language-models

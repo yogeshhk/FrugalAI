@@ -20,6 +20,10 @@ Source: [S2](sources.md#s2).
   question costs about five times more in an Indian language than in English because of token counts.
   Source: [S3](sources.md#s3). Note: 24B and 22-language models are not "small"; they are evidence of the
   Indian ecosystem, not of what runs on a Raspberry Pi.
+- Watch: Sarvam Edge (speech recognition, translation and text to speech, under 1 GB in total) runs on the device,
+  but its weights are not public and the edge runtime is offered through a commercial partnership
+  ([S35](sources.md#s35)). A check on 2026-11-17 found no Edge model on the Sarvam Hugging Face page, and the small
+  open `sarvam-1` is non-commercial and not a chat model ([S61](sources.md#s61)). Revisit when weights are published.
 
 ### Modi script transliteration
 MoScNet and the MoDeTrans dataset (2,043 Modi images with Devanagari transliterations); the paper reports a

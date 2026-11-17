@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "FrugalAI: useful AI on the hardware people already have"
+type: software
+abstract: >-
+  A collection of specific, working AI applications and the evidence behind them. Each one runs on the edge:
+  a plain laptop with no good GPU, a Raspberry Pi or another small board, with no internet needed at run time.
+  The aim is to address real problems of rural India and of people with the least access, and to make it cheap
+  for students and small startups to build many more.
+authors:
+  - family-names: Kulkarni
+    given-names: Yogesh Haribhau
+license: MIT
+repository-code: "https://github.com/yogeshhk/FrugalAI"
+keywords:
+  - frugal AI
+  - edge AI
+  - small language models
+  - offline
+  - Raspberry Pi
+  - India
