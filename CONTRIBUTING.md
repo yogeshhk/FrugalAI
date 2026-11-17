@@ -27,6 +27,22 @@ Looking for something to build? Every project README in `code/` ends with "Ideas
 Every factual claim needs a source in `docs/sources.md`, or a "to verify" tag. Prefer primary sources
 (papers, official documentation, the project's own repository) over blogs and summaries.
 
+## For interns and student contributors
+Start from a project in [docs/internship-ideas.md](docs/internship-ideas.md). Each is sized for one student, one laptop
+and no cloud.
+
+- **Claim it:** open an issue named after the project, so two students do not build the same thing.
+- **Set up:** create the conda environment and run `python -m pytest code -q` before you change anything.
+- **Build:** copy `code/_template/` to `code/<short-name>/`. Work on your own branch and open a pull request.
+- **Done means:** a README with a status line, an evaluation script, tests that pass offline, and every number backed by
+  a script, with device, version and date (or the word "pending").
+- **Data:** download datasets yourself and never commit them. Copy the licence text into your project README and say
+  whether the data may be shared.
+- **Review:** pull requests are reviewed in a monthly batch. Open a draft early if you want comments sooner from a mentor
+  at your college.
+- **AI tools:** allowed for code and drafts, but you check every claim. Measured numbers come from your own runs only.
+- **Credit:** your name goes in your project README.
+
 ## Ground rules
 - Offline and CPU-first. No feature may require a cloud service to run.
 - No personal or sensitive data in the repo, including test data.
