@@ -70,9 +70,8 @@ README says which models LM Studio must serve. `_scripts/record_demo.py` records
 |---|---|---|
 | [code/gesture-switch/](code/gesture-switch/) | A hand-gesture board for people who cannot speak or type: yes, no or help, driving an LED, buzzer or spoken phrase | stub; laptop proof next, Pi 3 after |
 
-Candidates not yet started, such as a people counter, a leaf check and a cold-chain temperature watch, are listed
-with their problem, device and status in [docs/catalogue.md](docs/catalogue.md). Student-sized project ideas with data
-and licence notes are in [docs/internship-ideas.md](docs/internship-ideas.md).
+Ideas not yet started, such as a people counter, a leaf check and a cold-chain temperature watch, with data and licence
+notes, are in [IDEAS.md](IDEAS.md).
 
 ### Shared parts
 
@@ -88,9 +87,8 @@ and licence notes are in [docs/internship-ideas.md](docs/internship-ideas.md).
 
 | File | What it holds |
 |---|---|
-| [docs/](docs/) | Concepts, landscape, safety, sources |
-| [docs/catalogue.md](docs/catalogue.md) | Every project and candidate, by problem, rung and device |
-| [docs/hardware-kit.md](docs/hardware-kit.md) | The Raspberry Pi kit we own, what is missing, packaging |
+| [IDEAS.md](IDEAS.md) | Project ideas for students, interns and startups, with data and licence notes |
+| [docs/](docs/) | Concepts, landscape, limits, safety, sources, the Raspberry Pi kit |
 | [AWESOME.md](AWESOME.md) | Curated list of frugal AI efforts by platform (old laptop, Raspberry Pi, phone, microcontroller, browser) |
 | [TODO.md](TODO.md) | Open actions |
 
@@ -130,7 +128,7 @@ laptop. Language milestones are parked to 2027, waiting for students and partner
   support only.
 - A phone track: one recipe measured on a real Android phone.
 - Later: Modi script OCR, token-frugal prompts measured, frozen encoder plus small head classifiers
-  ([docs/internship-ideas.md](docs/internship-ideas.md)).
+  ([IDEAS.md](IDEAS.md)).
 
 For the cost side of a token (time, memory, energy), practices to try and how to measure energy per task,
 see [docs/token_frugality.md](docs/token_frugality.md). It is a checklist and a plan; this repo has measured
@@ -183,26 +181,10 @@ The method and columns of the benchmark are in
 [code/common/benchmarks/METHODOLOGY.md](code/common/benchmarks/METHODOLOGY.md). Each project's README has its full
 run steps, limits and measured numbers.
 
-## Adding new code or a project
-
-Each project is its own folder under `code/` with its own code, data, tests and README, plus a TODO while an action is open. To add something:
-
-1. **A project** (an end-to-end job): copy [code/_template/](code/_template/) to
-   `code/<short-name>/`, give it its own tests and README, and add a row for it to the project tables above and to
-   [docs/catalogue.md](docs/catalogue.md).
-2. **Shared code** (a new model backend, a metric): put it in [code/common/](code/common/) with an offline
-   test, so every recipe can use it.
-3. **A measurement:** run the harness and add the CSV under `code/common/benchmarks/results/`, then the row in
-   "What runs where". A number goes in only if a script produced it on a named device.
-4. **A repo tool:** `_scripts/`. An evaluation set belongs inside the project that uses it.
-5. Run `python -m pytest code -q`, `python _scripts/check_links.py` and, if you touched `AWESOME.md`,
-   `python _scripts/check_awesome.py`.
-
 ## Contributing
 
-Students, startups and practitioners are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). Easy first
-contributions: pick an open candidate from [docs/catalogue.md](docs/catalogue.md), add your own frugal AI effort to
-[AWESOME.md](AWESOME.md) (free to use, downloadable model, no token charges), or add measurements from a device you own.
+Students, startups and practitioners are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a project, a
+measurement, an entry to [AWESOME.md](AWESOME.md) or a fix, and [IDEAS.md](IDEAS.md) for what to build.
 
 ## Licence
 

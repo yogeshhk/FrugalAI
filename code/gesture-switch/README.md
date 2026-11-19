@@ -40,7 +40,6 @@ Not checked yet: any real hand in front of the webcam, accuracy, speed on the la
 | `gesture_switch/zoo.py` | Loads the OpenCV Zoo ONNX models from `FRUGALAI_HAND_MODELS` and turns the landmarks into a gesture label |
 | `tests/` | Offline tests, no camera or model needed |
 | `PI_RECIPE.md` | Step-by-step recipe for anyone with a Raspberry Pi to deploy, measure and send results back (untested on a Pi) |
-| `PLAN.md` | The staged plan from laptop proof to inference on the Raspberry Pi |
 | `TODO.md` | Open actions |
 
 ## Run it
@@ -54,7 +53,14 @@ From `code/gesture-switch/`:
 
 ## Evaluation
 Pending. Plan: a baseline (a simple colour or contour rule), then the pre-trained model, on a gesture set recorded by
-more than one person and kept apart from anything tuned. Report failures with causes.
+more than one person, in more than one room and lighting, kept apart from anything tuned. Report per-gesture success
+and the failures with causes (lighting, distance, angle, background).
+
+Done means all of these, each with evidence here: the pipeline runs headless on the Pi after a reboot, offline; frames per
+second, latency per frame, CPU temperature and memory are measured on the Pi with the shared runner and logged as a CSV
+row with the device named; one gesture reliably triggers one physical output (a short recording or a described test, with
+the number of trials and the miss rate); failures are listed with their causes. Risks: the Pi 3 has 1 GB RAM, so some
+models will not fit or will be slow (speed pending); webcam auto-exposure in dim light may cap the frame rate.
 
 ## Measured resource use
 Not measured. No benchmark exists for the Pi 3 yet.

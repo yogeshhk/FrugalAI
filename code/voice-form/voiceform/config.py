@@ -20,8 +20,15 @@ MODELS_DIR = ROOT / "models"            # every model, as plain folders; gitigno
 OUTBOX_DIR = ROOT / "outbox"            # where the sinks write (local files only)
 
 LLM_URL = os.environ.get("VOICEFORM_LLM_URL", shared.LLM_URL)
-LLM_MODELS = [shared.CHAT_MODEL, "gemma-2-2b-it"]
+DHIR_MODEL = "dhir-2b"                  # the --alias used in code/dhir-server/README.md
+DHIR_URL = os.environ.get("VOICEFORM_DHIR_URL", "http://localhost:1236/v1")   # ZenteiQ's llama-server, not LM Studio
+LLM_MODELS = [shared.CHAT_MODEL, "gemma-2-2b-it", DHIR_MODEL]
 DEFAULT_LLM = LLM_MODELS[0]             # Qwen3 1.7B, the author's choice of 2026-10-26 (README, "Default model")
+
+
+def url_for(model: str) -> str:
+    """Dhir 2B is served by llama-server on its own port; every other model comes from LM Studio."""
+    return DHIR_URL if model == DHIR_MODEL else LLM_URL
 
 # Speech-to-text backends. "langs" is what the model was trained or fine-tuned for.
 ASR_MODELS = {

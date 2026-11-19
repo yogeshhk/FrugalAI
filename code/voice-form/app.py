@@ -10,6 +10,7 @@ not to this machine. Data entry only: no advice, no diagnosis (docs/safety.md).
 
 import datetime as _dt
 import html
+import os
 import sys
 from pathlib import Path
 
@@ -35,11 +36,14 @@ LANGS = {"mr": "Marathi", "hi": "Hindi"}
 MARK = {FILLED: ("ok", "filled"), UNCERTAIN: ("warn", "check"), INVALID: ("bad", "invalid"), MISSING: ("", "missing")}
 
 demo.page(st, "Speak a form", "Marathi or Hindi speech in, a checked form out. One laptop, no internet.")
-demo.sidebar(st, {"form filling": config.DEFAULT_LLM},
-             note="Speech to text: %s. Form filling: Qwen3 1.7B (Q4_K_M) in LM Studio." % ASR_LABEL)
+MODEL = os.environ.get("VOICEFORM_MODEL", config.DEFAULT_LLM)    # set VOICEFORM_MODEL=dhir-2b to try Dhir 2B
+FILL_NOTE = ("Dhir 2B (GGUF) in llama-server" if MODEL == config.DHIR_MODEL
+             else "Qwen3 1.7B (Q4_K_M) in LM Studio" if MODEL == config.DEFAULT_LLM else "%s in LM Studio" % MODEL)
 
-if demo.lm_models() is None:
-    st.error("LM Studio is not running. Start it and its server, then load Qwen3 1.7B.")
+demo.sidebar(st, {"form filling": MODEL}, note="Speech to text: %s. Form filling: %s." % (ASR_LABEL, FILL_NOTE))
+
+if demo.lm_models(config.url_for(MODEL)) is None:
+    st.error("The language model server is not running at %s. Start it and load %s." % (config.url_for(MODEL), MODEL))
     st.stop()
 
 
@@ -54,7 +58,7 @@ def asr_backend():
 def llm():
     from voiceform.llm import LLM
 
-    return LLM(config.DEFAULT_LLM)
+    return LLM(MODEL)
 
 
 @st.cache_data

@@ -21,7 +21,8 @@ def _llm(model):
 
     llm = LLM(model)
     if not llm.available():
-        sys.exit(f"LM Studio is not serving {model!r} at {llm.url}; start it and load the model first")
+        sys.exit(f"{model!r} is not being served at {llm.url}; start LM Studio and load the model "
+                 f"(for {config.DHIR_MODEL}: start llama-server, see code/dhir-server/README.md)")
     return llm
 
 

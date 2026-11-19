@@ -42,7 +42,7 @@ def camera_frames(index: int = 0, width: int = 640, height: int = 480) -> Iterat
 
 
 def skin_baseline(frame) -> str:
-    """Trivial baseline from PLAN.md: skin-colour mask, largest blob, count fingers by convexity defects.
+    """Trivial baseline (README, "Evaluation"): skin-colour mask, largest blob, count fingers by convexity defects.
 
     Returns "open_palm" for four or more fingers, otherwise "unknown". It is a baseline to compare a real model
     against, not a gesture recogniser; its accuracy has not been measured.

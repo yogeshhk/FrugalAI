@@ -7,6 +7,11 @@ Ask questions of a folder of markdown notes (an Obsidian or Logseq vault, or any
 using a small local model. No cloud, and no GPU needed (retrieval is pure Python; the small model runs on a
 CPU). The model only sees the few note passages retrieved for each question.
 
+How it differs from the other retrieval project: [`../quantum-wiki/`](../quantum-wiki/) answers questions over one
+structured PDF (tables and a topic tree) with plain code first and retrieval only as a fallback, on a LangChain stack. This
+recipe is the plain version for any folder of notes: hand-written BM25, no framework, nothing to install beyond the
+standard scientific packages. Start here for text notes; start there when the answer sits in a table.
+
 ## How it works
 
 1. **Index.** Notes are split by heading and paragraph into chunks of at most 800 characters. A manifest of

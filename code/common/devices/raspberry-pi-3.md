@@ -40,7 +40,7 @@ Raspberry Pi 5 product page, as used in the talk deck.
 - Conda is not practical on a Pi 3 (to verify); each recipe documents its own environment.
 
 ## Setup checklist
-1. Photograph the bare board and read its revision (see `docs/pi-checklist.md`). Check the microSD slot first.
+1. Photograph the bare board and read its revision (see `docs/hardware-kit.md`, "Open decisions for the author"). Check the microSD slot first.
 2. Flash a 64-bit Raspberry Pi OS Lite with the official imager on a fresh card, enable SSH, set WiFi, change the default password.
 3. Boot headless over Ethernet, update packages, record OS and kernel versions in the table above.
 4. Plug in the USB webcam (kit webcam is untested; a second webcam worked on the laptop at low resolution) or a CSI camera.

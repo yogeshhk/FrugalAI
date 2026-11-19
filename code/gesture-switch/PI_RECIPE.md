@@ -8,7 +8,7 @@ Status: **nothing in this recipe has been run on a Pi yet.** Every command is th
 tagged "untested" until someone runs it and reports. If a step fails, fix the recipe in your pull request: that is
 the most useful contribution. No speed figure exists. Do not quote one until a script has produced it on your Pi.
 
-Background: `PLAN.md` (the staged plan), `README.md` (what the code does), `../common/devices/raspberry-pi-3.md`
+Background: `README.md` (what the code does and what "done" means), `../common/devices/raspberry-pi-3.md`
 (board facts, limits), `../common/benchmarks/METHODOLOGY.md` (how numbers are logged).
 
 ## What you need

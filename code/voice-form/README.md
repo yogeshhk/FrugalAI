@@ -160,6 +160,13 @@ languages); the author chose Qwen for speed, since it was about five times faste
 nine held-out lines per language. Gemma 2 2B stays available with `--model gemma-2-2b-it`. Revisit the choice once
 there are results on real speech.
 
+**Dhir 2B as an alternative (not measured here yet).** The model id `dhir-2b` is wired in: start `llama-server` as in
+[`../dhir-server/README.md`](../dhir-server/README.md) (port 1236, `--alias dhir-2b`, `--jinja`), then run
+`python -m voiceform eval-extract --lang mr --route direct --model dhir-2b --set tune`, or set `VOICEFORM_MODEL=dhir-2b`
+before `streamlit run app.py`. `VOICEFORM_DHIR_URL` changes the address. The Qwen route is untouched and stays the default.
+Dhir was built for English and ten Indian languages, so it is worth comparing on the same lines; the row is pending until the
+run is done (never copy numbers from the model card).
+
 ## Limits and safety
 - One speaker (the author) and synthetic lines: the numbers say nothing about other accents, dialects or real field
   noise. A worker's own recordings would be the next step, with consent and local storage.

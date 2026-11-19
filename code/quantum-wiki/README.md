@@ -11,6 +11,11 @@ Questions it answers: which courses are mandatory, at-least-one-of, or optional;
 modules and subtopics inside a course (for example Quantum Communication); lecture counts; which courses mention a
 topic; which courses cite a book; the prerequisites; and "the syllabus does not say" when it does not.
 
+How it differs from the other retrieval project: [`../wiki-rag/`](../wiki-rag/) is the plain recipe for a folder of text
+notes (hand-written BM25, no framework). This project is for a document whose answers sit in tables, so it parses the
+structure first and uses retrieval (LangChain BM25, dense, hybrid) only as the fallback. The embedding cache is shared
+with `workflow-agent` through `frugalai_common.embed`.
+
 ## The idea in one paragraph
 
 A PDF question-answering system that only retrieves text chunks fails on this document, for two reasons. The

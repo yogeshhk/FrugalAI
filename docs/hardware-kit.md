@@ -46,7 +46,7 @@ The shell has openings for the chip, the ports and the ribbon connectors, so a l
 | Removed piece with a raspberry-shaped vent grille | The case base or cover. The case looks like the official Raspberry Pi 2 and 3 style (to verify). |
 
 Not yet known: the revision printed on the board, whether a microSD card is in the slot (the slot is under the board),
-and whether the board is held by the base or by the shell. Do not force the shell; see `pi-checklist.md`.
+and whether the board is held by the base or by the shell. Do not force the shell (see the first item under "Open decisions for the author").
 
 ## Inventory (what we have)
 
@@ -134,6 +134,12 @@ Ordered by what unblocks the first camera project. Prices are not listed: check 
 | Nice | One more small servo | Pan-tilt camera mount (two axes), or a pointer. | The kit has one SG90 and the extension cables. A pan-tilt mount needs two servos. |
 | Later | Pi 4 with the right power supply | More headroom for heavier models. | Do not buy until the Pi 3 limits are measured. |
 | Later | ESP32-CAM | The microcontroller tier for vision. | Separate learning track, not needed first. |
+
+### Before you pay, and where to look
+
+- The seller is on the official reseller list (<https://www.raspberrypi.com/resellers/>; it has no country labels; Robu and Robocraze are on it). Open the Robu page in a browser, it blocks automated reading. ThinkRobotics and Zbotic were not found on the list; that does not prove they are not genuine, so ask for proof of authorised supply.
+- The listing is in stock and shows the exact kit contents, the wattage of the power supply and the size of the SD card.
+- The price includes GST and you get a GST invoice; return or replacement terms are stated; the board is sealed and original, not a lookalike.
 
 ## Packaging: how to put it in a box
 
@@ -238,7 +244,7 @@ All are candidates; none is chosen until benchmarked.
 - No benchmark number exists for this kit.
 
 ## Open decisions for the author
-- Free the Pi 3 from its case shell without force, then photograph the bare board top-down and from the underside, and read the revision text.
+- Free the Pi 3 from its case shell without force (Pi unplugged and no card powered; look for the small clips along the long sides and at the corners; release them one at a time with a fingernail or a plastic opening tool, never near the ports or ribbon sockets; if it will not release, stop, the Pi can stay in the shell), then photograph the bare board top-down and from the underside, and read the revision text.
 - Check whether a microSD card is in the slot, and what it holds, before the first boot.
 - Plug in the webcam and record its resolution and whether it has a microphone.
 - Open bag-b and tell me what it holds.

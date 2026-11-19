@@ -14,9 +14,9 @@ from . import config
 
 
 class LLM(Counters):
-    def __init__(self, model: str = config.DEFAULT_LLM, url: str = config.LLM_URL, timeout_s: float = 600.0):
+    def __init__(self, model: str = config.DEFAULT_LLM, url: Optional[str] = None, timeout_s: float = 600.0):
         super().__init__()
-        self.model, self.url, self.timeout_s = model, url.rstrip("/"), timeout_s
+        self.model, self.url, self.timeout_s = model, (url or config.url_for(model)).rstrip("/"), timeout_s
 
     def available(self) -> bool:
         try:

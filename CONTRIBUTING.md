@@ -21,6 +21,11 @@ Copy `code/_template/` (a runnable stub with one offline test), keep the recipe 
 
 For a new measurement of an existing model on your device, use the "New measurement" issue form.
 
+Shared code (a new model backend, a metric) goes in `code/common/` with an offline test; a repo tool goes in `_scripts/`; an
+evaluation set stays inside the project that uses it. A new project also needs a row in the project tables of the README.
+Before a pull request run `python -m pytest code -q`, `python _scripts/check_links.py` and, if you touched `AWESOME.md`,
+`python _scripts/check_awesome.py`.
+
 Looking for something to build? Every project README in `code/` ends with "Ideas to extend", each with what it needs and how to tell it worked, and an `environment.yml` (conda) and `requirements.txt` (pip) so you can set up your own environment. If you have a Raspberry Pi and a USB webcam, `code/gesture-switch/PI_RECIPE.md` is a step-by-step deployment recipe whose results you can send back.
 
 ## 4. Fix or add documentation
@@ -28,7 +33,7 @@ Every factual claim needs a source in `docs/sources.md`, or a "to verify" tag. P
 (papers, official documentation, the project's own repository) over blogs and summaries.
 
 ## For interns and student contributors
-Start from a project in [docs/internship-ideas.md](docs/internship-ideas.md). Each is sized for one student, one laptop
+Start from an idea in [IDEAS.md](IDEAS.md). Each is sized for one student, one laptop
 and no cloud.
 
 - **Claim it:** open an issue named after the project, so two students do not build the same thing.
@@ -38,7 +43,7 @@ and no cloud.
   a script, with device, version and date (or the word "pending").
 - **Data:** download datasets yourself and never commit them. Copy the licence text into your project README and say
   whether the data may be shared.
-- **Review:** pull requests are reviewed in a monthly batch. Open a draft early if you want comments sooner from a mentor
+- **Review:** pull requests are reviewed on Saturdays, a few at a time. Open a draft early if you want comments sooner from a mentor
   at your college.
 - **AI tools:** allowed for code and drafts, but you check every claim. Measured numbers come from your own runs only.
 - **Credit:** your name goes in your project README.
