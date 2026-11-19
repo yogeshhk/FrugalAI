@@ -2,99 +2,60 @@
 
 > Small is beautiful: useful AI on the hardware people already have.
 
-FrugalAI is a collection of specific, working AI applications and the evidence behind them. Each one runs on the
-edge: a plain laptop with no good GPU, a Raspberry Pi or another small board, with no internet needed at run time.
-The aim is to address real problems of rural India and of people with the least access, and to make it cheap for
-students and small startups to build many more.
+Working AI applications and the evidence behind them. Each one runs on a plain laptop with no good GPU, with no internet at
+run time. The aim is real problems of rural India and of people with the least access, and to make it cheap for students
+and small startups to build many more. Every number in this repo has a device, a version and a date, or says "pending".
 
-## The philosophy
+## Try it in two minutes
 
-1. **Edge first.** The machine learning, deep learning or small-LLM part must work on a CPU-only laptop, and where
-   the job allows it on a Raspberry Pi or a microcontroller. A GPU is never required.
-2. **Offline always.** No cloud call at run time. The data stays on the device, which also protects privacy and
-   works where connectivity is patchy or absent.
-3. **Specific, not generic.** One narrow job for one set of people, done well. Narrow apps need smaller models,
-   which saves energy and money and still gives a useful result. A generic assistant is not the goal.
-4. **Social problems first.** Farming, health support, schools, village offices, accessibility, small workshops.
-   The question for every project is "who is this for, and what does it replace?".
-5. **Many small apps.** The repo is a pattern book. Each project is one self-contained folder that can be copied,
-   adapted and shipped by a different student or startup.
-6. **Measure before claiming.** Every number has a device, a version and a date. If no script produced it, it says
-   "pending".
+No GPU, no model and no internet needed. You need Python 3.10 or newer and git.
 
-### Use the lowest rung that solves the problem
+```bash
+git clone https://github.com/yogeshhk/FrugalAI.git
+cd FrugalAI
+python -m venv .venv                    # Windows: .venv\Scripts\activate    macOS or Linux: source .venv/bin/activate
+pip install -e code/common pytest
+cd code/wiki-rag
+python -m wikirag index sample_wiki
+python -m wikirag search sample_wiki "Which coach and seat is my train ticket for?"
+```
 
-| Rung | Technique | Typical device |
-|---|---|---|
-| Rules | Plain code, thresholds, lookup tables | Arduino, Blue Pill |
-| Classical ML | Trees, regression, small classifiers on sensor or table data | Raspberry Pi, laptop |
-| Small vision | Frozen encoder plus a small head, mobile-class networks, pre-trained hand model | Raspberry Pi, laptop |
-| Small speech | Vosk or small Whisper | Laptop, newer Raspberry Pi |
-| Small language model | Roughly 0.5B to 4B parameters, quantised, with retrieval | Laptop, newer Raspberry Pi, phone |
+The search prints the matching note passage. To check your setup run `python -m pytest code/common code/wiki-rag -q` from the
+repo root; every test is offline.
 
-### How a project is built
+## Run a full demo
 
-1. Prove it as a proof of concept on a laptop, with a small page (Streamlit or similar) so anyone can try it.
-2. Deploy it to the target device. Vision and sensor projects go to a Raspberry Pi. Language projects need a screen
-   and keyboard, so they run on a laptop, a larger Pi, or a Pi that serves a local web page to an old phone's browser.
-3. Measure speed, memory and, once a meter exists, energy. Record the device in the row.
-4. Write the recipe so a stranger can repeat it.
+Each language project has a small web page (`app.py`) that runs on your laptop and refuses every connection that is not to
+your own machine. The pages need a local model server:
 
-## Projects
+1. Install [LM Studio](https://lmstudio.ai) (or [Ollama](https://ollama.com)), load **Qwen3 1.7B** (Q4_K_M) and, for the
+   retrieval projects, **nomic-embed-text-v1.5**, and start its local server on port 1234.
+2. Create the environment once. With conda: `conda env create -f environment.yml` then `conda activate frugalai`. This
+   environment file has not been built from scratch yet (the measurements ran in another environment, Python 3.10), so
+   tell us if a version fails. It is large because of PyTorch, Docling and the speech models; a project's own
+   `environment.yml` or `requirements.txt` installs only what that project needs.
+3. From the project folder, run `streamlit run app.py`.
 
-Status words: built (code and tests exist), measured (a script produced numbers on a named device), stub (plan and
-helpers only).
+| Project | What it does | Models | Status |
+|---|---|---|---|
+| [code/wiki-rag/](code/wiki-rag/) | Ask questions of a folder of notes, with the passages it used (hand-built BM25, own evaluation) | Qwen3 1.7B; embeddings optional | built; retrieval measured |
+| [code/quantum-wiki/](code/quantum-wiki/) | Answers with page numbers over a course syllabus PDF whose answers sit in tables (Docling, LangChain) | Qwen3 1.7B, nomic-embed | built; measured on one machine |
+| [code/voice-form/](code/voice-form/) | Speak a form in Marathi or Hindi (health visit, enumeration, service ticket); plain-code numbers and dates, a small model that must quote its evidence, confirm before save | Qwen3 1.7B; Dhir 2B optional; IndicConformer speech model | built; extraction measured on script text |
+| [code/workflow-agent/](code/workflow-agent/) | A LangGraph intake workflow with parallel checks, a draft step and a repair loop, plus a small helpline demo | Qwen3 1.7B, nomic-embed | built; first measurements |
+| [code/finetune-slm/](code/finetune-slm/) | LoRA fine-tuning of small models on a CPU: a 135M intent router and a Marathi question-answering study | none served (trains locally) | built; measured, one seed |
 
-### Language and speech (proof of concept on a laptop)
-
-| Project | Problem it serves | Status |
-|---|---|---|
-| [code/wiki-rag/](code/wiki-rag/) | Offline questions and answers over a folder of notes (hand-built BM25 retrieval, own evaluation) | built; retrieval measured |
-| [code/quantum-wiki/](code/quantum-wiki/) | Answers with page citations over a course syllabus PDF (Docling, LangChain, Qwen3 1.7B) | built; measured on one machine |
-| [code/voice-form/](code/voice-form/) | Speak a form in Marathi or Hindi (ASHA visit, enumeration, service ticket); offline speech to text, plain-code numbers and dates, a small model that must quote its evidence, confirm before save | built; extraction measured on script text |
-| [code/workflow-agent/](code/workflow-agent/) | A LangGraph intake workflow with parallel checks, a draft sub-graph and a repair loop, plus a small helpline demo | built; first measurements |
-| [code/finetune-slm/](code/finetune-slm/) | LoRA fine-tuning of small models on a CPU: a 135M intent router and a Marathi question-answering study | built; measured, one seed |
-| [code/dhir-server/](code/dhir-server/) | How to run the Indian model Dhir 2B (ZenteiQ) from its GGUF file with llama-server, which LM Studio cannot load | recipe; speed, memory and answer check measured |
-
-Each of the first five has a demo page, `app.py`, a small Streamlit page served on the laptop only. Every page shows the
-machine (CPU, RAM, the 2 GB MX570), the Wi-Fi state and a counter of blocked internet connections, so the demo can be
-run with the Wi-Fi off. Run it from the project folder with `conda run -n genai streamlit run app.py`; each project's
-README says which models LM Studio must serve. `_scripts/record_demo.py` records screenshots and a video of a running page.
+Two more folders are recipes, not finished apps: [code/dhir-server/](code/dhir-server/) (how to run the Indian model Dhir 2B
+from its GGUF file with llama-server, which LM Studio cannot load) and [code/gesture-switch/](code/gesture-switch/) (a hand-gesture
+board for people who cannot speak or type, for a Raspberry Pi 3; a stub so far). Each project's README has its own run
+steps, limits and measured numbers. A new project starts from [code/_template/](code/_template/).
 
 ![The voice-form page: Marathi speech in, a checked form out](docs/images/frugal_voice_filled.png)
 *Image file: docs/images/frugal_voice_filled.png*
 
-### Vision and sensors (proof of concept on a laptop, deployment on a Raspberry Pi)
-
-| Project | Problem it serves | Status |
-|---|---|---|
-| [code/gesture-switch/](code/gesture-switch/) | A hand-gesture board for people who cannot speak or type: yes, no or help, driving an LED, buzzer or spoken phrase | stub; laptop proof next, Pi 3 after |
-
-Ideas not yet started, such as a people counter, a leaf check and a cold-chain temperature watch, with data and licence
-notes, are in [IDEAS.md](IDEAS.md).
-
-### Shared parts
-
-| Area | What it holds | Status |
-|---|---|---|
-| [code/common/](code/common/) | One small interface over Ollama and LM Studio, plus a benchmark command | working, tested |
-| [code/common/benchmarks/](code/common/benchmarks/) | Method and measured results: what runs where | method written, result files |
-| [code/common/devices/](code/common/devices/) | Setup notes per device | Dell notes written, not yet measured |
-| [code/_template/](code/_template/) | Starting point for a new project folder | ready |
-| [_scripts/](_scripts/) | Repo tools: the AWESOME.md checker, a relative-link checker and the demo recorder | working, tested |
-
-### Documents
-
-| File | What it holds |
-|---|---|
-| [IDEAS.md](IDEAS.md) | Project ideas for students, interns and startups, with data and licence notes |
-| [docs/](docs/) | Concepts, landscape, limits, safety, sources, the Raspberry Pi kit |
-| [AWESOME.md](AWESOME.md) | Curated list of frugal AI efforts by platform (old laptop, Raspberry Pi, phone, microcontroller, browser) |
-| [TODO.md](TODO.md) | Open actions |
-
 ## What runs where
 
-Numbers appear here only after they are measured and recorded under `code/common/benchmarks/results/`.
+Numbers appear here only after they are measured and recorded under `code/common/benchmarks/results/`. Method:
+[METHODOLOGY.md](code/common/benchmarks/METHODOLOGY.md).
 
 | Device | Model (quantisation) | Decode tokens/s | Peak RAM | Date | Notes |
 |--------|----------------------|-----------------|----------|------|-------|
@@ -102,90 +63,35 @@ Numbers appear here only after they are measured and recorded under `code/common
 | Main PC, same, CPU only | Gemma 2 2B (Q5_K_M) via LM Studio | 10.9 median (4.9 to 11.8, n=15) | 3.4 GB (engine only, 3379 MB) | 2026-10-19 | GPU offload off; only this model loaded; the 4.9 minimum is one slow run |
 | Main PC, same, GPU-assisted | Qwen3 1.7B (Q4_K_M) via LM Studio | 54.0 median (43.3 to 57.2, n=15) | 2.0 GB (engine only, 1958 MB) | 2026-10-19 | thinking mode on; GeForce MX570 (2 GB) used by LM Studio; only this model loaded |
 | Main PC, same, GPU-assisted | Gemma 2 2B (Q5_K_M) via LM Studio | 12.2 median (9.6 to 13.8, n=15) | 2.9 GB (engine only, 2944 MB) | 2026-10-19 | GeForce MX570 (2 GB) used by LM Studio, model only partly fits, so the gain over CPU is small |
-| Old Dell laptop (CPU only) | pending | pending | pending | pending | not measured, parked (see "Roadmap") |
-| Raspberry Pi 3 Model B (vision, owned) | pending | pending | pending | pending | gesture-switch not yet run on it; frames per second, latency and temperature are the planned columns |
+| Old Dell laptop (CPU only) | pending | pending | pending | pending | not measured |
+| Raspberry Pi 3 Model B (vision, owned) | pending | pending | pending | pending | gesture-switch not yet run on it |
 
-## Outlook
+## The ideas behind it
 
-The value here is in the measurements and the finished recipes, not in any single model. Models change
-every few months, while the question "what runs on this device, how fast, and is it good enough for this
-job" stays, so the method and recipes should outlast them. That makes it a relatively durable and
-low-capital direction, with consulting and training as the first way to earn from it and a packaged device
-as a later option. The main risks are stale numbers, crowding by runtime vendors, the safety and legal
-side of health recipes, weak small-model quality in Indian languages, and one person's time. Nothing here
-has been tested with paying users yet. What would raise confidence: measured rows from a second device and a
-power meter, and a recipe used by someone other than the author.
+1. **Edge first.** The model part must work on a CPU-only laptop and, where the job allows, on a Raspberry Pi or a microcontroller.
+2. **Offline always.** No cloud call at run time; the data stays on the device.
+3. **Specific, not generic.** One narrow job for one set of people. Narrow apps need smaller models.
+4. **Social problems first.** Farming, health support, schools, village offices, accessibility, small workshops: "who is this for, and what does it replace?"
+5. **Use the lowest rung that solves the problem:** rules, then classical ML, then small vision or speech, then a small language model with retrieval.
+6. **Measure before claiming.** If no script produced a number, it says "pending".
 
-## Roadmap
+Why frugal AI suits India, with sources: [docs/landscape.md](docs/landscape.md). Concepts: [docs/concepts.md](docs/concepts.md).
+Where small models fall short: [docs/limits.md](docs/limits.md). Safety rules for health recipes: [docs/safety.md](docs/safety.md). The Raspberry Pi kit:
+[docs/hardware-kit.md](docs/hardware-kit.md). Token cost and energy: [docs/token_frugality.md](docs/token_frugality.md).
+Fine-tuning on a CPU: [docs/finetuning-on-cpu.md](docs/finetuning-on-cpu.md).
 
-Scope: software and deployment, not chip design. Use an existing runtime (llama.cpp, Ollama, LM Studio, ONNX Runtime,
-LiteRT) and measure it. Device ladder: the Pi 3 (owned) runs vision and sensor recipes; language recipes run on a
-laptop. Language milestones are parked to 2027, waiting for students and partners.
-- Vision on the Raspberry Pi 3: `gesture-switch` from laptop proof to the Pi, then a people counter and a
-  cold-chain temperature watch.
-- A second device and energy: the same recipe on a second device, with energy per task from a power meter.
-- An ASHA-worker assistant in Marathi, Hindi and English: safety framing and an evaluation set first; decision
-  support only.
-- A phone track: one recipe measured on a real Android phone.
-- Later: Modi script OCR, token-frugal prompts measured, frozen encoder plus small head classifiers
-  ([IDEAS.md](IDEAS.md)).
+## Contribute
 
-For the cost side of a token (time, memory, energy), practices to try and how to measure energy per task,
-see [docs/token_frugality.md](docs/token_frugality.md). It is a checklist and a plan; this repo has measured
-no energy figure yet.
-
-Why frugal AI suits India, with sources for what has been reported, is in [docs/landscape.md](docs/landscape.md).
+Students, startups and practitioners are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) says how to add a project, a measurement,
+an entry to [AWESOME.md](AWESOME.md) (a list of frugal AI efforts by platform) or a fix, and [IDEAS.md](IDEAS.md) lists what to build
+next. Open actions are in [TODO.md](TODO.md).
 
 ## Related work
 
-- [AIOOLL](https://github.com/yogeshhk/AIOOLL): AI on an old Linux laptop. A learning and demo toolkit
-  (ML, DL, RAG, agents, CV, LLM inference). FrugalAI reuses some of its pieces with attribution and adds
-  cross-device measurement.
-- [Teaching Data Science](https://github.com/yogeshhk/TeachingDataScience): holds the seminar deck "Frugal AI:
-  Small Is Beautiful" (`LaTeX/Main_Seminar_AI_Frugal_*`) and the LangGraph seminar code that runs on a small
-  local model through one config file (`Code/langgraph/llm_config.py`).
-
-## Principles for contributors
-
-1. Measure before claiming. Every number has a device, a version and a date.
-2. Every factual claim has a source, or is marked "to verify" in [docs/sources.md](docs/sources.md).
-3. Offline by default. Data stays on the device.
-4. Health-related recipes are decision support only. See [docs/safety.md](docs/safety.md).
-
-## Getting started
-
-```bash
-conda env create -f environment.yml
-conda activate frugalai                   # on a fresh machine; the author's own env is genai
-python -m pytest code -q                  # all tests, offline, no model needed
-python _scripts/check_links.py        # relative links in the Markdown files
-```
-
-Note: this environment file has not been built or tested yet; the tests and measurements so far ran in another environment (Python 3.10).
-
-Everything that talks to a model needs a local server first: **LM Studio** (local server on port 1234) or
-**Ollama** (port 11434), with one small model loaded, for example Qwen3 1.7B at Q4_K_M. Then:
-
-```bash
-# benchmark a model on this device (one warm-up, then 5 prompts x 3 repeats; CSV to code/common/benchmarks/results/)
-# first make the shared library importable.  PowerShell: $env:PYTHONPATH = "code/common"   bash: export PYTHONPATH=code/common
-python -m frugalai_common.bench --backend lmstudio --model <model id> --device <label> --quantisation Q4_K_M
-
-# ask a folder of notes (sample_wiki is made up; index and search need no model)
-cd code/wiki-rag
-python -m wikirag index sample_wiki
-python -m wikirag ask sample_wiki "Which coach and seat is my train ticket for?" --model qwen/qwen3-1.7b --no-think
-```
-
-The method and columns of the benchmark are in
-[code/common/benchmarks/METHODOLOGY.md](code/common/benchmarks/METHODOLOGY.md). Each project's README has its full
-run steps, limits and measured numbers.
-
-## Contributing
-
-Students, startups and practitioners are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a project, a
-measurement, an entry to [AWESOME.md](AWESOME.md) or a fix, and [IDEAS.md](IDEAS.md) for what to build.
+- [AIOOLL](https://github.com/yogeshhk/AIOOLL): AI on an old Linux laptop, a learning toolkit. FrugalAI reuses some pieces with attribution.
+- The seminar deck "Frugal AI: Small Is Beautiful" is in [LaTeX/](LaTeX/) (build with `LaTeX/make_frugal.bat`).
+- [Teaching Data Science](https://github.com/yogeshhk/TeachingDataScience): the sister repo of AI and ML course material.
 
 ## Licence
 
-MIT, see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE). To cite, see [CITATION.cff](CITATION.cff).

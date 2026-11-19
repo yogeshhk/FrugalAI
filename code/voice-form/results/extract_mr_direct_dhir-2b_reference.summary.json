@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "run": "extract_mr_direct_dhir-2b_reference",
+    "lang": "mr",
+    "route": "direct",
+    "model": "dhir-2b",
+    "condition": "reference",
+    "transcripts": null,
+    "date": "2026-11-19",
+    "host": "Windows 10, 10 cores, 17 GB RAM"
+  },
+  "summary": {
+    "heldout": {
+      "utterances": 9,
+      "field_accuracy": 1.0,
+      "to_fix_per_utterance": 0.11,
+      "spurious": 1,
+      "uncertain": 0,
+      "all_correct_utterances": 8,
+      "mean_seconds": 24.99
+    },
+    "tune": {
+      "utterances": 18,
+      "field_accuracy": 0.952,
+      "to_fix_per_utterance": 0.56,
+      "spurious": 4,
+      "uncertain": 0,
+      "all_correct_utterances": 11,
+      "mean_seconds": 23.44
+    },
+    "all": {
+      "utterances": 27,
+      "field_accuracy": 0.968,
+      "to_fix_per_utterance": 0.41,
+      "spurious": 5,
+      "uncertain": 0,
+      "all_correct_utterances": 19,
+      "mean_seconds": 23.96
+    }
+  }
+}

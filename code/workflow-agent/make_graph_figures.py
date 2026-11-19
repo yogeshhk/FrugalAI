@@ -6,7 +6,7 @@ Run from code/workflow-agent/:
 Two PNGs: frugal_faq_graph.png (the workflow, with its boxes and arrows read from the compiled LangGraph, so it cannot
 drift from the code) and frugal_faq_path.png (the same graph with the boxes of one real run highlighted, from that run's
 trace). The draft sub-graph (pick an example, model writes, rules check, repair loop) is one box here, as in the top-level
-graph. The run uses the author's QCNP notes (FAQINTAKE_QCNP, default: Publications/Books/QCNP next to this repo) with
+graph. The run uses the author's QCNP notes (FAQINTAKE_QCNP, default: TeachingQuantumTech/LaTeX/books/QCNP next to this repo) with
 drafting on, so LM Studio must serve nomic-embed-text and Qwen3 1.7B; --reuse redraws from the saved run. The pictures
 show box names and one similarity score, never FAQ titles. Moved here from the talk's earlier demo folder on 2026-11-15.
 """
@@ -20,7 +20,7 @@ HERE = Path(__file__).resolve().parent
 for p in (HERE, HERE.parent / "common"):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
-_qcnp = HERE.parents[2] / "Publications" / "Books" / "QCNP"
+_qcnp = HERE.parents[2] / "TeachingQuantumTech" / "LaTeX" / "books" / "QCNP"
 if _qcnp.is_dir():
     os.environ.setdefault("FAQINTAKE_QCNP", str(_qcnp))
     os.environ.setdefault("FAQINTAKE_RUN_CONCEPT_CHECK", "1")   # the author's own concept_check.py, opted in here

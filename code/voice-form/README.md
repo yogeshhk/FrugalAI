@@ -132,10 +132,12 @@ files from before the fixes are in `results/v1_before_fixes/`.
 | Hindi | rules, no model | none | 0.468 | 0.450 | 0.462 | 3.67 | 0 | 0.0 |
 | Hindi | direct | Qwen3 1.7B | 0.919 | 0.950 | 0.929 | 0.44 | 5 | 10.2 |
 | Hindi | direct | Gemma 2 2B | 0.984 | 0.933 | 0.967 | 0.44 | 6 | 57.2 |
+| Hindi | direct | Dhir 2B (Q8_0, llama-server, round 3) | 0.968 | 0.967 | 0.967 | 0.33 | 7 | 22.5 |
 | Hindi | translate first | Qwen3 1.7B | 0.516 | not run | n/a | n/a | n/a | n/a |
 | Marathi | rules, no model | none | 0.480 | 0.443 | 0.468 | 3.78 | 0 | 0.0 |
 | Marathi | direct | Qwen3 1.7B | 0.872 | 0.918 | 0.887 | 0.89 | 4 | 9.7 |
 | Marathi | direct | Gemma 2 2B | 0.936 | 0.902 | 0.925 | 0.78 | 5 | 47.8 |
+| Marathi | direct | Dhir 2B (Q8_0, llama-server, round 3) | 0.952 | 1.000 | 0.968 | 0.11 | 8 | 25.0 |
 | Marathi | translate first | Qwen3 1.7B | 0.496 | not run | n/a | n/a | n/a | n/a |
 
 What the table says:
@@ -160,12 +162,21 @@ languages); the author chose Qwen for speed, since it was about five times faste
 nine held-out lines per language. Gemma 2 2B stays available with `--model gemma-2-2b-it`. Revisit the choice once
 there are results on real speech.
 
-**Dhir 2B as an alternative (not measured here yet).** The model id `dhir-2b` is wired in: start `llama-server` as in
+**Dhir 2B as an alternative (measured 2026-11-19, round 3).** The model id `dhir-2b` is wired in: start `llama-server` as in
 [`../dhir-server/README.md`](../dhir-server/README.md) (port 1236, `--alias dhir-2b`, `--jinja`), then run
-`python -m voiceform eval-extract --lang mr --route direct --model dhir-2b --set tune`, or set `VOICEFORM_MODEL=dhir-2b`
+`python -m voiceform eval-extract --lang mr --route direct --model dhir-2b`, or set `VOICEFORM_MODEL=dhir-2b`
 before `streamlit run app.py`. `VOICEFORM_DHIR_URL` changes the address. The Qwen route is untouched and stays the default.
-Dhir was built for English and ten Indian languages, so it is worth comparing on the same lines; the row is pending until the
-run is done (never copy numbers from the model card).
+The Dhir rows above are our own runs on the same lines, tune and held-out, one run each, Q8_0 GGUF through ZenteiQ's
+`llama-server` (not LM Studio), script text only (condition `reference`).
+- Over all 27 lines Dhir is ahead of Qwen3 1.7B by about 8.1 points in Marathi (0.968 against 0.887) and 3.8 points in Hindi (0.967
+  against 0.929), and level with or ahead of Gemma 2 2B (0.925 Marathi, 0.967 Hindi). On the nine held-out lines Dhir has the
+  fewest fixes per utterance in both languages (Marathi 0.11, Hindi 0.33), but nine lines are few and the gaps are within noise.
+- Speed: about 23 to 25 s per line, about 2.4 times slower than Qwen3 1.7B (about 10 s) and about 2 times faster than Gemma 2 2B
+  (about 50 s). The engines differ (llama-server against LM Studio), and the PC was in use, so seconds are indicative only.
+- Not like for like: Dhir ran in a later round, on a different engine and quantisation, and without the `/no_think` switch
+  (Dhir has none). Its spurious values (5 in Marathi, 7 in Hindi over 27 lines) are not compared with the other rows here.
+- The default stays Qwen3 1.7B (the author's speed choice of 2026-10-26); Dhir is the accuracy option for Marathi. Nothing is
+  measured on real speech yet.
 
 ## Limits and safety
 - One speaker (the author) and synthetic lines: the numbers say nothing about other accents, dialects or real field

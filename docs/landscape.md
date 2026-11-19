@@ -109,3 +109,11 @@ Claims from a video talk (speaker and channel unknown); none verified as the tal
 - Inference having overtaken training as the main operational carbon source. A search found this repeated
   in preprints, traced to secondary estimates ("up to 90%" of lifecycle energy), not to a primary
   measurement; do not state it as fact.
+
+## Outlook
+
+The value is in the measurements and the finished recipes, not in any single model. Models change every few months, while the
+question "what runs on this device, how fast, and is it good enough for this job" stays. The main risks are stale numbers,
+crowding by runtime vendors, the safety and legal side of health recipes, weak small-model quality in Indian languages, and one
+person's time. Nothing here has been tested with paying users yet. What would raise confidence: measured rows from a second
+device and a power meter, and a recipe used by someone other than the author.

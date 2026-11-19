@@ -23,7 +23,7 @@ for p in (HERE, HERE.parent / "common"):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 
-_qcnp = HERE.parents[2] / "Publications" / "Books" / "QCNP"       # the author's notes, next to this repo
+_qcnp = HERE.parents[2] / "TeachingQuantumTech" / "LaTeX" / "books" / "QCNP"       # the author's notes, next to this repo
 if _qcnp.is_dir():
     os.environ.setdefault("FAQINTAKE_QCNP", str(_qcnp))
     os.environ.setdefault("FAQINTAKE_RUN_CONCEPT_CHECK", "1")     # the author's own concept_check.py, opted in here

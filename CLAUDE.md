@@ -26,7 +26,12 @@ self-contained folder (code, data, tests, README, and a TODO only while an actio
 Demo pages: one Streamlit `app.py` per project (voice-form, quantum-wiki, wiki-rag, workflow-agent, finetune-slm), not a
 multipage app, run with `conda run -n genai streamlit run app.py` from the project folder. Each calls
 `frugalai_common.demo` first (offline guard, machine panel). `_scripts/record_demo.py` records screenshots and an MP4 of
-a running page; the talk deck (TeachingDataScience `LaTeX/ai_frugal_demo.tex`) uses them. Shared pieces live in `code/common/`:
+a running page; the talk deck (`LaTeX/ai_frugal_demo.tex`) uses them.
+`LaTeX/` holds the seminar deck "Frugal AI: Small Is Beautiful": `Main_Seminar_AI_Frugal_{Presentation,CheatSheet}.tex`, the content file
+`seminar_ai_frugal_content.tex` (the one place for part order) and the `ai_frugal_*.tex` topic files; build with `LaTeX/make_frugal.bat`
+(`texify -cp --pdf`), chart script `LaTeX/_scripts/make_charts.py`, outline `LaTeX/docs/seminar_outline.md`. The templates, `about_me`,
+`thanks` and their images are copies from TeachingDataScience, so a template fix must be applied in both places. Deliver each rebuilt PDF to
+`Publications/Presentations` and `D:\Yogesh\GDrive\ToPrint\`; keep no PDF in `LaTeX/`. Shared pieces live in `code/common/`:
 `code/common/frugalai_common/` backend interface, benchmark runner and demo-page helpers, `code/common/benchmarks/` method and results,
 `code/common/devices/` per-device setup. `_scripts/` at the repo root holds the repo tools (AWESOME.md and link
 checkers, the demo recorder). Run all tests with `python -m pytest code -q` and the link check with `python _scripts/check_links.py`.

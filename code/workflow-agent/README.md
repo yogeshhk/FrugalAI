@@ -15,7 +15,7 @@ Two small workflows on local models, one real and one a pattern demo.
 
 ## faqintake: what it does and what it does not
 
-The skill (`~/.claude/skills/concept-intake/SKILL.md`, authority in `Books/QCNP/docs/CONCEPT_INTAKE.md`) has six
+The skill (`~/.claude/skills/concept-intake/SKILL.md`, authority in `LaTeX/books/QCNP/docs/CONCEPT_INTAKE.md` in TeachingQuantumTech) has six
 steps. A small model can do only part of them:
 
 | Skill step | In the workflow |

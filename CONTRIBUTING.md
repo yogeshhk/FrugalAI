@@ -1,6 +1,13 @@
 # Contributing
 
-Thanks for helping. Four ways to contribute, easiest first.
+Thanks for helping. You do not need a GPU or a cloud account: everything here runs on a laptop.
+
+**First, run something.** The README section "Try it in two minutes" clones the repo and runs a search with no model; "Run a
+full demo" starts a web page. If a step does not work as written, that is a useful contribution (see 4 below). Not sure
+where to start? Open an issue and say what you have (a laptop, a Raspberry Pi, a phone) and what you want to build;
+[IDEAS.md](IDEAS.md) has a list.
+
+Four ways to contribute, easiest first.
 
 ## 1. Add your effort to the awesome list
 Run something frugal on an old laptop, a Raspberry Pi, a phone, a microcontroller or in a browser? Add it

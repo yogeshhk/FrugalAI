@@ -1,0 +1,28 @@
+id,form,set,seconds,prompt_tokens,completion_tokens,gold,correct,wrong,missed,spurious,uncertain,to_fix,errors
+hi-asha-01,asha_anc_visit,tune,30.26,389,308,6,6,0,0,1,0,1,next_visit_date: spurious '2026-10-31'
+hi-asha-02,asha_anc_visit,tune,24.816,400,283,7,7,0,0,0,0,0,
+hi-asha-03,asha_anc_visit,tune,28.895,394,292,7,7,0,0,0,0,0,
+hi-asha-04,asha_anc_visit,tune,29.875,389,292,6,6,0,0,0,0,0,
+hi-asha-05,asha_anc_visit,tune,27.709,395,276,7,7,0,0,2,0,2,weight_kg: spurious 60.0 | next_visit_date: spurious '2026-10-31'
+hi-asha-06,asha_anc_visit,tune,27.581,394,300,7,7,0,0,1,0,1,ifa_tablets_given: spurious 30
+hi-asha-07,asha_anc_visit,heldout,26.489,390,309,6,6,0,0,0,0,0,
+hi-asha-08,asha_anc_visit,heldout,22.339,385,248,5,5,0,0,0,0,0,
+hi-asha-09,asha_anc_visit,heldout,28.121,399,285,7,7,0,0,0,0,0,
+hi-sir-01,sir_enumeration,tune,29.318,332,226,7,7,0,0,0,0,0,
+hi-sir-02,sir_enumeration,tune,21.908,336,244,8,8,0,0,0,0,0,
+hi-sir-03,sir_enumeration,tune,24.952,337,245,7,7,0,0,1,0,1,house_number: spurious 'कोटा खुर्द'
+hi-sir-04,sir_enumeration,tune,25.229,334,237,7,6,0,1,0,0,1,area: missed (गणेश गंज) ['या मोहल्ला' was not found in what was said] raw='गांव या मोहल्ला'
+hi-sir-05,sir_enumeration,tune,30.575,338,255,8,8,0,0,0,0,0,
+hi-sir-06,sir_enumeration,tune,21.793,336,249,7,6,0,1,1,0,2,house_number: spurious 'मंडावर' | epic_number: missed (MHT9876543) [does not match ^[A-Z]{3}[0-9]{7}$] raw='MHT 9 8 7 6 5 4'
+hi-sir-07,sir_enumeration,heldout,18.636,336,204,7,6,0,1,0,0,1,"relative_name: missed (बलवंत सिसोदिया) [only the field's own name was given, not a value] raw='पिता'"
+hi-sir-08,sir_enumeration,heldout,20.464,332,240,7,6,1,0,1,0,2,relative_name: 'मां सुमन कश्यप' != 'सुमन कश्यप' | house_number: spurious '8'
+hi-sir-09,sir_enumeration,heldout,24.957,340,271,8,8,0,0,0,0,0,
+hi-tkt-01,service_ticket,tune,25.551,302,223,7,7,0,0,0,0,0,
+hi-tkt-02,service_ticket,tune,21.473,312,218,7,6,1,0,0,0,1,urgency: 'high' != 'low'
+hi-tkt-03,service_ticket,tune,23.402,304,238,6,6,0,0,0,0,0,
+hi-tkt-04,service_ticket,tune,21.487,309,214,7,6,0,1,0,0,1,visit_date: missed (2026-12-03) ['2023-12-03' was not found in what was said] raw='2023-12-03'
+hi-tkt-05,service_ticket,tune,19.799,297,188,6,6,0,0,0,0,0,
+hi-tkt-06,service_ticket,tune,19.562,307,212,7,7,0,0,0,0,0,
+hi-tkt-07,service_ticket,heldout,20.345,305,225,7,7,0,0,0,0,0,
+hi-tkt-08,service_ticket,heldout,20.58,302,239,6,6,0,0,0,0,0,
+hi-tkt-09,service_ticket,heldout,20.867,304,231,7,7,0,0,0,0,0,

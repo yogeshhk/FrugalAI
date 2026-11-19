@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "run": "extract_mr_direct_dhir-2b_reference_tune",
+    "lang": "mr",
+    "route": "direct",
+    "model": "dhir-2b",
+    "condition": "reference",
+    "transcripts": null,
+    "date": "2026-11-19",
+    "host": "Windows 10, 10 cores, 17 GB RAM"
+  },
+  "summary": {
+    "tune": {
+      "utterances": 2,
+      "field_accuracy": 1.0,
+      "to_fix_per_utterance": 0.0,
+      "spurious": 0,
+      "uncertain": 0,
+      "all_correct_utterances": 2,
+      "mean_seconds": 25.86
+    },
+    "all": {
+      "utterances": 2,
+      "field_accuracy": 1.0,
+      "to_fix_per_utterance": 0.0,
+      "spurious": 0,
+      "uncertain": 0,
+      "all_correct_utterances": 2,
+      "mean_seconds": 25.86
+    }
+  }
+}
