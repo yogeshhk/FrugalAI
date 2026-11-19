@@ -174,7 +174,10 @@ The Dhir rows above are our own runs on the same lines, tune and held-out, one r
 - Speed: about 23 to 25 s per line, about 2.4 times slower than Qwen3 1.7B (about 10 s) and about 2 times faster than Gemma 2 2B
   (about 50 s). The engines differ (llama-server against LM Studio), and the PC was in use, so seconds are indicative only.
 - Not like for like: Dhir ran in a later round, on a different engine and quantisation, and without the `/no_think` switch
-  (Dhir has none). Its spurious values (5 in Marathi, 7 in Hindi over 27 lines) are not compared with the other rows here.
+  (Dhir has none). Invented values ("spurious", over the 27 lines): Dhir 5 in Marathi and 7 in Hindi, Qwen3 1.7B 6 and 6, Gemma 2 2B 1 and 1. For a form this is the dangerous error, because a wrong value looks like a right one until the person confirms it. In Hindi, Gemma is ahead of Dhir on fixes per utterance (0.26 against 0.48), on lines fully correct (21 against 17 of 27) and on invented values; accuracy is level (0.967). In Marathi, Dhir leads on accuracy and fixes (0.41 against 0.56) and is level on lines fully correct (19 against 18).
+- The demo page was smoke-tested with `VOICEFORM_MODEL=dhir-2b` through Streamlit's test runner (typed Marathi sentence, no
+  browser, no microphone): no error, the name, phone, village and problem filled, the sidebar names Dhir, 17.3 s for the
+  form filling, 0 blocked and 2 local connections. The microphone path was not run with Dhir.
 - The default stays Qwen3 1.7B (the author's speed choice of 2026-10-26); Dhir is the accuracy option for Marathi. Nothing is
   measured on real speech yet.
 

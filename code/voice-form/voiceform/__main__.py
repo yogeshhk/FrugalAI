@@ -17,6 +17,7 @@ import sys
 
 
 def _llm(model):
+    from . import config
     from .llm import LLM
 
     llm = LLM(model)
