@@ -16,3 +16,14 @@ def test_llm_client_picks_the_url_from_the_model_id():
 
 def test_default_model_stays_qwen():
     assert "qwen" in config.DEFAULT_LLM.lower()
+
+
+def test_page_uses_dhir_for_marathi_when_its_server_runs():
+    assert config.model_for_lang("mr") == config.DHIR_MODEL
+    assert config.model_for_lang("hi") == config.DEFAULT_LLM
+
+
+def test_page_falls_back_to_qwen_when_the_dhir_server_is_not_running():
+    only_lm_studio = lambda model: model != config.DHIR_MODEL
+    assert config.model_for_lang("mr", only_lm_studio) == config.DEFAULT_LLM
+    assert config.model_for_lang("hi", only_lm_studio) == config.DEFAULT_LLM

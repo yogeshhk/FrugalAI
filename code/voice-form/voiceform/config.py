@@ -30,6 +30,18 @@ def url_for(model: str) -> str:
     """Dhir 2B is served by llama-server on its own port; every other model comes from LM Studio."""
     return DHIR_URL if model == DHIR_MODEL else LLM_URL
 
+
+# The demo page's model per language (author's choice of 2026-11-19: Dhir 2B for Marathi, the most accurate on the script
+# text). Any language not listed uses DEFAULT_LLM. The command line is unaffected: it uses --model, default Qwen.
+PREFERRED_BY_LANG = {"mr": DHIR_MODEL}
+
+
+def model_for_lang(lang: str, served=lambda model: True) -> str:
+    """The model the page uses for a language: the preferred one when its server is running (`served(model)` says so),
+    otherwise DEFAULT_LLM, so a machine without the custom llama-server still works."""
+    preferred = PREFERRED_BY_LANG.get(lang, DEFAULT_LLM)
+    return preferred if served(preferred) else DEFAULT_LLM
+
 # Speech-to-text backends. "langs" is what the model was trained or fine-tuned for.
 ASR_MODELS = {
     "vosk-small-hi": {

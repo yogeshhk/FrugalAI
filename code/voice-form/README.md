@@ -177,8 +177,17 @@ The Dhir rows above are our own runs on the same lines, tune and held-out, one r
   (Dhir has none). Invented values ("spurious", over the 27 lines): Dhir 5 in Marathi and 7 in Hindi, Qwen3 1.7B 6 and 6, Gemma 2 2B 1 and 1. For a form this is the dangerous error, because a wrong value looks like a right one until the person confirms it. In Hindi, Gemma is ahead of Dhir on fixes per utterance (0.26 against 0.48), on lines fully correct (21 against 17 of 27) and on invented values; accuracy is level (0.967). In Marathi, Dhir leads on accuracy and fixes (0.41 against 0.56) and is level on lines fully correct (19 against 18).
 - The demo page was smoke-tested with `VOICEFORM_MODEL=dhir-2b` through Streamlit's test runner (typed Marathi sentence, no
   browser, no microphone): no error, the name, phone, village and problem filled, the sidebar names Dhir, 17.3 s for the
-  form filling, 0 blocked and 2 local connections. The microphone path was not run with Dhir.
-- The default stays Qwen3 1.7B (the author's speed choice of 2026-10-26); Dhir is the accuracy option for Marathi. Nothing is
+  form filling, 0 blocked and 2 local connections. Two of the author's own Marathi sample recordings (ASHA visit form) were
+  also run through the page, speech to text then Dhir: the transcripts were right and so were the fields (name, age, village,
+  weeks, blood pressure, weight; then name, age, village, phone, weeks, haemoglobin), with speech to text 1.7 to 4.0 s and form
+  filling 28 to 32 s, 0 blocked connections. The second run kept values from the first (the page treats a
+  second recording as a follow-up), which is the page's design and not a model error. The browser microphone widget itself
+  was not used; it hands the same audio to the same code.
+- The demo page now uses **Dhir 2B for Marathi** (the author's choice of 2026-11-19, for its accuracy) and Qwen3 1.7B for
+  Hindi. If the Dhir server is not running, the page falls back to Qwen3 and says so in the sidebar, so a clone without the
+  custom llama-server still works; `VOICEFORM_MODEL=<id>` forces one model for every language. The command line is
+  unchanged: `--model` decides, default Qwen3 1.7B (the author's speed choice of 2026-10-26). Dhir invents more values than
+  Gemma (see above), so the confirm screen matters most on the Marathi path. Nothing is
   measured on real speech yet.
 
 ## Limits and safety

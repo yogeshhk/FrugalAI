@@ -124,6 +124,23 @@ lookup 5 / 7 / 7 of 7, subtopics 5 / 19 / 20 of 22, numbers 5 / 6 / 9 of 9, outc
 needed no model at all (status, lists, lookups, numbers, references and cross-course questions); only subtopic and
 outcome questions and the retrieval fallback call Qwen.
 
+### The agent with Dhir 2B (2026-11-19, one run)
+
+Same agent, same cards and sets, with Dhir 2B (Q8_0, ZenteiQ's llama-server) as the model instead of Qwen3 1.7B; embeddings from
+the cache. Run with `python eval/run_other_model.py dhir-2b http://localhost:1236/v1 results_dhir agent dev,heldout`, results in
+`results_dhir/`.
+
+| Model | Tuned set | Held-out set | Model calls per question | Seconds per question |
+|-------|-----------|--------------|--------------------------|----------------------|
+| Qwen3 1.7B (above) | 0.975 | 0.933 | 0.36 / 0.37 | 1.3 / 1.1 |
+| Dhir 2B | 0.938 | 0.933 | 0.36 / 0.47 | 2.9 / 3.1 |
+
+Held-out is level, and the tuned set is lower by about four points (three questions in eighty). The share answered with no
+model is the same (0.64), as expected, because the code answers those. Dhir is slower here, and the seconds are indicative only
+(a different engine, and the server was also answering a page test during the run). The naive and structure RAG systems were not
+run with Dhir (stopped on purpose: they call the model for every question, about 19 s each); there is no Dhir row for them.
+On this task Dhir offers no gain over Qwen3 1.7B.
+
 ### Where the agent is wrong
 
 Four of the 110 questions: it lists three of four phonon topics (m17) and drops the spectrum analyser from the RF

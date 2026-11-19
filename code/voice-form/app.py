@@ -3,7 +3,8 @@
     streamlit run app.py
 
 Speak (browser microphone), play one of the author's sample recordings, or type. Speech to text runs in this Python
-process (IndicConformer 600M on the CPU); the one language model runs in LM Studio on this machine. Nothing is saved
+process (IndicConformer 600M on the CPU); the language model is Dhir 2B in llama-server for Marathi when that server runs,
+otherwise Qwen3 1.7B in LM Studio (VOICEFORM_MODEL forces one). Nothing is saved
 until a person presses Confirm, and then only to local files in outbox/. The page refuses every connection that is
 not to this machine. Data entry only: no advice, no diagnosis (docs/safety.md).
 """
@@ -36,15 +37,11 @@ LANGS = {"mr": "Marathi", "hi": "Hindi"}
 MARK = {FILLED: ("ok", "filled"), UNCERTAIN: ("warn", "check"), INVALID: ("bad", "invalid"), MISSING: ("", "missing")}
 
 demo.page(st, "Speak a form", "Marathi or Hindi speech in, a checked form out. One laptop, no internet.")
-MODEL = os.environ.get("VOICEFORM_MODEL", config.DEFAULT_LLM)    # set VOICEFORM_MODEL=dhir-2b to try Dhir 2B
-FILL_NOTE = ("Dhir 2B (GGUF) in llama-server" if MODEL == config.DHIR_MODEL
-             else "Qwen3 1.7B (Q4_K_M) in LM Studio" if MODEL == config.DEFAULT_LLM else "%s in LM Studio" % MODEL)
+EXPLICIT_MODEL = os.environ.get("VOICEFORM_MODEL")    # forces one model for every language, for example gemma-2-2b-it
 
-demo.sidebar(st, {"form filling": MODEL}, note="Speech to text: %s. Form filling: %s." % (ASR_LABEL, FILL_NOTE))
 
-if demo.lm_models(config.url_for(MODEL)) is None:
-    st.error("The language model server is not running at %s. Start it and load %s." % (config.url_for(MODEL), MODEL))
-    st.stop()
+def served(model: str) -> bool:
+    return demo.lm_models(config.url_for(model)) is not None
 
 
 @st.cache_resource(show_spinner="Loading the speech model (about 30 s, once)...")
@@ -55,10 +52,10 @@ def asr_backend():
 
 
 @st.cache_resource
-def llm():
+def llm(model: str):
     from voiceform.llm import LLM
 
-    return LLM(MODEL)
+    return LLM(model)
 
 
 @st.cache_data
@@ -90,6 +87,19 @@ form_id = c1.selectbox("Form", list(forms), index=list(forms).index("asha_anc_vi
                        format_func=lambda k: forms[k].title)
 lang = c2.radio("Language", list(LANGS), format_func=LANGS.get, horizontal=True)
 form = forms[form_id]
+
+# The model follows the language (Dhir 2B for Marathi when its server runs, otherwise Qwen3), unless VOICEFORM_MODEL forces one.
+MODEL = EXPLICIT_MODEL or config.model_for_lang(lang, served)
+FILL_NOTE = ("Dhir 2B (GGUF) in llama-server" if MODEL == config.DHIR_MODEL
+             else "Qwen3 1.7B (Q4_K_M) in LM Studio" if MODEL == config.DEFAULT_LLM else "%s in LM Studio" % MODEL)
+demo.sidebar(st, {"form filling": MODEL}, note="Speech to text: %s. Form filling: %s." % (ASR_LABEL, FILL_NOTE))
+if not EXPLICIT_MODEL and MODEL != config.PREFERRED_BY_LANG.get(lang, MODEL):
+    st.sidebar.caption("Dhir 2B is preferred for this language, but its server is not running, so Qwen3 is used "
+                       "(see code/dhir-server/README.md).")
+if not served(MODEL):
+    st.error("The language model server is not running at %s. Start it and load %s." % (config.url_for(MODEL), MODEL))
+    st.stop()
+
 if form.data_entry_only:
     st.caption("Data entry only: the page records what was said. It gives no advice and judges nothing. "
                "Simplified demonstration form, synthetic data.")
@@ -105,7 +115,7 @@ def run(wav=None, text=None, source=""):
 
     asr = asr_backend() if wav is not None else None
     with st.spinner("Listening and filling the form..."):
-        turn = pipeline.run(form, lang, wav=wav, text=text, asr=asr, route="direct", llm=llm(),
+        turn = pipeline.run(form, lang, wav=wav, text=text, asr=asr, route="direct", llm=llm(MODEL),
                             previous=state.get("turn").record if state.get("turn") else None,
                             today=_dt.date.today())
     state.update(turn=turn, saved=None, heard=source, followup=state.get("turn") is not None)
