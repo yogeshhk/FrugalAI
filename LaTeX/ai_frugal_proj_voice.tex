@@ -9,7 +9,7 @@
 {\Large Project: Speak a Form}
 
 \medskip
-{\small (Marathi or Hindi speech in, a checked form out, fully offline)}
+{\small (Marathi or Hindi speech in, a checked form out, on a laptop with no internet at run time)}
 \end{center}
 \end{frame}
 
@@ -101,9 +101,9 @@ Dhir 2B & 0.97 & 0.97 & 24 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]\frametitle{Design Rules and Safety}
 \begin{itemize}
-\item Offline: any attempt to reach another machine is blocked and counted.
+\item Offline at run time, after a one-time model download: any attempt by the app to reach another machine is blocked and counted.
 \item Every value shows the words it came from, so a person can catch a misheard number.
-\item Nothing is saved until a person confirms.
+\item Nothing is saved until a person confirms and every required field is valid.
 \item Data entry only: no advice, no diagnosis, no dosing.
 \item The forms are simplified demonstrations with made-up data, not official forms.
 \end{itemize}
