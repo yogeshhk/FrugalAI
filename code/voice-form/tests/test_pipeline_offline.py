@@ -10,6 +10,7 @@ from voiceform import audio, config, netguard, pipeline, sinks
 from voiceform.asr import FakeASR
 from voiceform.evaluate import cer, eval_extract, score_record, summarise, wer
 from voiceform.llm import FakeLLM
+from voiceform.record import INVALID, FieldValue
 from voiceform.schema import load_forms
 
 TODAY = dt.date(2026, 10, 31)
@@ -89,6 +90,20 @@ def test_sinks_refuse_unconfirmed_and_write_locally(tmp_path):
         row = con.execute('SELECT customer_name, phone FROM "service_ticket"').fetchone()
     assert row == ("हरी गावडे", "9404040411")
     assert "Nothing was sent" in out["api"].read_text(encoding="utf-8")
+
+
+def test_sinks_refuse_confirmed_but_invalid_record(tmp_path):
+    turn = pipeline.run(TICKET, "mr", text=SAID, llm=FakeLLM([_ticket_reply()]), today=TODAY)
+    rec = turn.record
+    assert rec.missing_required(TICKET) == []           # the valid record is accepted (see the test above)
+    rec.fields["phone"] = FieldValue(name="phone", value=None, status=INVALID, note="not a 10-digit mobile number")
+    rec.confirmed = True
+    with pytest.raises(sinks.InvalidRecord, match="phone"):
+        sinks.send(rec, TICKET, outbox=tmp_path)
+    rec.fields["village"] = FieldValue(name="village")  # a missing required field is refused too
+    with pytest.raises(sinks.InvalidRecord, match="village"):
+        sinks.send(rec, TICKET, outbox=tmp_path)
+    assert not any(tmp_path.iterdir())                   # nothing was written
 
 
 def test_wer_and_cer():

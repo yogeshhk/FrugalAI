@@ -203,7 +203,9 @@ st.markdown('<div class="note">This run: %s. Internet connections: %d blocked, %
             unsafe_allow_html=True)
 
 c1, c2 = st.columns([1, 3])
-if c1.button("Confirm and save", type="primary", disabled=bool(state.get("saved"))):
+still_needed = rec.missing_required(form)
+if c1.button("Confirm and save", type="primary", disabled=bool(state.get("saved")) or bool(still_needed),
+             help="Available when every required field is filled and valid." if still_needed else None):
     from voiceform.sinks import send
 
     rec.confirmed = True

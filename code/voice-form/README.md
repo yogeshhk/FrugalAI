@@ -3,16 +3,23 @@
 > Status: built: yes | measured: extraction on script text only (round 2 partial), a 3-recording pilot on real speech (too few to report as accuracy) | reviewed-by-author: no
 > (the scripts were drafted by Claude) | needs LM Studio: yes for extraction runs and `fill`; the tests do not
 
-A field worker speaks in Marathi or Hindi; a small offline pipeline fills a form, shows where each value came from,
-asks for what is missing, and saves the record only after the worker confirms it. Speech-to-text, the normalising and
-the checks run on the laptop; the one language model runs in LM Studio on the same machine. No cloud call at any step.
+A field worker speaks in Marathi or Hindi; a small pipeline fills a form, shows where each value came from,
+asks for what is missing, and saves the record only after the worker confirms it and every required field is valid.
+Speech-to-text, the normalising and the checks run on the laptop; the one language model runs in LM Studio (or
+llama-server) on the same machine.
+
+**What "offline" means here.** After a one-time model download (`python -m voiceform download`, needs internet), the
+pipeline runs offline on a laptop CPU: no cloud call is made at run time. The offline guard (`netguard.py`) covers
+this Python process only; the ffmpeg child process that decodes audio is outside it (it is started with a local file
+only). Phone-class hardware is a goal, not yet shown: nothing here has been run on a phone or a Raspberry Pi.
 
 Why it matters: ASHA workers, booth-level officers and field technicians fill long forms on a phone, often in a
 second language, often while standing. Speaking is faster than typing Devanagari, and a form filled from speech is a
 structured record any database, CRM or API can take.
 
 ## Problem and scope
-In: speech (or typed text) in Marathi, Hindi or English, and a form defined in one YAML file.
+In: speech in Marathi or Hindi (the page offers only these two for speech; English is typed input only), and a form
+defined in one YAML file.
 Out: a checked record, a plain English request ("Create one 'Field service ticket' record. Customer name: ..."), the
 follow-up questions for missing fields, and, after confirmation, local files for four sinks (form JSON, SQLite, a CRM
 contact plus activity, an API payload that is written down and never sent).
@@ -24,7 +31,7 @@ contact plus activity, an API payload that is written down and never sent).
 | Which words are which field | the small model, which must quote the words each value came from |
 | Types, ranges, "is the quote really in the transcript" | plain code (`record.py`) |
 | Follow-up questions, English request | plain code, from the checked values |
-| Saving | plain code, refused until a person confirms |
+| Saving | plain code, refused until a person confirms and every required field is valid |
 
 Not in scope: advice of any kind. The ASHA form is data entry only (`docs/safety.md`): no diagnosis, no dosing, no
 danger-sign logic. All three forms are simplified demonstrations, not official forms, and all data is synthetic.
@@ -67,7 +74,7 @@ for speaking, not for listening. It is a slot to fill if the weights become avai
 | `voiceform/asr.py` | speech backends behind one interface |
 | `voiceform/netguard.py` | blocks and counts any connection that is not to this machine |
 | `voiceform/pipeline.py` | speech or text to an unconfirmed record, inside the guard |
-| `voiceform/sinks.py` | form JSON, SQLite, CRM record, API payload; refuses an unconfirmed record |
+| `voiceform/sinks.py` | form JSON, SQLite, CRM record, API payload; refuses an unconfirmed record, and a confirmed one with a required field missing or invalid |
 | `voiceform/evaluate.py` | speech and extraction evaluation; `report` writes `results/RESULTS.md` |
 | `voiceform/recording.py`, `smoke.py` | recording sheet and importer; machine-voice smoke audio |
 | `eval/scripts/mr.yaml`, `hi.yaml` | 33 lines per language: 18 tune, 9 held-out, 6 free-speech cards, with gold values |
@@ -78,7 +85,8 @@ for speaking, not for listening. It is a slot to fill if the weights become avai
 `conda run -n genai streamlit run app.py` from `code/voice-form`, with LM Studio serving Qwen3 1.7B. Speak into the
 browser microphone, play one of your own sample recordings (`eval/audio/`, local only), or type. The page shows the
 transcript, each field with the words it came from, the follow-up questions and the English request, and saves to
-`outbox/` only after "Confirm and save". The side panel shows the machine (CPU, RAM, GPU), the Wi-Fi state and the
+`outbox/` only after "Confirm and save", a button that stays disabled until every required field is filled and valid
+(`sinks.send` checks the same and raises `InvalidRecord` otherwise). The side panel shows the machine (CPU, RAM, GPU), the Wi-Fi state and the
 blocked-connection counter. Speech to text uses IndicConformer on the CPU.
 
 ![The voice-form page after a Marathi sample recording](../../docs/images/frugal_voice_filled.png)
@@ -180,7 +188,8 @@ The Dhir rows above are our own runs on the same lines, tune and held-out, one r
   form filling, 0 blocked and 2 local connections. Two of the author's own Marathi sample recordings (ASHA visit form) were
   also run through the page, speech to text then Dhir: the transcripts were right and so were the fields (name, age, village,
   weeks, blood pressure, weight; then name, age, village, phone, weeks, haemoglobin), with speech to text 1.7 to 4.0 s and form
-  filling 28 to 32 s, 0 blocked connections. The second run kept values from the first (the page treats a
+  filling 28 to 32 s, 0 blocked connections. These timings are from two scripted sample recordings (one speaker, the author), on the
+  main PC (Windows, 10 cores, 16 GB, CPU only; see the repository README), not measured on real field speech. The second run kept values from the first (the page treats a
   second recording as a follow-up), which is the page's design and not a model error. The browser microphone widget itself
   was not used; it hands the same audio to the same code.
 - The demo page now uses **Dhir 2B for Marathi** (the author's choice of 2026-11-19, for its accuracy) and Qwen3 1.7B for

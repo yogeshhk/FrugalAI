@@ -5,7 +5,9 @@ sqlite  outbox/voiceform.db                    one table per form, one column pe
 crm     outbox/crm/<time>.json                 a contact plus an activity, the shape most CRMs import
 api     outbox/api/<time>.json                 method, URL and JSON body of the request a real system would get
 
-A record that a person has not confirmed is refused: nothing leaves the screen without a human check.
+A record that a person has not confirmed is refused: nothing leaves the screen without a human check. A confirmed
+record is also refused unless every required field is present and valid (the same check that drives the follow-up
+questions, `Record.missing_required`).
 """
 
 import datetime as _dt
@@ -22,6 +24,10 @@ SINKS = ("form", "sqlite", "crm", "api")
 
 
 class NotConfirmed(PermissionError):
+    pass
+
+
+class InvalidRecord(ValueError):
     pass
 
 
@@ -79,4 +85,7 @@ _FUNCS = {"form": to_form, "sqlite": to_sqlite, "crm": to_crm, "api": to_api}
 def send(record: Record, form: FormSpec, sinks=SINKS, outbox: Path = config.OUTBOX_DIR) -> Dict[str, Path]:
     if not record.confirmed:
         raise NotConfirmed("a person must confirm the record before it is saved anywhere")
+    missing = record.missing_required(form)
+    if missing:
+        raise InvalidRecord("record is not valid, required fields missing or invalid: " + ", ".join(missing))
     return {s: _FUNCS[s](record, form, Path(outbox)) for s in sinks}
