@@ -1,6 +1,6 @@
-"""Embeddings through an OpenAI-compatible server (LM Studio, nomic-embed-text-v1.5) with an on-disk cache, plus an
-offline fake for tests. Needs `langchain-core` (and `langchain-openai` for the real server); import it only from
-projects that already use LangChain.
+"""Embeddings for projects that use LangChain: any kind from `embedder.py` (LM Studio, a GGUF inside the program)
+with an on-disk cache, plus an offline fake for tests. Start from make_embeddings(cfg, cache_file). Needs
+`langchain-core`; only the older lm_studio_embeddings also needs `langchain-openai`.
 
 LangChain's OpenAIEmbeddings talks to any OpenAI-compatible server. The cache means each distinct text is embedded
 once, so re-running an evaluation does not hit the server (and the CPU) again.
@@ -52,6 +52,42 @@ class CachedEmbeddings(Embeddings):
 
     def embed_query(self, text: str) -> List[float]:
         return self._embed([text], query=True)[0]
+
+
+class EmbedderAsLangChain(Embeddings):
+    """Any frugalai_common.embedder kind (http, llama_cpp) as a LangChain Embeddings object. No prefixes added here:
+    CachedEmbeddings adds them."""
+
+    def __init__(self, embedder):
+        self.embedder = embedder
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        return self.embedder(list(texts))
+
+    def embed_query(self, text: str) -> List[float]:
+        return self.embedder([text])[0]
+
+
+def make_embeddings(cfg: dict, cache_file: Optional[Path] = None, batch: int = 16):
+    """The embeddings a config section asks for, as LangChain Embeddings:
+    http or llama_cpp (cached on disk), hash or fake (offline stand-in, no cache), none (None).
+
+    The section is {"kind", "model", "url", "gguf", "doc_prefix", "query_prefix"}; see frugalai_common.embedder.
+    A llama_cpp run caches into its own file next to `cache_file`, so vectors from two runtimes never mix.
+    """
+    from .embedder import make_embedder
+
+    kind = cfg.get("kind", "http")
+    if kind in ("hash", "fake"):
+        return HashEmbeddings()
+    embedder = make_embedder(cfg)
+    if embedder is None:
+        return None
+    cache = Path(cache_file or "embeddings.json")
+    if kind != "http":
+        cache = cache.with_name("%s.%s%s" % (cache.stem, kind, cache.suffix))
+    return CachedEmbeddings(EmbedderAsLangChain(embedder), cache, doc_prefix=cfg.get("doc_prefix", DOC_PREFIX),
+                            query_prefix=cfg.get("query_prefix", QUERY_PREFIX), batch=batch)
 
 
 def lm_studio_embeddings(cache_file: Path, model: Optional[str] = None, url: Optional[str] = None,

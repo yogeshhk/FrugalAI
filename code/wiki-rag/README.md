@@ -44,7 +44,7 @@ another config file.
 | `config.yaml` | choices: notes folder, top-k, answer model, embedding model |
 | `wikirag/config.py` | loads the config (env variables `FRUGALAI_*` still win) |
 | `wikirag/core.py` | `WikiRag`, the one class the pages and tests use |
-| `wikirag/embedder.py` | embedding kinds behind one callable |
+| `../common/frugalai_common/embedder.py` | embedding kinds behind one callable (shared by every project) |
 | `app.py`, `app_flet.py` | Streamlit page (kept) and Flet page |
 | `wikirag/index.py`, `bm25.py`, `router.py`, `answer.py` | index, search, calculator route, prompt |
 

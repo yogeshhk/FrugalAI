@@ -53,7 +53,7 @@ def llm_settings(settings: dict) -> dict:
 
 
 def embedder_settings(settings: dict) -> dict:
-    """The section for wikirag.embedder.make_embedder, with the .gguf path made absolute."""
+    """The section for frugalai_common.embedder.make_embedder, with the .gguf path made absolute."""
     s = dict(settings["embedder"])
     s["gguf"] = str(resolve(s["gguf"])) if s.get("gguf") else ""
     return s

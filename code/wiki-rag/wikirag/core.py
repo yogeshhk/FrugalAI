@@ -23,7 +23,7 @@ from frugalai_common.chat import make_chat
 
 from . import config
 from .answer import SYSTEM, build_prompt, strip_think
-from .embedder import make_embedder
+from frugalai_common.embedder import make_embedder
 from .index import WikiIndex
 from .router import route, safe_eval
 

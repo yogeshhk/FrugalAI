@@ -12,9 +12,10 @@ llm:
 
 # The embedding model (dense retrieval). The cache means each text is embedded once.
 embed:
-  kind: http                        # http: the same server as the language model | hash: offline word-hash vectors (tests)
+  kind: http                        # http: the same server as the language model | llama_cpp: an embedding .gguf in this program | hash: offline word-hash vectors (tests)
   model: text-embedding-nomic-embed-text-v1.5
   url: ""                           # empty: use llm.url
+  gguf: ""                          # llama_cpp: path to an embedding .gguf file (its vectors are cached in a separate file)
   cache: parsed/embeddings.json
 
 # How the demo page retrieves for the "with RAG" answer.

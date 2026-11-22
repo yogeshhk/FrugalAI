@@ -13,9 +13,10 @@ llm:
 
 # The embedding model (FAQ intake only).
 embedding:
-  kind: http                        # http: an OpenAI-compatible server on this machine | fake: hashed words, offline, weak
+  kind: http                        # http: an OpenAI-compatible server on this machine | llama_cpp: an embedding .gguf in this program | fake: hashed words, offline, weak
   model: text-embedding-nomic-embed-text-v1.5
   url: http://localhost:1234/v1
+  gguf: ""                          # llama_cpp: path to an embedding .gguf file (its vectors are cached in a separate file)
   cache: cache/embeddings.json      # each distinct text is embedded once
   batch: 8
 

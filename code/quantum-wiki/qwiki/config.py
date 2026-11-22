@@ -18,7 +18,7 @@ def load_settings(path: Path = CONFIG_FILE) -> dict:
     """The config file as a dict, with defaults for anything it leaves out."""
     defaults = {
         "llm": {"kind": "http", "model": shared.CHAT_MODEL, "url": shared.LLM_URL, "gguf": "", "max_tokens": 400},
-        "embed": {"kind": "http", "model": shared.EMBED_MODEL, "url": "", "cache": "parsed/embeddings.json"},
+        "embed": {"kind": "http", "model": shared.EMBED_MODEL, "url": "", "gguf": "", "cache": "parsed/embeddings.json"},
         "retrieval": {"mode": "dense", "k": 4},
         "pdf": "../../../TeachingQuantumTech/Admin/Syllabus/AICTE Minor Quantum Technologies.pdf",
         "pages": [[14, 14], [16, 37]],
@@ -59,6 +59,7 @@ EMBED_KIND = _EMBED["kind"]
 EMBED_MODEL = os.environ.get("QWIKI_EMBED_MODEL", _EMBED["model"])
 EMBED_URL = os.environ.get("QWIKI_LLM_URL", _EMBED["url"] or _LLM["url"])
 EMBED_CACHE = resolve(_EMBED["cache"])
+EMBED_GGUF = str(resolve(_EMBED["gguf"])) if _EMBED.get("gguf") else ""
 MAX_TOKENS = int(_LLM["max_tokens"])
 RETRIEVAL_MODE = SETTINGS["retrieval"]["mode"]
 RETRIEVAL_K = int(SETTINGS["retrieval"]["k"])

@@ -8,7 +8,7 @@ import yaml
 from frugalai_common.llm import ScriptedChat
 from wikirag import config
 from wikirag.core import WikiRag
-from wikirag.embedder import HashEmbedder, make_embedder
+from frugalai_common.embedder import HashEmbedder, make_embedder
 
 RECIPE = Path(__file__).resolve().parents[1]
 SAMPLE = RECIPE / "sample_wiki"

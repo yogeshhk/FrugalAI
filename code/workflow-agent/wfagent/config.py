@@ -62,6 +62,7 @@ def embed_settings(settings: Optional[dict] = None) -> dict:
     s["url"] = _env("FAQINTAKE_LLM_URL", "FRUGALAI_LLM_URL") or s["url"]
     s["model"] = _env("FAQINTAKE_EMBED_MODEL", "FRUGALAI_EMBED_MODEL") or s["model"]
     s["cache"] = str(resolve(s["cache"]))
+    s["gguf"] = str(resolve(s["gguf"])) if s.get("gguf") else ""
     return s
 
 

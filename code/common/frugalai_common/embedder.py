@@ -1,34 +1,37 @@
-"""The embedding model, chosen in config.yaml (`embedder.kind`). Every kind is a callable: texts in, vectors out.
+"""The embedding model, chosen in a project's config.yaml. Every kind is a callable: texts in, vectors out.
 
     http        an OpenAI-compatible server on this machine (LM Studio, llama-server with --embedding)
-    llama_cpp   an embedding .gguf file loaded inside this process (llama-cpp-python), no server
-    hash        tiny offline stand-in (words hashed into a vector): for tests and demos, not for real search
+    llama_cpp   an embedding .gguf file loaded inside this process (llama-cpp-python), no server.
+                The route for a phone or a Raspberry Pi.
+    hash        tiny offline stand-in (words hashed into a vector): for tests and demos, not for real search.
+                "fake" is the same kind.
     none        no embeddings: search by words only (make_embedder returns None)
 
+No LangChain here. Projects that use LangChain wrap this with a disk cache: frugalai_common.embed.make_embeddings.
 The object also carries `doc_prefix`, `query_prefix` (nomic models want them), `note` (a line for the page) and
-`available()`.
+`available()`. Moved here from code/wiki-rag on 2026-11-22 so every project uses one copy.
 """
 
 import hashlib
 import math
 import re
+import threading
 from pathlib import Path
 from typing import List, Optional
 
 import requests
 
-KINDS = ("http", "llama_cpp", "hash", "none")
+KINDS = ("http", "llama_cpp", "hash", "fake", "none")
 
 
 class Embedder:
     kind = ""
+    note = ""
 
     def __init__(self, cfg: dict):
         self.model = cfg.get("model", "")
         self.doc_prefix = cfg.get("doc_prefix", "")
         self.query_prefix = cfg.get("query_prefix", "")
-
-    note = ""
 
     def available(self) -> bool:
         return True
@@ -53,10 +56,14 @@ class HttpEmbedder(Embedder):
             return False
 
     def __call__(self, texts):
-        r = requests.post(self.url + "/embeddings", json={"model": self.model, "input": texts}, timeout=300)
+        r = requests.post(self.url + "/embeddings", json={"model": self.model, "input": list(texts)}, timeout=300)
         r.raise_for_status()
         items = sorted(r.json().get("data", []), key=lambda d: d.get("index", 0))
         return [d["embedding"] for d in items]
+
+
+_LOADED = {}               # one llama.cpp embedding model per .gguf file per process
+_LOCK = threading.Lock()   # one call at a time: a loaded model must not be used by two threads at once
 
 
 class LlamaCppEmbedder(Embedder):
@@ -64,21 +71,22 @@ class LlamaCppEmbedder(Embedder):
 
     def __init__(self, cfg: dict):
         super().__init__(cfg)
-        self.gguf = str(cfg.get("gguf", ""))
+        self.gguf = str(cfg.get("gguf", "") or "")
         self.note = "%s, inside this program" % (Path(self.gguf).name or "no .gguf set")
-        self._llama = None
 
     def available(self) -> bool:
         return bool(self.gguf) and Path(self.gguf).is_file()
 
     def __call__(self, texts):
-        if self._llama is None:
-            if not self.available():
-                raise FileNotFoundError("no embedding model file at %r; set embedder.gguf in the config file" % self.gguf)
-            from llama_cpp import Llama   # imported here so the other kinds work without llama-cpp-python
+        with _LOCK:
+            if self.gguf not in _LOADED:
+                if not self.available():
+                    raise FileNotFoundError("no embedding model file at %r; set the embedding gguf in the config file"
+                                            % self.gguf)
+                from llama_cpp import Llama   # imported here so the other kinds work without llama-cpp-python
 
-            self._llama = Llama(model_path=self.gguf, embedding=True, verbose=False)
-        data = self._llama.create_embedding(input=list(texts))["data"]
+                _LOADED[self.gguf] = Llama(model_path=self.gguf, embedding=True, verbose=False)
+            data = _LOADED[self.gguf].create_embedding(input=list(texts))["data"]
         return [d["embedding"] for d in sorted(data, key=lambda d: d.get("index", 0))]
 
 
@@ -110,6 +118,6 @@ def make_embedder(cfg: dict) -> Optional[Embedder]:
         return HttpEmbedder(cfg)
     if kind == "llama_cpp":
         return LlamaCppEmbedder(cfg)
-    if kind == "hash":
+    if kind in ("hash", "fake"):
         return HashEmbedder(cfg)
-    raise ValueError("embedder kind must be one of %s, not %r" % (KINDS, kind))
+    raise ValueError("embedding kind must be one of %s, not %r" % (KINDS, kind))
