@@ -178,3 +178,5 @@ Size: small is an evening, medium is a weekend, large is a few weekends.
 
 ### Obsidian plugin or a small web page (large)
 - Wrap `ask` in a local page or plugin. It must stay offline and show the source note for every answer.
+
+Flet live check with LM Studio, 2026-11-22: passed (page built, startup sync, one question answered with a source note, no traceback).

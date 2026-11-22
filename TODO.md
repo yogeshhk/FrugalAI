@@ -11,11 +11,12 @@ None before the Dec 12 talk (the voice-form page was run by hand on 2026-11-21: 
 
 ## Open: refactor to core class, config.yaml and Flet page (2026-11-22; plan `code/voice-form/docs/refactor-report.md`)
 All five demo projects now have one core class, a `config.yaml`, a Streamlit `app.py` (kept) and a Flet `app_flet.py`;
-the deck shows the voice-form Flet page (Streamlit frames kept, commented). Embeddings come from one shared
+the deck keeps the Streamlit pictures (author's choice; Flet frames kept, commented, as an alternative). Embeddings come from one shared
 `frugalai_common/embedder.py` (http, llama_cpp, hash, none); wiki-rag answered end to end with chat and embeddings both
 from GGUF files inside Python, no server. `code/common` is installed editable in genai. Suite: 422 passed, 16 skipped.
-- [ ] Try each Flet page by hand with LM Studio running (only voice-form's was run live, with the GGUF route; the other
-  four were checked against fakes only).
+- [x] All five Flet pages ran live through a script driver (LM Studio on; finetune-slm needs none), one question or case
+  each, no traceback; a script driver must not `time.sleep` in the Flet main. Still unchecked: a human click-through of a real
+  window, the workflow-agent "Already covered?" tab, voice-form Confirm and Marathi.
 - [ ] Before the Dec 12 talk: check `_scripts/record_demo.py` still drives each `app.py` with LM Studio running (labels
   were kept, not re-run). A scripted try on 2026-11-22 was stopped: a page took more than 2 minutes to answer under
   `conda run`, so wait up to 5 minutes, probe 127.0.0.1, and stop each page by its port before starting the next.

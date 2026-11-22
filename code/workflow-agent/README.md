@@ -74,6 +74,7 @@ else `sample_faqs/`. `make_graph_figures.py` draws the workflow pictures used in
 Run the Flet page instead: `conda run -n genai python app_flet.py` from `code/workflow-agent/`. It shows the same two
 tabs, built with Flet (a desktop window today, the start of an Android app). One-time note: Flet's desktop window
 program is already cached in `~/.flet`, so nothing is downloaded; the offline guard stays on.
+Flet live check with LM Studio, 2026-11-22: page built, status line showed both models ready, one Helpline case (wheat price) ran through the page in 6.0 s with 2 model calls, no traceback; FAQ tab not exercised.
 
 ### Layout and choices
 

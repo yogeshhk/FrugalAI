@@ -162,14 +162,19 @@ def wait_text(page: Page, text: str, timeout: float = 600):
     raise RuntimeError("timed out waiting for %r" % text)
 
 
-def click(page: Page, text: str):
-    ok = page.js("""(() => { const t = %s;
+def click(page: Page, text: str, timeout: float = 20):
+    """Click the last button (or tab, or summary) showing `text`; a page may draw its buttons a few seconds after its
+    title, so look again for up to `timeout` seconds before giving up."""
+    script = """(() => { const t = %s;
         const els = [...document.querySelectorAll('button, [role="tab"], summary')].filter(b =>
             b.innerText.trim() === t || (b.tagName === 'SUMMARY' && b.innerText.trim().endsWith(t)));
         if (!els.length) return false; const b = els[els.length - 1];
-        b.scrollIntoView({block: 'center'}); b.click(); return true; })()""" % json.dumps(text))
-    if not ok:
-        raise RuntimeError("no button %r" % text)
+        b.scrollIntoView({block: 'center'}); b.click(); return true; })()""" % json.dumps(text)
+    t0 = time.time()
+    while not page.js(script):
+        if time.time() - t0 > timeout:
+            raise RuntimeError("no button %r" % text)
+        time.sleep(0.7)
 
 
 def scroll_to(page: Page, text: str, above: int = 140):

@@ -216,3 +216,5 @@ Size: small is an evening, medium is a weekend, large is a few weekends.
 
 ### Cards for a different course catalogue (large)
 - Generalise the course card into a schema file so a new catalogue needs a YAML description and not new code.
+
+Flet live check with LM Studio, 2026-11-22: window built (9 controls), one question answered in 12 s (base and RAG), no traceback.

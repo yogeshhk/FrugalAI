@@ -50,6 +50,7 @@ SmolLM2 135M classifies it twice on the CPU, as downloaded (instruction and one 
 adapter from `adapters/intent/`, with prompt size and time for each.
 
 Run the Flet page: `conda run -n genai python app_flet.py` (a desktop window; Flet's window program is already cached in `~/.flet`, so it needs no download).
+Flet live check, 2026-11-22: window opens, one example message classified in the page (both verdicts drawn, 141 s including the first model load, idle machine), no traceback; no LM Studio needed.
 
 Other devices: training and this inference need torch, so both stay on the laptop. A phone or Raspberry Pi version of the inference would need the adapter merged into the base model, the merged model converted to GGUF (the Part 2 merge and export steps show how), and the same two prompts scored through `frugalai_common.chat.LlamaCppChat`. Not done; speed pending.
 
