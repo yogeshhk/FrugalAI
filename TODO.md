@@ -17,9 +17,11 @@ from GGUF files inside Python, no server. `code/common` is installed editable in
 - [x] All five Flet pages ran live through a script driver (LM Studio on; finetune-slm needs none), one question or case
   each, no traceback; a script driver must not `time.sleep` in the Flet main. Still unchecked: a human click-through of a real
   window, the workflow-agent "Already covered?" tab, voice-form Confirm and Marathi.
-- [ ] Before the Dec 12 talk: check `_scripts/record_demo.py` still drives each `app.py` with LM Studio running (labels
-  were kept, not re-run). A scripted try on 2026-11-22 was stopped: a page took more than 2 minutes to answer under
-  `conda run`, so wait up to 5 minutes, probe 127.0.0.1, and stop each page by its port before starting the next.
+- [x] `_scripts/record_demo.py` drove every `app.py` scenario with LM Studio running (the buttons of a page can appear
+  seconds after its title, so `click` now retries up to 120 s). The new Streamlit pictures were written to a scratch folder,
+  not to `LaTeX/images`; the deck still uses the 2026-11-15 recordings. Decide whether to refresh them.
+- [ ] Deck pictures: Flet pictures are live in `LaTeX/ai_frugal_demo.tex` (voice-form and quantum-wiki), with the Streamlit
+  frames commented beside them; to show Streamlit, swap the comments.
 - [ ] Later: Android spike for voice-form (`flet build apk`, needs flet-cli, which upgrades pillow and packaging in genai);
   finetune-slm on a phone needs a merged GGUF and label scoring in `LlamaCppChat`.
 

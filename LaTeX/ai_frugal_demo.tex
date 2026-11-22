@@ -51,20 +51,22 @@
 % \end{center}
 % \end{frame}
 
+% Pictures toggle [2026-11-22]: the Flet frames are live; the Streamlit frames (same steps, same text) are commented
+% beside them. To show Streamlit, uncomment its frame and comment the Flet one.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]\frametitle{Marathi Speech In, a Checked Form Out}
 \begin{center}
-\adjustbox{max width=0.97\linewidth, max totalheight=0.76\textheight}{\includegraphics{frugal_voice_filled}}
+\adjustbox{max width=0.97\linewidth, max totalheight=0.76\textheight}{\includegraphics{frugal_voice_flet_filled}}
 
 {\scriptsize The speaker read a blood pressure of 120/80; the page heard 120/82 and shows the words it used, so a person can catch it.}
 \end{center}
 \end{frame}
 
-% Alternative [2026-11-22]: the same step on the Flet page (app_flet.py); the author kept the Streamlit picture.
+% Streamlit picture of the same step (the backup):
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}[fragile]\frametitle{Marathi Speech In, a Checked Form Out}
 % \begin{center}
-% \adjustbox{max width=0.97\linewidth, max totalheight=0.76\textheight}{\includegraphics{frugal_voice_flet_filled}}
+% \adjustbox{max width=0.97\linewidth, max totalheight=0.76\textheight}{\includegraphics{frugal_voice_filled}}
 %
 % {\scriptsize The speaker read a blood pressure of 120/80; the page heard 120/82 and shows the words it used, so a person can catch it.}
 % \end{center}
@@ -80,15 +82,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]\frametitle{Saved Only After a Person Confirms}
 \begin{center}
-\adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_voice_saved}}
+\adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_voice_flet_saved}}
 \end{center}
 \end{frame}
 
-% Alternative [2026-11-22]: the Flet page's picture of the same step.
+% Streamlit picture of the same step (the backup):
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{frame}[fragile]\frametitle{Saved Only After a Person Confirms}
 % \begin{center}
-% \adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_voice_flet_saved}}
+% \adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_voice_saved}}
 % \end{center}
 % \end{frame}
 
@@ -96,7 +98,7 @@
 \begin{frame}[fragile]\frametitle{One Core, Two Pages}
 \begin{itemize}
 \item All the work sits in one Python class, \texttt{VoiceForm}: fill, follow up, check, save. The pages only draw.
-\item Two pages call it: the Streamlit web page shown here, and a Flet window that looks much the same. Flet can also build an Android app.
+\item Two pages call it: a Flet window and a Streamlit web page that looks much the same. Flet can also build an Android app.
 \item One file, \texttt{config.yaml}, picks the engines: the speech model, and the small model either in LM Studio or loaded from a GGUF file inside the program, with no server.
 \item Not yet shown: the app on a phone. Speech to text there needs a model that runs without PyTorch.
 \end{itemize}
@@ -115,16 +117,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]\frametitle{An Invented Answer Against an Honest One}
 \begin{center}
-\adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_rag_passmark}}
+\adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_rag_flet_passmark}}
 \end{center}
 \end{frame}
+
+% Streamlit picture of the same step (the backup):
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]\frametitle{An Invented Answer Against an Honest One}
+% \begin{center}
+% \adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_rag_passmark}}
+% \end{center}
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]\frametitle{A Title the Model Made Up}
 \begin{center}
-\adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_rag_title}}
+\adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_rag_flet_title}}
 \end{center}
 \end{frame}
+
+% Streamlit picture of the same step (the backup):
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}[fragile]\frametitle{A Title the Model Made Up}
+% \begin{center}
+% \adjustbox{max width=0.97\linewidth, max totalheight=0.80\textheight}{\includegraphics{frugal_rag_title}}
+% \end{center}
+% \end{frame}
 
 % [commented 2026-11-16 at the author's request: the workflow, notes-wiki and fine-tune demos are not in this talk]
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

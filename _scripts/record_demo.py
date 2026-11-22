@@ -162,9 +162,9 @@ def wait_text(page: Page, text: str, timeout: float = 600):
     raise RuntimeError("timed out waiting for %r" % text)
 
 
-def click(page: Page, text: str, timeout: float = 20):
-    """Click the last button (or tab, or summary) showing `text`; a page may draw its buttons a few seconds after its
-    title, so look again for up to `timeout` seconds before giving up."""
+def click(page: Page, text: str, timeout: float = 120):
+    """Click the last button (or tab, or summary) showing `text`; a page may draw its buttons a while after its
+    title (finetune-slm loads a model first), so look again for up to `timeout` seconds before giving up."""
     script = """(() => { const t = %s;
         const els = [...document.querySelectorAll('button, [role="tab"], summary')].filter(b =>
             b.innerText.trim() === t || (b.tagName === 'SUMMARY' && b.innerText.trim().endsWith(t)));

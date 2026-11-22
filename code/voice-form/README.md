@@ -94,7 +94,8 @@ blocked-connection counter. Speech to text uses IndicConformer on the CPU.
 
 The same page as a Flet window: `conda run -n genai python app_flet.py` from `code/voice-form` (flet 1.1.2 and
 flet-desktop; the first Flet run on a machine downloads Flet's window program once into `~/.flet`). It offers the sample
-recordings and typed input; the microphone is not in it yet. Both pages call `voiceform.core.VoiceForm` and draw what it
+recordings, typed input and a Record button (the `flet-audio-recorder` package; the author recorded and filled a form
+with it on 2026-11-22). Both pages call `voiceform.core.VoiceForm` and draw what it
 returns, so either can be dropped without touching the rest. To run the language model inside the program instead of
 LM Studio, set `llm.kind: llama_cpp` and `llm.gguf` in `config.yaml` (no server needed; this is the route a phone or a
 Raspberry Pi would take). Both pages need `code/common` importable: installed (`-e ../common`) or on `PYTHONPATH`.

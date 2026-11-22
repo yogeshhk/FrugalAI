@@ -9,11 +9,12 @@ are chosen in config.yaml. The first run of any Flet app downloads its desktop w
 after that nothing here needs the internet, and the offline guard refuses every connection that is not to this
 machine (the window talks to this Python process over localhost). Data entry only: no advice (docs/safety.md).
 
-Not yet here: the microphone. It needs Flet's audio-recorder extension (to add and check); until then use a sample
-recording or type what was said.
+The microphone uses Flet's audio-recorder extension (the flet-audio-recorder package). If it is missing, the Record
+button is left out and the page still works with the sample recordings and typed text.
 """
 
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -22,6 +23,11 @@ for p in (HERE, HERE.parent / "common"):
         sys.path.insert(0, str(p))
 
 import flet as ft  # noqa: E402
+
+try:
+    import flet_audio_recorder as far  # noqa: E402
+except ImportError:   # the page still works without a microphone
+    far = None
 
 from frugalai_common import demo  # noqa: E402
 
@@ -62,11 +68,21 @@ class VoiceFormView:
         self.samples = ft.Column(spacing=4)
         self.result = ft.Column(spacing=8)
 
+        # The microphone: one button that starts a recording and, pressed again, stops it and fills the form.
+        self.recorder, self.recording, self.mic_path = None, False, ""
+        self.mic_button = ft.FilledButton("Record", icon=ft.Icons.MIC, on_click=self.toggle_recording, visible=far is not None)
+        self.mic_note = ft.Text("", size=13, color=GREY)
+        if far is not None:
+            self.recorder = far.AudioRecorder(configuration=far.AudioRecorderConfiguration(
+                encoder=far.AudioEncoder.WAV, channels=1, sample_rate=16000))
+            page.services.append(self.recorder)
+
         page.add(
             ft.Text("Speak a form", size=28, weight=ft.FontWeight.BOLD),
             ft.Text("Marathi or Hindi speech in, a checked form out. One machine, no internet.", color=GREY),
             self.machine_line, self.model_line,
             ft.Row([self.form_pick, self.lang_pick], wrap=True),
+            heading("Speak"), ft.Row([self.mic_button, self.mic_note]),
             heading("Sample recordings"), self.samples,
             heading("Or type what was said"),
             ft.Row([self.typed, ft.Column([self.fill_button, self.busy])]),
@@ -96,6 +112,33 @@ class VoiceFormView:
 
     def use_sample(self, sample):
         self.work(lambda: self.vf.hear_file(sample.path, source="sample " + sample.id))
+
+    async def toggle_recording(self, e=None):
+        """First press: start recording to a temporary WAV file. Second press: stop and fill the form from it."""
+        if self.recorder is None:
+            return
+        try:
+            if not self.recording:
+                if not await self.recorder.has_permission():
+                    self.mic_note.value = "The microphone is not allowed for this app. Allow it in Windows settings."
+                    self.page.update()
+                    return
+                self.mic_path = str(Path(tempfile.gettempdir()) / "voiceform_mic.wav")
+                await self.recorder.start_recording(output_path=self.mic_path)
+                self.recording = True
+                self.mic_button.text, self.mic_button.icon = "Stop and fill the form", ft.Icons.STOP
+                self.mic_note.value = "Recording... speak now."
+            else:
+                path = await self.recorder.stop_recording() or self.mic_path
+                self.recording = False
+                self.mic_button.text, self.mic_button.icon = "Record", ft.Icons.MIC
+                self.mic_note.value = ""
+                self.work(lambda: self.vf.hear_file(path, source="microphone"))
+        except Exception as ex:   # show it on the page instead of losing it in the console
+            self.recording = False
+            self.mic_button.text, self.mic_button.icon = "Record", ft.Icons.MIC
+            self.mic_note.value = "Microphone problem: %s: %s" % (type(ex).__name__, ex)
+        self.page.update()
 
     def save(self, e=None):
         self.vf.confirm_and_save()
