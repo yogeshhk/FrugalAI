@@ -1,0 +1,29 @@
+# Choices for voice-form: which engines to use and where to save. Change this file, not the code.
+# Paths and fixed facts about each model (download ids, licences, hashes) stay in voiceform/config.py.
+# Another file can be used instead: set VOICEFORM_CONFIG to its path.
+
+# Speech to text: a name from ASR_MODELS in voiceform/config.py (indicconformer, whisper-small-mr,
+# whisper-small-hi, whisper-base, vosk-small-hi), or fake for tests.
+asr: indicconformer
+
+# How the transcript becomes field values: rules (no model), direct (the model reads the transcript),
+# translate (the model translates to English first).
+route: direct
+
+# The language model.
+llm:
+  kind: http                        # http: a server on this machine | llama_cpp: a .gguf file in this process | fake
+  model: qwen/qwen3-1.7b            # the default model (the author's choice of 2026-10-26)
+  url: http://localhost:1234/v1     # http: LM Studio
+  gguf: ""                          # llama_cpp: path to the .gguf file, for example models/Qwen3-1.7B-Q4_K_M.gguf
+  servers:                          # http: models served somewhere other than `url`
+    dhir-2b: http://localhost:1236/v1   # ZenteiQ's llama-server (code/dhir-server/README.md)
+  per_lang:                         # the demo page's preferred model per language, used only when it is served
+    mr: dhir-2b                     # the author's choice of 2026-11-19
+
+# Where a confirmed record is saved: any of form, sqlite, crm, api (all local files).
+sinks: [form, sqlite, crm, api]
+
+# Folders, relative to code/voice-form unless absolute. On a phone these point into the app's own storage.
+data_dir: outbox
+models_dir: models

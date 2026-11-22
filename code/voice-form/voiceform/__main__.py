@@ -17,12 +17,15 @@ import sys
 
 
 def _llm(model):
+    """The language model config.yaml asks for (a server on this machine or a .gguf file), checked to be ready."""
     from . import config
-    from .llm import LLM
+    from .llm import make_llm
 
-    llm = LLM(model)
+    llm = make_llm(model)
     if not llm.available():
-        sys.exit(f"{model!r} is not being served at {llm.url}; start LM Studio and load the model "
+        if config.LLM_KIND == "llama_cpp":
+            sys.exit(f"no model file at {llm.gguf}; set llm.gguf in config.yaml")
+        sys.exit(f"{model!r} is not being served at {getattr(llm, 'url', '?')}; start LM Studio and load the model "
                  f"(for {config.DHIR_MODEL}: start llama-server, see code/dhir-server/README.md)")
     return llm
 
@@ -61,8 +64,8 @@ def main(argv=None) -> None:
     g = f.add_mutually_exclusive_group(required=True)
     g.add_argument("--text")
     g.add_argument("--audio")
-    f.add_argument("--asr", default=None)
-    f.add_argument("--route", default="direct", choices=["rules", "direct", "translate"])
+    f.add_argument("--asr", default=None, help="speech backend; default: asr in config.yaml")
+    f.add_argument("--route", default=config.ROUTE, choices=["rules", "direct", "translate"])
     f.add_argument("--model", default=config.DEFAULT_LLM)
 
     ea = sub.add_parser("eval-asr")
@@ -110,19 +113,15 @@ def main(argv=None) -> None:
         print(json.dumps({"text": res.text, "backend": res.backend, "seconds": res.seconds, "rtf": res.rtf},
                          ensure_ascii=False, indent=2))
     elif args.cmd == "fill":
-        from . import audio, pipeline
-        from .asr import backends_for, get_backend
+        from .asr import get_backend
+        from .core import VoiceForm
         from .evaluate import settings
-        from .schema import load_forms
 
-        form = load_forms()[args.form]
         llm = None if args.route == "rules" else _llm(args.model)
-        wav = asr = None
-        if args.audio:
-            asr = get_backend(args.asr or backends_for(args.lang)[0])
-            wav = audio.load(args.audio)
-        turn = pipeline.run(form, args.lang, wav=wav, text=args.text, asr=asr, route=args.route, llm=llm,
-                            today=settings()["today"])
+        asr = get_backend(args.asr) if args.asr else None   # default: `asr:` in config.yaml
+        vf = VoiceForm(asr=asr, llm=llm, route=args.route, today=settings()["today"])
+        vf.start(args.form, args.lang)
+        turn = vf.hear_file(args.audio) if args.audio else vf.read(args.text)
         print("Transcript:", turn.transcript)
         for name, fv in turn.record.fields.items():
             print(f"  {fv.status:<9} {name:<20} {fv.value!s:<24} {fv.note}")

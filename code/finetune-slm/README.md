@@ -23,6 +23,10 @@ Background and tool choices: [docs/finetuning-on-cpu.md](../../docs/finetuning-o
 | `ftslm/train.py` | LoRA training in a plain PyTorch loop, CPU only; records time, peak memory and adapter size |
 | `ftslm/model.py` | Loads the model and classifies by scoring each label, so the answer is always a valid label |
 | `ftslm/evaluate.py` | Scores four systems on the same held-out messages |
+| `config.yaml` | The demo's choices: model id, adapter folder, data and results paths, threads, example messages. `FTSLM_CONFIG` names another file |
+| `ftslm/core.py` | `IntentRouter`: loads the base and fine-tuned model and classifies a message. No UI code; both pages call only this |
+| `ftslm/config.py` | Reads `config.yaml` |
+| `app.py`, `app_flet.py` | The Streamlit page (kept) and the Flet page. Each only draws |
 | `data/` | The generated `train`, `test_iid` and `test_ood` files (780 messages) |
 | `adapters/intent/` | The trained LoRA adapter (3.7 MB) and `train_log.json`. The weights are git-ignored |
 | `results/` | `results.csv` and `results.json` written by the evaluation |
@@ -44,6 +48,10 @@ not that the approach is ready for real helpline traffic.
 `conda run -n genai streamlit run app.py` from `code/finetune-slm/`; no LM Studio needed. Pick or type a message:
 SmolLM2 135M classifies it twice on the CPU, as downloaded (instruction and one example per intent) and with the LoRA
 adapter from `adapters/intent/`, with prompt size and time for each.
+
+Run the Flet page: `conda run -n genai python app_flet.py` (a desktop window; Flet's window program is already cached in `~/.flet`, so it needs no download).
+
+Other devices: training and this inference need torch, so both stay on the laptop. A phone or Raspberry Pi version of the inference would need the adapter merged into the base model, the merged model converted to GGUF (the Part 2 merge and export steps show how), and the same two prompts scored through `frugalai_common.chat.LlamaCppChat`. Not done; speed pending.
 
 ![The downloaded model and the fine-tuned one on the same message](../../docs/images/frugal_tune_weather.png)
 *Image file: ../../docs/images/frugal_tune_weather.png*

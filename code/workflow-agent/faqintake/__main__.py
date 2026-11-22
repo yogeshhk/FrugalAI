@@ -2,9 +2,7 @@
 
 import argparse
 import json
-import re
 import sys
-import time
 
 
 def say(text=""):
@@ -27,46 +25,38 @@ def main(argv=None):
                    help="style example for drafts: a fixed unrelated one, or the nearest FAQ entry (the first version)")
     args = ap.parse_args(argv)
 
-    from . import checks, config, corpus, lint
+    from . import config
+    from .core import FaqIntake
+    from .embed import HashEmbeddings
+    from .llm import make_llm
 
-    entries = corpus.load_entries()
+    fake = getattr(args, "fake", False)       # hash embeddings and a scripted model: no server
+    fi = FaqIntake(draft=True, embeddings=HashEmbeddings() if fake else None,
+                   llm=make_llm({"kind": "fake"}) if fake else None)
+    entries = fi.entries
     say("FAQ folder: %s (%s, %d entries)" % (config.FAQS, "your FAQINTAKE_QCNP folder" if config.USING_PRIVATE
                                              else "the invented sample; set FAQINTAKE_QCNP to use your own", len(entries)))
     if args.cmd == "eval" and not config.USING_PRIVATE:
         sys.exit("eval needs a real FAQ folder: the sample has only a handful of invented entries, and the committed "
                  "results in results/ were produced on the author's private QCNP entries. Set FAQINTAKE_QCNP.")
     if args.cmd == "lint":
-        bad = {e.key: lint.errors(e.raw) for e in entries if lint.errors(e.raw)}
+        bad = fi.lint_all()
         say("%d entries, %d failing the house rules" % (len(entries), len(bad)))
         for k, v in bad.items():
             say("  %s: %s" % (k, v))
         return
 
-    from .embed import HashEmbeddings, lm_studio_embeddings
-
-    emb = HashEmbeddings() if getattr(args, "fake", False) else lm_studio_embeddings()
     if args.cmd == "intake":
-        from .graph import Context, run_intake
-        from .llm import Chat, FakeChat
-
-        llm = FakeChat([{"title": "Placeholder?", "question": "word " * 20, "answer": "word " * 60,
-                         "fallacy": '"Placeholder belief" ' * 10}]) if args.fake else Chat()
-        ctx = Context(entries=entries, index=checks.SemanticIndex(entries, emb), llm=llm,
-                      cc=checks.load_concept_check(), thresholds=checks.load_thresholds())
-        out = run_intake(ctx, args.text)
-        config.DRAFTS.mkdir(parents=True, exist_ok=True)
-        slug = re.sub(r"[^a-z0-9]+", "_", (out.get("draft", {}).get("title") or args.text).lower()).strip("_")[:48]
-        stamp = time.strftime("%Y%m%d")
-        if out.get("draft_md"):
-            (config.DRAFTS / f"{stamp}_{slug}.md").write_text(out["draft_md"], encoding="utf-8")
-        (config.DRAFTS / f"{stamp}_{slug}_report.md").write_text(out["report"], encoding="utf-8")
-        say(out["report"])
-        say("cost: %s" % json.dumps(out["cost"]))
+        result = fi.run(args.text)
+        fi.save(result)
+        say(result.report)
+        say("cost: %s" % json.dumps(result.cost))
         say("written to %s (nothing was added to faqs/)" % config.DRAFTS)
         return
 
     from . import evaluate as E
-    from .llm import Chat
+
+    emb = fi.embeddings
 
     config.RESULTS.mkdir(parents=True, exist_ok=True)
     parts = args.parts.split(",")
@@ -90,7 +80,7 @@ def main(argv=None):
                 (config.RESULTS / "thresholds.json").write_text(json.dumps({"cover": d["threshold_cover"], "partial": d["threshold_partial"]}), encoding="utf-8")
                 (config.RESULTS / "dup_scores.json").write_text(json.dumps(d["rows"], indent=1), encoding="utf-8")
     if "draft" in parts:
-        llm = Chat()
+        llm = fi.llm
         if not llm.available():
             sys.exit("LM Studio is not reachable: start its server with a chat model and the embedding model.")
         rows = E.draft_eval(entries, emb, llm, n=args.n, log=say, exemplar_mode=args.exemplar)

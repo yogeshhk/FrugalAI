@@ -33,6 +33,21 @@ personal notes. Dense search stays an option. Hindi and Marathi words are tokeni
 nomic-embed-text. The page works on a temporary copy of `sample_wiki/`: ask a question, see the notes it read, or add
 a note and ask about it straight away. Arithmetic goes to the calculator route, not the model.
 
+Run the Flet page: `conda run -n genai python app_flet.py` (the same questions and notes, in a desktop window; Flet's window
+program is already cached in `~/.flet`, so the first run needs no download). Both pages only draw: `wikirag/core.py`
+(class `WikiRag`) does the work, and `config.yaml` chooses the models (`kind: http`, `llama_cpp` or `fake` for the
+answer model; `http`, `llama_cpp`, `hash` or `none` for embeddings), the notes folder and top-k. `WIKIRAG_CONFIG` names
+another config file.
+
+| File | Role |
+|------|------|
+| `config.yaml` | choices: notes folder, top-k, answer model, embedding model |
+| `wikirag/config.py` | loads the config (env variables `FRUGALAI_*` still win) |
+| `wikirag/core.py` | `WikiRag`, the one class the pages and tests use |
+| `wikirag/embedder.py` | embedding kinds behind one callable |
+| `app.py`, `app_flet.py` | Streamlit page (kept) and Flet page |
+| `wikirag/index.py`, `bm25.py`, `router.py`, `answer.py` | index, search, calculator route, prompt |
+
 ![A note added on the page and found at once](../../docs/images/frugal_wiki_newnote.png)
 *Image file: ../../docs/images/frugal_wiki_newnote.png*
 

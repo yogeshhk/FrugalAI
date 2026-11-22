@@ -7,4 +7,6 @@ langchain-core==1.6.10
 langchain-openai==1.1.6
 pydantic==2.12.5
 langgraph==1.0.4
+pyyaml
+flet==1.1.2
 -e ../common

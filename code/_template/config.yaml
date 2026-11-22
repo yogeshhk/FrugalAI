@@ -1,0 +1,6 @@
+# Choices for this project. Change this file, not the code. Missing keys fall back to defaults in core.py.
+llm:
+  kind: fake                        # http: a server on this machine (LM Studio) | llama_cpp: a .gguf file in this process | fake
+  model: qwen/qwen3-1.7b
+  url: http://localhost:1234/v1     # http only
+  gguf: ""                          # llama_cpp only: path to the .gguf file

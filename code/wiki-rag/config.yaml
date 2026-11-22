@@ -1,0 +1,35 @@
+# Choices for wiki-rag: which engines to use and where the notes are. Change this file, not the code.
+# Another file can be used instead: set WIKIRAG_CONFIG to its path.
+# The shared variables FRUGALAI_LLM_URL, FRUGALAI_CHAT_MODEL and FRUGALAI_EMBED_MODEL still win over the values here.
+
+# The notes the page and the command line read: a folder of .md files (relative to code/wiki-rag unless absolute).
+notes_dir: sample_wiki
+# true: the demo pages work on a temporary copy, so a note added there never changes the folder above.
+work_copy: true
+# The question buttons on the pages: this file lists the questions; the first few are shown, then the extras below.
+questions_file: eval/questions.json
+questions_shown: 5
+extra_questions:
+  - What is 2400 * 0.15
+  - Who won the cricket match yesterday?
+
+# How many notes (chunks) go to the model with each question.
+top_k: 3
+
+# The language model that writes the answer.
+llm:
+  kind: http                        # http: a server on this machine | llama_cpp: a .gguf file in this process | fake
+  model: qwen/qwen3-1.7b
+  url: http://localhost:1234/v1     # http: LM Studio or llama-server
+  gguf: ""                          # llama_cpp: path to the .gguf file, for example models/Qwen3-1.7B-Q4_K_M.gguf
+  n_ctx: 4096                       # llama_cpp: context size
+  max_tokens: 200                   # longest answer
+
+# The embedding model for search by meaning (fused with word search). It is optional: kind none gives word search only.
+embedder:
+  kind: http                        # http: a server on this machine | llama_cpp: an embedding .gguf file | hash: tiny offline stand-in | none
+  model: text-embedding-nomic-embed-text-v1.5
+  url: http://localhost:1234/v1
+  gguf: ""                          # llama_cpp: path to an embedding .gguf file, for example models/nomic-embed-text-v1.5.Q4_K_M.gguf
+  doc_prefix: "search_document: "   # nomic models want these two prefixes; leave empty for other models
+  query_prefix: "search_query: "

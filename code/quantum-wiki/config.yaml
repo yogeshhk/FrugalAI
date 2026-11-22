@@ -1,0 +1,41 @@
+# Choices for quantum-wiki: which models, how they run, how retrieval works, where files are. Change this file, not the code.
+# Another file can be used instead: set QWIKI_CONFIG to its path. Relative paths are under code/quantum-wiki.
+# These environment variables still win over this file: QWIKI_LLM_URL, QWIKI_CHAT_MODEL, QWIKI_EMBED_MODEL, QWIKI_PDF.
+
+# The language model.
+llm:
+  kind: http                        # http: a server on this machine (LM Studio) | llama_cpp: a .gguf file in this process | fake
+  model: qwen/qwen3-1.7b            # the model id the server serves
+  url: http://localhost:1234/v1     # http: LM Studio's server
+  gguf: ""                          # llama_cpp: path to the .gguf file, for example models/Qwen3-1.7B-Q4_K_M.gguf
+  max_tokens: 400                   # longest reply asked for in the demo and the command line
+
+# The embedding model (dense retrieval). The cache means each text is embedded once.
+embed:
+  kind: http                        # http: the same server as the language model | hash: offline word-hash vectors (tests)
+  model: text-embedding-nomic-embed-text-v1.5
+  url: ""                           # empty: use llm.url
+  cache: parsed/embeddings.json
+
+# How the demo page retrieves for the "with RAG" answer.
+retrieval:
+  mode: dense                       # dense | bm25 | hybrid (dense won the retrieval comparison, see README)
+  k: 4                              # chunks given to the model
+
+# The curriculum PDF is a public AICTE document that lives in the TeachingQuantumTech repository (referenced, not copied).
+pdf: ../../../TeachingQuantumTech/Admin/Syllabus/AICTE Minor Quantum Technologies.pdf
+# PDF pages to read, 1-based and inclusive. Page 14 is the Table of Courses; pages 16 to 37 are the course syllabi.
+pages: [[14, 14], [16, 37]]
+
+# Folders.
+parsed_dir: parsed
+eval_dir: eval
+results_dir: results
+
+# The demo page's example questions, picked by the author on 2026-10-28 after a trial run as clear illustrations.
+demo_questions:
+  - For how many lectures should sensing be taught within QT 01?
+  - What is the pass mark for QT 03?
+  - What is the title of QT 08?
+  - Which course is called Quantum Optics?
+  - What are the credits of QT 04?

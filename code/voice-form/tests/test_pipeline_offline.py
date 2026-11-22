@@ -6,7 +6,9 @@ import sqlite3
 import numpy as np
 import pytest
 
-from voiceform import audio, config, netguard, pipeline, sinks
+from frugalai_common import netguard
+
+from voiceform import audio, config, pipeline, sinks
 from voiceform.asr import FakeASR
 from voiceform.evaluate import cer, eval_extract, score_record, summarise, wer
 from voiceform.llm import FakeLLM

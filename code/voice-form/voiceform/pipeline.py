@@ -1,6 +1,6 @@
 """One call from speech (or typed text) to a checked, unconfirmed record, inside the offline guard.
 
-The Streamlit app (package 4) and the command line both use this. Nothing is saved here: saving happens in
+VoiceForm (core.py) uses this for every page and the command line; the evaluation calls it directly. Nothing is saved here: saving happens in
 sinks.send, and only after a person has confirmed the record.
 """
 
@@ -8,7 +8,8 @@ import datetime as _dt
 from dataclasses import dataclass, field
 from typing import Optional
 
-from . import netguard
+from frugalai_common import netguard
+
 from .extract import fill
 from .record import FILLED, UNCERTAIN, Record, english_request, follow_up_questions, merge
 from .schema import FormSpec
@@ -24,6 +25,7 @@ class Turn:
     blocked_connections: int = 0
     local_connections: int = 0
     changed: list = field(default_factory=list)   # fields this recording added or changed (follow-ups only)
+    followup: bool = False                         # True when this utterance was merged into an earlier record
 
 
 def run(form: FormSpec, lang: str, wav=None, text: Optional[str] = None, asr=None, route: str = "direct",
@@ -52,4 +54,5 @@ def run(form: FormSpec, lang: str, wav=None, text: Optional[str] = None, asr=Non
         changed = [n for n in after if before.get(n) != after[n]]
     return Turn(record=rec, transcript=text, english=english_request(rec, form),
                 questions=follow_up_questions(rec, form), timings=timings,
-                blocked_connections=len(guard.blocked), local_connections=guard.local, changed=changed)
+                blocked_connections=len(guard.blocked), local_connections=guard.local, changed=changed,
+                followup=previous is not None)

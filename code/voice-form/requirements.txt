@@ -15,5 +15,8 @@ transformers==4.57.3
 huggingface-hub==0.35.1
 onnxruntime==1.22.0
 vosk==0.3.45
+flet==1.1.2
+flet-desktop==1.1.2
+llama-cpp-python==0.3.34
 -e ../common
 # ffmpeg: install the program itself (conda, apt or the Windows build); it decodes phone recordings.

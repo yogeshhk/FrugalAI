@@ -9,7 +9,7 @@ Speech-to-text, the normalising and the checks run on the laptop; the one langua
 llama-server) on the same machine.
 
 **What "offline" means here.** After a one-time model download (`python -m voiceform download`, needs internet), the
-pipeline runs offline on a laptop CPU: no cloud call is made at run time. The offline guard (`netguard.py`) covers
+pipeline runs offline on a laptop CPU: no cloud call is made at run time. The offline guard (`frugalai_common/netguard.py`) covers
 this Python process only; the ffmpeg child process that decodes audio is outside it (it is started with a local file
 only). Phone-class hardware is a goal, not yet shown: nothing here has been run on a phone or a Raspberry Pi.
 
@@ -65,16 +65,19 @@ for speaking, not for listening. It is a slot to fill if the weights become avai
 ## What is in here
 | Path | What |
 |------|------|
-| `voiceform/config.py` | paths, model ids, LM Studio URL |
+| `config.yaml` | the choices: speech model, route, language model (`http` server, `llama_cpp` GGUF inside the program, or `fake`), sinks, folders. `VOICEFORM_CONFIG` names another file |
+| `voiceform/core.py` | `VoiceForm`, the one class the pages and the command line call: start, read or hear, rows, follow-ups, confirm and save |
+| `app.py`, `app_flet.py` | the two demo pages, Streamlit and Flet; they only draw |
+| `docs/refactor-report.md` | why the code is shaped this way, and what Android and a Raspberry Pi still need |
+| `voiceform/config.py` | paths, model ids and hashes; reads `config.yaml` |
 | `voiceform/schema.py` | loads the YAML forms |
 | `voiceform/normalize.py` | Marathi and Hindi number words, digits, BP, phone, dates, yes/no, option synonyms |
 | `voiceform/record.py` | typed values, range checks, evidence check, merging a correction, English request, follow-up questions |
 | `voiceform/extract.py` | three routes: `rules` (no model), `direct` (model reads the transcript), `translate` (model translates to English first) |
 | `voiceform/llm.py` | binds this project's server URL and model ids to the shared chat helpers (`frugalai_common.llm`: JSON-schema output with a regex fallback, counters, the scripted fake for tests) |
 | `voiceform/asr.py` | speech backends behind one interface |
-| `voiceform/netguard.py` | blocks and counts any connection that is not to this machine |
 | `voiceform/pipeline.py` | speech or text to an unconfirmed record, inside the guard |
-| `voiceform/sinks.py` | form JSON, SQLite, CRM record, API payload; refuses an unconfirmed record, and a confirmed one with a required field missing or invalid |
+| `voiceform/sinks.py` | one small class per sink (form JSON, SQLite, CRM record, API payload), chosen in `config.yaml`; refuses an unconfirmed record, and a confirmed one with a required field missing or invalid |
 | `voiceform/evaluate.py` | speech and extraction evaluation; `report` writes `results/RESULTS.md` |
 | `voiceform/recording.py`, `smoke.py` | recording sheet and importer; machine-voice smoke audio |
 | `eval/scripts/mr.yaml`, `hi.yaml` | 33 lines per language: 18 tune, 9 held-out, 6 free-speech cards, with gold values |
@@ -88,6 +91,13 @@ transcript, each field with the words it came from, the follow-up questions and 
 `outbox/` only after "Confirm and save", a button that stays disabled until every required field is filled and valid
 (`sinks.send` checks the same and raises `InvalidRecord` otherwise). The side panel shows the machine (CPU, RAM, GPU), the Wi-Fi state and the
 blocked-connection counter. Speech to text uses IndicConformer on the CPU.
+
+The same page as a Flet window: `conda run -n genai python app_flet.py` from `code/voice-form` (flet 1.1.2 and
+flet-desktop; the first Flet run on a machine downloads Flet's window program once into `~/.flet`). It offers the sample
+recordings and typed input; the microphone is not in it yet. Both pages call `voiceform.core.VoiceForm` and draw what it
+returns, so either can be dropped without touching the rest. To run the language model inside the program instead of
+LM Studio, set `llm.kind: llama_cpp` and `llm.gguf` in `config.yaml` (no server needed; this is the route a phone or a
+Raspberry Pi would take). Both pages need `code/common` importable: installed (`-e ../common`) or on `PYTHONPATH`.
 
 ![The voice-form page after a Marathi sample recording](../../docs/images/frugal_voice_filled.png)
 *Image file: ../../docs/images/frugal_voice_filled.png*

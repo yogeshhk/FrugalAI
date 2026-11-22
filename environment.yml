@@ -6,8 +6,9 @@
 # made in another environment (conda env genai) on Python 3.10. The versions below were read from that environment
 # on 2026-11-11 and have not been checked on Python 3.11; torch is the CPU build, which the genai environment
 # does not have (it holds the CUDA build 2.7.1+cu118).
-# Optional, not installed here: llama-cpp-python, only if you want to load the Marathi GGUF from Python
-# (finetune-slm README). LM Studio can load that file instead.
+# Optional, not installed here: llama-cpp-python (0.3.34 in genai), for `llm.kind: llama_cpp` in a project's
+# config.yaml (a GGUF model inside the program, no server) or to load the Marathi GGUF from Python (finetune-slm README).
+# LM Studio can serve those files instead.
 name: frugalai
 channels:
   - conda-forge
@@ -40,4 +41,6 @@ dependencies:
       - huggingface-hub==0.35.1      # voice-form: model download
       - onnxruntime==1.22.0          # voice-form: IndicConformer
       - vosk==0.3.45                 # voice-form: small offline speech model runtime
+      - flet==1.1.2                  # every project: the Flet page (app_flet.py); installed in genai 2026-11-22
+      - flet-desktop==1.1.2
       - -e ./code/common             # frugalai_common, importable from every project

@@ -71,6 +71,29 @@ nomic-embed-text. Two tabs: "Helpline" (the `wfagent` workflow on sample data, e
 "Already covered?" (`faqintake` with drafting off). The page uses the QCNP folder next to this repo when it exists,
 else `sample_faqs/`. `make_graph_figures.py` draws the workflow pictures used in the talk.
 
+Run the Flet page instead: `conda run -n genai python app_flet.py` from `code/workflow-agent/`. It shows the same two
+tabs, built with Flet (a desktop window today, the start of an Android app). One-time note: Flet's desktop window
+program is already cached in `~/.flet`, so nothing is downloaded; the offline guard stays on.
+
+### Layout and choices
+
+Both pages only draw. The work is done by two classes with no UI code in them; choices live in `config.yaml`.
+
+| File | What it is |
+|------|------------|
+| `config.yaml` | Choices: the language model (`kind: http`, `llama_cpp` or `fake`), the embedding model, folders, the example buttons, the FAQ folder. `WORKFLOW_AGENT_CONFIG` names another file; the old environment variables still win over it |
+| `wfagent/core.py` | `Helpline`: `ask(message)`, `status()`, `examples()`, `evaluate()`, `diagram()` |
+| `faqintake/core.py` | `FaqIntake`: `load()`, `run(text)`, `save(result)`, `lint_all()`, `status()`, `describe()` |
+| `wfagent/llm.py`, `faqintake/llm.py`, `faqintake/embed.py` | Thin bindings of `frugalai_common.chat.make_chat` and the embedding cache to the config |
+| `wfagent/graph.py`, `faqintake/graph.py` | The two LangGraph workflows (plain code and model steps) |
+| `app.py`, `app_flet.py` | The Streamlit page (kept, used by the recorder and the talk deck) and the Flet page |
+| `tests/test_core.py` | The cores, the config and the Flet page, with fakes |
+
+Run the model in the process instead of through LM Studio: set `llm.kind: llama_cpp` and `llm.gguf` to a `.gguf` file.
+The embedding model still needs a server (`embedding.kind: http`); `embedding.kind: fake` uses hashed words for an
+offline run with weaker matching. `python -m wfagent --fake ask "..."` and `python -m faqintake intake --fake "..."`
+need no server.
+
 ![A wrong price in the question is not repeated](../../docs/images/frugal_flow_trap.png)
 *Image file: ../../docs/images/frugal_flow_trap.png*
 

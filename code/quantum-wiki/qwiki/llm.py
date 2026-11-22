@@ -1,44 +1,38 @@
-"""The chat model (LangChain ChatOpenAI pointed at LM Studio) with call, token and time counters, and a scripted fake.
+"""The chat model, bound to this project's config. The work is in `frugalai_common.chat`.
 
-strip_think, the counters and the Qwen-only no-think switch come from `frugalai_common.llm`.
+make_llm() builds whatever `config.yaml` asks for (a server on this machine, a .gguf file inside this process, or a
+fake) and wraps it so the answer code can call it as `llm(system, user)`. The counters (calls, tokens, seconds) are
+the wrapped model's own.
 """
 
-import time
 from typing import Optional
 
+from frugalai_common.chat import make_chat
 from frugalai_common.llm import Counters, no_think_suffix, strip_think  # noqa: F401  (re-exported)
 
 from . import config
 
 
-class Chat(Counters):
-    def __init__(self, model: str = config.CHAT_MODEL, max_tokens: int = 400):
-        super().__init__()
-        from langchain_openai import ChatOpenAI
+class Callable:
+    """Makes a chat model (which has .chat) callable as llm(system, user); everything else passes through."""
 
-        self.model, self.max_tokens = model, max_tokens
-        self.llm = ChatOpenAI(model=model, base_url=config.LLM_URL, api_key="lm-studio", temperature=0,
-                              max_tokens=max_tokens, timeout=600, max_retries=1)
-
-    def available(self) -> bool:
-        import requests
-
-        try:
-            return requests.get(config.LLM_URL.rstrip("/") + "/models", timeout=3).ok
-        except Exception:
-            return False
+    def __init__(self, chat, max_tokens: int = config.MAX_TOKENS):
+        self.chat, self.max_tokens = chat, max_tokens
 
     def __call__(self, system: str, user: str, max_tokens: Optional[int] = None) -> str:
-        t0 = time.perf_counter()
-        llm = self.llm if not max_tokens else self.llm.bind(max_tokens=max_tokens)
-        # "/no_think" is Qwen3's soft switch; it is sent for Qwen model ids only.
-        msg = llm.invoke([("system", system), ("user", user + no_think_suffix(self.model))])
-        self.seconds += time.perf_counter() - t0
-        self.calls += 1
-        usage = getattr(msg, "usage_metadata", None) or {}
-        self.prompt_tokens += usage.get("input_tokens", 0)
-        self.completion_tokens += usage.get("output_tokens", 0)
-        return strip_think(msg.content if isinstance(msg.content, str) else str(msg.content))
+        return self.chat.chat(system, user, max_tokens=max_tokens or self.max_tokens)
+
+    def __getattr__(self, name):          # available, calls, snapshot, since, model ...
+        return getattr(self.chat, name)
+
+
+def make_llm(model: Optional[str] = None, max_tokens: Optional[int] = None) -> Callable:
+    """The chat model the config file asks for, ready to call."""
+    return Callable(make_chat(config.llm_settings(model)), max_tokens or config.MAX_TOKENS)
+
+
+def Chat(model: Optional[str] = None, max_tokens: Optional[int] = None) -> Callable:   # noqa: N802 (the old name)
+    return make_llm(model, max_tokens)
 
 
 class FakeChat(Counters):

@@ -30,6 +30,9 @@ the two usual baselines on the same questions.
 
 | Path | What it is |
 |------|------------|
+| `config.yaml` | The choices: language model (`kind: http`, `llama_cpp` or `fake`), embeddings, retrieval mode and k, PDF, folders, demo questions. `QWIKI_CONFIG` names another file |
+| `qwiki/core.py` | `QuantumWiki`, the one class both pages and the command line use (`ask`, `ask_agent`, `status`); no UI code |
+| `app.py`, `app_flet.py` | The Streamlit page and the Flet page; both only draw and call `QuantumWiki`. Flet: `python app_flet.py` (Flet's desktop window program is already cached in `~/.flet`) |
 | `qwiki/parse.py` | Docling parse of pages 14 and 16 to 37; saves Markdown, the lossless document and every table |
 | `qwiki/cards.py` | Builds the course cards: status groups from the table, topic tree from indentation, outcomes, references |
 | `qwiki/chunks.py` | Structure-aware chunks (each starts with course code, title and section) and the naive page-window chunks |

@@ -38,29 +38,21 @@ def main(argv=None):
         c = cards.build_from_parsed()
         say("cards saved to %s: %d courses" % (cards.save_cards(c), len(c["courses"])))
     elif args.cmd == "ask":
-        from . import cards as C, tools
-        from .answer import answer_agent
-        from .chunks import structure_chunks
-        from .embed import HashEmbeddings, lm_studio_embeddings
-        from .llm import Chat, FakeChat
-        from .retrieval import Retrievers
+        from .core import QuantumWiki
+        from .embed import HashEmbeddings
+        from .llm import FakeChat
 
-        cards = C.load_cards()
-        tables = json.loads((config.PARSED / "tables.json").read_text(encoding="utf-8"))
-        table_md = next((t["markdown"] for t in tables if t["page"] == 14), "")
-        emb = HashEmbeddings() if args.fake else lm_studio_embeddings(config.PARSED / "embeddings.json")
-        ret = Retrievers(structure_chunks(cards, table_md), emb)
-        llm = FakeChat() if args.fake else Chat()
-        ev = tools.route(cards, args.question)
+        wiki = QuantumWiki(llm=FakeChat() if args.fake else None, embeddings=HashEmbeddings() if args.fake else None)
+        ev = wiki.route(args.question)
         say("route: %s   pages: %s" % (ev.tool, ev.pages))
-        out = answer_agent(args.question, cards, ret, llm)
-        say("answer: %s" % out["answer"])
-        say("used a model: %s   model calls: %d" % (out["used_llm"], llm.calls))
+        out = wiki.ask_agent(args.question)
+        say("answer: %s" % out.answer)
+        say("used a model: %s   model calls: %d" % (out.used_llm, wiki.llm.calls))
     elif args.cmd == "retrieval":
-        from .embed import lm_studio_embeddings
+        from .embed import make_embeddings
         from .evaluate import SETS, build_indexes, load_set, retrieval_eval, write_rows
 
-        emb = lm_studio_embeddings(config.PARSED / "embeddings.json")
+        emb = make_embeddings()
         cards, struct, naive = build_indexes(emb)
         idx = {"naive-dense": (naive, "dense"), "naive-bm25": (naive, "bm25"), "struct-bm25": (struct, "bm25"),
                "struct-dense": (struct, "dense"), "struct-hybrid": (struct, "hybrid")}
@@ -75,14 +67,15 @@ def main(argv=None):
         write_rows(rows, config.RESULTS / "retrieval.csv")
         say("wrote %s" % (config.RESULTS / "retrieval.csv"))
     elif args.cmd == "eval":
-        from .embed import lm_studio_embeddings
+        from .embed import make_embeddings
         from .evaluate import build_indexes, load_set, run_system, summarise_run, write_rows
-        from .llm import Chat
+        from .llm import make_llm
 
-        llm = Chat()
+        llm = make_llm()
         if not llm.available():
-            sys.exit("LM Studio is not reachable. Start its server with a chat model and the embedding model loaded.")
-        emb = lm_studio_embeddings(config.PARSED / "embeddings.json")
+            sys.exit("The model is not reachable. Start LM Studio's server with a chat model and the embedding model "
+                     "loaded (or check llm in config.yaml).")
+        emb = make_embeddings()
         cards, struct, naive = build_indexes(emb)
         rows = []
         for system in args.systems.split(","):

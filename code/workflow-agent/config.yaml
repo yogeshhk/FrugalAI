@@ -1,0 +1,53 @@
+# Choices for workflow-agent (the helpline workflow and the FAQ intake): which models, where files live.
+# Change this file, not the code. Another file can be used instead: set WORKFLOW_AGENT_CONFIG to its path.
+# Environment variables still win over this file: FAQINTAKE_LLM_URL, FAQINTAKE_CHAT_MODEL, FAQINTAKE_EMBED_MODEL
+# (or the shared FRUGALAI_LLM_URL, FRUGALAI_CHAT_MODEL, FRUGALAI_EMBED_MODEL), FAQINTAKE_QCNP, FAQINTAKE_RUN_CONCEPT_CHECK.
+
+# The language model.
+llm:
+  kind: http                        # http: a server on this machine (LM Studio) | llama_cpp: a .gguf file in this process | fake
+  model: qwen/qwen3-1.7b            # the default small model
+  url: http://localhost:1234/v1     # http: LM Studio (Ollama: http://localhost:11434/v1)
+  gguf: ""                          # llama_cpp: path to the .gguf file, for example models/Qwen3-1.7B-Q4_K_M.gguf
+  n_ctx: 4096                       # llama_cpp: context size
+
+# The embedding model (FAQ intake only).
+embedding:
+  kind: http                        # http: an OpenAI-compatible server on this machine | fake: hashed words, offline, weak
+  model: text-embedding-nomic-embed-text-v1.5
+  url: http://localhost:1234/v1
+  cache: cache/embeddings.json      # each distinct text is embedded once
+  batch: 8
+
+# Folders, relative to code/workflow-agent unless absolute. On a phone these point into the app's own storage.
+dirs:
+  eval: eval
+  results: results
+  drafts: drafts
+
+# The helpline workflow (wfagent).
+helpline:
+  max_tokens: 160                   # reply length limit for the small model
+  use_llm_classifier: true          # false: keyword rules only, no model call to route
+  fake_mode: good                   # with llm.kind fake: good | hallucinate_first
+  examples:                         # the buttons on the demo page
+    - What is the price of wheat in Pune market today?
+    - Will it rain in Pune today?
+    - Is wheat selling for 9999 rupees in Pune?
+    - My tractor engine will not start.
+    - How do I apply for PM-KISAN?
+
+# The FAQ intake (faqintake).
+faq:
+  sample: sample_faqs               # the invented sample entries, used when no folder of your own is set
+  qcnp: ""                          # a folder that holds faqs/ (and optionally docs/concept_check.py); FAQINTAKE_QCNP wins
+  run_concept_check: false          # true (or FAQINTAKE_RUN_CONCEPT_CHECK=1): run docs/concept_check.py from that folder
+  demo_notes: ../../../TeachingQuantumTech/LaTeX/books/QCNP   # the demo pages use this folder when it exists
+  max_tokens: 900                   # drafting reply limit
+  examples:
+    - Does a quantum computer try every answer at once?
+    - Can entanglement be used to send a message faster than light?
+    - What is a surface code?
+  score_note: >-
+    Measured on 32 test questions about the author's FAQ notes: the right entry came first for all 20 reworded
+    ones, and covered against new was right 91% of the time (one run; README.md).

@@ -23,9 +23,13 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
 The top level holds only `README.md`, `CONTRIBUTING.md`, `LICENSE`, `IDEAS.md` (the one project-ideas list), `AWESOME.md`, `TODO.md` and this file. `docs/` concepts, landscape, limits, sources, safety, token frugality, the Pi kit. Shared code in `code/common/frugalai_common/` includes the LLM helpers and the embedding cache (`embed.py`); a project's own `llm.py` and `embed.py` only bind them to its URL and model ids. `code/` holds everything that runs: each project is a
 self-contained folder (code, data, tests, README, and a TODO only while an action is open): `code/wiki-rag/`, `code/quantum-wiki/`, `code/finetune-slm/`,
 `code/workflow-agent/`, `code/voice-form/` (speech to form), `code/gesture-switch/` (camera and Pi 3, stub), `code/dhir-server/` (Dhir 2B run with ZenteiQ's llama-server, which LM Studio cannot load: recipe, answer check, no server code); copy `code/_template/` for a new one.
-Demo pages: one Streamlit `app.py` per project (voice-form, quantum-wiki, wiki-rag, workflow-agent, finetune-slm), not a
-multipage app, run with `conda run -n genai streamlit run app.py` from the project folder. Each calls
-`frugalai_common.demo` first (offline guard, machine panel). `_scripts/record_demo.py` records screenshots and an MP4 of
+Project shape (since 2026-11-22, plan in `code/voice-form/docs/refactor-report.md`): one core class per package does the
+work and never imports a UI; `config.yaml` in the project folder holds the choices, with the language model as `http`,
+`llama_cpp` (a GGUF inside the program) or `fake` through `frugalai_common.chat.make_chat`; the pages only draw and call
+the core. Demo pages: two per project (voice-form, quantum-wiki, wiki-rag, workflow-agent, finetune-slm), a Streamlit
+`app.py` (kept as the backup) and a Flet `app_flet.py` (flet 1.1.2, desktop window; the start of an Android app), run with
+`conda run -n genai streamlit run app.py` or `conda run -n genai python app_flet.py` from the project folder. Each calls
+`frugalai_common.demo.install_guard()` first (offline guard; machine panel from `frugalai_common.machine`). `_scripts/record_demo.py` records screenshots and an MP4 of
 a running page; the talk deck (`LaTeX/ai_frugal_demo.tex`) uses them.
 `LaTeX/` holds the seminar deck "Frugal AI: Small Is Beautiful": `Main_Seminar_AI_Frugal_{Presentation,CheatSheet}.tex`, the content file
 `seminar_ai_frugal_content.tex` (the one place for part order) and the `ai_frugal_*.tex` topic files; build with `LaTeX/make_frugal.bat`

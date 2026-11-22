@@ -1,39 +1,83 @@
 """Paths, model ids and defaults for the voice-to-form project.
 
+The choices (speech model, language model and how it runs, route, sinks, folders) are read from `config.yaml`
+next to this package, or from the file named by VOICEFORM_CONFIG. This module keeps the fixed facts: folders, and
+for each downloadable model its id, revision, licence and hash.
+
 Everything runs offline once `python -m voiceform download` has fetched the models. The only server the
-pipeline talks to is LM Studio on this machine (localhost), and `netguard` checks that nothing else is contacted.
+pipeline may talk to is one on this machine (localhost), and the offline guard checks that nothing else is contacted.
 """
 
 import os
 from pathlib import Path
 
-from frugalai_common import config as shared
+import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
+CONFIG_FILE = Path(os.environ.get("VOICEFORM_CONFIG", ROOT / "config.yaml"))
+
+
+def load_settings(path: Path = CONFIG_FILE) -> dict:
+    """The config file as a dict. A missing file or key falls back to the defaults below."""
+    defaults = {"asr": "indicconformer", "route": "direct", "sinks": ["form", "sqlite", "crm", "api"],
+                "data_dir": "outbox", "models_dir": "models",
+                "llm": {"kind": "http", "model": "qwen/qwen3-1.7b", "url": "http://localhost:1234/v1", "gguf": "",
+                        "servers": {}, "per_lang": {}}}
+    data = yaml.safe_load(Path(path).read_text(encoding="utf-8")) if Path(path).is_file() else {}
+    data = data or {}
+    settings = {**defaults, **data}
+    settings["llm"] = {**defaults["llm"], **(data.get("llm") or {})}
+    return settings
+
+
+def resolve(path) -> Path:
+    """A folder or file from the config: relative paths are under code/voice-form."""
+    p = Path(path)
+    return p if p.is_absolute() else ROOT / p
+
+
+SETTINGS = load_settings()
+
 FORMS_DIR = ROOT / "forms"
 EVAL_DIR = ROOT / "eval"
 SCRIPTS_DIR = EVAL_DIR / "scripts"
 AUDIO_DIR = EVAL_DIR / "audio"          # your recordings, 16 kHz mono WAV, never committed
 SMOKE_AUDIO_DIR = EVAL_DIR / "smoke_audio"  # machine voice for smoke runs only, never committed
 RESULTS_DIR = ROOT / "results"
-MODELS_DIR = ROOT / "models"            # every model, as plain folders; gitignored except models/README.md
-OUTBOX_DIR = ROOT / "outbox"            # where the sinks write (local files only)
+MODELS_DIR = resolve(SETTINGS["models_dir"])   # every model, as plain folders; gitignored except models/README.md
+OUTBOX_DIR = resolve(SETTINGS["data_dir"])     # where the sinks write (local files only)
+SINKS = tuple(SETTINGS["sinks"])
+ASR_NAME = SETTINGS["asr"]
+ROUTE = SETTINGS["route"]
 
-LLM_URL = os.environ.get("VOICEFORM_LLM_URL", shared.LLM_URL)
+_LLM = SETTINGS["llm"]
+LLM_KIND = _LLM["kind"]
+LLM_URL = os.environ.get("VOICEFORM_LLM_URL", _LLM["url"])
 DHIR_MODEL = "dhir-2b"                  # the --alias used in code/dhir-server/README.md
-DHIR_URL = os.environ.get("VOICEFORM_DHIR_URL", "http://localhost:1236/v1")   # ZenteiQ's llama-server, not LM Studio
-LLM_MODELS = [shared.CHAT_MODEL, "gemma-2-2b-it", DHIR_MODEL]
-DEFAULT_LLM = LLM_MODELS[0]             # Qwen3 1.7B, the author's choice of 2026-10-26 (README, "Default model")
+DEFAULT_LLM = _LLM["model"]             # Qwen3 1.7B, the author's choice of 2026-10-26 (README, "Default model")
+SERVERS = dict(_LLM["servers"] or {})   # models served somewhere other than LLM_URL
+if os.environ.get("VOICEFORM_DHIR_URL"):
+    SERVERS[DHIR_MODEL] = os.environ["VOICEFORM_DHIR_URL"]
+DHIR_URL = SERVERS.get(DHIR_MODEL, "http://localhost:1236/v1")   # ZenteiQ's llama-server, not LM Studio
+LLM_MODELS = [DEFAULT_LLM, "gemma-2-2b-it", DHIR_MODEL]
+FORCED_MODEL = os.environ.get("VOICEFORM_MODEL")   # forces one model for every language, for example gemma-2-2b-it
 
 
 def url_for(model: str) -> str:
-    """Dhir 2B is served by llama-server on its own port; every other model comes from LM Studio."""
-    return DHIR_URL if model == DHIR_MODEL else LLM_URL
+    """A model listed under llm.servers comes from its own server (Dhir 2B: llama-server); every other from LLM_URL."""
+    return SERVERS.get(model, LLM_URL)
+
+
+def llm_settings(model: str = None) -> dict:
+    """The config section for frugalai_common.chat.make_chat, for one model id."""
+    model = model or DEFAULT_LLM
+    return {"kind": LLM_KIND, "model": model, "url": url_for(model),
+            "gguf": str(resolve(_LLM["gguf"])) if _LLM.get("gguf") else ""}
 
 
 # The demo page's model per language (author's choice of 2026-11-19: Dhir 2B for Marathi, the most accurate on the script
 # text). Any language not listed uses DEFAULT_LLM. The command line is unaffected: it uses --model, default Qwen.
-PREFERRED_BY_LANG = {"mr": DHIR_MODEL}
+PREFERRED_BY_LANG = dict(_LLM["per_lang"] or {})
 
 
 def model_for_lang(lang: str, served=lambda model: True) -> str:
@@ -45,7 +89,7 @@ def model_for_lang(lang: str, served=lambda model: True) -> str:
 # Speech-to-text backends. "langs" is what the model was trained or fine-tuned for.
 ASR_MODELS = {
     "vosk-small-hi": {
-        "kind": "vosk", "langs": ["hi"], "size_note": "42 MB",
+        "kind": "vosk", "langs": ["hi"], "size_note": "42 MB", "label": "Vosk small Hindi, on the CPU",
         "path": MODELS_DIR / "vosk-model-small-hi-0.22",
         "url": "https://alphacephei.com/vosk/models/vosk-model-small-hi-0.22.zip",
         "licence": "Apache-2.0",
@@ -53,18 +97,21 @@ ASR_MODELS = {
     },
     "whisper-base": {
         "kind": "whisper", "langs": ["hi", "mr"], "repo": "openai/whisper-base", "licence": "Apache-2.0",
+        "label": "Whisper base (OpenAI), on the CPU",
         "revision": "e37978b90ca9030d5170a5c07aadb050351a65bb",
     },
     "whisper-small-mr": {
         "kind": "whisper", "langs": ["mr"], "repo": "vittai23/whisper-small-marathi", "licence": "Apache-2.0",
+        "label": "Whisper small, Marathi fine-tune, on the CPU",
         "revision": "120caf0fc5b42644bb41055277b17b86d8811a1f",
     },
     "whisper-small-hi": {
         "kind": "whisper", "langs": ["hi"], "repo": "vasista22/whisper-hindi-small", "licence": "Apache-2.0",
+        "label": "Whisper small, Hindi fine-tune, on the CPU",
         "revision": "fb4a24afc20c42906deed31c3689e4be31da41fe",
     },
     "indicconformer": {
-        "kind": "indicconformer", "langs": ["hi", "mr"],
+        "kind": "indicconformer", "langs": ["hi", "mr"], "label": "IndicConformer 600M (AI4Bharat), on the CPU",
         "repo": "ai4bharat/indic-conformer-600m-multilingual", "licence": "MIT (gated, auto-approved)",
         "revision": "2a77d305038dfc502fd9464e7d028b90381976cb",
     },

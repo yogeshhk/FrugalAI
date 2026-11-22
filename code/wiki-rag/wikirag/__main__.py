@@ -9,6 +9,7 @@ import sys
 import time
 from pathlib import Path
 
+from . import config
 from .answer import ask
 from .index import WikiIndex
 
@@ -135,7 +136,7 @@ def build_parser():
         p.add_argument("--embed-model", default=None, help="optional: adds embedding search (fused with BM25)")
         p.add_argument("--doc-prefix", default="")
         p.add_argument("--query-prefix", default="")
-        p.add_argument("-k", type=int, default=3)
+        p.add_argument("-k", type=int, default=config.load_settings()["top_k"], help="notes per question (config.yaml: top_k)")
         if model:
             p.add_argument("--model", required=True)
             p.add_argument("--no-think", action="store_true", help="append /no_think (Qwen3 soft switch)")

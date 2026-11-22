@@ -1,6 +1,18 @@
 """Offline test for the stub: no model server, no download. Every failure you find in your project becomes a test like this."""
 
-from template_project.core import route
+from frugalai_common.llm import ScriptedChat
+
+from template_project.core import Assistant, load_settings, route
+
+
+def test_the_core_class_uses_code_first_and_the_model_otherwise():
+    bot = Assistant(llm=ScriptedChat(["Paris."]))
+    assert bot.answer("2 + 3") == "5"
+    assert bot.answer("Capital of France?") == "Paris."
+
+
+def test_settings_come_from_config_yaml():
+    assert load_settings()["llm"]["kind"] in ("http", "llama_cpp", "fake")
 
 
 def test_arithmetic_is_routed_to_code():

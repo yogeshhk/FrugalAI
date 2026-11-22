@@ -12,9 +12,11 @@ dependencies:
   - pip
   - pytest=9.0.2
   - requests=2.32.5
+  - pyyaml
   - pip:
       - langchain-core==1.6.10
       - langchain-openai==1.1.6
       - pydantic==2.12.5
       - langgraph==1.0.4
+      - flet==1.1.2
       - -e ../common

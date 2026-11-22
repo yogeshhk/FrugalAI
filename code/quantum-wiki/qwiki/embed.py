@@ -13,4 +13,14 @@ from . import config
 
 
 def lm_studio_embeddings(cache_file: Path) -> CachedEmbeddings:
-    return shared.lm_studio_embeddings(cache_file, model=config.EMBED_MODEL, url=config.LLM_URL)
+    return shared.lm_studio_embeddings(cache_file, model=config.EMBED_MODEL, url=config.EMBED_URL)
+
+
+def make_embeddings(kind: str = None):
+    """The embedder the config file asks for: http (a server on this machine, cached on disk) or hash (offline fake)."""
+    kind = kind or config.EMBED_KIND
+    if kind == "http":
+        return lm_studio_embeddings(config.EMBED_CACHE)
+    if kind == "hash":
+        return HashEmbeddings()
+    raise ValueError("embed.kind must be http or hash, not %r" % (kind,))

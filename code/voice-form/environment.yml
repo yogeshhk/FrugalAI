@@ -26,4 +26,7 @@ dependencies:
       - huggingface-hub==0.35.1
       - onnxruntime==1.22.0
       - vosk==0.3.45
+      - flet==1.1.2              # the Flet page (app_flet.py)
+      - flet-desktop==1.1.2
+      - llama-cpp-python==0.3.34 # optional: llm.kind llama_cpp in config.yaml
       - -e ../common

@@ -1,18 +1,20 @@
-"""Chat model for the drafting step: LangChain ChatOpenAI pointed at LM Studio, with structured output, a regex
-fallback for the JSON, counters, and a scripted fake for offline tests.
+"""Chat model for the drafting step, bound to the config file. The work is in `frugalai_common.chat`.
 
-strip_think, the counters, the JSON regex fallback, the scripted fake and the Qwen-only no-think switch come from
-`frugalai_common.llm`.
+Chat(make_chat(...)) gives the drafting step two calls: text(system, user) and json(system, user, PydanticModel),
+which asks the model for JSON that fits the schema and falls back to a regex parse of the reply. make_llm(cfg) builds
+what config.yaml asks for: a server on this machine (http), a .gguf file in this process (llama_cpp) or a fake.
 """
 
-import time
 from typing import List, Optional, Type
 
 from frugalai_common import llm as shared
+from frugalai_common.chat import make_chat
 from frugalai_common.llm import Counters, no_think_suffix, strip_think  # noqa: F401  (re-exported)
 from pydantic import BaseModel
+from wfagent import config as wf
 
-from . import config
+PLACEHOLDER = {"title": "Placeholder?", "question": "word " * 20, "answer": "word " * 60,
+               "fallacy": '"Placeholder belief" ' * 10}
 
 
 def parse_json(text: str, model: Type[BaseModel]) -> Optional[BaseModel]:
@@ -26,50 +28,33 @@ def parse_json(text: str, model: Type[BaseModel]) -> Optional[BaseModel]:
         return None
 
 
-class Chat(Counters):
-    def __init__(self, model: str = config.CHAT_MODEL, max_tokens: int = 900):
-        super().__init__()
-        from langchain_openai import ChatOpenAI
+class Chat:
+    """A chat model from `make_chat` with the two calls the drafting step uses and the cost counters."""
 
-        self.model, self.max_tokens = model, max_tokens
-        self.llm = ChatOpenAI(model=model, base_url=config.LLM_URL, api_key="lm-studio", temperature=0,
-                              max_tokens=max_tokens, timeout=900, max_retries=1)
+    def __init__(self, chat=None, max_tokens: Optional[int] = None):
+        settings = wf.SETTINGS
+        self.chat = chat or make_chat(wf.llm_settings(settings))
+        self.max_tokens = max_tokens or settings["faq"]["max_tokens"]
+        self.model = getattr(self.chat, "model", "")
 
     def available(self) -> bool:
-        import requests
+        return self.chat.available()
 
-        try:
-            return requests.get(config.LLM_URL.rstrip("/") + "/models", timeout=3).ok
-        except Exception:
-            return False
+    def snapshot(self) -> dict:
+        return self.chat.snapshot()
 
-    def _count(self, msg, t0):
-        self.seconds += time.perf_counter() - t0
-        self.calls += 1
-        u = getattr(msg, "usage_metadata", None) or {}
-        self.prompt_tokens += u.get("input_tokens", 0)
-        self.completion_tokens += u.get("output_tokens", 0)
+    def since(self, before: dict) -> dict:
+        return self.chat.since(before)
 
     def text(self, system: str, user: str, max_tokens: Optional[int] = None) -> str:
-        t0 = time.perf_counter()
-        llm = self.llm.bind(max_tokens=max_tokens) if max_tokens else self.llm
-        msg = llm.invoke([("system", system), ("user", user + no_think_suffix(self.model))])
-        self._count(msg, t0)
-        return strip_think(msg.content if isinstance(msg.content, str) else str(msg.content))
+        return self.chat.chat(system, user, max_tokens=max_tokens or self.max_tokens)
 
     def json(self, system: str, user: str, model: Type[BaseModel]) -> Optional[BaseModel]:
-        """Structured output with the JSON schema; if the server or the model refuses, parse the raw reply."""
-        t0 = time.perf_counter()
-        try:
-            out = self.llm.with_structured_output(model, method="json_schema", include_raw=True).invoke(
-                [("system", system), ("user", user + no_think_suffix(self.model))])
-            self._count(out.get("raw"), t0)
-            if out.get("parsed") is not None:
-                return out["parsed"]
-            return parse_json(getattr(out.get("raw"), "content", "") or "", model)
-        except Exception:
-            self.seconds += time.perf_counter() - t0
-        return parse_json(self.text(system, user + "\nReply with one JSON object only."), model)
+        """Structured output with the JSON schema; if the reply does not fit, ask once more for one JSON object."""
+        out = parse_json(self.chat.chat(system, user, schema=model.model_json_schema(), max_tokens=self.max_tokens), model)
+        if out is None:
+            out = parse_json(self.text(system, user + "\nReply with one JSON object only."), model)
+        return out
 
 
 class FakeChat(shared.ScriptedChat):
@@ -87,3 +72,11 @@ class FakeChat(shared.ScriptedChat):
 
     def json(self, system: str, user: str, model: Type[BaseModel]) -> Optional[BaseModel]:
         return parse_json(self.text(system, user), model)
+
+
+def make_llm(cfg: Optional[dict] = None, max_tokens: Optional[int] = None):
+    """The drafting model a resolved llm section asks for (see wfagent.config.llm_settings)."""
+    cfg = cfg or wf.llm_settings()
+    if cfg.get("kind") == "fake":
+        return FakeChat([PLACEHOLDER])
+    return Chat(make_chat(cfg), max_tokens)

@@ -15,6 +15,13 @@ language.
 ## Model and runtime
 Which model (name, size, quantisation) and which runtime, and why. Link the model card and note its licence.
 
+## Shape (every project)
+- One core class in the package does the work (`template_project/core.py`, `Assistant`). It never imports a UI.
+- `config.yaml` holds the choices; the language model is `http` (LM Studio), `llama_cpp` (a GGUF file inside the
+  program, the route for a phone or a Raspberry Pi) or `fake` (tests), through `frugalai_common.chat.make_chat`.
+- The pages only draw and call the core: Streamlit `app.py` and Flet `app_flet.py`. Each calls
+  `frugalai_common.demo.install_guard()` before importing its own package. The fullest example is `code/voice-form/`.
+
 ## What is in here
 A table of the folders and files, one line each. The project is self-contained: its own code, data, `eval/`,
 `tests/`, `README.md` and `TODO.md`. Shared pieces come from `../common/`.

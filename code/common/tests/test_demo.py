@@ -48,7 +48,8 @@ def test_guard_blocks_other_hosts_and_counts_local():
         server.close()
         s.close()
     finally:
-        socket.socket.connect, socket.socket.connect_ex, socket.socket.sendto, socket.getaddrinfo = original
+        D.uninstall_guard(g)
+    assert (socket.socket.connect, socket.socket.connect_ex, socket.socket.sendto, socket.getaddrinfo) == original
 
 
 def test_machine_lines_name_cpu_ram_and_each_gpu():

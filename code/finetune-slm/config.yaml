@@ -1,0 +1,21 @@
+# Choices for the finetune-slm demo (the intent router). Change this file, not the code.
+# Another file can be used instead: set FTSLM_CONFIG to its path.
+# Relative paths are under code/finetune-slm. The training commands (python -m ftslm train) keep their own options.
+
+model: HuggingFaceTB/SmolLM2-135M-Instruct   # the base model, loaded from the local Hugging Face cache (offline)
+adapter: adapters/intent                     # the LoRA adapter folder written by `python -m ftslm train`
+train_log: adapters/intent/train_log.json    # time, size and host of that training run
+data_dir: data                               # train.jsonl: one example per intent is shown to the base model
+results_csv: results/results.csv             # the measured table the demo quotes (optional)
+
+# CPU only: ftslm/__init__.py hides the GPU on purpose. threads 0 means torch's own default.
+threads: 0
+
+# The example messages on the demo page.
+messages:
+  - Heavy wind expeted at Amravati in two days, is that right?
+  - Is it worth fixing an old seed drill or should I buy new?
+  - can a small farmer get the seed subsidy?
+  - I want to spray the pomegranate, will the sky stay clear this weekend?
+  - white spots on the onion leaves, what is it
+  - Hi, is anyone free to chat? - Mohan
