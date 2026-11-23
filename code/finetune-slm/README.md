@@ -132,16 +132,12 @@ Honest expectation, written before measuring: closed-book answers after fine-tun
 memorisation, so retrieval will probably win on facts. What fine-tuning might add is the book's register and some
 facts. The study is built to say which happened.
 
-### Status (2026-10-20)
+### Status
 
-| Step | State |
-|------|-------|
-| Go or no-go gate (base models, before any training) | done: Gemma 3 270M fails, Gemma 3 1B passes |
-| Question data, validated against the book | done |
-| Training data | done (`python -m mrsj data`) |
-| LoRA training on Gemma 3 1B | done (2026-10-21): 3 epochs; the epoch 3 adapter is the final one, see "Training" below |
-| Three-system evaluation | done on the epoch 3 adapter (2026-10-21), see "Results" below |
-| Merge and GGUF export | done: `python -m mrsj merge`, then llama.cpp's converter; the epoch 3 GGUF loads and answers |
+Every step is done: the go or no-go gate (Gemma 3 270M fails, Gemma 3 1B passes), the question and training data
+(`python -m mrsj data`), LoRA training on Gemma 3 1B (3 epochs; the epoch 3 adapter is the final one, see "Training"),
+the three-system evaluation on that adapter (see "Results") and the merge and GGUF export (`python -m mrsj merge`, then
+llama.cpp's converter; the epoch 3 GGUF loads and answers).
 
 ### The gate
 

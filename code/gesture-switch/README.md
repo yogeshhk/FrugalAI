@@ -26,7 +26,7 @@ for the first proof and on the Pi 3 afterwards, with no ribbon cable or camera-s
 Chosen by the author on 2026-11-14: the OpenCV Zoo MediaPipe palm detector and hand pose model as ONNX
 ([S58](../../docs/sources.md#s58)), 3.9 MB and 4.1 MB, Apache 2.0 per the licence file shipped with each. They are run
 with OpenCV's DNN module on the CPU through the zoo's own small wrapper classes; the files are kept outside the repo
-(this laptop: `C:\Users\yoges\.cache\lm-studio\models\opencv-zoo-hand`, found through `FRUGALAI_HAND_MODELS`). Our own part is `gesture_switch/zoo.py`: plain
+(on the author's laptop: a folder named `opencv-zoo-hand` under LM Studio's cache, found through `FRUGALAI_HAND_MODELS`). Our own part is `gesture_switch/zoo.py`: plain
 geometry on the 21 landmarks that gives a label (open palm, fist, thumb up, thumb down, pointing up). Checked so far:
 the models load and return "unknown" on a blank and a noise frame, and the rules pass tests on synthetic landmarks.
 Not checked yet: any real hand in front of the webcam, accuracy, speed on the laptop or the Pi.

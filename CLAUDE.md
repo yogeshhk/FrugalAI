@@ -23,7 +23,7 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
 The top level holds only `README.md`, `CONTRIBUTING.md`, `LICENSE`, `IDEAS.md` (the one project-ideas list), `AWESOME.md`, `TODO.md` and this file. `docs/` concepts, landscape, limits, sources, safety, token frugality, the Pi kit. Shared code in `code/common/frugalai_common/` includes the chat kinds (`chat.py`), the embedding kinds (`embedder.py`), the LangChain embedding cache (`embed.py`), the offline guard (`netguard.py`) and the machine panel (`machine.py`); a project's own `llm.py` and `embed.py` only bind them to its URL and model ids. `code/` holds everything that runs: each project is a
 self-contained folder (code, data, tests, README, and a TODO only while an action is open): `code/wiki-rag/`, `code/quantum-wiki/`, `code/finetune-slm/`,
 `code/workflow-agent/`, `code/voice-form/` (speech to form), `code/gesture-switch/` (camera and Pi 3, stub), `code/dhir-server/` (Dhir 2B run with ZenteiQ's llama-server, which LM Studio cannot load: recipe, answer check, no server code); copy `code/_template/` for a new one.
-Project shape (since 2026-11-22, plan in `code/voice-form/docs/refactor-report.md`): one core class per package does the
+Project shape (plan in `code/voice-form/docs/refactor-report.md`): one core class per package does the
 work and never imports a UI; `config.yaml` in the project folder holds the choices, with the language model as `http`,
 `llama_cpp` (a GGUF inside the program) or `fake` through `frugalai_common.chat.make_chat`; the pages only draw and call
 the core. Demo pages: two per project (voice-form, quantum-wiki, wiki-rag, workflow-agent, finetune-slm), a Streamlit

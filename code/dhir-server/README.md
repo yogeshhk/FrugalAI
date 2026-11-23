@@ -35,7 +35,7 @@ cmake --build build --target llama-server llama-cli
 
 This build is CPU only (add `-DGGML_CUDA=ON` for an NVIDIA GPU). In this version `build\bin\llama-server.exe` is a small launcher and the server itself is `llama-server-impl.dll` beside it; keep the `bin` folder together. `llama-server --version` printed `0.9.0-dev`.
 
-Keep this checkout outside LM Studio's models folder. The llama.cpp source holds about 20 small `ggml-vocab-*.gguf` test files, and LM Studio lists every one of them as a model. On the author's laptop it lives in `C:\Users\yoges\tools\llama-cpp-dhir`.
+Keep this checkout outside LM Studio's models folder. The llama.cpp source holds about 20 small `ggml-vocab-*.gguf` test files, and LM Studio lists every one of them as a model. On the author's laptop it lives in a `tools\llama-cpp-dhir` folder under the user profile.
 
 ## Run it
 ```bash

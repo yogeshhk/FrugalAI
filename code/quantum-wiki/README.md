@@ -52,7 +52,7 @@ project calls the installed Docling directly and wraps its chunks as LangChain `
 ## Demo page
 `conda run -n genai streamlit run app.py` from `code/quantum-wiki/`, with LM Studio serving Qwen3 1.7B and
 nomic-embed-text, after the parse below. Five fixed questions (picked by the author as clear examples) or your own;
-each goes to the model alone and with RAG, side by side, with the measured score underneath.
+each goes to the model alone and with RAG, side by side, with the measured score underneath. Flet live check with LM Studio, 2026-11-22: window built (9 controls), one question answered in 12 s (base and RAG), no traceback.
 
 ![The same question to the base model and to the model with RAG](../../docs/images/frugal_rag_passmark.png)
 *Image file: ../../docs/images/frugal_rag_passmark.png*
@@ -216,5 +216,3 @@ Size: small is an evening, medium is a weekend, large is a few weekends.
 
 ### Cards for a different course catalogue (large)
 - Generalise the course card into a schema file so a new catalogue needs a YAML description and not new code.
-
-Flet live check with LM Studio, 2026-11-22: window built (9 controls), one question answered in 12 s (base and RAG), no traceback.

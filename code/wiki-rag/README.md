@@ -37,7 +37,7 @@ Run the Flet page: `conda run -n genai python app_flet.py` (the same questions a
 program is already cached in `~/.flet`, so the first run needs no download). Both pages only draw: `wikirag/core.py`
 (class `WikiRag`) does the work, and `config.yaml` chooses the models (`kind: http`, `llama_cpp` or `fake` for the
 answer model; `http`, `llama_cpp`, `hash` or `none` for embeddings), the notes folder and top-k. `WIKIRAG_CONFIG` names
-another config file.
+another config file. Flet live check with LM Studio, 2026-11-22: passed (page built, startup sync, one question answered with a source note, no traceback).
 
 | File | Role |
 |------|------|
@@ -178,5 +178,3 @@ Size: small is an evening, medium is a weekend, large is a few weekends.
 
 ### Obsidian plugin or a small web page (large)
 - Wrap `ask` in a local page or plugin. It must stay offline and show the source note for every answer.
-
-Flet live check with LM Studio, 2026-11-22: passed (page built, startup sync, one question answered with a source note, no traceback).

@@ -7,24 +7,10 @@ machine and was never built; per-project files use Python 3.10, the root file st
 task needs it.
 
 ## Open
-None before the Dec 12 talk (the voice-form page was run by hand on 2026-11-21: Confirm stays disabled until the fields are valid).
-
-## Open: refactor to core class, config.yaml and Flet page (2026-11-22; plan `code/voice-form/docs/refactor-report.md`)
-All five demo projects now have one core class, a `config.yaml`, a Streamlit `app.py` (kept) and a Flet `app_flet.py`;
-the deck keeps the Streamlit pictures (author's choice; Flet frames kept, commented, as an alternative). Embeddings come from one shared
-`frugalai_common/embedder.py` (http, llama_cpp, hash, none); wiki-rag answered end to end with chat and embeddings both
-from GGUF files inside Python, no server. `code/common` is installed editable in genai. Suite: 422 passed, 16 skipped.
-- [x] All five Flet pages ran live through a script driver (LM Studio on; finetune-slm needs none), one question or case
-  each, no traceback; a script driver must not `time.sleep` in the Flet main. Still unchecked: a human click-through of a real
-  window, the workflow-agent "Already covered?" tab, voice-form Confirm and Marathi.
-- [x] `_scripts/record_demo.py` drove every `app.py` scenario with LM Studio running (the buttons of a page can appear
-  seconds after its title, so `click` now retries up to 120 s). The new Streamlit pictures were written to a scratch folder,
-  not to `LaTeX/images`; the deck still uses the 2026-11-15 recordings. Decide whether to refresh them.
-- [ ] Deck pictures: Flet pictures are live in `LaTeX/ai_frugal_demo.tex` (voice-form and quantum-wiki), with the Streamlit
-  frames commented beside them; to show Streamlit, swap the comments.
-- [ ] Later: Android spike for voice-form (`flet build apk`, needs flet-cli, which upgrades pillow and packaging in genai);
-  finetune-slm on a phone needs a merged GGUF and label scoring in `LlamaCppChat`.
+- [ ] Human click-through of a real window for the Flet pages: the workflow-agent "Already covered?" tab, voice-form Confirm and Marathi (script drivers ran every page without a traceback).
+- [ ] Deck pictures: Flet pictures are live in `LaTeX/ai_frugal_demo.tex` (voice-form and quantum-wiki), with the Streamlit frames commented beside them (swap the comments to show Streamlit). Decide whether to refresh the deck's Streamlit pictures from the newer recordings in the scratch folder.
+- [ ] Later: Android spike for voice-form (`flet build apk`, needs flet-cli, which upgrades pillow and packaging in genai); finetune-slm on a phone needs a merged GGUF and label scoring in `LlamaCppChat`.
 
 ## Open: 2027 model (career plan: interns and startups; students build, I guide)
 - [ ] Before the first intern or startup arrives (DES, Cummins and others come through the career plan; no pick or mentor to settle now): make sure `IDEAS.md` and `CONTRIBUTING.md` read well for someone arriving cold.
-- [ ] Before an idea is offered: read the Hindi Common Voice 25.0 datasheet on the Mozilla Data Collective site in a browser for the validated hours (Marathi is confirmed at 18.94; Hindi not readable by search on 2026-11-21) (the dataset terms in `IDEAS.md` were rechecked from web results only; no emails to the CWRU or NEU-DET owners, since the repo links to the data and does not redistribute it); decide where downloaded data goes (`data/` inside each recipe, in `.gitignore`); write a one-page brief per chosen idea (goal, first-week task, deliverable, how it is marked).
+- [ ] Before an idea is offered: read the Hindi Common Voice 25.0 datasheet on the Mozilla Data Collective site in a browser for the validated hours (Marathi is confirmed at 18.94; Hindi was not readable by search); decide where downloaded data goes (`data/` inside each recipe, in `.gitignore`); write a one-page brief per chosen idea (goal, first-week task, deliverable, how it is marked). The dataset terms in `IDEAS.md` were rechecked from web results only; send no emails to the CWRU or NEU-DET owners, since the repo links to the data and does not redistribute it.
