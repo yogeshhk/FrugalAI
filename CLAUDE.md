@@ -1,7 +1,7 @@
 # CLAUDE.md (FrugalAI)
 
 Evidence-first repo: benchmarks and recipes for small AI models on low-resource hardware. Public, MIT.
-Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions still apply.
+Parent rules in the `GitHub/CLAUDE.md` above this repo and the user's global instructions still apply.
 
 ## Rules
 - Never run git commands. The user manages git.
@@ -16,38 +16,30 @@ Parent rules in `D:\Yogesh\GitHub\CLAUDE.md` and the user's global instructions 
 - Offline first. No feature may need a cloud call at runtime.
 - `AWESOME.md` entries must meet its criteria (free to use and open to all, downloadable model weights, no
   per-token charges, hardware stated) and keep the exact two-line shape. Run `python _scripts/check_awesome.py` after any edit.
-  Never list something you have not read; set `Verified` to the date you checked it. Maintainer notes are in
-  `docs/maintaining-awesome.md`.
+  Never list something you have not read; set `Verified` to the date you checked it. Maintainer notes: `docs/maintaining-awesome.md`.
+- TODO files are terse: open actions only, no dated logs, no done lists. Results live in each project's README.
+- Keep this repo public-safe: no names, emails or machine paths of the author in tracked files.
 
 ## Layout
-The top level holds only `README.md`, `CONTRIBUTING.md`, `LICENSE`, `IDEAS.md` (the one project-ideas list), `AWESOME.md`, `TODO.md` and this file. `docs/` concepts, landscape, limits, sources, safety, token frugality, the Pi kit. Shared code in `code/common/frugalai_common/` includes the chat kinds (`chat.py`), the embedding kinds (`embedder.py`), the LangChain embedding cache (`embed.py`), the offline guard (`netguard.py`) and the machine panel (`machine.py`); a project's own `llm.py` and `embed.py` only bind them to its URL and model ids. `code/` holds everything that runs: each project is a
-self-contained folder (code, data, tests, README, and a TODO only while an action is open): `code/wiki-rag/`, `code/quantum-wiki/`, `code/finetune-slm/`,
-`code/workflow-agent/`, `code/voice-form/` (speech to form), `code/gesture-switch/` (camera and Pi 3, stub), `code/dhir-server/` (Dhir 2B run with ZenteiQ's llama-server, which LM Studio cannot load: recipe, answer check, no server code); copy `code/_template/` for a new one.
-Project shape (plan in `code/voice-form/docs/refactor-report.md`): one core class per package does the
-work and never imports a UI; `config.yaml` in the project folder holds the choices, with the language model as `http`,
-`llama_cpp` (a GGUF inside the program) or `fake` through `frugalai_common.chat.make_chat`; the pages only draw and call
-the core. Demo pages: two per project (voice-form, quantum-wiki, wiki-rag, workflow-agent, finetune-slm), a Streamlit
-`app.py` (kept as the backup) and a Flet `app_flet.py` (flet 1.1.2, desktop window; the start of an Android app), run with
-`conda run -n genai streamlit run app.py` or `conda run -n genai python app_flet.py` from the project folder. Each calls
-`frugalai_common.demo.install_guard()` first (offline guard; machine panel from `frugalai_common.machine`). `_scripts/record_demo.py` records screenshots and an MP4 of
-a running page; the talk deck (`LaTeX/ai_frugal_demo.tex`) uses them.
-`LaTeX/` holds the seminar deck "Frugal AI: Small Is Beautiful": `Main_Seminar_AI_Frugal_{Presentation,CheatSheet}.tex`, the content file
-`seminar_ai_frugal_content.tex` (the one place for part order) and the `ai_frugal_*.tex` topic files; build with `LaTeX/make_frugal.bat`
-(`texify -cp --pdf`), chart script `LaTeX/_scripts/make_charts.py`, outline `LaTeX/docs/seminar_outline.md`. The templates, `about_me`,
-`thanks` and their images are copies from TeachingDataScience, so a template fix must be applied in both places. Deliver each rebuilt PDF to
-`Publications/Presentations` and `D:\Yogesh\GDrive\ToPrint\`; keep no PDF in `LaTeX/`. Shared pieces live in `code/common/`:
-`code/common/frugalai_common/` backend interface, benchmark runner and demo-page helpers, `code/common/benchmarks/` method and results,
-`code/common/devices/` per-device setup. `_scripts/` at the repo root holds the repo tools (AWESOME.md and link
-checkers, the demo recorder). Run all tests with `python -m pytest code -q` and the link check with `python _scripts/check_links.py`.
+- Top level: `README.md`, `CONTRIBUTING.md`, `LICENSE`, `IDEAS.md` (the one project-ideas list), `AWESOME.md`, `TODO.md`, this file.
+- `docs/`: concepts, landscape, limits, sources, safety, token frugality, the Pi kit, fine-tuning on CPU.
+- `code/`: everything that runs. Each project is a self-contained folder (code, data, tests, README, and a TODO only while an action is open): `wiki-rag`, `quantum-wiki`, `finetune-slm`, `workflow-agent`, `voice-form`, `gesture-switch` (camera and Pi 3, stub), `dhir-server` (Dhir 2B with ZenteiQ's llama-server, which LM Studio cannot load: recipe and answer check, no server code). Copy `code/_template/` for a new one.
+- `code/common/`: `frugalai_common/` (chat kinds in `chat.py`, embedding kinds in `embedder.py`, LangChain embedding cache in `embed.py`, offline guard in `netguard.py`, machine panel in `machine.py`, benchmark runner, demo helpers), `benchmarks/` (method and results), `devices/` (per-device setup). A project's own `llm.py` and `embed.py` only bind these to its URL and model ids.
+- `_scripts/`: repo tools (AWESOME and link checkers, demo recorder `record_demo.py`).
+- `LaTeX/`: the seminar deck "Frugal AI: Small Is Beautiful": drivers `Main_Seminar_AI_Frugal_{Presentation,CheatSheet}.tex`, content file `seminar_ai_frugal_content.tex` (the one place for part order), `ai_frugal_*.tex` topic files, `make_frugal.bat` (`texify -cp --pdf`), `_scripts/make_charts.py`, outline `docs/seminar_outline.md`. The templates, `about_me`, `thanks` and their images are copies from TeachingDataScience, so apply a template fix in both places. Deliver each rebuilt PDF to `Publications/Presentations` and the ToPrint folder; keep no PDF in `LaTeX/`. The talk deck `ai_frugal_demo.tex` uses the recorded screenshots and MP4.
 
-## Caveats that stay (not in TODO)
-- The question and case sets of `finetune-slm`, `wiki-rag`, `workflow-agent` and `voice-form` were drafted by Claude and not reviewed by the author. The `quantum-wiki` sets (and so the demo's questions) were drafted by Claude and reviewed by the author on 2026-10-31.
+## Project shape
+Plan in `code/voice-form/docs/refactor-report.md`. One core class per package does the work and never imports a UI. `config.yaml` in the project folder holds the choices, with the language model as `http`, `llama_cpp` (a GGUF inside the program) or `fake` through `frugalai_common.chat.make_chat`. The pages only draw and call the core. Demo pages: a Streamlit `app.py` (the backup) and a Flet `app_flet.py` (flet 1.1.2, desktop window; the start of an Android app) in each of voice-form, quantum-wiki, wiki-rag, workflow-agent and finetune-slm. Run from the project folder with `conda run -n genai streamlit run app.py` or `conda run -n genai python app_flet.py`. Each calls `frugalai_common.demo.install_guard()` first.
+
+Checks: `python -m pytest code -q` (all tests) and `python _scripts/check_links.py`.
+
+## Caveats that stay
+- The question and case sets of `finetune-slm`, `wiki-rag`, `workflow-agent` and `voice-form` were drafted by Claude and not reviewed by the author. The `quantum-wiki` sets (and so the demo's questions) were drafted by Claude and reviewed by the author.
 - No benchmark number exists for the old Dell, a Raspberry Pi or a power meter. Figures tagged "to verify" or "not confirmed" in `docs/` are unverified.
 - The legal position for clinical decision-support software in India has not been checked (`docs/safety.md`).
-- Keep TODO files terse: open actions only, no dated logs and no done lists; results live in each project's README.
 
 ## Related
-`D:\Yogesh\GitHub\AIOOLL` is a separate repo. Copy pieces from it with attribution; do not move them.
+`AIOOLL` (sibling repo) is separate. Copy pieces from it with attribution; do not move them.
 
 ## Working style
 Plan first, one package at a time, check the destination before writing, list the result afterwards.

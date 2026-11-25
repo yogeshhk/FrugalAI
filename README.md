@@ -30,9 +30,8 @@ your own machine. The pages need a local model server:
 
 1. Install [LM Studio](https://lmstudio.ai) (or [Ollama](https://ollama.com)), load **Qwen3 1.7B** (Q4_K_M) and, for the
    retrieval projects, **nomic-embed-text-v1.5**, and start its local server on port 1234.
-2. Create the environment once. With conda: `conda env create -f environment.yml` then `conda activate frugalai`. This
-   environment file has not been built from scratch yet (the measurements ran in another environment, Python 3.10), so
-   tell us if a version fails. It is large because of PyTorch, Docling and the speech models; a project's own
+2. Create the environment once. With conda: `conda env create -f environment.yml` then `conda activate frugalai`. This file is not yet built from scratch (the measurements ran in a Python 3.10 environment), so
+   tell us if a version fails. It is large (PyTorch, Docling, speech models); a project's own
    `environment.yml` or `requirements.txt` installs only what that project needs.
 3. From the project folder, run `streamlit run app.py`.
 
