@@ -5,6 +5,7 @@ Parent rules in the `GitHub/CLAUDE.md` above this repo and the user's global ins
 
 ## Rules
 - Never run git commands. The user manages git.
+- Call the talk "Frugal AI", never "AI for Good" (the author dislikes that title).
 - Never invent a benchmark number. A number exists only if a script produced it on a named device. Say
   "pending" otherwise.
 - Every factual claim in `docs/` has an entry in `docs/sources.md` or is tagged "to verify". Do not cite
