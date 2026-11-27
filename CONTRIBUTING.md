@@ -3,24 +3,24 @@
 Thanks for helping. You do not need a GPU or a cloud account: everything here runs on a laptop.
 
 **First, run something.** The README section "Try it in two minutes" clones the repo and runs a search with no model; "Run a
-full demo" starts a web page. If a step does not work as written, that is a useful contribution (see 4 below). Not sure
+full demo" starts a web page. If a step does not work as written, that is a useful contribution (see "Fix or add documentation" below). Not sure
 where to start? Open an issue and say what you have (a laptop, a Raspberry Pi, a phone) and what you want to build;
 [IDEAS.md](IDEAS.md) has a list.
 
 Four ways to contribute, easiest first.
 
-## 1. Add your effort to the awesome list
+## Add your effort to the awesome list
 Run something frugal on an old laptop, a Raspberry Pi, a phone, a microcontroller or in a browser? Add it
 to [AWESOME.md](AWESOME.md) with the "Add an entry" issue form, or in a pull request. The criteria: free to use
 and open to all, downloadable model weights, no per-token charges, and a statement of what it was run on. Check your edit with
 `python _scripts/check_awesome.py`.
 
-## 2. Add measurements from your device
+## Add measurements from your device
 Follow `code/common/benchmarks/METHODOLOGY.md` and add one CSV under `code/common/benchmarks/results/`. Record the device, CPU, RAM,
 OS, runtime and version, model and quantisation, date, and number of repeats. Do not round numbers up and do
 not copy numbers from elsewhere.
 
-## 3. Add or improve a recipe
+## Add or improve a recipe
 Copy `code/_template/` (a runnable stub with one offline test), keep the recipe self-contained, and include:
 - a README with a status line, the problem, the model choice and why, and exact run steps;
 - an evaluation script, even a tiny one;
@@ -35,7 +35,7 @@ Before a pull request run `python -m pytest code -q`, `python _scripts/check_lin
 
 Looking for something to build? Every project README in `code/` ends with "Ideas to extend", each with what it needs and how to tell it worked, and an `environment.yml` (conda) and `requirements.txt` (pip) so you can set up your own environment. If you have a Raspberry Pi and a USB webcam, `code/gesture-switch/PI_RECIPE.md` is a step-by-step deployment recipe whose results you can send back.
 
-## 4. Fix or add documentation
+## Fix or add documentation
 Every factual claim needs a source in `docs/sources.md`, or a "to verify" tag. Prefer primary sources
 (papers, official documentation, the project's own repository) over blogs and summaries.
 
@@ -44,7 +44,9 @@ Start from an idea in [IDEAS.md](IDEAS.md). Each is sized for one student, one l
 and no cloud.
 
 - **Claim it:** open an issue named after the project, so two students do not build the same thing.
-- **Set up:** create the conda environment and run `python -m pytest code -q` before you change anything.
+- **Set up:** from the repo root, run `conda env create -f environment.yml`, then `conda activate frugalai` and
+  `python -m pytest code -q` before you change anything. One project alone? Its own `environment.yml` in `code/<project>/`
+  is smaller.
 - **Build:** copy `code/_template/` to `code/<short-name>/`. Work on your own branch and open a pull request.
 - **Done means:** a README with a status line, an evaluation script, tests that pass offline, and every number backed by
   a script, with device, version and date (or the word "pending").

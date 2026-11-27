@@ -71,6 +71,9 @@ python -m pytest code/finetune-slm/tests -v     # from the repo root; offline
 
 The package sets `HF_HUB_OFFLINE=1`, so models load only from the local cache. For the one command that downloads a
 model the first time, set `HF_HUB_OFFLINE=0` and `TRANSFORMERS_OFFLINE=0` (for example `set HF_HUB_OFFLINE=0` on Windows).
+If `HF_HOME` is set, the folder it names must exist, or the demo page cannot find the model. On Windows without
+Developer Mode, the first download can stop with `WinError 1314` (no right to create symbolic links in the cache):
+turn on Developer Mode, or run that one download from an administrator prompt, then rerun it.
 
 Training is forced onto the CPU (`ftslm/__init__.py` hides the GPU). The thread count defaults to the physical
 core count.

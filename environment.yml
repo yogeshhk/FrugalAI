@@ -2,10 +2,10 @@
 # relative to where you run the command):
 #   conda env create -f environment.yml
 #   conda activate frugalai
-# Tests run offline and need no model server. This file has not been built yet; every measurement in the repo was
-# made in another environment (conda env genai) on Python 3.10. The versions below were read from that environment
-# on 2026-11-11 and have not been checked on Python 3.11; torch is the CPU build, which the genai environment
-# does not have (it holds the CUDA build 2.7.1+cu118).
+# Tests run offline and need no model server. Every measurement in the repo was made in another environment
+# (conda env genai) on Python 3.10, the same Python as each project's own environment.yml. The versions below
+# were read from that environment on 2026-11-11; torch is the CPU build, which the genai environment does not
+# have (it holds the CUDA build 2.7.1+cu118).
 # Optional, not installed here: llama-cpp-python (0.3.34 in genai), for `llm.kind: llama_cpp` in a project's
 # config.yaml (a GGUF model inside the program, no server) or to load the Marathi GGUF from Python (finetune-slm README).
 # LM Studio can serve those files instead.
@@ -13,7 +13,7 @@ name: frugalai
 channels:
   - conda-forge
 dependencies:
-  - python=3.11
+  - python=3.10
   - pip
   - pytest=9.0.2
   - numpy=1.26.4

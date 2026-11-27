@@ -53,5 +53,7 @@ Size: S about a week, M a few weeks, L a term. Status of licence checks: 2026-10
 
 ## Suggested first three
 
-Quantisation against quality, bearing fault diagnosis and token-frugal prompts: no restricted data, they run on a laptop,
-reuse the harness, and each ends in a CSV and a short recipe. Bearing diagnosis suits mechanical-engineering students.
+Quantisation against quality, bearing fault diagnosis and token-frugal prompts: they run on a laptop, reuse the benchmark
+runner in `code/common/`, and each ends in a CSV and a short recipe. Their data is open for study, but read the terms first:
+IndicXNLI is for non-commercial research, and the CWRU bearing data states no terms, so ask its maintainers before
+publishing results; token-frugal prompts need no outside data. Bearing diagnosis suits mechanical-engineering students.
